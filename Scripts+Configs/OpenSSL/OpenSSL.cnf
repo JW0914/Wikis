@@ -149,7 +149,7 @@ emailAddres				= Email
 emailAddress_max                	= 64
 
 countryName_default			= US
-stateOrProvinceName_default		= State
+stateOrProvinceName_default		= ST
 localityName_default			= Locality
 0.organizationName_default		= Sophos UTM
 organizationalUnitName_default		= LAN
