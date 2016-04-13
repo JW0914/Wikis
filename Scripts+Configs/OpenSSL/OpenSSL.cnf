@@ -10,6 +10,8 @@
 	# result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  Without this, 
 	# it will be impossible to authenticate to VPNs on Sophos.
 
+	# Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
+
 
 #####################################################################
 		##----- Establish working directory -----##
@@ -24,7 +26,7 @@ dir				= .
 
 [ default ]
 sophos				= Sophos UTM CA
-vpn				= Sophos UTM VPN CA
+vpn				= WRT1900 VPN CA
 
 [ ca ]
 default_ca			= CA_default
@@ -336,6 +338,7 @@ subjectAltName			= @alt_vpn_server
 #--------------------------------------------------------------------
 	## ----- Certificate Authority ----- ##
 #--------------------------------------------------------------------
+
 #--- Generate CA ---#
 # openssl req -x509 -new -sha512 -nodes -days 3650 -extensions v3_ca -newkey rsa:4096 -keyout ".\Sophos UTM CA.key.pem" -out ".\Sophos UTM CA.crt.pem" -config .\openssl.cnf
  
@@ -349,6 +352,7 @@ subjectAltName			= @alt_vpn_server
 #--------------------------------------------------------------------
 	## ----- Intermediate Certificate Authority ----- ##
 #--------------------------------------------------------------------
+
 #--- Gernerate Intermediate CA ---#
 # openssl req -out '.\VPN CA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout '.\VPN CA.key.pem' -config .\openssl.cnf -extensions v3_intermediate_ca
 
@@ -378,6 +382,7 @@ subjectAltName			= @alt_vpn_server
 #--------------------------------------------------------------------
 	## ----- Client Certificate ----- ##
 #--------------------------------------------------------------------
+
 #--- Request ---#
 # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha256 -newkey rsa:2048 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
 	
@@ -394,6 +399,7 @@ subjectAltName			= @alt_vpn_server
 #--------------------------------------------------------------------
 	## ----- Intermediate CA Android Build Certificates ----- ##
 #--------------------------------------------------------------------
+
 	# This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
 	# i.e. the following steps will need to be repeated for each of the six
 
