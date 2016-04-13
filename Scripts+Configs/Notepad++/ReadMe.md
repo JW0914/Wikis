@@ -1,1 +1,1 @@
-Defaults "Edit" in Context Menu to Notepadd++, instead of Notepad
+Defaults "Edit" in Context Menu to Notepad++, instead of Notepad
