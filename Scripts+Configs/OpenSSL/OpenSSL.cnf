@@ -10,7 +10,7 @@
 	# result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  Without this, 
 	# it will be impossible to authenticate to VPNs on Sophos.
 
-	# Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
+	# Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates certs.
 
 
 #####################################################################
