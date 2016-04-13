@@ -176,7 +176,7 @@
     #--- WIM Verification ---#
 ##################################
 
-  	Very WIM File
+  	Verify WIM File
     •	DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim"
 
   	Verify WIM File Index(es)
