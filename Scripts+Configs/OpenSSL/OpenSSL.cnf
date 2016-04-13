@@ -11,6 +11,9 @@
 	# it will be impossible to authenticate to VPNs on Sophos.
 
 	# Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates certs.
+	
+# I recommend downloading the OpenSSL config titled OpenSSL (Organized).cnf in the OpenSSL directory, as this version was edited
+# to make it appear organized on GitHub only, and if this is downloaded, it will appear misalligned. 
 
 
 #####################################################################
