@@ -335,6 +335,7 @@ subjectAltName			= @alt_vpn_server
 # Provided you utilize the SubjectAltName section, the Common Name is not required to be the IP/DNS, and can be whatever name 
 # you wish it to be
  
+
 #####################################################################
 #--------------------------------------------------------------------
 #####################################################################
@@ -342,6 +343,7 @@ subjectAltName			= @alt_vpn_server
 # For VPN Server certs:
 	# When creating a VPN server cert using "extendedKeyUsage = serverAuth", in your VPN client config you must
 	# change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
+
 
 #--------------------------------------------------------------------
 	## ----- Certificate Authority ----- ##
@@ -367,17 +369,20 @@ subjectAltName			= @alt_vpn_server
 #--- Sign Intermediate CA with CA ---#
 # openssl x509 -req -sha512 -days 3650 -in '.\VPN CA.csr' -CA '.\Sophos UTM CA.crt.pem' -CAkey '.\Sophos UTM CA.key.pem' -CAserial .\serial -out '.\VPN CA.crt.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
 
+
 #--- Generate Intermediate CA CRL Cert ---#
 # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\VPN CA.key' -cert '.\VPN CA.crt' -out '.\VPN CA.crl.pem'
  
 #--- Convert Intermediate CA CRL Cert to DER CRL ---#
 # openssl crl -inform PEM -in '.\VPN CA.crl.pem' -outform DER -out '.\VPN CA.crl'
 
+
 #--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
 # Windows:
 	# type .\"VPN CA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
 # *nix/BSD:
 	# cat ./"VPN CA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
+
 
 #--- Export VPN Client with an Intermediate CA ---#
 # openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain.pem'
@@ -411,6 +416,7 @@ subjectAltName			= @alt_vpn_server
 	# This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
 	# i.e. the following steps will need to be repeated for each of the six
 
+
 #--- Generate Individual Intermediate Build CA Request ---#
 # openssl req -out '.\media.csr' -new -days 3650 -sha512 -config .\openssl.cnf -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
 
@@ -420,11 +426,13 @@ subjectAltName			= @alt_vpn_server
 #--- Sign Individual Intermediate Build CA Request ---#
 # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA '.\Sophos UTM CA.crt.pem' -CAkey '.\Sophos UTM CA.key.pem' -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
 
+
 #--- Generate Individual Intermediate Build CA CRL Cert ---#
 # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
 
 #--- Convert Individual Intermediate Build CA CRL Cert to DER CRL ---#
 # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
+
 
 #--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
 # Windows:
@@ -432,12 +440,14 @@ subjectAltName			= @alt_vpn_server
 # *nix/BSD:
 	# cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
 
+
 #--- Create PKCS12 for import into keystore ---#
 # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
 
 	# The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
 	# be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
 	# This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
+
 
 #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
 	# For each of the six: *.x509.pem, *.pk8, Android-*-CA-Chain.pem, *.p12
@@ -466,9 +476,11 @@ subjectAltName			= @alt_vpn_server
 	# 2. Expiration Date [Format: YYMMDDHHMMSS followed by "Z"]
 	# 3. Revocation Date [(Empty if not revoked) Format: YYMMDDHHMMSSZ,reason]
 	# 4. Serial # [0a is hex for 10]
+		# Windows has a programmer calculator feature that can convert dec <-> hex
 	# 5. unknown [Certificate filename or literal string "unknown"]
 	# 6. Distinguished Name
  
+
 #--------------------------------------------------------------------
 #####################################################################
 		##----- Key Usage -----##
