@@ -1,1 +1,1 @@
-Adds Hyper-V under Hardware & Sound
+Adds Hyper-V under Control Panel\Hardware and Sound
