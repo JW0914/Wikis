@@ -218,7 +218,7 @@ authorityKeyIdentifier		= keyid:always, issuer:always
 basicConstraints			= critical, CA:FALSE
 subjectKeyIdentifier		= hash
 authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage			= critical, clientAuth, emailProtection
 
 [ usr_cert_not_dn ]
@@ -226,7 +226,7 @@ basicConstraints			= critical, CA:FALSE
 subjectKeyIdentifier		= hash
 authorityKeyIdentifier		= keyid:always, issuer:always
 subjectAltName				= email:copy
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage			= critical, clientAuth, emailProtection
 
 #####################################################################
@@ -295,7 +295,7 @@ subjectAltName				= @alt_supermicro
 basicConstraints			= critical,CA:FALSE
 subjectKeyIdentifier		= hash
 authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage			= critical, clientAuth, emailProtection
 subjectAltName				= @alt_vpn_client
 
