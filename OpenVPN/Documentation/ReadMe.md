@@ -1,5 +1,5 @@
 ###Information Directory###
-
+---
 ######Android Certificate Toast Removal######
   - How to remove the certificate warning toast on rooted Android phones
     - The Android device _must_ be rooted as this requires the system partition to be mounted rw (Read/Write)
