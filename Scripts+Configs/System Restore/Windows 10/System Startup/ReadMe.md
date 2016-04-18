@@ -3,7 +3,7 @@
 ######VBS######
 - Creates a restore point at System Startup
   - Script should be placed in a path with no spaces
-    - `%ProgramData%\Scripts\SR\SystemStartup
+    - `%ProgramData%\Scripts\SR\SystemStartup`
   - Description can be changed by editing __Line 33__ 
     - `sDesc = "System Startup"`
 
