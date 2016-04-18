@@ -14,172 +14,172 @@
     #--- Normal Layout ---#
 ###############################
 
- Partition 1 (Temp Content) 41GB
-  • $sosrst.xvd (50,596KB)
-  • appswapfile.xvd (2,109,584KB)
-  • ConnectedStorage-retail (9,548,892KB)
-  • GDVRIndex.xvd (103,628KB)
-  • ScreenShots.xvd (1,061,020KB)
-  • temp00 (2,097,164KB)
-  • temp01 (2,097,164KB)
-  • temp02 (2,097,164KB)
+   Partition 1 (Temp Content) 41GB
+    • $sosrst.xvd (50,596KB)
+    • appswapfile.xvd (2,109,584KB)
+    • ConnectedStorage-retail (9,548,892KB)
+    • GDVRIndex.xvd (103,628KB)
+    • ScreenShots.xvd (1,061,020KB)
+    • temp00 (2,097,164KB)
+    • temp01 (2,097,164KB)
+    • temp02 (2,097,164KB)
 
-	Partition 2 (User Content):
-  •	PLS (folder)
-  •	SharedStorage (folder)
+   Partition 2 (User Content):
+    • PLS (folder)
+    • SharedStorage (folder)
 
-	Partition 3 (System Support) 40GB:
-  •	Controllers (folder)
-  •	cache0.cfg
-  •	cms.xvd
-  •	DataCollectionUploader_0
-  •	LastConsole
-  •	user.xvd
-  •	WER.xvd
+   Partition 3 (System Support) 40GB:
+    • Controllers (folder)
+    • cache0.cfg
+    • cms.xvd
+    • DataCollectionUploader_0
+    • LastConsole
+    • user.xvd
+    • WER.xvd
+  
+   Partition 4 (System Update) 12GB:
+    • A (folder)
+      o SettingsTemplate.xvd (37,144KB)
+      o sosinit.xvd (11,964KB)
+      o sostmpl.xvd (63,516KB)
+      o systemaux.xvd (494,876KB)
+      o SystemTools.xvd (466,44KB)
+    • B (folder)
+      o host.xvd (49,364KB)
+      o SettingsTemplate.xvd (120,784KB)
+      o sosinit.xvd (11,964KB)
+      o sostmpl.xvd (63,516KB)
+      o system.xvd (1,667,660KB)
+      o systemaux.xvd (820,596KB)
+      o systemmisc.xvd (748,192KB)
+      o systemtools.xvd (38,484KB)
+    • updater.xvd (63,644KB)
 
-  	Partition 4 (System Update) 12GB:
-    •	A (folder)
-      o	SettingsTemplate.xvd (37,144KB)
-      o	sosinit.xvd (11,964KB)
-      o	sostmpl.xvd (63,516KB)
-      o	systemaux.xvd (494,876KB)
-      o	SystemTools.xvd (466,44KB)
-    •	B (folder)
-      o	host.xvd (49,364KB)
-      o	SettingsTemplate.xvd (120,784KB)
-      o	sosinit.xvd (11,964KB)
-      o	sostmpl.xvd (63,516KB)
-      o	system.xvd (1,667,660KB)
-      o	systemaux.xvd (820,596KB)
-      o	systemmisc.xvd (748,192KB)
-      o	systemtools.xvd (38,484KB)
-    •	updater.xvd (63,644KB)
-
-  	Partition 5 (System Update 2) 7GB:
-    •	no data, empty        
+   Partition 5 (System Update 2) 7GB:
+    • no data, empty        
 
 
 ###########################################################################
    #--- Rebuilding OS using OSUDT downloads from Xbox Support site ---#
 ###########################################################################
 
-  	If utilizing a drive larger than 500GB, format the drive with the proper layout for a 500GB drive 
-    •	This is necessary for the OS rebuild to occur and will be addressed below
-    •	If your Xbox One came with a HDD larger than 500GB, partition the larger drive with the same size partitions as whatever size shipped with the unit
+   If utilizing a drive larger than 500GB, format the drive with the proper layout for a 500GB drive 
+    • This is necessary for the OS rebuild to occur and will be addressed below
+    • If your Xbox One came with a HDD larger than 500GB, partition the larger drive with the same size partitions as whatever size shipped with the unit
 
-  	Partition 4 (System Update) is the partition that will rebuild the OS on a bare HDD
+   Partition 4 (System Update) is the partition that will rebuild the OS on a bare HDD
 
 
 ###############################
     ##--- Prerequisites ---##
 ###############################
 
-  	Download OSUDT1 & OSUDT2
-    •	http://support.xbox.com/en-US/xbox-one/console/offline-system-update-diagnostic-tool
-  	Download ReadMe.md, gptutil.py, & xboxonehdd.py from Juvenal1’s GitHub
-    •	https://github.com/Juvenal1/xboxonehdd 
-  	PC/VM running Linux, such as Ubuntu or PartedMagic, both of which can be run from a liveCD
-  	Complete steps 1 – 4 from the ReadMe.md, then proceed to the steps below
+   Download OSUDT1 & OSUDT2
+    • http://support.xbox.com/en-US/xbox-one/console/offline-system-update-diagnostic-tool
+   Download ReadMe.md, gptutil.py, & xboxonehdd.py from Juvenal1’s GitHub
+    • https://github.com/Juvenal1/xboxonehdd 
+   PC/VM running Linux, such as Ubuntu or PartedMagic, both of which can be run from a liveCD
+   Complete steps 1 – 4 from the ReadMe.md, then proceed to the steps below
   
   
 #######################
     #--- Steps ---#
 #######################
 
-  1.	Copy the following to Partition 4
-      	Folder A should contain all OSUDT1 files, except system.xvd & updater.xvd
-        •	host.xvd
-        •	SettingsTemplate.xvd
-        •	sosinit.xvd
-        •	sostmpl.xvd
-        •	systemaux.xvd
-        •	SystemTools.xvd
-      	Folder B should contain all OSUDT1 files, except updater.xvd
-        •	host.xvd
-        •	SettingsTemplate.xvd
-        •	sosinit.xvd
-        •	sostmpl.xvd
-        •	system.vxd
-        •	systemaux.xvd
-        •	SystemTools.xvd
-      	updater.xvd (root of partition)
-  2.	Xbox will boot, begin to update, and fail about 25% of the way through
-  3.	Shut down the Xbox One properly via a single touch (do not hold the power button)
-      	Failure to do this prevents one from doing what's next
-  4.	Replace OSUDT1 files in Folder B with files from OSUDT 2 (copy and paste)
-  5.	Reconnect drive to the Xbox One and boot up... It should continue the update and finish successfully.
-      	Folder B is the actual update folder, with Folder A containing files from the previous update.  
+  1.  Copy the following to Partition 4
+       Folder A should contain all OSUDT1 files, except system.xvd & updater.xvd
+        • host.xvd
+        • SettingsTemplate.xvd
+        • sosinit.xvd
+        • sostmpl.xvd
+        • systemaux.xvd
+        • SystemTools.xvd
+       Folder B should contain all OSUDT1 files, except updater.xvd
+        • host.xvd
+        • SettingsTemplate.xvd
+        • sosinit.xvd
+        • sostmpl.xvd
+        • system.vxd
+        • systemaux.xvd
+        • SystemTools.xvd
+       updater.xvd (root of partition)
+  2.  Xbox will boot, begin to update, and fail about 25% of the way through
+  3.  Shut down the Xbox One properly via a single touch (do not hold the power button)
+       Failure to do this prevents one from doing what's next
+  4.  Replace OSUDT1 files in Folder B with files from OSUDT 2 (copy and paste)
+  5.  Reconnect drive to the Xbox One and boot up... It should continue the update and finish successfully.
+       Folder B is the actual update folder, with Folder A containing files from the previous update.  
 
 
 ###########################################
   If installing a drive larger than 500GB
 ###########################################
 
-  1.	Format with the proper layout of a 500GB drive (or whatever size drive the system shipped with)
-  2.	Once the OS rebuild finalizes successfully, and you’re at the Xbox Home Screen, shut down the Xbox completely via the menu (it needs to be fully shut down, not put into standby).
-  3.	Copy all files from each partition into 4 separate folders (1 for each partition) on a separate HDD
-  4.	Reformat the Xbox One internal drive & partition it via Juvenal1’s script
-  5.	Copy all files back to their respective partitions
-  6.	Once reconnected to the Xbox One, it should boot and display the correct size for free space.
-      	If you receive an error after reinstalling the HDD, you need to rerun the xboxonehdd script, or use dd, to flip the HDD's 1st sector bits.
+  1.  Format with the proper layout of a 500GB drive (or whatever size drive the system shipped with)
+  2.  Once the OS rebuild finalizes successfully, and you’re at the Xbox Home Screen, shut down the Xbox completely via the menu (it needs to be fully shut down, not put into standby).
+  3.  Copy all files from each partition into 4 separate folders (1 for each partition) on a separate HDD
+  4.  Reformat the Xbox One internal drive & partition it via Juvenal1’s script
+  5.  Copy all files back to their respective partitions
+  6.  Once reconnected to the Xbox One, it should boot and display the correct size for free space.
+       If you receive an error after reinstalling the HDD, you need to rerun the xboxonehdd script, or use dd, to flip the HDD's 1st sector bits.
 
 
 #################################
     #--- Recommendations ---#
 #################################
 
-  	I strongly encourage making a WIM backup of Partitions 1, 3, & 4 via Windows once all of your user content is synced (this will prevent having to go through this again should you replace/upgrade a drive).
-    •	I recommend after, as I’m not sure what, if anything, is added to partitions 1, 3, & 4 during the sync
+   I strongly encourage making a WIM backup of Partitions 1, 3, & 4 via Windows once all of your user content is synced (this will prevent having to go through this again should you replace/upgrade a drive).
+    • I recommend after, as I’m not sure what, if anything, is added to partitions 1, 3, & 4 during the sync
 
-  	I noticed the hex bits in the first sector weren't flipped when I went to make my WIMs, which allowed Windows to auto recognize the HDD. If Windows doesn't recognize the HDD, you simply need to flip the 1st sector bits from 99CC to 55AA (see link below)
-    •	http://withinrafael.com/taking-a-peek-at-xbox-one-formatted-disks-in-windows/ 
+   I noticed the hex bits in the first sector weren't flipped when I went to make my WIMs, which allowed Windows to auto recognize the HDD. If Windows doesn't recognize the HDD, you simply need to flip the 1st sector bits from 99CC to 55AA (see link below)
+    • http://withinrafael.com/taking-a-peek-at-xbox-one-formatted-disks-in-windows/ 
 
-  	You also flip the bits using a *nix OS (where /dev/sdc is the disk)
-    •	echo -en '\x55\xAA' | dd conv=notrunc of=/dev/sdc bs=1 seek=510 2>/dev/null 1>&2
-      o	Then, prior to reinstalling the HDD:
-    •	echo -en '\x99\xCC' | dd conv=notrunc of=/dev/sdc bs=1 seek=510 2>/dev/null 1>&2
+   You also flip the bits using a *nix OS (where /dev/sdc is the disk)
+    • echo -en '\x55\xAA' | dd conv=notrunc of=/dev/sdc bs=1 seek=510 2>/dev/null 1>&2
+      o Then, prior to reinstalling the HDD:
+    • echo -en '\x99\xCC' | dd conv=notrunc of=/dev/sdc bs=1 seek=510 2>/dev/null 1>&2
 
 
 ###############################
     #---  WIM Commands ---#
 ###############################
 
-  	Z:\ is the image save location
-  	D:\, E:\, & F:\ are the respective drive letters for Xbox One partitions 1, 3, & 4
+   Z:\ is the image save location
+   D:\, E:\, & F:\ are the respective drive letters for Xbox One partitions 1, 3, & 4
 
-  	Temp Content (D:\)
-    •	DISM /Capture-Image /ImageFile:Z:\TempContent.wim /CaptureDir:D:\ /name:"Xbox One Partition 1" /description:"Temp Content" /compress:max /CheckIntegrity /Verify
+   Temp Content (D:\)
+    • DISM /Capture-Image /ImageFile:Z:\TempContent.wim /CaptureDir:D:\ /name:"Xbox One Partition 1" /description:"Temp Content" /compress:max /CheckIntegrity /Verify
 
-  	System Support (E:\)
-    •	DISM /Capture-Image /ImageFile:Z:\SystemSupport.wim /CaptureDir:D:\ /name:"Xbox One Partition 3" /description:"System Support" /compress:max /CheckIntegrity /Verify
+   System Support (E:\)
+    • DISM /Capture-Image /ImageFile:Z:\SystemSupport.wim /CaptureDir:D:\ /name:"Xbox One Partition 3" /description:"System Support" /compress:max /CheckIntegrity /Verify
 
-  	System Update (F:\)
-    •	DISM /Capture-Image /ImageFile:Z:\SystemUpdate.wim /CaptureDir:D:\ /name:"Xbox One Partition 4" /description:"System Update" /compress:max /CheckIntegrity /Verify
+   System Update (F:\)
+    • DISM /Capture-Image /ImageFile:Z:\SystemUpdate.wim /CaptureDir:D:\ /name:"Xbox One Partition 4" /description:"System Update" /compress:max /CheckIntegrity /Verify
 
-  	While one could make a WIM backup of the User Content partition, I don't recommend it if you have broadband internet, as xvd storage is efficient, and you'll have a resulting WIM image almost the exact same size as the used space on the partition. 
-    •	Everything contained on the User Content partition is downloaded once you sync your Xbox Live account by signing in.
-  	The only situations I could see this being beneficial in is if one has spotty internet coverage where they live, has less than a 30mbps connection, and/or has a data cap on their home internet plan (TWC is currently trying out a cell carrier like pricing model per GB in select US Cities).
+   While one could make a WIM backup of the User Content partition, I don't recommend it if you have broadband internet, as xvd storage is efficient, and you'll have a resulting WIM image almost the exact same size as the used space on the partition. 
+    • Everything contained on the User Content partition is downloaded once you sync your Xbox Live account by signing in.
+   The only situations I could see this being beneficial in is if one has spotty internet coverage where they live, has less than a 30mbps connection, and/or has a data cap on their home internet plan (TWC is currently trying out a cell carrier like pricing model per GB in select US Cities).
 
 
 ###########################
     #--- WIM Sizes ---#
 ###########################
 
-  	TempContent.wim
-    •	 416,895 KB
-  	SystemSupport.wim
-    •	 1,125,075 KB
-  	SystemUpdate.wim
-    •	4,175,222 KB
+   TempContent.wim
+    • 416,895 KB
+   SystemSupport.wim
+    • 1,125,075 KB
+   SystemUpdate.wim
+    • 4,175,222 KB
 
 
 ##################################
     #--- WIM Verification ---#
 ##################################
 
-  	Verify WIM File
-    •	DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim"
+   Verify WIM File
+    • DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim"
 
-  	Verify WIM File Index(es)
-    •	DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim" /Index:1
+   Verify WIM File Index(es)
+    • DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim" /Index:1
  
