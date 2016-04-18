@@ -1,10 +1,13 @@
-###OpenSSL.org Content###
-  - Certificates HowTo
-  - Crypto Man Page
-  - Keys HowTo
-  - OpenSSL Man Page
-  - Proxy Certificates HowTo
-  - SSL Man Page
+####Information Directory####
 
-###FiestyDuck.com Content###
-  - OpenSSL Cookbook
+
+######OpenSSL######
+- Certificates HowTo
+- Crypto Man Page
+- Keys HowTo
+- OpenSSL Man Page
+- Proxy Certificates HowTo
+- SSL Man Page
+
+######FiestyDuck######
+- OpenSSL Cookbook
