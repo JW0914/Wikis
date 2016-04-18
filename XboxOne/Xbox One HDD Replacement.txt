@@ -6,23 +6,23 @@
     #--- Xbox One Partition Layout ---#
 ###########################################
 
- HDD has a GPT partition table & contains 5 partitions
-  • Items without sizes have no sizes listed as they will depend on the system
+   HDD has a GPT partition table & contains 5 partitions
+    • Items without sizes have no sizes listed as they will depend on the system
 
 
 ###############################
     #--- Normal Layout ---#
 ###############################
 
-	Partition 1 (Temp Content) 41GB
-  •	$sosrst.xvd (50,596KB)
-  •	appswapfile.xvd (2,109,584KB)
-  •	ConnectedStorage-retail (9,548,892KB)
-  •	GDVRIndex.xvd (103,628KB)
-  •	ScreenShots.xvd (1,061,020KB)
-  •	temp00 (2,097,164KB)
-  •	temp01 (2,097,164KB)
-  •	temp02 (2,097,164KB)
+ Partition 1 (Temp Content) 41GB
+  • $sosrst.xvd (50,596KB)
+  • appswapfile.xvd (2,109,584KB)
+  • ConnectedStorage-retail (9,548,892KB)
+  • GDVRIndex.xvd (103,628KB)
+  • ScreenShots.xvd (1,061,020KB)
+  • temp00 (2,097,164KB)
+  • temp01 (2,097,164KB)
+  • temp02 (2,097,164KB)
 
 	Partition 2 (User Content):
   •	PLS (folder)
