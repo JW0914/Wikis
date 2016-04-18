@@ -1,2 +1,8 @@
-This will walk you through how to replace the internal hard drive in an Xbox One, either due to failure, or for want of a larger HDD.
-  - Please note, opening an Xbox One and breaking the sticker on the back voids the OEM warranty; however, Xbox Ones only come with a 1yr warranty, so at most you'll have to wait 12 months to upgrade the HDD.
+###Information Directory###
+---
+######Xbox One HDD Replacement######
+- How to replace the internal HDD, due to either failure or for want of a larger HDD
+
+***
+#####NOTE: _Opening an Xbox One & breaking the sticker on the back_ ___VOIDS___ _the OEM one year warranty_#####
+***
