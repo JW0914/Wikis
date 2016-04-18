@@ -1,5 +1,8 @@
 ###Information Directory###
 ---
+######TFTP Recovery######
+- Wiki on performing a TFTP recovery firmware flash
+
 ######PuTTY Serial Session######
 - Verify correct COM port is set
   - __Registry Line 206:__ `"SerialLine"="COM3"`
