@@ -15,9 +15,6 @@
  
 ######System Startup######
 - VBS Script creates an instant restore point, containing a description of "System Startup", at System Startup
-  - Description can be changed by editing 
-    - __line 33:__ _sDesc = "System Startup"_
+
 - Task Scheduler
-  - XML export to be imported into Task Scheduler
-    - Auto creates RP every time the system is initially booted or rebooted
-    - _Action - Import Task..._
+  - Auto creates RP every time the system is initially booted or rebooted
