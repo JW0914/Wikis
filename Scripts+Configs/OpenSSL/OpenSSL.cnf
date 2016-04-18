@@ -329,7 +329,7 @@ subjectAltName			= @alt_vpn_server
 	# Create "index" file, leave blank
 	# Create "rand" file, leave blank
  
-# ENCRYPT_KEY is currently commented out, however, it's recommended to set it to yes for any use other than a webserver/vpn 
+# ENCRYPT_KEY (Establish Certificate Options) is currently commented out, however, it's recommended to set it to yes for any use other than a webserver/vpn 
 # server, etc.
  
 # Provided you utilize the SubjectAltName section, the Common Name is not required to be the IP/DNS, and can be whatever name 
