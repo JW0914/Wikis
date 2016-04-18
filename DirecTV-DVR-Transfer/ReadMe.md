@@ -1,4 +1,4 @@
-####HowTO####
+####Information Directory####
 
 ######Copy one DirecTV's HDD content to a replacement HDD######
   - Can only be used to transfer recordings to a replacement HDD which will be utilized on the ___same___ DVR the orginal content was recorded on
