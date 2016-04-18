@@ -1,6 +1,5 @@
 ####Information Directory####
-
-
+---
 ######OpenSSL######
 - Certificates HowTo
 - Crypto Man Page
