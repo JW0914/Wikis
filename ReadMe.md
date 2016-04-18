@@ -27,4 +27,4 @@
 
 ---
 > _I have referenced all source material I compiled from in wikis I did not personally write; if someone comes across a wiki I forgot
-> to add source links to, please let me know so I can correct it and give the original authors their credit._
+> to add source links to, please let me know so I can correct it, and give the original authors their credit._
