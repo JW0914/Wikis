@@ -6,8 +6,8 @@
     #--- Xbox One Partition Layout ---#
 ###########################################
 
-  	HDD has a GPT partition table & contains 5 partitions
-  	•	Items without sizes have no sizes listed as they will depend on the system
+ HDD has a GPT partition table & contains 5 partitions
+  • Items without sizes have no sizes listed as they will depend on the system
 
 
 ###############################
