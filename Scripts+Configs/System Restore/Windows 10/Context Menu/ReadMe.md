@@ -1,4 +1,10 @@
-Contains a registry file and VBS script in order to add a restore point creation option to the Context Menu
-  - Line 13 in REG needs to point to the vbs script above
-  - VBS script should be placed in a path with no spaces
-    - For example: %ProgramData%\Scripts\SR\ContextMenu
+###Information Directory###
+---
+######REG######
+- Adds a restore point creation option to the _Context Menu_
+  - __Line 13__ must point to the VBS script
+    - `@="WScript C:\\ProgramData\\Scripts\\SR\\ContextMenu\\CreateRP-Success_Message.vbs"`
+
+######VBS######
+- Should be placed in a path with __no__ spaces
+  - `%ProgramData%\Scripts\SR\ContextMenu`
