@@ -1,5 +1,5 @@
 ###Information Directory
-
+---
 ######Explorer######
 - Registry keys to add various cloud storage services to the Windows Explorer nav tree
 
