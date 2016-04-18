@@ -71,8 +71,9 @@
 
 
 ###############################
-    #--- Prerequisites ---#
+#####Prerequisites#####
 ###############################
+
   	Download OSUDT1 & OSUDT2
     •	http://support.xbox.com/en-US/xbox-one/console/offline-system-update-diagnostic-tool
   	Download ReadMe.md, gptutil.py, & xboxonehdd.py from Juvenal1’s GitHub
