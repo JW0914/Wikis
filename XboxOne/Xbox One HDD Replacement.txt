@@ -103,11 +103,12 @@
       • systemaux.xvd
       • SystemTools.xvd
      updater.xvd (root of partition)
-  2.  Xbox will boot, begin to update, and fail about 25% of the way through
-  3.  Shut down the Xbox One properly via a single touch (do not hold the power button)
+  2.  Unmount HDD mount points, run the xboxonehdd.py python script, & connect HDD to Xbox One
+  3.  Xbox will boot, begin to update, and fail about 25% of the way through
+  4.  Shut down the Xbox One properly via a single touch (do not hold the power button)
      Failure to do this prevents one from doing what's next
-  4.  Replace OSUDT1 files in Folder B with files from OSUDT 2 (copy and paste)
-  5.  Reconnect drive to the Xbox One and boot up... It should continue the update and finish successfully.
+  5.  Replace OSUDT1 files in Folder B with files from OSUDT 2 (copy and paste)
+  6.  Reconnect drive to the Xbox One and boot up... It should continue the update and finish successfully.
      Folder B is the actual update folder, with Folder A containing files from the previous update.  
 
 
