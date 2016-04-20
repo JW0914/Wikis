@@ -106,10 +106,11 @@
   2a.  Unmount HDD mount points, run the xboxonehdd.py python script, & connect HDD to Xbox One
   2b. I'm waiting to hear back for confirmation, but I will add this in case my hunch is correct:
       • Xbox may show logo screen, then either shutdown or throw an error page.  If this occurs:
-        • Disconnect HDD from Xbox, reconnect to *nix OS, and verify update files are still on Partition 4.  If they're not, redo step
-          1.  During an OS rebuild, the HDD partition sizes are verified prior to the upgrade beginning.  If the HDD does not have the
-          same layout as the HDD which shipped with the unit, Windows will reformat the drive with the same layout as the original HDD
-          thereby erasing the data copied.  
+        1. Disconnect HDD from Xbox, reconnect to *nix OS, and verify update files are still on Partition 4.  If they're not, redo
+           step 1.  
+           • During an OS rebuild, the HDD partition sizes are verified prior to the upgrade beginning.  If the HDD does not have the
+             same layout as the HDD which shipped with the unit, Windows will reformat the drive with the same layout as the original
+             HDD thereby erasing the data copied.  
   3.  Xbox will boot, begin to update, and fail about 25% of the way through
   4.  Shut down the Xbox One properly via a single touch (do not hold the power button)
      Failure to do this prevents one from doing what's next
