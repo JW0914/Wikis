@@ -106,7 +106,7 @@
       • SystemTools.xvd
      updater.xvd (root of partition)
   2.  Unmount HDD mount points, run the xboxonehdd.py python script, & connect HDD to Xbox One
-    	See “Rebuilding OS using OSUDT Downloads” if using an HDD >500GB
+     See “Rebuilding OS using OSUDT Downloads” if using an HDD >500GB
   3.  Xbox will boot, begin to update, and fail about 25% of the way through
   4.  Shut down the Xbox One properly via a single touch (do not hold the power button)
      Failure to do this prevents one from doing what's next
@@ -120,7 +120,7 @@
 #######################################################
 
   1.  Format with the proper layout of a 500GB drive (or whatever size drive the system shipped with)
-    	Extra step required, see “Rebuilding OS using OSUDT Downloads”
+     Extra step required, see “Rebuilding OS using OSUDT Downloads”
   2.  Once the OS rebuild finalizes successfully, and you’re at the Xbox Home Screen, shut down the Xbox completely via the menu (it needs to be fully shut down, not put into standby).
   3.  Copy all files from each partition into 4 separate folders (1 for each partition) on a separate HDD
   4.  Reformat the Xbox One internal drive & partition it via Juvenal1’s script
