@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Courtesy of GitHub user Juvenal1 (GitHub.com/Juvenal1)
+
+#	If replacement drive is larger than original HDD, edit 
+# DEV=/dev/sdb to equal the replacement HDD device’s name 
+
 DEV=/dev/sdb
 
 parted -s "$DEV" mktable gpt
