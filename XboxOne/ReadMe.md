@@ -6,5 +6,5 @@
     - Forked from [Juvenal1's GitHub](https://github.com/Juvenal1/xboxonehdd) and included to make the wiki more fluid
 
 ***
-#####NOTE: _Opening an Xbox One & breaking the sticker on the back_ ___VOIDS___ _the OEM one year warranty_#####
+> #####NOTE: _Opening an Xbox One & breaking the sticker on the back_ ___VOIDS___ _the OEM one year warranty_####
 ***
