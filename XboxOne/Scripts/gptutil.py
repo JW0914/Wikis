@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Courtesy of GitHub user Juvenal1 (GitHub.com/Juvenal1/xboxonehdd)
 
 import struct
