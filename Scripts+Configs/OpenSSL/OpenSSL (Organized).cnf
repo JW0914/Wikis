@@ -1,4 +1,4 @@
-
+'s
 		##::[[---  Windows OpenSSL Config  ---]]::##
 
 # For *nix/bsd users:
@@ -118,7 +118,7 @@ emailAddress    			= optional
 
 [ req ]
 default_bits				= 2048
-default_keyfile 			= private.pem
+default_keyfile 			= private.key.pem
 # encrypt_key 				= yes
 default_md					= sha256
 string_mask					= utf8only
@@ -300,7 +300,7 @@ basicConstraints			= critical,CA:FALSE
 subjectKeyIdentifier		= hash
 authorityKeyIdentifier		= keyid:always, issuer:always
 keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage			= critical, clientAuth, emailProtection
+extendedKeyUsage			= critical, clientAuth
 subjectAltName				= @alt_vpn_client
 
 [ v3_vpn_server ]
