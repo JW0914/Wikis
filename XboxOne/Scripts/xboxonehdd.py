@@ -1,3 +1,5 @@
+# Courtesy of GitHub user Juvenal1 (GitHub.com/Juvenal1/xboxonehdd)
+
 import os
 from stat import *
 from os import path
