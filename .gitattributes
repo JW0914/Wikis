@@ -5,8 +5,6 @@
 *.cs  diff=csharp
 
 # These files are text and should be normalized (Convert crlf => lf)
-*.DOCX  text
-*.docx  text
 *.php   text
 *.css   text
 *.js    text
@@ -37,6 +35,8 @@
 *.ttf   binary
 
 # Documents
+*.docx diff=astextplain
+*.DOCX diff=astextplain
 *.doc  diff=astextplain
 *.DOC  diff=astextplain
 *.dot  diff=astextplain
