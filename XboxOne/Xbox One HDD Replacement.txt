@@ -64,10 +64,10 @@
 ###########################################################################
 
    If utilizing a drive larger than 500GB, format the drive with the proper layout for a 500GB drive 
-    •	This is necessary for the OS rebuild to occur & is addressed under “If you are installing a drive larger than 500GB”
-    •	Windows will repartition the drive if it sees a layout different than what it shipped with
-      •	If don’t know how to manually partition the drive, perform up to step #2, at which point you’ll eventually get sent to an Xbox error page.  
-        •	Cleanly shut down the Xbox with a single touch to the power button and redo steps 1 & 2
+    • This is necessary for the OS rebuild to occur & is addressed under “If you are installing a drive larger than 500GB”
+    • Windows will repartition the drive if it sees a layout different than what it shipped with
+      • If don’t know how to manually partition the drive, perform up to step #2, at which point you’ll eventually get sent to an Xbox error page.  
+        • Cleanly shut down the Xbox with a single touch to the power button and redo steps 1 & 2
 
    Partition 4 (System Update) is the partition that will rebuild the OS on a bare HDD
 
