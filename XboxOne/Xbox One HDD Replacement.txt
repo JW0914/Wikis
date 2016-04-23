@@ -64,8 +64,10 @@
 ###########################################################################
 
    If utilizing a drive larger than 500GB, format the drive with the proper layout for a 500GB drive 
-    • This is necessary for the OS rebuild to occur and will be addressed below
-    • If your Xbox One came with a HDD larger than 500GB, partition the larger drive with the same size partitions as whatever size shipped with the unit
+    •	This is necessary for the OS rebuild to occur & is addressed under “If you are installing a drive larger than 500GB”
+    •	Windows will repartition the drive if it sees a layout different than what it shipped with
+      •	If don’t know how to manually partition the drive, perform up to step #2, at which point you’ll eventually get sent to an Xbox error page.  
+        •	Cleanly shut down the Xbox with a single touch to the power button and redo steps 1 & 2
 
    Partition 4 (System Update) is the partition that will rebuild the OS on a bare HDD
 
@@ -103,14 +105,8 @@
       • systemaux.xvd
       • SystemTools.xvd
      updater.xvd (root of partition)
-  2a. Unmount HDD mount points, run the xboxonehdd.py python script, & connect HDD to Xbox One
-  2b. I'm waiting to hear back for confirmation, but I will add this in case my hunch is correct:
-      • Xbox may show logo screen, then either shutdown or throw an error page.  If this occurs:
-        i. Disconnect HDD from Xbox, reconnect to *nix OS, and verify update files are still on Partition 4.  If they're not, redo
-           step 1.  
-           a. During an OS rebuild, the HDD partition sizes are verified prior to the upgrade beginning.  If the HDD does not have the
-              same layout as the HDD which shipped with the unit, Windows will reformat the drive with the same layout as the original
-              HDD thereby erasing the data copied.  Once done, proceed below.
+  2.  Unmount HDD mount points, run the xboxonehdd.py python script, & connect HDD to Xbox One
+    	See “Rebuilding OS using OSUDT Downloads” if using an HDD >500GB
   3.  Xbox will boot, begin to update, and fail about 25% of the way through
   4.  Shut down the Xbox One properly via a single touch (do not hold the power button)
      Failure to do this prevents one from doing what's next
@@ -124,6 +120,7 @@
 #######################################################
 
   1.  Format with the proper layout of a 500GB drive (or whatever size drive the system shipped with)
+    	Extra step required, see “Rebuilding OS using OSUDT Downloads”
   2.  Once the OS rebuild finalizes successfully, and you’re at the Xbox Home Screen, shut down the Xbox completely via the menu (it needs to be fully shut down, not put into standby).
   3.  Copy all files from each partition into 4 separate folders (1 for each partition) on a separate HDD
   4.  Reformat the Xbox One internal drive & partition it via Juvenal1’s script
