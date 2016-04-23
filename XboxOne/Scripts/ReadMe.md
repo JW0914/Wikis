@@ -1,7 +1,7 @@
 ###Information Directory###
 ---
 ######gptutil.py######
-- Used by the xboxonehdd.py script in order to correctly create the mkxboxfs.py script
+- Used by the _xboxonehdd.py_ script in order to correctly create the _mkxboxfs.py_ script
 
 ######mkxboxfs-500gb.py######
 - Prior to running, one needs to edit the script so _DEV=/dev/__sdb___ points to the replacement HDD's device name
@@ -10,7 +10,7 @@
 
 
 ######xboxonehdd.py######
-- Used to call on the gptutil.py script and provide it Xbox One specific information (guids, partition sizes, etc.) in order to properly output the mkxboxfs.py script
+- Used to call on the _gptutil.py_ script and provide it Xbox One specific information (guids, partition sizes, etc.) in order to properly output the _mkxboxfs.py_ script
 
 ---
 > Forked from [Juvenal1's GitHub](https://github.com/Juvenal1/xboxonehdd) and included to make the wiki more fluid
