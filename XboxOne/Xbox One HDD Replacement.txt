@@ -63,13 +63,13 @@
     #--- Rebuilding OS using OSUDT Downloads (from Xbox Support site) ---#
 ###########################################################################
 
-	If your original HDD still boots, only utilize Windows WIM Commands below, then follow the 4 steps below
+ If your original HDD still boots, only utilize Windows WIM Commands below, then follow the 4 steps below
 
-  •	After creating WIMs of partitions 1, 3, & 4 on Windows, disconnect HDD, and reconnect to *nix OS:
-     1.	Run the xboxonehdd.py script utilizing name of replacement HDD name (sdb, sdc, etc.): python xboxonehdd.py sdb
-     2.	Run the newly created script mkxboxfs.py (not mkxboxfs-500gb.py):  python mkxboxfs.py  (unmount all partitions afterwards)
-     3.	Reconnect HDD to Windows, apply the respective WIMs to their respective partitions; Once done, reconnect to *nix OS
-     4.	Run the xboxonehdd.py script again, ensure all partitions are unmounted, & connect HDD to Xbox One
+  • After creating WIMs of partitions 1, 3, & 4 on Windows, disconnect HDD, and reconnect to *nix OS:
+     1. Run the xboxonehdd.py script utilizing name of replacement HDD name (sdb, sdc, etc.): python xboxonehdd.py sdb
+     2. Run the newly created script mkxboxfs.py (not mkxboxfs-500gb.py):  python mkxboxfs.py  (unmount all partitions afterwards)
+     3. Reconnect HDD to Windows, apply the respective WIMs to their respective partitions; Once done, reconnect to *nix OS
+     4. Run the xboxonehdd.py script again, ensure all partitions are unmounted, & connect HDD to Xbox One
 
 
 ###############################
@@ -115,38 +115,38 @@
     #--- Steps ---#
 #######################
 
-  1. Connect replacement HDD to PC & note what its device name is (sdb, sdc, etc.); then run the xboxonehdd.py script:  python xboxonehdd.py sdb	(where sdb is device name)
+  1.  Connect replacement HDD to PC & note what its device name is (sdb, sdc, etc.); then run the xboxonehdd.py script:  python xboxonehdd.py sdb	(where sdb is device name)
       a.  If replacement drive is larger than original HDD, edit the mkxboxfs-500gb.py script so DEV=/dev/sdb equals your replacement HDD device’s name, then run it: python mkxboxfs-500gb.py  
-  2. Copy the following to Partition 4
-     Folder A should contain all OSUDT1 files, except system.xvd & updater.xvd
-      • host.xvd
-      • SettingsTemplate.xvd
-      • sosinit.xvd
-      • sostmpl.xvd
-      • systemaux.xvd
-      • SystemTools.xvd
-     Folder B should contain all OSUDT1 files, except updater.xvd
-      • host.xvd
-      • SettingsTemplate.xvd
-      • sosinit.xvd
-      • sostmpl.xvd
-      • system.vxd
-      • systemaux.xvd
-      • SystemTools.xvd
-     updater.xvd (root of partition)
-  3. Unmount HDD mount points, run the xboxonehdd.py script again, & connect HDD to Xbox One
-  4. Xbox will boot, begin to update, and fail about 25% of the way through
-  5. Shut down the Xbox One cleanly via a single touch (do not hold the power button)
-    	Failure to do this prevents one from doing what's next
-  6. Replace OSUDT1 files in Folder B with files from OSUDT 2 (copy and paste)
-    	Folder B is the actual update folder, with Folder A containing files from the previous update.
-  7. Reconnect drive to the Xbox One and boot up... It should continue the update and finish successfully.
-  8. Once you are at the Xbox Home Screen, shut down the Xbox completely via the menu (must be fully shut down, not put into standby)
-  9. Copy all files from each partition into 4 separate folders (1 for each partition) on a separate HDD OR utilize Windows WIM Commands above to capture WIMs of partitions 1, 3, & 4
+  2.  Copy the following to Partition 4
+       Folder A should contain all OSUDT1 files, except system.xvd & updater.xvd
+        • host.xvd
+        • SettingsTemplate.xvd
+        • sosinit.xvd
+        • sostmpl.xvd
+        • systemaux.xvd
+        • SystemTools.xvd
+       Folder B should contain all OSUDT1 files, except updater.xvd
+        • host.xvd
+        • SettingsTemplate.xvd
+        • sosinit.xvd
+        • sostmpl.xvd
+        • system.vxd
+        • systemaux.xvd
+        • SystemTools.xvd
+       updater.xvd (root of partition)
+  3.  Unmount HDD mount points, run the xboxonehdd.py script again, & connect HDD to Xbox One
+  4.  Xbox will boot, begin to update, and fail about 25% of the way through
+  5.  Shut down the Xbox One cleanly via a single touch (do not hold the power button)
+      • Failure to do this prevents one from doing what's next
+  6.  Replace OSUDT1 files in Folder B with files from OSUDT 2 (copy and paste)
+      • Folder B is the actual update folder, with Folder A containing files from the previous update.
+  7.  Reconnect drive to the Xbox One and boot up... It should continue the update and finish successfully.
+  8.  Once you are at the Xbox Home Screen, shut down the Xbox completely via the menu (must be fully shut down, not put into standby)
+  9.  Copy all files from each partition into 4 separate folders (1 for each partition) on a separate HDD OR utilize Windows WIM Commands above to capture WIMs of partitions 1, 3, & 4
   10. Run mkxboxfs.py script (not mkxboxfs-500gb.py): python mkxboxfs.py
   11. Copy all files back to their respective partitions OR apply the WIMs to their respective partitions
   12. Once reconnected to the Xbox One, it should boot and display the correct size for free space.
-    	If you receive an error after reinstalling the HDD, you need to rerun the xboxonehdd.py script
+      • If you receive an error after reinstalling the HDD, you need to rerun the xboxonehdd.py script
 
 
 ###########################
