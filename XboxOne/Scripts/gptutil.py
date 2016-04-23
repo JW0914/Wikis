@@ -1,3 +1,5 @@
+# Courtesy of GitHub user Juvenal1 (GitHub.com/Juvenal1/xboxonehdd)
+
 import struct
 import binascii
 
