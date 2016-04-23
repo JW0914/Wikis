@@ -107,8 +107,8 @@
    System Update (F:\)
     • DISM /Capture-Image /ImageFile:Z:\SystemUpdate.wim /CaptureDir:F:\ /Name:"Xbox One Partition 4" /Description:"System Update" /Compress:max /CheckIntegrity /Verify
 
-  	Apply WIM
-    •	DISM /Apply-Image /ImageFile:Z:\TempContent.wim /Index:1 /ApplyDir:D:\ /CheckIntegrity /Verify 
+   Apply WIM
+    • DISM /Apply-Image /ImageFile:Z:\TempContent.wim /Index:1 /ApplyDir:D:\ /CheckIntegrity /Verify 
 
   
 #######################
@@ -163,44 +163,44 @@
     #--- WIM Sizes ---#
 ###########################
 
-  	TempContent.wim
-    •  416,895 KB
-  	SystemSupport.wim
+   TempContent.wim
+    • 416,895 KB
+   SystemSupport.wim
    •  1,125,075 KB
-  	SystemUpdate.wim
-    •  4,175,222 KB
+   SystemUpdate.wim
+    • 4,175,222 KB
 
 
 ##################################
     #--- WIM Verification ---#
 ##################################
 
-  	Verify WIM File
-    •  DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim"
+   Verify WIM File
+    • DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim"
 
-  	Verify WIM File Index(es)
-    •  DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim" /Index:1
+   Verify WIM File Index(es)
+    • DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim" /Index:1
 
 
 #################################
     #--- WIM Information ---#
 #################################
 
-  	While one could make a WIM backup of the User Content partition, I don't recommend it if you have broadband internet, as xvd storage is efficient, and you'll have a resulting WIM image almost the exact same size as the used space on the partition. 
-    •  Everything contained on the User Content partition is downloaded once your Xbox Live account is synced.
+   While one could make a WIM backup of the User Content partition, I don't recommend it if you have broadband internet, as xvd storage is efficient, and you'll have a resulting WIM image almost the exact same size as the used space on the partition. 
+    • Everything contained on the User Content partition is downloaded once your Xbox Live account is synced.
 
 
 #################################
     #--- External Drives ---#
 #################################
 
-  	If Windows doesn't recognize external HDD/USB drives, flip the 1st sector bits from 99CC to 55AA with HxD
-    •	 HxD: https://mh-nexus.de/en/hxd
-    •  withinrafael.com/taking-a-peek-at-xbox-one-formatted-disks-in-windows
+   If Windows doesn't recognize external HDD/USB drives, flip the 1st sector bits from 99CC to 55AA with HxD
+    • HxD: https://mh-nexus.de/en/hxd
+    • withinrafael.com/taking-a-peek-at-xbox-one-formatted-disks-in-windows
 
 
-  	You can also flip the bits using a *nix OS (where /dev/sdb is the disk)
-    •	 echo -en '\x55\xAA' | dd conv=notrunc of=/dev/sdb bs=1 seek=510 2>/dev/null 1>&2
+   You can also flip the bits using a *nix OS (where /dev/sdb is the disk)
+    • echo -en '\x55\xAA' | dd conv=notrunc of=/dev/sdb bs=1 seek=510 2>/dev/null 1>&2
 
-  	Flipping the bits back to 99CC
-    •	 echo -en '\x99\xCC' | dd conv=notrunc of=/dev/sdb bs=1 seek=510 2>/dev/null 1>&2
+   Flipping the bits back to 99CC
+    • echo -en '\x99\xCC' | dd conv=notrunc of=/dev/sdb bs=1 seek=510 2>/dev/null 1>&2
