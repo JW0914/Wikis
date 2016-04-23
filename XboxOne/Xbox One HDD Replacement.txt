@@ -60,7 +60,7 @@
 
 
 ###########################################################################
-    #--- Rebuilding OS using OSUDT downloads from Xbox Support site ---#
+    #--- Rebuilding OS using OSUDT Downloads (from Xbox Support site) ---#
 ###########################################################################
 
    If utilizing a drive larger than 500GB, format the drive with the proper layout for a 500GB drive 
