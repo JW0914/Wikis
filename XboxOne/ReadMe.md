@@ -7,4 +7,5 @@
 
 ***
 > #####NOTE: _Opening an Xbox One & breaking the sticker on the back_ ___VOIDS___ _the OEM one year warranty_####
+
 ***
