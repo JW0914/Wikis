@@ -1,4 +1,4 @@
-'s
+
 		##::[[---  Windows OpenSSL Config  ---]]::##
 
 # For *nix/bsd users:
@@ -16,7 +16,8 @@
 		##----- Establish working directory -----##
 #####################################################################
 
-dir							= .
+DIR							= .
+CNF							= $CNF
 
 
 #####################################################################
@@ -24,8 +25,13 @@ dir							= .
 #####################################################################
 
 [ default ]
-sophos						= Sophos UTM CA
-vpn							= WRT1900 VPN CA
+SOPHOS						= "Sophos UTM CA"
+VPN							= "WRT1900 VPN CA"
+CAC							= "$DIR\$SOPHOS.crt.pem"
+CAK							= "$DIR\$SOPHOS.key.pem"
+ICAC						= "$DIR\Intermediate\$VPN.crt.pem"
+ICAK						= "$DIR\Intermediate\$VPN.key.pem"
+CCA							= "Sophos VPN CA Chain.pem"
 
 [ ca ]
 default_ca					= CA_default
@@ -36,20 +42,20 @@ default_intermediate_ca 	= Intermediate_CA_default
 #####################################################################
 
 [ CA_default ]
-certs						= $dir\Certs
-new_certs_dir				= $dir\Certs
+certs						= $DIR\Certs
+new_certs_dir				= $DIR\Certs
 
 database					= index
-RANDFILE					= $dir\rand
+RANDFILE					= $DIR\rand
 serial						= serial
 
-crldir						= $dir\CRL
+crldir						= $DIR\CRL
 crlnumber					= crlnumber
-crl							= $crldir\crl.pem
+crl							= "$CRLDIR\$OPHOS.crl.pem"
 default_crl_days			= 3650 
 
-certificate					= "$dir\$sophos.crt.pem"
-private_key					= "$dir\$sophos.key.pem"
+certificate					= "$DIR\$SOPHOS.crt.pem"
+private_key					= "$DIR\$SOPHOS.key.pem"
 
 default_days				= 3650
 default_md					= sha512
@@ -66,20 +72,20 @@ cert_opt					= ca_default
 #####################################################################
 
 [ Intermediate_CA_default ]
-certs						= $dir\Intermediate\Certs
-new_certs_dir				= $dir\Intermediate\Certs
+certs						= $DIR\Intermediate\Certs
+new_certs_dir				= $DIR\Intermediate\Certs
 
-database					= $dir\Intermediate\index
-RANDFILE					= $dir\Intermediate\rand
-serial						= $dir\Intermediate\serial
+database					= $DIR\Intermediate\index
+RANDFILE					= $DIR\Intermediate\rand
+serial						= $DIR\Intermediate\serial
 
-crldir						= $dir\Intermediate\CRL
+crldir						= $DIR\Intermediate\CRL
 crlnumber					= crlnumber
-crl							= $crldir\crl.pem
+crl							= $CRLDIR\crl.pem
 default_crl_days			= 3650 
 
-certificate					= "$dir\Intermediate\$vpn.crt.pem"
-private_key					= "$dir\Intermediate\$vpn.key.pem"
+certificate					= "$DIR\Intermediate\$VPN.crt.pem"
+private_key					= "$DIR\Intermediate\$VPN.key.pem"
 
 default_days				= 3650
 default_md					= sha512
@@ -345,13 +351,13 @@ subjectAltName				= @alt_vpn_server
 #--------------------------------------------------------------------
 
 #--- Generate CA ---#
-# openssl req -x509 -new -sha512 -nodes -days 3650 -extensions v3_ca -newkey rsa:4096 -keyout ".\Sophos UTM CA.key.pem" -out ".\Sophos UTM CA.crt.pem" -config .\openssl.cnf
+# openssl req -x509 -new -sha512 -nodes -days 3650 -extensions v3_ca -newkey rsa:4096 -keyout $CAK -out $CAC -config $CNF
  
 #--- Generate CA CRL Cert ---#
-# openssl ca -config .\openssl.cnf -gencrl -keyfile '.\Sophos UTM CA.key.pem' -cert '.\Sophos UTM CA.crt.pem' -out '.\Sophos UTM CA.crl.pem'
+# openssl ca -config $CNF -gencrl -keyfile $CAK -cert $CAC -out $CRL
  
 #--- Convert CA CRL Cert to DER CRL ---#
-# openssl crl -inform PEM -in '.\Sophos UTM CA.crl.pem' -outform DER -out '.\Sophos UTM CA.crl'
+# openssl crl -inform PEM -in $CRL -outform DER -out $SOPHOS.crl
 
 
 #--------------------------------------------------------------------
@@ -359,17 +365,16 @@ subjectAltName				= @alt_vpn_server
 #--------------------------------------------------------------------
 
 #--- Gernerate Intermediate CA ---#
-# openssl req -out '.\VPN CA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout '.\VPN CA.key.pem' -config .\openssl.cnf -extensions v3_intermediate_ca
+# openssl req -out '.\$VPN.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout $ICAK -config $CNF -extensions v3_intermediate_ca
 
 #--- Sign Intermediate CA with CA ---#
-# openssl x509 -req -sha512 -days 3650 -in '.\VPN CA.csr' -CA '.\Sophos UTM CA.crt.pem' -CAkey '.\Sophos UTM CA.key.pem' -CAserial .\serial -out '.\VPN CA.crt.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
-
+# openssl x509 -req -sha512 -days 3650 -in '.\$VPN.csr' -CA $CAC -CAkey $CAK -CAserial .\serial -out $ICAC -extfile $CNF -extensions v3_intermediate_ca
 
 #--- Generate Intermediate CA CRL Cert ---#
-# openssl ca -config .\openssl.cnf -gencrl -keyfile '.\VPN CA.key' -cert '.\VPN CA.crt' -out '.\VPN CA.crl.pem'
+# openssl ca -config $CNF -gencrl -keyfile $ICAK -cert $ICAC -out '.\$VPN.crl.pem'
  
 #--- Convert Intermediate CA CRL Cert to DER CRL ---#
-# openssl crl -inform PEM -in '.\VPN CA.crl.pem' -outform DER -out '.\VPN CA.crl'
+# openssl crl -inform PEM -in '.\$VPN.crl.pem' -outform DER -out '.\$VPN.crl'
 
 
 #--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
@@ -380,7 +385,7 @@ subjectAltName				= @alt_vpn_server
 
 
 #--- Export VPN Client with an Intermediate CA ---#
-# openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain.pem'
+# openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile ''$CCA''
 
 	# The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
 	# be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
@@ -392,16 +397,16 @@ subjectAltName				= @alt_vpn_server
 #--------------------------------------------------------------------
 
 #--- Request ---#
-# openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha256 -newkey rsa:2048 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
+# openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha256 -newkey rsa:2048 -keyout '.\OwnCloud.key.pem' -config $CNF -extensions v3_owncloud
 	
 	#--- Request with multiple common names ---#
-	# openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha256 -newkey rsa:2048 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
+	# openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha256 -newkey rsa:2048 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config $CNF -extensions v3_vpn_client
 	 
 #--- Sign ---#
-# openssl x509 -req -sha256 -days 3650 -in '.\OwnCloud.csr' -CA '.\Sophos UTM CA.crt.pem' -CAkey '.\Sophos UTM CA.key.pem' -CAserial .\serial -out '.\OwnCloud.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
+# openssl x509 -req -sha256 -days 3650 -in '.\OwnCloud.csr' -CA $CAC -CAkey $CAK -CAserial .\serial -out '.\OwnCloud.crt.pem' -extfile $CNF -extensions v3_owncloud
  
 #--- Export ---#
-# openssl pkcs12 -export -out '.\OwnCloud.p12' -inkey '.\OwnCloud.key.pem' -in '.\OwnCloud.crt.pem' -certfile '.\Sophos UTM CA.crt.pem'
+# openssl pkcs12 -export -out '.\OwnCloud.p12' -inkey '.\OwnCloud.key.pem' -in '.\OwnCloud.crt.pem' -certfile $CAC
 
 
 #--------------------------------------------------------------------
@@ -413,17 +418,17 @@ subjectAltName				= @alt_vpn_server
 
 
 #--- Generate Individual Intermediate Build CA Request ---#
-# openssl req -out '.\media.csr' -new -days 3650 -sha512 -config .\openssl.cnf -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
+# openssl req -out '.\media.csr' -new -days 3650 -sha512 -config $CNF -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
 
 #--- Convert PEM key to PK8 ---#
 # openssl pkcs8 -in media.key.pem -topk8 -outform DER -out media.pk8 -nocrypt
 
 #--- Sign Individual Intermediate Build CA Request ---#
-# openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA '.\Sophos UTM CA.crt.pem' -CAkey '.\Sophos UTM CA.key.pem' -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
+# openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA $CAC -CAkey $CAK -CAserial .\serial -out '.\media.x509.pem' -extfile $CNF -extensions v3_intermediate_ca
 
 
 #--- Generate Individual Intermediate Build CA CRL Cert ---#
-# openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
+# openssl ca -config $CNF -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '$CNF' -extensions crl_ext
 
 #--- Convert Individual Intermediate Build CA CRL Cert to DER CRL ---#
 # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
