@@ -505,6 +505,7 @@ subjectAltName			= @alt_vpn_server
 # Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish 
 # a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
  
+ 
 #--------------------------------------------------------------------
 #####################################################################
 		##----- Extended Key Usage -----##
