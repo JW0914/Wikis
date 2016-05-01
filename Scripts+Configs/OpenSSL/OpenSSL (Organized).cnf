@@ -51,7 +51,7 @@ serial						= serial
 
 crldir						= $DIR\CRL
 crlnumber					= crlnumber
-crl							= "$CRLDIR\$OPHOS.crl.pem"
+crl							= "$CRLDIR\$SOPHOS.crl.pem"
 default_crl_days			= 3650 
 
 certificate					= "$DIR\$SOPHOS.crt.pem"
