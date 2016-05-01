@@ -507,3 +507,52 @@ subjectAltName			= @alt_vpn_server
  
 #--------------------------------------------------------------------
 #####################################################################
+		##----- Extended Key Usage -----##
+#--------------------------------------------------------------------
+
+#--- serverAuth ---#
+# SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
+# clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes nscertype options,
+# as the "ns" in nscertype stands for NetScape [browser], which hasn't existed for some time.
+
+#--- clientAuth ---#
+# SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
+# All VPN clients should be signed with this EKU present.
+
+#--- codeSigning ---#
+# Code Signing... self explanatory
+
+#--- emailProtection ---#
+Email Protection via S/MIME, allows you to send and receive encrypted emails
+
+#--- timeStamping ---#
+Trusted Timestamping... self explanatory
+
+#--- OCSPSigning ---#
+OCSP Signing... self explanatory
+
+#--- ipsecIKE
+# IPSec Internet Key Exchange, of which I believe is in the same boat as the three below, however some research needs to be
+# performed to determine if this is an EKU that should no longer be utilized.  I do know clientAuth can be utilized in a IPSec
+# VPN client cert.
+
+#--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
+# Should NOT be utilized! 
+	#There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
+	# were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
+	# by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
+
+#--- msCodeInd ---#
+# Microsoft Individual Code Signing (authenticode)... self explanatory
+
+#--- msCodeCom ---#
+# Microsoft Commerical Code Signing (authenticode)... self explanatory
+
+#--- mcCTLSign ---#
+# Microsoft Trust List Signing... self explanatory
+
+#--- msEFS ---#
+# Microsoft Encrypted File System... self explanatory
+
+#--------------------------------------------------------------------
+#####################################################################
