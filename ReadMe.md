@@ -9,8 +9,8 @@
 ######OpenVPN######
 - Wikis compiled from OpenWRT and OpenVPN
 
-######PuTTY Multi-Hop######
-- Serial session file for TFTP recovery of OpenWRT, as well as a TFTP32.ini settings file for the TFTP32/64 Server
+######Scripts & Configs######
+- Various custom scripts, registry files, and configs 
 
 ######Security######
 - ModSecurity Handbook [Free Edition] by Fiesty Duck
@@ -18,9 +18,6 @@
 ######WRT1900ac######
 - Wikis from OpenWRT regarding the Linksys WRT1900ac
 
-######U-boot######
-- Wiki on how to recover a corrupted bootloader on the WRT1900ac
-  
 ######XboxOne######
 - Wiki on how to upgrade or replace the internal HDD in an Xbox One
 
