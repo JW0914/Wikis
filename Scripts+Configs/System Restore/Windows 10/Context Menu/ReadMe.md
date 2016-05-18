@@ -8,3 +8,4 @@
 ######VBS######
 - Should be placed in a path with __no__ spaces
   - `%ProgramData%\Scripts\SR\ContextMenu`
+ 
