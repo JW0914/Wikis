@@ -26,3 +26,4 @@
   - _Paths in registry keys must use double backslashes "\\\"_
 - System Restore keys must have the path of the VBS script set correctly
   - I recommend placing vbs scripts in a folder with no spaces, such as _%ProgramData%\Scripts_
+ 
