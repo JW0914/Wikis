@@ -12,3 +12,4 @@
 
 ######OpenVPN Firewall Config######
   - OpenWRT firewall config, however the rules themselves are applicable to any OpenVPN server
+ 
