@@ -31,3 +31,4 @@
   -  __51:__ `LocalIP=192.168.1.20`
     - _Your PC IP, which needs to be manually set_
 - Once the above is correctly set, place _tftp32.ini_ in root directory containing TFTP32/64
+ 
