@@ -6,7 +6,7 @@
     - _Should be set to # of CPU threads_
   - __Lines 24, 25, & 26__
     - _Must point to server's cert, key, & dh.pem_
-  - __Lines 35, 38, & 47__
+  - __Lines 35 & 47__
     - _Must point to server's address_(_es_)
   - __Line 48__
     - _Must point to server's root directory_
