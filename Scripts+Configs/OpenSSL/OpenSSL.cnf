@@ -420,10 +420,10 @@ subjectAltName			= @alt_vpn_server
 # openssl req -text -noout -verify -in CSR.csr
 
 #--- Verify private key ---#
-# openssl rsa -in private.key -check
+# openssl rsa -check -in private.key
 
 #--- Verify Certificate ---#
-# openssl x509 -in certificate.crt -text -noout
+# openssl x509 -text -noout -in certificate.crt
 
 #--- Verify PKCS12 Certificate [.pfx/.p12] ---#
 # openssl pkcs12 -info -in certificate.p12
