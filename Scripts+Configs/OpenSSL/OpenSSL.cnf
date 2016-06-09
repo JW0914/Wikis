@@ -413,6 +413,23 @@ subjectAltName			= @alt_vpn_server
 
 
 #--------------------------------------------------------------------
+	## ----- Verification of Certificates ----- ##
+#--------------------------------------------------------------------
+
+#--- Verify Certificate Signing Request (CSR) ---#
+# openssl req -text -noout -verify -in CSR.csr
+
+#--- Verify private key ---#
+# openssl rsa -in private.key -check
+
+#--- Verify Certificate ---#
+# openssl x509 -in certificate.crt -text -noout
+
+#--- Verify PKCS12 Certificate [.pfx/.p12] ---#
+# openssl pkcs12 -info -in certificate.p12
+
+
+#--------------------------------------------------------------------
 	## ----- Intermediate CA Android Build Certificates ----- ##
 #--------------------------------------------------------------------
 	
