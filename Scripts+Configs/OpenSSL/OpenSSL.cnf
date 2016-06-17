@@ -1,335 +1,335 @@
 
-		##::[[---  Windows OpenSSL Config  ---]]::##
+        ##::[[---  Windows OpenSSL Config  ---]]::##
 
 # For *nix/bsd users:
-	# Use notepad to change all backslashes " \ " to forward slashes " / ". You may also wish to utilize lowercase only, and
-	# if you choose to utilize spaces in cert names, ensure you utilize the proper break format, i.e. "./Sophos\ UTM\ CA.crt"
+    # Use notepad to change all backslashes " \ " to forward slashes " / ". You may also wish to utilize lowercase only, and
+    # if you choose to utilize spaces in cert names, ensure you utilize the proper break format, i.e. "./Sophos\ UTM\ CA.crt"
 
 # For Sophos users:
-	# Prior to generating user certs, ensure you change "x509_extensions = usr_cert_dn" to "usr_cert_not_dn"  This should  
-	# result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  Without this, 
-	# it will be impossible to authenticate to VPNs on Sophos.
+    # Prior to generating user certs, ensure you change "x509_extensions = usr_cert_dn" to "usr_cert_not_dn"  This should  
+    # result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  Without this, 
+    # it will be impossible to authenticate to VPNs on Sophos.
 
-	# Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
-
-#####################################################################
-		##----- Establish working directory -----##
-#####################################################################
-
-DIR							= .
-CNF							= .\openssl.cnf
-
+    # Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
 
 #####################################################################
-		##----- Establish CA Profile and Policy -----##
+        ##----- Establish working directory -----##
+#####################################################################
+
+DIR                            = .
+CNF                            = .\openssl.cnf
+
+
+#####################################################################
+        ##----- Establish CA Profile and Policy -----##
 #####################################################################
 
 [ default ]
-SOPHOS						= "Sophos UTM CA"
-VPN							= "WRT1900 VPN CA"
-CAC							= "$DIR\$SOPHOS.crt.pem"
-CAK							= "$DIR\$SOPHOS.key.pem"
-ICAC						= "$DIR\Intermediate\$VPN.crt.pem"
-ICAK						= "$DIR\Intermediate\$VPN.key.pem"
-CCA							= "Sophos VPN CA Chain.pem"
+SOPHOS                         = "Sophos UTM CA"
+VPN                            = "WRT1900 VPN CA"
+CAC                            = "$DIR\$SOPHOS.crt.pem"
+CAK                            = "$DIR\$SOPHOS.key.pem"
+ICAC                           = "$DIR\Intermediate\$VPN.crt.pem"
+ICAK                           = "$DIR\Intermediate\$VPN.key.pem"
+CCA                            = "Sophos VPN CA Chain.pem"
 
 [ ca ]
-default_ca					= CA_default
+default_ca                     = CA_default
 
 [ intermediate_ca ]
-default_intermediate_ca 	= Intermediate_CA_default
+default_intermediate_ca        = Intermediate_CA_default
 
 #####################################################################
 
 [ CA_default ]
-certs						= $DIR\Certs
-new_certs_dir				= $DIR\Certs
+certs                          = $DIR\Certs
+new_certs_dir                  = $DIR\Certs
 
-database					= index
-RANDFILE					= $DIR\rand
-serial						= serial
+database                       = index
+RANDFILE                       = $DIR\rand
+serial                         = serial
 
-crldir						= $DIR\CRL
-crlnumber					= crlnumber
-crl							= "$CRLDIR\$SOPHOS.crl.pem"
-default_crl_days			= 3650 
+crldir                         = $DIR\CRL
+crlnumber                      = crlnumber
+crl                            = "$CRLDIR\$SOPHOS.crl.pem"
+default_crl_days               = 3650 
 
-certificate					= "$DIR\$SOPHOS.crt.pem"
-private_key					= "$DIR\$SOPHOS.key.pem"
+certificate                    = "$DIR\$SOPHOS.crt.pem"
+private_key                    = "$DIR\$SOPHOS.key.pem"
 
-default_days				= 3650
-default_md					= sha512
-preserve					= no
+default_days                   = 3650
+default_md                     = sha512
+preserve                       = no
 
-x509_extensions				= usr_cert_dn
-copy_extensions				= copy
-unique_subject				= no
+x509_extensions                = usr_cert_dn
+copy_extensions                = copy
+unique_subject                 = no
 
-policy						= policy_match
-name_opt					= esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
-cert_opt					= ca_default
+policy                         = policy_match
+name_opt                       = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
+cert_opt                       = ca_default
 
 #####################################################################
 
 [ Intermediate_CA_default ]
-certs						= $DIR\Intermediate\Certs
-new_certs_dir				= $DIR\Intermediate\Certs
+certs                          = $DIR\Intermediate\Certs
+new_certs_dir                  = $DIR\Intermediate\Certs
 
-database					= $DIR\Intermediate\index
-RANDFILE					= $DIR\Intermediate\rand
-serial						= $DIR\Intermediate\serial
+database                       = $DIR\Intermediate\index
+RANDFILE                       = $DIR\Intermediate\rand
+serial                         = $DIR\Intermediate\serial
 
-crldir						= $DIR\Intermediate\CRL
-crlnumber					= crlnumber
-crl							= $CRLDIR\crl.pem
-default_crl_days			= 3650 
+crldir                         = $DIR\Intermediate\CRL
+crlnumber                      = crlnumber
+crl                            = $CRLDIR\crl.pem
+default_crl_days               = 3650 
 
-certificate					= "$DIR\Intermediate\$VPN.crt.pem"
-private_key					= "$DIR\Intermediate\$VPN.key.pem"
+certificate                    = "$DIR\Intermediate\$VPN.crt.pem"
+private_key                    = "$DIR\Intermediate\$VPN.key.pem"
 
-default_days				= 3650
-default_md					= sha512
-preserve					= no
+default_days                   = 3650
+default_md                     = sha512
+preserve                       = no
 
-x509_extensions				= usr_cert_dn
-copy_extensions				= copy
-unique_subject				= no
+x509_extensions                = usr_cert_dn
+copy_extensions                = copy
+unique_subject                 = no
 
-policy						= policy_match
-name_opt					= esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
-cert_opt					= intermediate_ca_default
+policy                         = policy_match
+name_opt                       = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
+cert_opt                       = intermediate_ca_default
 
 #####################################################################
 
 [ policy_match ]
-countryName					= match
-stateOrProvinceName			= match
-organizationName			= match
-organizationalUnitName		= match
-commonName					= supplied
-emailAddress				= optional
+countryName                    = match
+stateOrProvinceName            = match
+organizationName               = match
+organizationalUnitName         = match
+commonName                     = supplied
+emailAddress                   = optional
 
 [ policy_supply ]
-countryName					= match
-stateOrProvinceName			= match
-organizationName			= match
-organizationalUnitName		= match
-commonName      			= optional
-emailAddress    			= optional
+countryName                    = match
+stateOrProvinceName            = match
+organizationName               = match
+organizationalUnitName         = match
+commonName                     = optional
+emailAddress                   = optional
 
 
 #####################################################################
-		##----- Establish Certificate Options -----#
+        ##----- Establish Certificate Options -----#
 #####################################################################
 
 [ req ]
-default_bits				= 2048
-default_keyfile 			= private.key.pem
-# encrypt_key 				= yes
-default_md					= sha256
-string_mask					= utf8only
-utf8						= yes
+default_bits                   = 2048
+default_keyfile                = private.key.pem
+# encrypt_key                  = yes
+default_md                     = sha256
+string_mask                    = utf8only
+utf8                           = yes
 
-distinguished_name			= req_distinguished_name
-attributes					= req_attributes 
-req_extensions				= v3_req
-x509_extensions				= v3_ca
-copy_extensions				= copy
-string_mask					= utf8only
+distinguished_name             = req_distinguished_name
+attributes                     = req_attributes 
+req_extensions                 = v3_req
+x509_extensions                = v3_ca
+copy_extensions                = copy
+string_mask                    = utf8only
 
 #####################################################################
 
 [ req_distinguished_name ]
 
-countryNam						= Country
-countryName_mi					= 2
-countryName_ma					= 2
-stateOrProvinceNam				= State
-localityNam						= Locality
-0.organizationNam				= Organization
-organizationalUnitName			= Organizational Unit
-commonName						= Common Name
-commonName_ma					= 64
-emailAddres						= Email
-emailAddress_max               	= 64
+countryNam                     = Country
+countryName_mi                 = 2
+countryName_ma                 = 2
+stateOrProvinceNam             = State
+localityNam                    = Locality
+0.organizationNam              = Organization
+organizationalUnitName         = Organizational Unit
+commonName                     = Common Name
+commonName_ma                  = 64
+emailAddres                    = Email
+emailAddress_max               = 64
 
-countryName_default				= US
-stateOrProvinceName_default		= State
-localityName_default			= Locality
-0.organizationName_default		= Sophos UTM
-organizationalUnitName_default	= LAN
+countryName_default                = US
+stateOrProvinceName_default        = State
+localityName_default               = Locality
+0.organizationName_default         = Sophos UTM
+organizationalUnitName_default     = LAN
 
 
 #####################################################################
-	##----- Establish Additional Certificate Profiles -----##
+    ##----- Establish Additional Certificate Profiles -----##
 #####################################################################
 
 [ alt_ca ]
-IP.1						= 127.0.0.1
+IP.1                           = 127.0.0.1
 
 [ alt_asrock ]
-IP.1						= 192.168.2.4
-IP.2						= 192.168.2.5
-DNS.1						= C2750D4I-IPMI
-DNS.2						= C2750D4I-eth0
-DNS.3						= C2750D4I-eth1
+IP.1                           = 192.168.2.4
+IP.2                           = 192.168.2.5
+DNS.1                          = C2750D4I-IPMI
+DNS.2                          = C2750D4I-eth0
+DNS.3                          = C2750D4I-eth1
 
 [ alt_freenas ]
-IP.1						= 192.168.2.13
-IP.2						= 192.168.2.130
-IP.3						= 127.0.0.1
-DNS.1						= Free.NAS
-DNS.2						= FreeNAS.igb0
-DNS.3						= FreeNAS.igb1
+IP.1                           = 192.168.2.13
+IP.2                           = 192.168.2.130
+IP.3                           = 127.0.0.1
+DNS.1                          = Free.NAS
+DNS.2                          = FreeNAS.igb0
+DNS.3                          = FreeNAS.igb1
 
 [ alt_openwrt ]
-IP.1						= 192.168.2.2
-IP.2						= 127.0.0.1
-DNS.1						= OpenWRT.WRT1900
+IP.1                           = 192.168.2.2
+IP.2                           = 127.0.0.1
+DNS.1                          = OpenWRT.WRT1900
 
 [ alt_owncloud ]
-IP.1						= 192.168.2.150
-DNS.1						= OwnCloud.FreeNAS
+IP.1                           = 192.168.2.150
+DNS.1                          = OwnCloud.FreeNAS
 
 [ alt_sophos ]
-DNS.1						= SophosUTM
-DNS.2						= your.ddns.com
-IP.1						= 127.0.0.1
-IP.2						= 192.168.2.1
+DNS.1                          = SophosUTM
+DNS.2                          = your.ddns.com
+IP.1                           = 127.0.0.1
+IP.2                           = 192.168.2.1
 
 [alt_supermicro ]
-IP.1						= 192.168.2.3
-DNS.1						= SuperMicro.IPMI
-DNS.2						= SuperMicro-IPMI
+IP.1                           = 192.168.2.3
+DNS.1                          = SuperMicro.IPMI
+DNS.2                          = SuperMicro-IPMI
 
 [ alt_vpn_client ]
-email.1						= user@email.com
-DNS.1						= VPNserver-Client1-Device-Hostname1
-DNS.2						= VPNserver-Client1-Device-Hostname2
+email.1                        = user@email.com
+DNS.1                          = VPNserver-Client1-Device-Hostname1
+DNS.2                          = VPNserver-Client1-Device-Hostname2
 
 [ alt_vpn_server ]
-IP.1						= 10.0.0.1
-DNS.1						= your.ddns.com
+IP.1                           = 10.0.0.1
+DNS.1                          = your.ddns.com
 
 [ req_attributes ]
-# challengePassword			= 
-# challengePassword_min		= 4
-# challengePassword_max		= 20
+# challengePassword            = 
+# challengePassword_min        = 4
+# challengePassword_max        = 20
 
 #####################################################################
 
 [ crl_ext ]
-issuerAltName				= issuer:copy
-authorityKeyIdentifier		= keyid:always, issuer:always
+issuerAltName                  = issuer:copy
+authorityKeyIdentifier         = keyid:always, issuer:always
 
 [ usr_cert_dn ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage			= critical, clientAuth, emailProtection
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage               = critical, clientAuth, emailProtection
 
 [ usr_cert_not_dn ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-subjectAltName				= email:copy
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage			= critical, clientAuth, emailProtection
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+subjectAltName                 = email:copy
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage               = critical, clientAuth, emailProtection
 
 #####################################################################
 
 [ v3_ca ]
-basicConstraints			= critical, CA:TRUE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-subjectAltName				= @alt_ca
-keyUsage					= critical, cRLSign, digitalSignature, keyCertSign
+basicConstraints               = critical, CA:TRUE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+subjectAltName                 = @alt_ca
+keyUsage                       = critical, cRLSign, digitalSignature, keyCertSign
 
 [ v3_intermediate_ca ]
-basicConstraints			= critical, CA:TRUE, pathlen:0
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-subjectAltName				= @alt_ca
-keyUsage					= critical, cRLSign, digitalSignature, keyCertSign
+basicConstraints               = critical, CA:TRUE, pathlen:0
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+subjectAltName                 = @alt_ca
+keyUsage                       = critical, cRLSign, digitalSignature, keyCertSign
 
 [ v3_req ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
 
 #####################################################################
 
 [ v3_asrock ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName				= @alt_asrockc2750d4i
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName                 = @alt_asrockc2750d4i
 
 [ v3_freenas]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName				= @alt_freenas
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName                 = @alt_freenas
 
 [ v3_openwrt ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName				= @alt_openwrt
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName                 = @alt_openwrt
 
 [ v3_owncloud ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName				= @alt_owncloud
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName                 = @alt_owncloud
 
 [ v3_sophos ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName				= @alt_sophos
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName                 = @alt_sophos
 
 [ v3_supermicro ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName				= @alt_supermicro
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName                 = @alt_supermicro
 
 [ v3_vpn_client  ]
-basicConstraints			= critical,CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage			= critical, clientAuth
-subjectAltName				= @alt_vpn_client
+basicConstraints               = critical,CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage               = critical, clientAuth
+subjectAltName                 = @alt_vpn_client
 
 [ v3_vpn_server ]
-basicConstraints			= critical, CA:FALSE
-subjectKeyIdentifier		= hash
-authorityKeyIdentifier		= keyid:always, issuer:always
-keyUsage					= critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
-extendedKeyUsage			= critical, serverAuth
-subjectAltName				= @alt_vpn_server
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
+authorityKeyIdentifier         = keyid:always, issuer:always
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage               = critical, serverAuth
+subjectAltName                 = @alt_vpn_server
 
 
 #####################################################################
 #--------------------------------------------------------------------
-		##----- OpenSSL Commands -----##
+        ##----- OpenSSL Commands -----##
 #--------------------------------------------------------------------
 #####################################################################
 
 #--- Prerequisistes ---#
 
-	# Create "serial" file: echo 00 > serial
-	# Create "crlnumber" file: echo 01 > crlnumber
-	# Create "index" file, leave blank
-	# Create "rand" file, leave blank
+    # Create "serial" file: echo 00 > serial
+    # Create "crlnumber" file: echo 01 > crlnumber
+    # Create "index" file, leave blank
+    # Create "rand" file, leave blank
  
 # ENCRYPT_KEY (Establish Certificate Options) is currently commented out, however, it's recommended to set it to yes for any use other than a webserver/vpn 
 # server, etc.
@@ -342,12 +342,12 @@ subjectAltName				= @alt_vpn_server
 #####################################################################
 
 # For VPN Server certs:
-	# When creating a VPN server cert using "extendedKeyUsage = serverAuth", in your VPN client config you must
-	# change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
+    # When creating a VPN server cert using "extendedKeyUsage = serverAuth", in your VPN client config you must
+    # change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
 
 
 #--------------------------------------------------------------------
-	## ----- Certificate Authority ----- ##
+    ## ----- Certificate Authority ----- ##
 #--------------------------------------------------------------------
 
 #--- Generate CA ---#
@@ -361,7 +361,7 @@ subjectAltName				= @alt_vpn_server
 
 
 #--------------------------------------------------------------------
-	## ----- Intermediate Certificate Authority ----- ##
+    ## ----- Intermediate Certificate Authority ----- ##
 #--------------------------------------------------------------------
 
 #--- Gernerate Intermediate CA ---#
@@ -379,29 +379,29 @@ subjectAltName				= @alt_vpn_server
 
 #--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
 # Windows:
-	# type .\"VPN-ICA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
+    # type .\"VPN-ICA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
 # *nix/BSD:
-	# cat ./"VPN-ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
+    # cat ./"VPN-ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
 
 
 #--- Export VPN Client with an Intermediate CA ---#
 # openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain'
 
-	# The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
-	# be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
-	# This allows for the certificate path of the client cert to show a hierarchy of CA -> Intermediate CA -> Client
+    # The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
+    # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
+    # This allows for the certificate path of the client cert to show a hierarchy of CA -> Intermediate CA -> Client
 
 
 #--------------------------------------------------------------------
-	## ----- Client Certificate ----- ##
+    ## ----- Client Certificate ----- ##
 #--------------------------------------------------------------------
 
 #--- Request ---#
 # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha256 -newkey rsa:2048 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
-	
-	#--- Request with multiple common names ---#
-	# openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha256 -newkey rsa:2048 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
-	 
+    
+    #--- Request with multiple common names ---#
+    # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha256 -newkey rsa:2048 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
+     
 #--- Sign ---#
 # openssl x509 -req -sha256 -days 3650 -in '.\OwnCloud.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\OwnCloud.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
  
@@ -410,7 +410,7 @@ subjectAltName				= @alt_vpn_server
 
 
 #--------------------------------------------------------------------
-	## ----- Verification of Certificates ----- ##
+    ## ----- Verification of Certificates ----- ##
 #--------------------------------------------------------------------
 
 #--- Verify Certificate Signing Request (CSR) ---#
@@ -427,11 +427,11 @@ subjectAltName				= @alt_vpn_server
 
 
 #--------------------------------------------------------------------
-	## ----- Intermediate CA Android Build Certificates ----- ##
+    ## ----- Intermediate CA Android Build Certificates ----- ##
 #--------------------------------------------------------------------
-	
-	# This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
-	# i.e. the following steps will need to be repeated for each of the six
+    
+    # This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
+    # i.e. the following steps will need to be repeated for each of the six
 
 
 #--- Generate Individual Intermediate Build CA Request ---#
@@ -453,25 +453,25 @@ subjectAltName				= @alt_vpn_server
 
 #--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
 # Windows:
-	# type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
+    # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
 # *nix/BSD:
-	# cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
+    # cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
 
 
 #--- Create PKCS12 for import into keystore ---#
 # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
 
-	# The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
-	# be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
-	# This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
+    # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
+    # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
+    # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
 
 
 #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
-	# For each of the six: *.x509.pem, *.pk8, Android-*-CA-Chain.pem, *.p12
-	# i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
+    # For each of the six: *.x509.pem, *.pk8, Android-*-CA-Chain.pem, *.p12
+    # i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
 
 # --- One example of how to import into keystore prior to build ---#
-	# Source: http://stackoverflow.com/questions/22212869/how-can-i-generate-an-android-keystore-from-a-key-pk8-and-certificate-pem
+    # Source: http://stackoverflow.com/questions/22212869/how-can-i-generate-an-android-keystore-from-a-key-pk8-and-certificate-pem
 
 # keytool -importkeystore -deststorepass password -destkeystore .keystore -srckeystore media.p12 -srcstoretype PKCS12 -srcstorepass media
 # keytool -list -v -keystore .keystore
@@ -480,7 +480,7 @@ subjectAltName				= @alt_vpn_server
 #####################################################################
 #-------------------------------------------------------------------- 
 #####################################################################
-		##---- Index File -----##
+        ##---- Index File -----##
 #--------------------------------------------------------------------
 
 # If you wish to maintain the index file automatically, you'll need to use "openssl ca" to sign certs.
@@ -489,18 +489,18 @@ subjectAltName				= @alt_vpn_server
 # V    251201090544Z    0a    unknown    /C=US/ST=State/L=Locality/O=Sophos UTM/OU=LAN/CN=Cert Common Name/emailaddress=whatever@whichever.com
 # 1    2----------->    4->   5----->    6--------------------------------------------------------------------------------------------------->
  
-	# 1. V [Valid] R [Revoked] E [Expired]
-	# 2. Expiration Date [Format: YYMMDDHHMMSS followed by "Z"]
-	# 3. Revocation Date [(Empty if not revoked) Format: YYMMDDHHMMSSZ,reason]
-	# 4. Serial # [0a is hex for 10]
-		# Windows has a programmer calculator feature that can convert dec <-> hex
-	# 5. unknown [Certificate filename or literal string "unknown"]
-	# 6. Distinguished Name
+    # 1. V [Valid] R [Revoked] E [Expired]
+    # 2. Expiration Date [Format: YYMMDDHHMMSS followed by "Z"]
+    # 3. Revocation Date [(Empty if not revoked) Format: YYMMDDHHMMSSZ,reason]
+    # 4. Serial # [0a is hex for 10]
+        # Windows has a programmer calculator feature that can convert dec <-> hex
+    # 5. unknown [Certificate filename or literal string "unknown"]
+    # 6. Distinguished Name
  
 
 #--------------------------------------------------------------------
 #####################################################################
-		##----- Key Usage -----##
+        ##----- Key Usage -----##
 #--------------------------------------------------------------------
 
 #--- digitalSignature ---#
@@ -525,7 +525,7 @@ subjectAltName				= @alt_vpn_server
  
 #--------------------------------------------------------------------
 #####################################################################
-		##----- Extended Key Usage -----##
+        ##----- Extended Key Usage -----##
 #--------------------------------------------------------------------
 
 #--- serverAuth ---#
@@ -556,9 +556,9 @@ subjectAltName				= @alt_vpn_server
 
 #--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
 # Should NOT be utilized! 
-	# There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
-	# were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
-	# by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
+    # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
+    # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
+    # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
 
 #--- msCodeInd ---#
 # Microsoft Individual Code Signing (authenticode)... self explanatory
