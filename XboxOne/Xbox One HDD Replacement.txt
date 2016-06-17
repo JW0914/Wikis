@@ -9,6 +9,16 @@
    HDD has a GPT partition table & contains 5 partitions
     • Items without sizes have no sizes listed as they will depend on the system
 
+GUIDs
+  #--- Disk ---#
+     A2344BDB-D6DE-4766-9EB5-4109A12228E5
+  #--- Partitions ---#
+     #1    B3727DA5-A3AC-4B3D-9FD6-2EA54441011B    'Temp Content'
+     #2    869BB5E0-3356-4BE6-85F7-29323A675CC7    'User Content'
+     #3    C90D7A47-CCB9-4CBA-8C66-0459F6B85724    'System Support'
+     #4    9A056AD7-32ED-4141-AEB1-AFB9BD5565DC    'System Update'
+     #5    24B2197C-9D01-45F9-A8E1-DBBCFA161EB2    'System Update 2'
+
 
 ###############################
     #--- Normal Layout ---#
