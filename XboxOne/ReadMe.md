@@ -5,7 +5,8 @@
   - Files needed _([gptutil.py](https://github.com/JW0914/Wikis/blob/master/XboxOne/Scripts/gptutil.py), [mkxboxfs-500gb.py](https://github.com/JW0914/Wikis/blob/master/XboxOne/Scripts/mkxboxfs-500gb.sh), & [xboxonehdd.py](https://github.com/JW0914/Wikis/blob/master/XboxOne/Scripts/xboxonehdd.py))_ can be found in the [Scripts](https://github.com/JW0914/Wikis/tree/master/XboxOne/Scripts) directory
     - Forked from [Juvenal1's GitHub](https://github.com/Juvenal1/xboxonehdd) and included to make the wiki more fluid
 
-- I will be updating this with a more simplistic Windows version, as performing the required steps via *nix is extremely convoluted and far more work than this should reasonably be.
+
+##### _I will be updating this with a more simplistic Windows version, as performing the required steps via *nix is extremely convoluted and far more work than this should reasonably be._ #####
 
 
 ######Xbox One Disassembly######
