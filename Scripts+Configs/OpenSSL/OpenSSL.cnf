@@ -326,22 +326,31 @@ subjectAltName                 = @alt_vpn_server
 
 #--- Prerequisistes ---#
 
-    # Create "serial" file: echo 00 > serial
-    # Create "crlnumber" file: echo 01 > crlnumber
-    # Create "index" file, leave blank
-    # Create "rand" file, leave blank
+  # 1. Create "serial" file: echo 00 > serial
+    # This file maintains the serial for the most recent cert, in order to know what serial to next assign.
+    # The serial is in hex, not dec[imal] format, and one can choose whichever number one wishes to start their cert(s) at.
+    
+  # 2. Create "crlnumber" file: echo 01 > crlnumber
+    # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
+    # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
+
+  # 3. Create "index" file, leave blank
+    # This file maintains an index of all certificates issued and is covered under the Index Section below
+
+  # 4. Create "rand" file, leave blank (no extension, just "rand")
+    # This file is utilized by openssl for random characters, and is querried by openssl curing certificate/key creation.
  
-# ENCRYPT_KEY (Establish Certificate Options) is currently commented out, however, it's recommended to set it to yes for any use other than a webserver/vpn 
-# server, etc.
+  # ENCRYPT_KEY (Establish Certificate Options) is currently commented out, however, it's recommended to set it to yes for any use other than a webserver/vpn 
+  # server, etc.
  
-# Provided you utilize the SubjectAltName section, the Common Name is not required to be the IP/DNS, and can be whatever name 
-# you wish it to be
+  # Provided you utilize the SubjectAltName section, the Common Name is not required to be the IP/DNS, and can be whatever name 
+  # you wish it to be
  
 #####################################################################
 #--------------------------------------------------------------------
 #####################################################################
 
-# For VPN Server certs:
+  # For VPN Server certs:
     # When creating a VPN server cert using "extendedKeyUsage = serverAuth", in your VPN client config you must
     # change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
 
@@ -378,18 +387,18 @@ subjectAltName                 = @alt_vpn_server
 
 
 #--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
-# Windows:
+  # Windows:
     # type .\"VPN-ICA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
-# *nix/BSD:
+  # *nix/BSD:
     # cat ./"VPN-ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
 
 
 #--- Export VPN Client with an Intermediate CA ---#
 # openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain'
 
-    # The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
-    # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
-    # This allows for the certificate path of the client cert to show a hierarchy of CA -> Intermediate CA -> Client
+  # The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
+  # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
+  # This allows for the certificate path of the client cert to show a hierarchy of CA -> Intermediate CA -> Client
 
 
 #--------------------------------------------------------------------
@@ -399,8 +408,8 @@ subjectAltName                 = @alt_vpn_server
 #--- Request ---#
 # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha256 -newkey rsa:2048 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
     
-    #--- Request with multiple common names ---#
-    # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha256 -newkey rsa:2048 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
+  #--- Request with multiple common names ---#
+  # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha256 -newkey rsa:2048 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
      
 #--- Sign ---#
 # openssl x509 -req -sha256 -days 3650 -in '.\OwnCloud.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\OwnCloud.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
@@ -452,9 +461,9 @@ subjectAltName                 = @alt_vpn_server
 
 
 #--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
-# Windows:
+  # Windows:
     # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
-# *nix/BSD:
+  # *nix/BSD:
     # cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
 
 
@@ -471,10 +480,10 @@ subjectAltName                 = @alt_vpn_server
     # i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
 
 # --- One example of how to import into keystore prior to build ---#
-    # Source: http://stackoverflow.com/questions/22212869/how-can-i-generate-an-android-keystore-from-a-key-pk8-and-certificate-pem
+  # Source: http://stackoverflow.com/questions/22212869/how-can-i-generate-an-android-keystore-from-a-key-pk8-and-certificate-pem
 
-# keytool -importkeystore -deststorepass password -destkeystore .keystore -srckeystore media.p12 -srcstoretype PKCS12 -srcstorepass media
-# keytool -list -v -keystore .keystore
+    # keytool -importkeystore -deststorepass password -destkeystore .keystore -srckeystore media.p12 -srcstoretype PKCS12 -srcstorepass media
+    # keytool -list -v -keystore .keystore
 
 
 #####################################################################
@@ -483,11 +492,11 @@ subjectAltName                 = @alt_vpn_server
         ##---- Index File -----##
 #--------------------------------------------------------------------
 
-# If you wish to maintain the index file automatically, you'll need to use "openssl ca" to sign certs.
-# You can manually maintain the index file, by inputting 1 cert entry per line in the following format:
+  # If you wish to maintain the index file automatically, you'll need to use "openssl ca" to sign certs.
+  # You can manually maintain the index file, by inputting 1 cert entry per line in the following format:
  
-# V    251201090544Z    0a    unknown    /C=US/ST=State/L=Locality/O=Sophos UTM/OU=LAN/CN=Cert Common Name/emailaddress=whatever@whichever.com
-# 1    2----------->    4->   5----->    6--------------------------------------------------------------------------------------------------->
+  # V    251201090544Z    0a    unknown    /C=US/ST=State/L=Locality/O=Sophos UTM/OU=LAN/CN=Cert Common Name/emailaddress=whatever@whichever.com
+  # 1    2----------->    4->   5----->    6--------------------------------------------------------------------------------------------------->
  
     # 1. V [Valid] R [Revoked] E [Expired]
     # 2. Expiration Date [Format: YYMMDDHHMMSS followed by "Z"]
@@ -504,23 +513,23 @@ subjectAltName                 = @alt_vpn_server
 #--------------------------------------------------------------------
 
 #--- digitalSignature ---#
-# Certificates with this flag set can be used to apply a digital signature. Digital signatures are often used for entity 
-# authentication and data origin authentication with integrity.
+  # Certificates with this flag set can be used to apply a digital signature. Digital signatures are often used for entity 
+  # authentication and data origin authentication with integrity.
  
 #--- nonRepudiation ---#
-# Certificates with this flag set can be used to sign data as above but the certificate public key may be used to provide 
-# non-repudiation services preventing the signing entity from falsely denying some action.
+  # Certificates with this flag set can be used to sign data as above but the certificate public key may be used to provide 
+  # non-repudiation services preventing the signing entity from falsely denying some action.
  
 #--- keyEncipherment ---#
-# Certificates with this flag set may be used by the subject to encrypt a symmetric key which is then transferred to the 
-# target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities. 
+  # Certificates with this flag set may be used by the subject to encrypt a symmetric key which is then transferred to the 
+  # target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities. 
 
 #--- dataEncipherment ---#
-# Certificates with this flag set can be used by the subject to encrypt and decrypt actual application data.
+  # Certificates with this flag set can be used by the subject to encrypt and decrypt actual application data.
  
 #--- keyAgreement ---#
-# Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish 
-# a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
+  # Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish 
+  # a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
   
  
 #--------------------------------------------------------------------
@@ -529,48 +538,48 @@ subjectAltName                 = @alt_vpn_server
 #--------------------------------------------------------------------
 
 #--- serverAuth ---#
-# SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
-# clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes nscertype options,
-# as the "ns" in nscertype stands for NetScape [browser], which hasn't existed for some time.
+  # SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
+  # clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes nscertype options,
+  # as the "ns" in nscertype stands for NetScape [browser], which hasn't existed for some time.
 
 #--- clientAuth ---#
-# SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
-# All VPN clients should be signed with this EKU present.
+  # SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
+  # All VPN clients should be signed with this EKU present.
 
 #--- codeSigning ---#
-# Code Signing... self explanatory
+  # Code Signing... self explanatory
 
 #--- emailProtection ---#
-# Email Protection via S/MIME, allows you to send and receive encrypted emails
+  # Email Protection via S/MIME, allows you to send and receive encrypted emails
 
 #--- timeStamping ---#
-# Trusted Timestamping... self explanatory
+  # Trusted Timestamping... self explanatory
 
 #--- OCSPSigning ---#
-# OCSP Signing... self explanatory
+  # OCSP Signing... self explanatory
 
 #--- ipsecIKE
-# IPSec Internet Key Exchange, of which I believe is in the same boat as the three below, however some research needs to be
-# performed to determine if this is an EKU that should no longer be utilized.  I do know clientAuth can be utilized in a IPSec
-# VPN client cert.
+  # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below, however some research needs to be
+  # performed to determine if this is an EKU that should no longer be utilized.  I do know clientAuth can be utilized in a IPSec
+  # VPN client cert.
 
 #--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
-# Should NOT be utilized! 
+  # Should NOT be utilized! 
     # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
     # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
     # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
 
 #--- msCodeInd ---#
-# Microsoft Individual Code Signing (authenticode)... self explanatory
+  # Microsoft Individual Code Signing (authenticode)... self explanatory
 
 #--- msCodeCom ---#
-# Microsoft Commerical Code Signing (authenticode)... self explanatory
+  # Microsoft Commerical Code Signing (authenticode)... self explanatory
 
 #--- mcCTLSign ---#
-# Microsoft Trust List Signing... self explanatory
+  # Microsoft Trust List Signing... self explanatory
 
 #--- msEFS ---#
-# Microsoft Encrypted File System... self explanatory
+  # Microsoft Encrypted File System... self explanatory
 
 #--------------------------------------------------------------------
 #####################################################################
