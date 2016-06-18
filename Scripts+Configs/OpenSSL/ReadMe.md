@@ -12,6 +12,7 @@
 - The VPN Server V3 profile [_v3_vpn_server_] must have all five _keyUsage_ values listed, as they're required for the VPN server to authenticate itself as a server with the _extendedKeyUsage_ of _serverAuth_
   - nscertype flags **should not** be utilized within certs or VPN configs as they're obsolete and were never officially recognized OIDs for anything other than the NetScape browser 
 
+
 ***
-> ######Information and applicable commands can be found beginning at _Line 321_######
+######Information and applicable commands can be found beginning at _Line 321_######
 ***
