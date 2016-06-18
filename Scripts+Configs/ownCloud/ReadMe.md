@@ -3,7 +3,7 @@
 ######Nginx Configuration######
 - Nginx configuration for [_FreeNAS_] ownCloud [_Standard_] Jail
   - __Line 7__
-    - _Should be set to # of CPU threads_
+    - _Should be set to number of CPU processors/threads_
   - __Lines 24, 25, & 26__
     - _Must point to server's cert, key, & dh.pem_
   - __Lines 35 & 47__
