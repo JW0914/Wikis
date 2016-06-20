@@ -360,6 +360,7 @@ subjectAltName                 = @alt_vpn_server
     # Keys should have 400 permissions
       # chmod 400 ./certificate.key
 
+
 #--------------------------------------------------------------------
     ## ----- Certificate Authority ----- ##
 #--------------------------------------------------------------------
