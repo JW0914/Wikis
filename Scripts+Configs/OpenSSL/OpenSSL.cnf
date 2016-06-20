@@ -354,6 +354,11 @@ subjectAltName                 = @alt_vpn_server
     # When creating a VPN server cert using "extendedKeyUsage = serverAuth", in your VPN client config you must
     # change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
 
+  # For BSD/*nix OSes:
+    # Certificates should have 644 permissions
+      # chmod 644 ./certificate.crt.pem
+    # Keys should have 400 permissions
+      # chmod 400 ./certificate.key
 
 #--------------------------------------------------------------------
     ## ----- Certificate Authority ----- ##
