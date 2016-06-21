@@ -364,7 +364,7 @@ subjectAltName                 = @alt_vpn_server
     # change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
 
   # For BSD/*nix OSes:
-    # Certificates should have 644 permissions
+    # Certificates should have 444 permissions
       # chmod 644 ./certificate.crt.pem
     # Keys should have 400 permissions
       # chmod 400 ./certificate.key
