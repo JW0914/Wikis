@@ -120,7 +120,7 @@ emailAddress                   = optional
 
 #####################################################################
         ##----- Establish Certificate Options -----#
-#####################################################################
+#--------------------------------------------------------------------
 
 [ req ]
 default_bits                   = 2048
@@ -161,8 +161,8 @@ organizationalUnitName_default     = LAN
 
 
 #####################################################################
-    ##----- Establish Additional Certificate Profiles -----##
-#####################################################################
+    ##----- Establish Subject Alternative Names -----##
+#--------------------------------------------------------------------
 
 [ alt_ca ]
 IP.1                           = 127.0.0.1
@@ -216,11 +216,14 @@ DNS.1                          = your.ddns.com
 # challengePassword_min        = 4
 # challengePassword_max        = 20
 
-#####################################################################
 
-[ crl_ext ]
-issuerAltName                  = issuer:copy
-authorityKeyIdentifier         = keyid:always, issuer:always
+#####################################################################
+    ##----- Establish Generalized Certificate V3 Profiles -----##
+#--------------------------------------------------------------------
+
+[ v3_req ]
+basicConstraints               = critical, CA:FALSE
+subjectKeyIdentifier           = hash
 
 [ usr_cert_dn ]
 basicConstraints               = critical, CA:FALSE
@@ -237,7 +240,10 @@ subjectAltName                 = email:copy
 keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage               = critical, clientAuth, emailProtection
 
+
 #####################################################################
+    ##----- Establish Certificate Authority V3 Profiles -----##
+#--------------------------------------------------------------------
 
 [ v3_ca ]
 basicConstraints               = critical, CA:TRUE
@@ -253,11 +259,14 @@ authorityKeyIdentifier         = keyid:always, issuer:always
 subjectAltName                 = @alt_ca
 keyUsage                       = critical, cRLSign, digitalSignature, keyCertSign
 
-[ v3_req ]
-basicConstraints               = critical, CA:FALSE
-subjectKeyIdentifier           = hash
+[ crl_ext ]
+issuerAltName                  = issuer:copy
+authorityKeyIdentifier         = keyid:always, issuer:always
+
 
 #####################################################################
+    ##----- Establish Client Certificate V3 Profiles -----##
+#--------------------------------------------------------------------
 
 [ v3_asrock ]
 basicConstraints               = critical, CA:FALSE
