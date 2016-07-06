@@ -630,14 +630,14 @@ subjectAltName                 = @alt_vpn_server
   # Like DH_DSA, but with elliptic curves: the server public key must be an ECDH key, with a certificate issued by a CA which 
   # utilized an ECDSA public key.
 
-#---ECDH_RSA ---# 
+#--- ECDH_RSA ---# 
   # Like ECDH_ECDSA, except that the CA used an RSA key
 
-#---ECDHE_ECDSA ---# 
+#--- ECDHE_ECDSA ---# 
   # The server sends a dynamically generated EC Diffie-Hellman key and signs it with its own ECDSA key. This is equivalent to
   # DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
 
-#---ECDHE_RSA ---# 
+#--- ECDHE_RSA ---# 
   # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve Diffie-Hellman key.
 
 
