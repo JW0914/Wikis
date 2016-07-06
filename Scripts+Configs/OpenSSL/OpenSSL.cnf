@@ -596,5 +596,50 @@ subjectAltName                 = @alt_vpn_server
 #--- msEFS ---#
   # Microsoft Encrypted File System... self explanatory
 
+
+#--------------------------------------------------------------------
+#####################################################################
+        ##----- Key Exchange Algorithms  -----##
+#--------------------------------------------------------------------
+
+#--- RSA ---#
+  # Key exchange occurs via encryption of a random value [chosen by the client] via the server public key. This requires the
+  # server public key to be an RSA key, and the server certificate must utilize the "keyAgreement" keyUsage extension).
+
+#--- DH_RSA ---#
+  # Key exchange occurs via a static Diffie-Hellman key. Server Public Key must be a Diffie-Hellman key, of which must have been
+  # issued by a CA that was using an RSA key signing key.
+
+#--- DH_DSA ---#
+  # Like DH_RSA, except that the CA used a DSA key in lieu of RSA.
+
+#--- DHE_RSA ---#
+  # Key exchange occurs via an ephemeral Diffie-Hellman; the server dynamically generates & signs a DH public key, sending it to
+  # the client. Server Public Key must be an RSA key, and it's certificate must utilize the digitalSignature keyUsage extension
+
+#--- DHE_DSA ---#
+  # Like DHE_RSA, except that the CA used a DSA key in lieu of RSA.
+
+
+#--------------------------------------------------------------------
+#####################################################################
+        ##----- Elliptic-Curve Key Exchange Algorithms -----##
+#--------------------------------------------------------------------
+
+#--- ECDH_ECDSA ---# 
+  # Like DH_DSA, but with elliptic curves: the server public key must be an ECDH key, with a certificate issued by a CA which 
+  # utilized an ECDSA public key.
+
+#---ECDH_RSA ---# 
+  # Like ECDH_ECDSA, except that the CA used an RSA key
+
+#---ECDHE_ECDSA ---# 
+  # The server sends a dynamically generated EC Diffie-Hellman key and signs it with its own ECDSA key. This is equivalent to
+  # DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
+
+#---ECDHE_RSA ---# 
+  # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve Diffie-Hellman key.
+
+
 #--------------------------------------------------------------------
 #####################################################################
