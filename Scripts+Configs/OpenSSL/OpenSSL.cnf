@@ -286,7 +286,8 @@ subjectAltName                 = @alt_freenas
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_openwrt
 
 [ v3_owncloud ]
