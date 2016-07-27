@@ -368,7 +368,7 @@ subjectAltName                 = @alt_vpn_server
 
   # For BSD/*nix OSes:
     # Certificates should have 444 permissions
-      # chmod 644 ./certificate.crt.pem
+      # chmod 444 ./certificate.crt.pem
     # Keys should have 400 permissions
       # chmod 400 ./certificate.key
 
