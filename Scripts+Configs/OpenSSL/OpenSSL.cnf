@@ -189,13 +189,14 @@ DNS.1                          = OpenWRT.WRT1900
 
 [ alt_owncloud ]
 IP.1                           = 192.168.2.150
+IP.2                           = 127.0.0.1
 DNS.1                          = OwnCloud.FreeNAS
 
 [ alt_sophos ]
 DNS.1                          = SophosUTM
 DNS.2                          = your.ddns.com
-IP.1                           = 127.0.0.1
-IP.2                           = 192.168.2.1
+IP.1                           = 192.168.2.1
+IP.2                           = 127.0.0.1
 
 [alt_supermicro ]
 IP.1                           = 192.168.2.3
@@ -209,6 +210,7 @@ DNS.2                          = VPNserver-Client1-Device-Hostname2
 
 [ alt_vpn_server ]
 IP.1                           = 10.0.0.1
+IP.2                           = 127.0.0.1
 DNS.1                          = your.ddns.com
 
 [ req_attributes ]
