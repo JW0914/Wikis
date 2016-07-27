@@ -275,7 +275,7 @@ authorityKeyIdentifier         = keyid:always, issuer:always
 keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName                 = @alt_asrockc2750d4i
 
-[ v3_freenas]
+[ v3_freenas ]
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
