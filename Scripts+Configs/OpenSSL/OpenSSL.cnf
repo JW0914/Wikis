@@ -122,6 +122,15 @@ emailAddress                   = optional
         ##----- Establish Certificate Options -----#
 #--------------------------------------------------------------------
 
+    # If you plan on using TLS ECDHE or ECDH, the bits and hash must exceed the value you wish to have.
+      
+      # For example, if one wants 2048bit encryption with an SHA256 hash, encryption value must be
+      # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
+
+    # Encrypt key is currently commmented out, as one does not want a server's key to have an encrypted password
+      # Uncomment if you wish to have a client cert's key encrypted (such as a VPN client cert)
+
+
 [ req ]
 default_bits                   = 2048
 default_keyfile                = private.key.pem
@@ -252,7 +261,7 @@ extendedKeyUsage               = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
     # These V3 CA profiles must not be modified to contain any more, or any less, KUs
-      # These have been configured specifically for security and it's imperative no other keyUsages are set.
+      # These have been configured specifically for security & its imperative no other keyUsages are set
 
 
 [ v3_ca ]
@@ -281,8 +290,8 @@ authorityKeyIdentifier         = keyid:always, issuer:always
     # These V3 profiles should not be modified to contain less than what they are currently configured with.
       # I've specifically configured these with security in mind.
     
-    # All servers capable of TLS shuld contain all keyUsages, except for dataEncipherment
-      # VPN servers should have all 5 keyUsages set.
+    # All servers capable of TLS should contain all keyUsages, except for dataEncipherment
+      # VPN and file servers should have all 5 keyUsages set.
     
     # All servers must contain EKU serverAuth
       # All VPN clients must contain EKU clientAuth
