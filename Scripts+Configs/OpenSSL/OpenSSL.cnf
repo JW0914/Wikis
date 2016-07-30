@@ -164,6 +164,10 @@ organizationalUnitName_default     = LAN
     ##----- Establish Subject Alternative Names -----##
 #--------------------------------------------------------------------
 
+    # All server certs should have their loopback IP specified in their SAN profile
+      # This prevents certificate errors if connecting to the server via an SSH tunnel
+
+
 [ alt_ca ]
 IP.1                           = 127.0.0.1
 
@@ -247,6 +251,10 @@ extendedKeyUsage               = critical, clientAuth, emailProtection
     ##----- Establish Certificate Authority V3 Profiles -----##
 #--------------------------------------------------------------------
 
+    # These V3 CA profiles must not be modified to contain any more, or any less, KUs
+      # These have been configured specifically for security and it's imperative no other keyUsages are set.
+
+
 [ v3_ca ]
 basicConstraints               = critical, CA:TRUE
 subjectKeyIdentifier           = hash
@@ -270,11 +278,21 @@ authorityKeyIdentifier         = keyid:always, issuer:always
     ##----- Establish Client Certificate V3 Profiles -----##
 #--------------------------------------------------------------------
 
+    # These V3 profiles should not be modified to contain less than what they are currently configured with.
+      # I've specifically configured these with security in mind.
+    
+    # All servers capable of TLS shuld contain all keyUsages, except for dataEncipherment
+      # VPN servers should have all 5 keyUsages set.
+    
+    # All servers must contain EKU serverAuth
+      # All VPN clients must contain EKU clientAuth
+
+
 [ v3_asrock ]
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
 extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_asrockc2750d4i
 
@@ -282,7 +300,7 @@ subjectAltName                 = @alt_asrockc2750d4i
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
 extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_freenas
 
@@ -290,7 +308,7 @@ subjectAltName                 = @alt_freenas
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
 extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_openwrt
 
@@ -306,7 +324,7 @@ subjectAltName                 = @alt_owncloud
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
 extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_sophos
 
@@ -314,7 +332,7 @@ subjectAltName                 = @alt_sophos
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
 extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_supermicro
 
