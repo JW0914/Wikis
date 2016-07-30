@@ -435,7 +435,7 @@ subjectAltName                 = @alt_vpn_server
 
 
 #--- Export VPN Client with an Intermediate CA ---#
-# openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain'
+# openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain.crt.pem'
 
   # The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
   # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
