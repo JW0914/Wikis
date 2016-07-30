@@ -274,14 +274,16 @@ authorityKeyIdentifier         = keyid:always, issuer:always
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_asrockc2750d4i
 
 [ v3_freenas ]
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_freenas
 
 [ v3_openwrt ]
@@ -296,21 +298,24 @@ subjectAltName                 = @alt_openwrt
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_owncloud
 
 [ v3_sophos ]
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_sophos
 
 [ v3_supermicro ]
 basicConstraints               = critical, CA:FALSE
 subjectKeyIdentifier           = hash
 authorityKeyIdentifier         = keyid:always, issuer:always
-keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                       = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage               = critical, serverAuth
 subjectAltName                 = @alt_supermicro
 
 [ v3_vpn_client  ]
