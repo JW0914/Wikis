@@ -171,7 +171,7 @@ organizationalUnitName_default  = LAN
 #--------------------------------------------------------------------
 
     # All server certs should have their loopback IP specified in their SAN profile
-      # This prevents certificate errors if connecting to the via an SSH tunnel
+      # This prevents certificate errors if connecting to the server via an SSH tunnel
 
 
 [ alt_ca ]
