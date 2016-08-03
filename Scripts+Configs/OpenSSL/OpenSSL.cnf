@@ -7,8 +7,8 @@
 
 # For Sophos users:
     # Prior to generating user certs, ensure you change "x509_extensions = usr_cert_dn" to "usr_cert_not_dn"  This should  
-    # result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  Without this, 
-    # it will be impossible to authenticate to VPNs on Sophos.
+    # result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  
+        # Without this, it will be impossible to authenticate to VPNs on Sophos.
 
     # Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
 
@@ -118,6 +118,16 @@ emailAddress                    = optional
         ##----- Establish Certificate Options -----#
 #--------------------------------------------------------------------
 
+    # If you plan on using TLS ECDHE or ECDH, the bits and hash must exceed the value you wish to have.
+
+      # For example, if one wants 2048bit encryption with an SHA256 hash, encryption value must be
+      # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
+        # x64 machines can almost always process sha512 faster than sha256
+
+    # Encrypt key is currently commmented out, as one does not want a server's key to have an encrypted password
+      # Uncomment if you wish to have a client cert's key encrypted (such as a VPN client cert)
+
+
 [ req ]
 default_bits                    = 3072
 default_keyfile                 = private.key.pem
@@ -160,12 +170,17 @@ organizationalUnitName_default  = LAN
     ##----- Establish Subject Alternative Names -----##
 #--------------------------------------------------------------------
 
+    # All server certs should have their loopback IP specified in their SAN profile
+      # This prevents certificate errors if connecting to the via an SSH tunnel
+
+
 [ alt_ca ]
 IP.1                            = 127.0.0.1
 
 [ alt_asrock ]
 IP.1                            = 192.168.2.4
 IP.2                            = 192.168.2.5
+IP.3                            = 127.0.0.1
 DNS.1                           = C2750D4I-IPMI
 DNS.2                           = C2750D4I-eth0
 DNS.3                           = C2750D4I-eth1
@@ -196,6 +211,7 @@ DNS.2                           = your.ddns.com
 
 [alt_supermicro ]
 IP.1                            = 192.168.2.3
+IP.2                            = 127.0.0.1
 DNS.1                           = SuperMicro.IPMI
 DNS.2                           = SuperMicro-IPMI
 
@@ -206,17 +222,11 @@ DNS.2                           = VPNserver-Client1-Device-Hostname2
 
 [ alt_vpn_server ]
 IP.1                            = 10.0.0.1
-IP.2                            = 127.0.0.1
 DNS.1                           = your.ddns.com
-
-[ req_attributes ]
-# challengePassword             = 
-# challengePassword_min         = 4
-# challengePassword_max         = 20
 
 
 #####################################################################
-    ##----- Establish Generalized Certificate V3 Profiles -----##
+    ##----- Establish Generalized V3 Certificate Profiles -----##
 #--------------------------------------------------------------------
 
 [ v3_req ]
@@ -243,6 +253,10 @@ extendedKeyUsage                = critical, clientAuth, emailProtection
     ##----- Establish Certificate Authority V3 Profiles -----##
 #--------------------------------------------------------------------
 
+    # These V3 CA profiles must not be modified to contain any more, or any less, KUs
+      # These have been configured specifically for security & its imperative no other keyUsages are set
+
+
 [ v3_ca ]
 basicConstraints                = critical, CA:TRUE
 subjectKeyIdentifier            = hash
@@ -266,46 +280,62 @@ authorityKeyIdentifier          = keyid:always, issuer:always
     ##----- Establish Client Certificate V3 Profiles -----##
 #--------------------------------------------------------------------
 
+    # These V3 profiles should not be modified to contain less than what they are currently configured with.
+      # I've specifically configured these with security in mind.
+
+    # All servers capable of TLS should contain all keyUsages, except for dataEncipherment
+      # VPN and file servers should have all 5 keyUsages set.
+
+    # All servers must contain EKU serverAuth
+      # All VPN clients must contain EKU clientAuth
+
+
 [ v3_asrock ]
 basicConstraints                = critical, CA:FALSE
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage                = critical, serverAuth
 subjectAltName                  = @alt_asrockc2750d4i
 
-[ v3_freenas]
+[ v3_freenas ]
 basicConstraints                = critical, CA:FALSE
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage                = critical, serverAuth
 subjectAltName                  = @alt_freenas
 
 [ v3_openwrt ]
 basicConstraints                = critical, CA:FALSE
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage                = critical, serverAuth
 subjectAltName                  = @alt_openwrt
 
 [ v3_owncloud ]
 basicConstraints                = critical, CA:FALSE
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage                = critical, serverAuth
 subjectAltName                  = @alt_owncloud
 
 [ v3_sophos ]
 basicConstraints                = critical, CA:FALSE
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage                = critical, serverAuth
 subjectAltName                  = @alt_sophos
 
 [ v3_supermicro ]
 basicConstraints                = critical, CA:FALSE
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
+keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage                = critical, serverAuth
 subjectAltName                  = @alt_supermicro
 
 [ v3_vpn_client  ]
@@ -353,6 +383,7 @@ subjectAltName                  = @alt_vpn_server
   # Provided you utilize the SubjectAltName section, the Common Name is not required to be the IP/DNS, and
   # can be whatever name you wish it to be
  
+ 
 #####################################################################
 #--------------------------------------------------------------------
 #####################################################################
@@ -363,7 +394,7 @@ subjectAltName                  = @alt_vpn_server
 
   # For BSD/*nix OSes:
     # Certificates should have 444 permissions
-      # chmod 644 ./certificate.crt.pem
+      # chmod 444 ./certificate.crt.pem
     # Keys should have 400 permissions
       # chmod 400 ./certificate.key
 
@@ -407,7 +438,7 @@ subjectAltName                  = @alt_vpn_server
 
 
 #--- Export VPN Client with an Intermediate CA ---#
-# openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain'
+# openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain.crt.pem'
 
   # The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
   # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
@@ -423,10 +454,10 @@ subjectAltName                  = @alt_vpn_server
     
   #--- Request with multiple common names ---#
   # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
-     
+
 #--- Sign ---#
 # openssl x509 -req -sha512 -days 3650 -in '.\WRT1900ac.csr' -CA ".\Sophos UTM CA.crt.pem" -CAkey ".\Sophos UTM CA.key.pem" -CAserial .\serial -out '.\CRT\WRT1900ac.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
- 
+
 #--- Export ---#
 # openssl pkcs12 -export -out '.\OwnCloud.p12' -inkey '.\OwnCloud.key.pem' -in '.\OwnCloud.crt.pem' -certfile CA.crt.pem
 
@@ -451,7 +482,7 @@ subjectAltName                  = @alt_vpn_server
 #--------------------------------------------------------------------
     ## ----- Intermediate CA Android Build Certificates ----- ##
 #--------------------------------------------------------------------
-    
+
     # This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
     # i.e. the following steps will need to be repeated for each of the six
 
@@ -518,7 +549,7 @@ subjectAltName                  = @alt_vpn_server
         # Windows has a programmer calculator feature that can convert dec <-> hex
     # 5. unknown [Certificate filename or literal string "unknown"]
     # 6. Distinguished Name
- 
+
 
 #--------------------------------------------------------------------
 #####################################################################
@@ -532,19 +563,19 @@ subjectAltName                  = @alt_vpn_server
 #--- nonRepudiation ---#
   # Certificates with this flag set can be used to sign data as above but the certificate public key may be used to provide 
   # non-repudiation services preventing the signing entity from falsely denying some action.
- 
+
 #--- keyEncipherment ---#
   # Certificates with this flag set may be used by the subject to encrypt a symmetric key which is then transferred to the 
   # target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities. 
 
 #--- dataEncipherment ---#
   # Certificates with this flag set can be used by the subject to encrypt and decrypt actual application data.
- 
+
 #--- keyAgreement ---#
   # Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish 
   # a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
-  
- 
+
+
 #--------------------------------------------------------------------
 #####################################################################
         ##----- Extended Key Usage -----##
