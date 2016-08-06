@@ -1,0 +1,47 @@
+Windows Registry Editor Version 5.00
+
+; explorer shell:::{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}
+
+[HKEY_CURRENT_USER\Software\Classes\Wow6432Node\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}]
+@="AW"
+"System.IsPinnedToNamespaceTree"=dword:00000001
+"SortOrderIndex"=dword:00000042
+
+[HKEY_CURRENT_USER\Software\Classes\Wow6432Node\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\ShellFolder]
+"FolderValueFlags"=dword:00000028
+"Attributes"=dword:f080004d
+
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}]
+@="AW"
+"System.IsPinnedToNamespaceTree"=dword:00000001
+"SortOrderIndex"=dword:00000042
+
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\ShellFolder]
+"FolderValueFlags"=dword:00000028
+"Attributes"=dword:f080004d
+
+[HKEY_CURRENT_USER\Software\Classes\Wow6432Node\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\DefaultIcon]
+@="C:\\ProgramData\\Alienware\\Windows 10\\Favorites.ico,0"
+
+[HKEY_CURRENT_USER\Software\Classes\Wow6432Node\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\Instance]
+"CLSID"="{0E5AAE11-A475-4c5b-AB00-C66DE400274E}"
+
+[HKEY_CURRENT_USER\Software\Classes\Wow6432Node\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\Instance\InitPropertyBag]
+"Attributes"=dword:00000011
+"TargetFolderPath"="explorer shell:::{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}]
+@="AW"
+
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\DefaultIcon]
+@="C:\\ProgramData\\Alienware\\Windows 10\\Favorites.ico,0"
+
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\Instance]
+"CLSID"="{0E5AAE11-A475-4c5b-AB00-C66DE400274E}"
+
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}\Instance\InitPropertyBag]
+"Attributes"=dword:00000011
+"TargetFolderPath"="explorer shell:::{d34a6ca6-62c2-4c34-8a7c-14709c1ad938}"
