@@ -447,7 +447,7 @@ subjectAltName              = @alt_vpn_server
     # This file maintains an index of all certificates issued and is covered under the Index Section below
 
   # 4. Create "rand" file, leave blank (no extension, just "rand")
-    # File is utilized by for random characters & is querried by openssl curing certificate/key creation.
+    # File is utilized by for random characters & is querried by openssl during certificate/key creation.
  
   # ENCRYPT_KEY [Establish Certificate Options] is currently commented out, however, it's recommended to set it
   # to yes for any use other than a webserver/vpn server, etc.
