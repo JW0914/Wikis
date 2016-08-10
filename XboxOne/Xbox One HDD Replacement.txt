@@ -1,0 +1,216 @@
+
+            ##::[[--- Xbox One Internal HDD Replacement Wiki ---]]::##
+
+
+###########################################
+    #--- Xbox One Partition Layout ---#
+###########################################
+
+   HDD has a GPT partition table & contains 5 partitions
+    • Items without sizes have no sizes listed as they will depend on the system
+
+GUIDs
+  #--- Disk ---#
+     A2344BDB-D6DE-4766-9EB5-4109A12228E5
+  #--- Partitions ---#
+     #1    B3727DA5-A3AC-4B3D-9FD6-2EA54441011B    'Temp Content'
+     #2    869BB5E0-3356-4BE6-85F7-29323A675CC7    'User Content'
+     #3    C90D7A47-CCB9-4CBA-8C66-0459F6B85724    'System Support'
+     #4    9A056AD7-32ED-4141-AEB1-AFB9BD5565DC    'System Update'
+     #5    24B2197C-9D01-45F9-A8E1-DBBCFA161EB2    'System Update 2'
+
+
+###############################
+    #--- Normal Layout ---#
+###############################
+
+   Partition 1 (Temp Content) 41GB
+    • $sosrst.xvd (50,596KB)
+    • appswapfile.xvd (2,109,584KB)
+    • ConnectedStorage-retail (9,548,892KB)
+    • GDVRIndex.xvd (103,628KB)
+    • ScreenShots.xvd (1,061,020KB)
+    • temp00 (2,097,164KB)
+    • temp01 (2,097,164KB)
+    • temp02 (2,097,164KB)
+
+   Partition 2 (User Content):
+    • PLS (folder)
+    • SharedStorage (folder)
+
+   Partition 3 (System Support) 40GB:
+    • Controllers (folder)
+    • cache0.cfg
+    • cms.xvd
+    • DataCollectionUploader_0
+    • LastConsole
+    • user.xvd
+    • WER.xvd
+
+   Partition 4 (System Update) 12GB:
+    • A (folder)
+      o SettingsTemplate.xvd (37,144KB)
+      o sosinit.xvd (11,964KB)
+      o sostmpl.xvd (63,516KB)
+      o systemaux.xvd (494,876KB)
+      o SystemTools.xvd (466,44KB)
+    • B (folder)
+      o host.xvd (49,364KB)
+      o SettingsTemplate.xvd (120,784KB)
+      o sosinit.xvd (11,964KB)
+      o sostmpl.xvd (63,516KB)
+      o system.xvd (1,667,660KB)
+      o systemaux.xvd (820,596KB)
+      o systemmisc.xvd (748,192KB)
+      o systemtools.xvd (38,484KB)
+    • updater.xvd (63,644KB)
+
+   Partition 5 (System Update 2) 7GB:
+    • no data, empty        
+
+
+###########################################################################
+    #--- Rebuilding OS using OSUDT Downloads (from Xbox Support site) ---#
+###########################################################################
+
+ If your original HDD still boots, only utilize Windows WIM Commands below, then follow the 4 steps below
+
+  • After creating WIMs of partitions 1, 3, & 4 on Windows, disconnect HDD, and reconnect to *nix OS:
+     1. Run the xboxonehdd.py script utilizing name of replacement HDD name (sdb, sdc, etc.): python xboxonehdd.py sdb
+     2. Run the newly created script mkxboxfs.py (not mkxboxfs-500gb.py):  python mkxboxfs.py  (unmount all partitions afterwards)
+     3. Reconnect HDD to Windows, apply the respective WIMs to their respective partitions; Once done, reconnect to *nix OS
+     4. Run the xboxonehdd.py script again, ensure all partitions are unmounted, & connect HDD to Xbox One
+
+
+###############################
+    ##--- Prerequisites ---##
+###############################
+
+   Download OSUDT1 & OSUDT2
+    • http://support.xbox.com/en-US/xbox-one/console/offline-system-update-diagnostic-tool
+   Download ptutil.py, mkxboxfs-500gb.py, & xboxonehdd.py from Scripts folder
+    • https://github.com/JW0914/Wikis/tree/master/XboxOne/Scripts
+   PC/VM running Linux, such as Ubuntu or PartedMagic, both of which can be run from a liveCD
+
+
+#################################
+    #--- Recommendations ---#
+#################################
+
+   I strongly encourage making a WIM backup of Partitions 1, 3, & 4 via Windows once all of your user content is synced (this will prevent having to go through this again should you replace/upgrade a drive).
+    • I recommend after, as I’m not sure what, if anything, is added to partitions 1, 3, & 4 during the sync
+
+
+###############################
+    #---  WIM Commands ---#
+###############################
+
+   Z:\ is the image save location
+   D:\, E:\, & F:\ are the respective drive letters for Xbox One partitions 1, 3, & 4
+
+   Temp Content (D:\)
+    • DISM /Capture-Image /ImageFile:Z:\TempContent.wim /CaptureDir:D:\ /Name:"Xbox One Partition 1" /Description:"Temp Content" /Compress:max /CheckIntegrity /Verify
+
+   System Support (E:\)
+    • DISM /Capture-Image /ImageFile:Z:\SystemSupport.wim /CaptureDir:E:\ /Name:"Xbox One Partition 3" /Description:"System Support" /Compress:max /CheckIntegrity /Verify
+
+   System Update (F:\)
+    • DISM /Capture-Image /ImageFile:Z:\SystemUpdate.wim /CaptureDir:F:\ /Name:"Xbox One Partition 4" /Description:"System Update" /Compress:max /CheckIntegrity /Verify
+
+   Apply WIM
+    • DISM /Apply-Image /ImageFile:Z:\TempContent.wim /Index:1 /ApplyDir:D:\ /CheckIntegrity /Verify 
+
+  
+#######################
+    #--- Steps ---#
+#######################
+
+  1.  Connect replacement HDD to PC & note what its device name is (sdb, sdc, etc.); then run the xboxonehdd.py script:  python xboxonehdd.py sdb	(where sdb is device name)
+        a.  If replacement drive is larger than original HDD, edit the mkxboxfs-500gb.py script so DEV=/dev/sdb equals your replacement HDD device’s name, then run it: python mkxboxfs-500gb.py  
+        
+  2.  Copy the following to Partition 4
+         Folder A should contain all OSUDT1 files, except system.xvd & updater.xvd
+          • host.xvd
+          • SettingsTemplate.xvd
+          • sosinit.xvd
+          • sostmpl.xvd
+          • systemaux.xvd
+          • SystemTools.xvd
+         Folder B should contain all OSUDT1 files, except updater.xvd
+          • host.xvd
+          • SettingsTemplate.xvd
+          • sosinit.xvd
+          • sostmpl.xvd
+          • system.vxd
+          • systemaux.xvd
+          • SystemTools.xvd
+         updater.xvd (root of partition)
+        
+  3.  Unmount HDD mount points, run the xboxonehdd.py script again, & connect HDD to Xbox One
+  
+  4.  Xbox will boot, begin to update, and fail about 25% of the way through
+  
+  5.  Shut down the Xbox One cleanly via a single touch (do not hold the power button)
+        • Failure to do this prevents one from doing what's next
+        
+  6.  Replace OSUDT1 files in Folder B with files from OSUDT 2 (copy and paste)
+        • Folder B is the actual update folder, with Folder A containing files from the previous update.
+        
+  7.  Reconnect drive to the Xbox One and boot up... It should continue the update and finish successfully.
+  
+  8.  Once you are at the Xbox Home Screen, shut down the Xbox completely via the menu (must be fully shut down, not put into standby)
+  
+  9.  Copy all files from each partition into 4 separate folders (1 for each partition) on a separate HDD OR utilize Windows WIM Commands above to capture WIMs of partitions 1, 3, & 4
+  10. Run mkxboxfs.py script (not mkxboxfs-500gb.py): python mkxboxfs.py
+  
+  11. Copy all files back to their respective partitions OR apply the WIMs to their respective partitions
+  
+  12. Once reconnected to the Xbox One, it should boot and display the correct size for free space.
+        • If you receive an error after reinstalling the HDD, you need to rerun the xboxonehdd.py script
+
+
+###########################
+    #--- WIM Sizes ---#
+###########################
+
+   TempContent.wim
+    • 416,895 KB
+   SystemSupport.wim
+   •  1,125,075 KB
+   SystemUpdate.wim
+    • 4,175,222 KB
+
+
+##################################
+    #--- WIM Verification ---#
+##################################
+
+   Verify WIM File
+    • DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim"
+
+   Verify WIM File Index(es)
+    • DISM /Get-WimInfo /WimFile:"Z:\TempContent.wim" /Index:1
+
+
+#################################
+    #--- WIM Information ---#
+#################################
+
+   While one could make a WIM backup of the User Content partition, I don't recommend it if you have broadband internet, as xvd storage is efficient, and you'll have a resulting WIM image almost the exact same size as the used space on the partition. 
+    • Everything contained on the User Content partition is downloaded once your Xbox Live account is synced.
+
+
+#################################
+    #--- External Drives ---#
+#################################
+
+   If Windows doesn't recognize external HDD/USB drives, flip the 1st sector bits from 99CC to 55AA with HxD
+    • HxD: https://mh-nexus.de/en/hxd
+    • withinrafael.com/taking-a-peek-at-xbox-one-formatted-disks-in-windows
+
+
+   You can also flip the bits using a *nix OS (where /dev/sdb is the disk)
+    • echo -en '\x55\xAA' | dd conv=notrunc of=/dev/sdb bs=1 seek=510 2>/dev/null 1>&2
+
+   Flipping the bits back to 99CC
+    • echo -en '\x99\xCC' | dd conv=notrunc of=/dev/sdb bs=1 seek=510 2>/dev/null 1>&2

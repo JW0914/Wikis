@@ -131,17 +131,24 @@ emailAddress                    = optional
 [ req ]
 default_bits                    = 3072
 default_keyfile                 = private.key.pem
-# encrypt_key                   = yes
 default_md                      = sha512
 string_mask                     = utf8only
 utf8                            = yes
-
 distinguished_name              = req_distinguished_name
 attributes                      = req_attributes 
 req_extensions                  = v3_req
 x509_extensions                 = v3_ca
 copy_extensions                 = copy
 string_mask                     = utf8only
+
+# Comment out for server certs #
+#encrypt_key                     = yes
+
+[ req_attributes ]
+ challengePassword              =
+ challengePassword_min          = 4
+ challengePassword_max          = 40
+
 
 #####################################################################
 
@@ -167,86 +174,151 @@ organizationalUnitName_default  = LAN
 
 
 #####################################################################
-    ##----- Establish Subject Alternative Names -----##
-#--------------------------------------------------------------------
+    ##----- Establish Additional Certificate Profiles -----##
+#####################################################################
 
     # All server certs should have their loopback IP specified in their SAN profile
       # This prevents certificate errors if connecting to the server via an SSH tunnel
 
+    # Certain OS CA certs must have the loopback IP specified in SAN profile (i.e. Sophos UTM's CA)
 
-[ alt_ca ]
-IP.1                            = 127.0.0.1
 
-[ alt_asrock ]
-IP.1                            = 192.168.2.4
-IP.2                            = 192.168.2.5
-IP.3                            = 127.0.0.1
-DNS.1                           = C2750D4I-IPMI
-DNS.2                           = C2750D4I-eth0
-DNS.3                           = C2750D4I-eth1
+#--------------------------------------------------------------------
+        ##----- Certificate Authorities -----##
+#--------------------------------------------------------------------
 
-[ alt_freenas ]
-IP.1                            = 192.168.2.13
-IP.2                            = 192.168.2.130
-IP.3                            = 127.0.0.1
-DNS.1                           = Free.NAS
-DNS.2                           = FreeNAS.igb0
-DNS.3                           = FreeNAS.igb1
+# Main #
+[ alt_main_ca ]
+DNS.1                   = Router.1
+IP.1                    = 127.0.0.1
 
-[ alt_openwrt ]
-IP.1                            = 192.168.2.2
-IP.2                            = 127.0.0.1
-DNS.1                           = OpenWRT.WRT1900
+# Router 2 #
+[ alt_router2_ica ]
+DNS.1                   = Router.2
+IP.1                    = 127.0.0.1
 
-[ alt_owncloud ]
-IP.1                            = 192.168.2.150
-IP.2                            = 127.0.0.1
-DNS.1                           = OwnCloud.FreeNAS
+# Router 3 #
+[ alt_router3_ica ]
+DNS.1                   = Router.3
+IP.1                    = 127.0.0.1
 
-[ alt_sophos ]
-IP.1                            = 192.168.2.1
-IP.2                            = 127.0.0.1
-DNS.1                           = SophosUTM
-DNS.2                           = your.ddns.com
+# Router 4 #
+[ alt_router4_ica ]
+DNS.1                   = Router.4
+IP.1                    = 127.0.0.1
 
-[alt_supermicro ]
-IP.1                            = 192.168.2.3
-IP.2                            = 127.0.0.1
-DNS.1                           = SuperMicro.IPMI
-DNS.2                           = SuperMicro-IPMI
 
-[ alt_vpn_client ]
-email.1                         = user@email.com
-DNS.1                           = VPNserver-Client1-Device-Hostname1
-DNS.2                           = VPNserver-Client1-Device-Hostname2
+#--------------------------------------------------------------------
+    ##----- Certificate Authority Clients -----##
+#--------------------------------------------------------------------
 
-[ alt_vpn_server ]
-IP.1                            = 10.0.0.1
-DNS.1                           = your.ddns.com
+# Sophos UTM #
+
+  # Servers #
+    [ alt_sophos ]
+    IP.1                = 192.168.2.1
+    IP.2                = 127.0.0.1
+    DNS.1               = SophosUTM
+    DNS.2               = your.ddns.com
+
+    [ alt_freenas ]
+    IP.1                = 192.168.2.13
+    IP.2                = 192.168.2.130
+    IP.3                = 127.0.0.1
+    DNS.1               = Free.NAS
+    DNS.2               = FreeNAS.igb0
+    DNS.3               = FreeNAS.igb1
+
+    [ alt_owncloud ]
+    IP.1                = 192.168.2.150
+    IP.2                = 127.0.0.1
+    DNS.1               = OwnCloud.FreeNAS
+
+
+  # Clients #
+    [ alt_vpn1_user1 ]
+    email.1             = user1@email.com
+    DNS.1               = VPN1-Client1-Device-Hostname1
+    DNS.2               = VPN1-Client1-Device-Hostname2
+
+
+#--------------------------------------------------------------------
+    ##----- Intermediate Certificate Authority Clients -----##
+#--------------------------------------------------------------------
+
+# Router 2 #
+
+  # Servers #
+    [ alt_openwrt ]
+    IP.1                = 192.168.2.2
+    IP.2                = 127.0.0.1
+    DNS.1               = LAN.OpenWrt
+    
+    [ alt_asrock ]
+    IP.1                = 192.168.2.4
+    IP.2                = 192.168.2.5
+    IP.3                = 127.0.0.1
+    DNS.1               = C2750D4I-IPMI
+    DNS.2               = C2750D4I-eth0
+    DNS.3               = C2750D4I-eth1
+    
+    [ alt_vpn_server ]
+    IP.1                = 10.0.0.1
+    DNS.1               = your.ddns.com
+
+
+  # Clients #
+    [alt_vpn2_user1 ]
+    DNS.1               = VPNserver-Client1-Device-Hostname
+    email.1             = user1@email.com
+
+    [alt_vpn2_user2 ]
+    DNS.1               = VPNserver2-Client2-Device-Hostname1
+    DNS.2               = VPNserver2-Client2-Device-Hostname2
+    email.1             = user2@email.com
+
+
+# Router 3 #
+
+  # Servers #
+    [alt_supermicro ]
+    IP.1                = 192.168.2.3
+    IP.2                = 127.0.0.1
+    DNS.1               = SuperMicro.IPMI
+    DNS.2               = SuperMicro-IPMI
+
+
+# Router 4 #
+
+  # Servers #
+    [alt_router4 ]
+    IP.1                = 192.168.5.1
+    IP.2                = 127.0.0.1
+    DNS.1               = Router.4
 
 
 #####################################################################
     ##----- Establish Generalized V3 Certificate Profiles -----##
 #--------------------------------------------------------------------
 
-[ v3_req ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
+[ crl_ext ]
+issuerAltName               = issuer:copy
+authorityKeyIdentifier      = keyid:always, issuer:always
 
 [ usr_cert_dn ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage                = critical, clientAuth, emailProtection
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage            = critical, clientAuth, emailProtection
 
 [ usr_cert_not_dn ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-subjectAltName                  = email:copy
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage                = critical, clientAuth, emailProtection
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+subjectAltName              = email:copy
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #####################################################################
@@ -258,22 +330,22 @@ extendedKeyUsage                = critical, clientAuth, emailProtection
 
 
 [ v3_ca ]
-basicConstraints                = critical, CA:TRUE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-subjectAltName                  = @alt_ca
-keyUsage                        = critical, cRLSign, digitalSignature, keyCertSign
+basicConstraints            = critical, CA:TRUE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+subjectAltName              = @alt_ca
+keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
 [ v3_intermediate_ca ]
-basicConstraints                = critical, CA:TRUE, pathlen:0
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-subjectAltName                  = @alt_ca
-keyUsage                        = critical, cRLSign, digitalSignature, keyCertSign
+basicConstraints            = critical, CA:TRUE, pathlen:0
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+subjectAltName              = @alt_router2_ca
+keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
-[ crl_ext ]
-issuerAltName                   = issuer:copy
-authorityKeyIdentifier          = keyid:always, issuer:always
+[ v3_req ]
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
 
 
 #####################################################################
@@ -291,68 +363,68 @@ authorityKeyIdentifier          = keyid:always, issuer:always
 
 
 [ v3_asrock ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
-extendedKeyUsage                = critical, serverAuth
-subjectAltName                  = @alt_asrockc2750d4i
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage            = critical, serverAuth
+subjectAltName              = @alt_asrockc2750d4i
 
 [ v3_freenas ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
-extendedKeyUsage                = critical, serverAuth
-subjectAltName                  = @alt_freenas
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage            = critical, serverAuth
+subjectAltName              = @alt_freenas
 
 [ v3_openwrt ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
-extendedKeyUsage                = critical, serverAuth
-subjectAltName                  = @alt_openwrt
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage            = critical, serverAuth
+subjectAltName              = @alt_openwrt
 
 [ v3_owncloud ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
-extendedKeyUsage                = critical, serverAuth
-subjectAltName                  = @alt_owncloud
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage            = critical, serverAuth
+subjectAltName              = @alt_owncloud
 
 [ v3_sophos ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
-extendedKeyUsage                = critical, serverAuth
-subjectAltName                  = @alt_sophos
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage            = critical, serverAuth
+subjectAltName              = @alt_sophos
 
 [ v3_supermicro ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
-extendedKeyUsage                = critical, serverAuth
-subjectAltName                  = @alt_supermicro
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage            = critical, serverAuth
+subjectAltName              = @alt_supermicro
 
 [ v3_vpn_client  ]
-basicConstraints                = critical,CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage                = critical, clientAuth
-subjectAltName                  = @alt_vpn_client
+basicConstraints            = critical,CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage            = critical, clientAuth
+subjectAltName              = @alt_vpn_client
 
 [ v3_vpn_server ]
-basicConstraints                = critical, CA:FALSE
-subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always, issuer:always
-keyUsage                        = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
-extendedKeyUsage                = critical, serverAuth
-subjectAltName                  = @alt_vpn_server
+basicConstraints            = critical, CA:FALSE
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+extendedKeyUsage            = critical, serverAuth
+subjectAltName              = @alt_vpn_server
 
 
 #####################################################################
