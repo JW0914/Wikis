@@ -5,7 +5,7 @@
 - Mainly for utilization within WinPE/WinRE
 
 ######WinRE Create######
-- Provided one has completed the prequisites, this will auto customize a WinRE image and replace the current image with the custom one
+- Provided one has completed the prequisites, this will auto customize a WinRE image and replace the current image with the custom one and/or create a bootable ISO, USB, or VHD
   
   - __Prerequisites__
     - Recovery partition mounted as drive **X:\**
