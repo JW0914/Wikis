@@ -15,7 +15,7 @@
 ######Security######
 - ModSecurity Handbook [Free Edition] by Fiesty Duck
  
-######WRT1900ac######
+######WRT1X00AC/S Series######
 - Wikis from OpenWRT regarding the Linksys WRT1X00AC/S Series routers
 
 ######XboxOne######
