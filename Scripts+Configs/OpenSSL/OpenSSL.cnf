@@ -124,7 +124,7 @@ emailAddress                    = optional
       # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
         # x64 machines can almost always process sha512 faster than sha256
 
-    # Encrypt key is not currently commmented out; however, it's recommended to comment it out for server
+    # Encrypt key is not currently commmented out; however, it's recommended to do so for server keys,
     # as one does not want a server's key to have an encrypted password
 
 
