@@ -8,15 +8,12 @@
 ######OpenSSL.cnf######
 - I created this config for maximum security when creating **CA**s [_Certificate Authorities_], **ICA**s [_Intermediate Certificate Authorities_], and **Certificates**.
   - _Information and applicable commands can be found beginning at Line 507_
-
 - By default, the CA profile does not have a pathleen set, allowing it to sign an infinite number of CAs and ICAs; however, the ICA profile has a pathleen of 0, preventing it from signing any CA or ICA. 
   - CA & ICA `keyUsage` **should not** be altered, as the values set are the only values a CA or ICA should have.
-
 - CAs & ICAs should **_always_** have a hash equal to, or larger than, the hash of the certificates they sign.
   - CA & ICA keys **should not** have _less_ than 4096bit encryption and should be _encrypted_ with a password
     - Encryption password should be complex, contain at least 20 characters, and have a minimum of _two_ lowercase letters, _two_ uppercase letters, _two numbers_, & _two_ symbols.
   - When not in use signing certificates, the signing key should reside within an encrypted container, secured by at least a 4096bit PGP signing cert (_see [GnuPG](https://www.gnupg.org/)_) that is also secured by the same password complexity as above
-
 - The VPN Server V3 profile `v3_vpn_server` should have all five `keyUsage` values listed, as they're required for the proper functioning of a VPN server to authenticate itself as a server with the `extendedKeyUsage` of `serverAuth` and properly encrypt data.
   - `nscertype` flags **should not** be utilized within certs or VPN configs as they're obsolete & were never officially recognized OIDs for _anything other than the NetScape browser_ 
 
