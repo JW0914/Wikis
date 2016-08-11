@@ -124,8 +124,8 @@ emailAddress                    = optional
       # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
         # x64 machines can almost always process sha512 faster than sha256
 
-    # Encrypt key is currently commmented out, as one does not want a server's key to have an encrypted password
-      # Uncomment if you wish to have a client cert's key encrypted (such as a VPN client cert)
+    # Encrypt key is not currently commmented out; however, it's recommended to comment it out for server
+    # as one does not want a server's key to have an encrypted password
 
 
 [ req ]
