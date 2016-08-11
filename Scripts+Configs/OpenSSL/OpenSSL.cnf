@@ -188,24 +188,24 @@ organizationalUnitName_default  = LAN
 #--------------------------------------------------------------------
 
 # Main #
-[ alt_main_ca ]
-DNS.1                   = Router.1
-IP.1                    = 127.0.0.1
+  [ alt_main_ca ]
+  DNS.1                 = Router.1
+  IP.1                  = 127.0.0.1
 
 # Router 2 #
-[ alt_router2_ica ]
-DNS.1                   = Router.2
-IP.1                    = 127.0.0.1
+  [ alt_router2_ica ]
+  DNS.1                 = Router.2
+  IP.1                  = 127.0.0.1
 
 # Router 3 #
-[ alt_router3_ica ]
-DNS.1                   = Router.3
-IP.1                    = 127.0.0.1
+  [ alt_router3_ica ]
+  DNS.1                 = Router.3
+  IP.1                  = 127.0.0.1
 
 # Router 4 #
-[ alt_router4_ica ]
-DNS.1                   = Router.4
-IP.1                    = 127.0.0.1
+  [ alt_router4_ica ]
+  DNS.1                 = Router.4
+  IP.1                  = 127.0.0.1
 
 
 #--------------------------------------------------------------------
@@ -272,11 +272,11 @@ IP.1                    = 127.0.0.1
 
 
   # Clients #
-    [alt_vpn2_user1 ]
+    [ alt_vpn2_user1 ]
     DNS.1               = VPNserver-Client1-Device-Hostname
     email.1             = user1@email.com
 
-    [alt_vpn2_user2 ]
+    [ alt_vpn2_user2 ]
     DNS.1               = VPNserver2-Client2-Device-Hostname1
     DNS.2               = VPNserver2-Client2-Device-Hostname2
     email.1             = user2@email.com
@@ -285,7 +285,7 @@ IP.1                    = 127.0.0.1
 # Router 3 #
 
   # Servers #
-    [alt_supermicro ]
+    [ alt_supermicro ]
     IP.1                = 192.168.2.3
     IP.2                = 127.0.0.1
     DNS.1               = SuperMicro.IPMI
@@ -295,7 +295,7 @@ IP.1                    = 127.0.0.1
 # Router 4 #
 
   # Servers #
-    [alt_router4 ]
+    [ alt_router4 ]
     IP.1                = 192.168.5.1
     IP.2                = 127.0.0.1
     DNS.1               = Router.4
