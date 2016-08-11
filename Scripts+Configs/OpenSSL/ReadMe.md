@@ -13,6 +13,9 @@
   - nscertype flags **should not** be utilized within certs or VPN configs as they're obsolete and were never officially recognized OIDs for anything other than the NetScape browser 
 
 
+######PEM Association.reg######
+  - Importing this into the registry will allow Windows to display PEM certificates in GUI form.
+
 ***
-######Information and applicable commands can be found beginning at _Line 321_######
+######Information and applicable commands can be found beginning at _Line 430_######
 ***
