@@ -90,7 +90,7 @@ set Robo=robocopy /E /ZB /ETA /V /ETA /MT:30 %Log%
 set WIM-Ex=DISM /Export-Image /SourceImageFile:%RE% /SourceIndex:1
 set WIM-M=DISM /Mount-Image /ImageFile:%RE% /Index:1 /MountDir:%MD%
 set WIM-U=DISM /Unmount-WIM /MountDir:%MD%
-set WindowsRE=X:\Recovery\WindowsRE
+set WinRE=X:\Recovery\WindowsRE
 
 
 ::###################################################################
