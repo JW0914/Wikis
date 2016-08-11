@@ -1,7 +1,12 @@
 ###Information Directory###
 ---
+######Notepad++ OpenSSL Language Profile######
+- Profile I created for config files, making it far more convenient to view config files in Notepad++
+  - Import via: **Language -> Define Your Language -> Import**
+
+
 ######OpenSSL.cnf######
-  - I created this config for maximum security when creating **CA**s [_Certificate Authorities_], **ICA**s [_Intermediate Certificate Authorities_], and **Certificates**.
+- I created this config for maximum security when creating **CA**s [_Certificate Authorities_], **ICA**s [_Intermediate Certificate Authorities_], and **Certificates**.
 
 - By default, the CA profile does not have a pathleen set, allowing it to sign an infinite number of CAs and ICAs; however, the ICA profile has a pathleen of 0, preventing it from signing any CA or ICA. 
   - CA & ICA `keyUsage` **should not** be altered, as the values set are the only values a CA or ICA should have.
