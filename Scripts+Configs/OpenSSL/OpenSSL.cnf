@@ -463,7 +463,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
   # Clients #
-[ v3_vpn2_user1 ]
+    [ v3_vpn2_user1 ]
     basicConstraints            = critical,CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
@@ -471,7 +471,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     extendedKeyUsage            = critical, clientAuth
     subjectAltName              = @alt_vpn2_user1
 
-[ v3_vpn2_user2 ]
+    [ v3_vpn2_user2 ]
     basicConstraints            = critical,CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
