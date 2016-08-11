@@ -19,6 +19,7 @@
     - __32:__ `"ProxyTelnetCommand"="plink -v -load SSH.OpenWRT.Remote -nc %host:%port"`
       - _profile name (SSH.OpenWRT.Remote) must match router profile name and can't contain spaces_
     - __58:__ `"PublicKeyFile"="C:\\Path\\To\\PuTTY\\SSHkeys\\FreeNAS.SSH.ppk"`
+
 - __OpenWRT Remote__ is the remote SSH profile for a _WAN facing router_
   - Edit lines:
     - __5:__ `"HostName"="your.ddns.com"`
