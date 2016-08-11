@@ -139,14 +139,14 @@ attributes                      = req_attributes
 req_extensions                  = v3_req
 x509_extensions                 = v3_ca
 copy_extensions                 = copy
-string_mask                     = utf8only
 
 # Comment out for server certs #
 encrypt_key                     = yes
 
+
 [ req_attributes ]
  challengePassword              =
- challengePassword_min          = 4
+ challengePassword_min          = 12
  challengePassword_max          = 40
 
 
@@ -277,8 +277,8 @@ organizationalUnitName_default  = LAN
     email.1             = user1@email.com
 
     [ alt_vpn2_user2 ]
-    DNS.1               = VPNserver2-Client2-Device-Hostname1
-    DNS.2               = VPNserver2-Client2-Device-Hostname2
+    DNS.1               = VPN2-Client2-Device-Hostname1
+    DNS.2               = VPN2-Client2-Device-Hostname2
     email.1             = user2@email.com
 
 
