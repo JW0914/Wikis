@@ -530,11 +530,13 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
        # File is utilized by for random characters & is querried by openssl during certificate/key creation.
 
-  # ENCRYPT_KEY [Establish Certificate Options] is currently commented out, however, it's recommended to set it
-  # to yes for any use other than a webserver/vpn server, etc.
+  # ENCRYPT_KEY [Establish Certificate Options] is not currently commented out; however, it's recommended to
+  # comment it out for server keys.
+    # Encrypting a server key will result in the server requiring the passkey every time it's started/restarted;
+    # in other words, a massive inconvenience, as well as possibly destrimental. 
 
-  # Provided you utilize the SubjectAltName section, the Common Name is not required to be the IP/DNS, and
-  # can be whatever name you wish it to be
+  # Provided you utilize the SubjectAltName section [highly recommended], the Common Name is not required to 
+  # be the IP/DNS, and can be whatever name you wish it to be
 
 
 #####################################################################
