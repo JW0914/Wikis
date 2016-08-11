@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\.pem]
+@="CERFile"
+"Content Type"="application/x-x509-ca-cert"
