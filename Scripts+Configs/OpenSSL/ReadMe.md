@@ -14,7 +14,7 @@
   - CA & ICA keys **should not** have _less_ than 4096bit encryption and should be _encrypted_ with a password
     - Encryption password should be complex, contain at least 20 characters, and have a minimum of _two_ lowercase letters, _two_ uppercase letters, _two numbers_, & _two_ symbols.
   - When not in use signing certificates, the signing key should reside within an encrypted container, secured by at least a 4096bit PGP signing cert (_see [GnuPG](https://www.gnupg.org/)_) that is also secured by the same password complexity as above
-- The VPN Server V3 profile `v3_vpn_server` should have all five `keyUsage` values listed, as they're required for the proper functioning of a VPN server to authenticate itself as a server with the `extendedKeyUsage` of `serverAuth` and properly encrypt data.
+- All VPN Server V3 profiles (i.e. `v3_vpn_server1` & `v3_vpn_server2`) should always have all five `keyUsage` values listed, as they're required for the VPN server to authenticate itself as a server with the `extendedKeyUsage` of `serverAuth`, as well as properly encrypt data.
   - `nscertype` flags **should not** be utilized within certs or VPN configs as they're obsolete & were never officially recognized OIDs for _anything other than the NetScape browser_ 
 
 
