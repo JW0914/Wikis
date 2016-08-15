@@ -174,7 +174,7 @@ organizationalUnitName_default  = LAN
 
 
 #####################################################################
-    ##----- Establish Additional Certificate Profiles -----##
+        ##----- Establish Additional Certificate Profiles -----##
 #####################################################################
 
     # All server certs should have their loopback IP specified in their SAN profile
@@ -209,7 +209,7 @@ organizationalUnitName_default  = LAN
 
 
 #--------------------------------------------------------------------
-    ##----- Certificate Authority Clients -----##
+        ##----- Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
 # Sophos UTM #
@@ -247,7 +247,7 @@ organizationalUnitName_default  = LAN
 
 
 #--------------------------------------------------------------------
-    ##----- Intermediate Certificate Authority Clients -----##
+        ##----- Intermediate Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
 # Router 2 #
@@ -302,7 +302,7 @@ organizationalUnitName_default  = LAN
 
 
 #####################################################################
-    ##----- Establish Certificate Authority V3 Profiles -----##
+        ##----- Establish Certificate Authority V3 Profiles -----##
 #--------------------------------------------------------------------
 
     # These V3 CA profiles must not be modified to contain any more, or any less, KUs
@@ -343,7 +343,7 @@ authorityKeyIdentifier      = keyid:always, issuer:always
 
 
 #####################################################################
-    ##----- Establish Generalized V3 Certificate Profiles -----##
+        ##----- Establish Generalized V3 Certificate Profiles -----##
 #--------------------------------------------------------------------
 
 [ v3_req ]
@@ -367,7 +367,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #####################################################################
-    ##----- Establish Client Certificate V3 Profiles -----##
+        ##----- Establish Client Certificate V3 Profiles -----##
 #--------------------------------------------------------------------
 
     # These V3 profiles should not be modified to contain less than what they are currently configured with.
@@ -381,7 +381,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-    ##----- Certificate Authority Clients -----##
+        ##----- Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
 # Sophos UTM #
@@ -431,7 +431,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-    ##----- Intermediate Certificate Authority Clients -----##
+        ##----- Intermediate Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
 # Router 2 #
@@ -556,7 +556,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-    ## ----- Certificate Authority ----- ##
+        ## ----- Certificate Authority ----- ##
 #--------------------------------------------------------------------
 
 #--- Generate CA ---#
@@ -570,7 +570,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-  ## ----- Intermediate Certificate Authority ----- ##
+        ## ----- Intermediate Certificate Authority ----- ##
 #--------------------------------------------------------------------
 
 #--- Gernerate Intermediate CA ---#
@@ -600,11 +600,11 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
     # The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
     # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
-    # This allows for the certificate path of the client cert to show a hierarchy of CA -> Intermediate CA -> Client
+      # This allows for the certificate path of the client cert to show a hierarchy of CA -> Intermediate CA -> Client
 
 
 #--------------------------------------------------------------------
-  ## ----- Client Certificate ----- ##
+        ## ----- Client Certificate ----- ##
 #--------------------------------------------------------------------
 
 #--- Request ---#
@@ -621,7 +621,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-  ## ----- Verification of Certificates ----- ##
+        ## ----- Verification of Certificates ----- ##
 #--------------------------------------------------------------------
 
 #--- Verify Certificate Signing Request (CSR) ---#
@@ -638,11 +638,11 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-  ## ----- Intermediate CA Android Build Certificates ----- ##
+        ## ----- Intermediate CA Android Build Certificates ----- ##
 #--------------------------------------------------------------------
 
     # This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
-    # i.e. the following steps will need to be repeated for each of the six
+      # i.e. the following steps will need to be repeated for each of the six
 
 
 #--- Generate Individual Intermediate Build CA Request ---#
@@ -676,12 +676,12 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
     # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
     # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
-    # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
+      # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
 
 
 #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
     # For each of the six: *.x509.pem, *.pk8, Android-*-CA-Chain.pem, *.p12
-    # i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
+      # i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
 
 # --- One example of how to import into keystore prior to build ---#
   # Source: http://stackoverflow.com/questions/22212869/how-can-i-generate-an-android-keystore-from-a-key-pk8-and-certificate-pem
@@ -693,7 +693,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #####################################################################
 #-------------------------------------------------------------------- 
 #####################################################################
-      ##---- Index File -----##
+        ##---- Index File -----##
 #--------------------------------------------------------------------
 
   # If you wish to maintain the index file automatically, you'll need to use "openssl ca" to sign certs.
@@ -713,7 +713,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--------------------------------------------------------------------
 #####################################################################
-      ##----- Key Usage -----##
+        ##----- Key Usage -----##
 #--------------------------------------------------------------------
 
 #--- digitalSignature ---#
@@ -738,7 +738,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--------------------------------------------------------------------
 #####################################################################
-      ##----- Extended Key Usage -----##
+        ##----- Extended Key Usage -----##
 #--------------------------------------------------------------------
 
 #--- serverAuth ---#
@@ -748,7 +748,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--- clientAuth ---#
   # SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
-  # All VPN clients should be signed with this EKU present.
+    # All VPN clients MUST be signed with this EKU present.
 
 #--- codeSigning ---#
   # Code Signing... self explanatory
@@ -763,15 +763,15 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # OCSP Signing... self explanatory
 
 #--- ipsecIKE
-  # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below, however some research needs to be
-  # performed to determine if this is an EKU that should no longer be utilized.  I do know clientAuth can be utilized in a IPSec
-  # VPN client cert.
+  # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below; however, some research needs to be
+  # performed to determine if this EKU should also no longer be utilized.  
+    # I do know clientAuth can be utilized in a IPSec VPN client cert.
 
 #--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
-  # Should NOT be utilized! 
-  # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
-  # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
-  # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
+  # !!!SHOULD NOT BE UTILIZED!!! 
+    # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
+    # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
+    # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
 
 #--- msCodeInd ---#
   # Microsoft Individual Code Signing (authenticode)... self explanatory
@@ -788,7 +788,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--------------------------------------------------------------------
 #####################################################################
-      ##----- Key Exchange Algorithms  -----##
+        ##----- Key Exchange Algorithms  -----##
 #--------------------------------------------------------------------
 
 #--- RSA ---#
@@ -812,7 +812,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--------------------------------------------------------------------
 #####################################################################
-      ##----- Elliptic-Curve Key Exchange Algorithms -----##
+        ##----- Elliptic-Curve Key Exchange Algorithms -----##
 #--------------------------------------------------------------------
 
 #--- ECDH_ECDSA ---# 
@@ -827,7 +827,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
 
 #--- ECDHE_RSA ---# 
-  # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve Diffie-Hellman key.
+  # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve Diffie-Hellman
+  # key.
 
 
 #--------------------------------------------------------------------
