@@ -20,6 +20,7 @@
 #####################################################################
 
 DIR                             = .
+ICA                             = $DIR\ICA
 CNF                             = .\openssl.cnf
 
 
@@ -29,21 +30,20 @@ CNF                             = .\openssl.cnf
 
 [ default ]
 SOPHOS                          = "Sophos UTM CA"
-VPN                             = "WRT1900 VPN CA"
+VPN                             = "WRT1900 VPN ICA"
 CCA                             = "Sophos VPN CA Chain.pem"
 
 [ ca ]
 default_ca                      = CA_default
 
 [ intermediate_ca ]
-default_intermediate_ca         = Intermediate_CA_default
+default_intermediate_ca         = intermediate_CA_default
 
 
 #####################################################################
 
 [ CA_default ]
 certs                           = $DIR\CRT
-new_certs_dir                   = $DIR\CRT
 
 database                        = index
 RANDFILE                        = $DIR\rand
@@ -72,33 +72,32 @@ cert_opt                        = ca_default
 
 #####################################################################
 
-[ Intermediate_CA_default ]
-certs                           = $DIR\Intermediate\CRT
-new_certs_dir                   = $DIR\Intermediate\CRT
+[ intermediate_CA_default ]
+#certs                           = $DIR\ICA\CRT
 
-database                        = $DIR\Intermediate\index
-RANDFILE                        = $DIR\Intermediate\rand
-serial                          = $DIR\Intermediate\serial
+#database                        = $ICA\index
+#RANDFILE                        = $ICA\rand
+#serial                          = $ICA\serial
 
-crldir                          = $DIR\Intermediate\CRL
-crlnumber                       = crlnumber
-crl                             = $CRLDIR\crl.pem
-default_crl_days                = 3650 
+#crldir                          = $ICA\CRL
+#crlnumber                       = crlnumber
+#crl                             = $CRLDIR\crl.pem
+#default_crl_days                = 3650 
 
-certificate                     = "$DIR\Intermediate\$VPN.crt.pem"
-private_key                     = "$DIR\Intermediate\$VPN.key.pem"
+#certificate                     = "$ICA\$VPN.crt.pem"
+#private_key                     = "$ICA\$VPN.key.pem"
 
-default_days                    = 3650
-default_md                      = sha512
-preserve                        = no
+#default_days                    = 3650
+#default_md                      = sha512
+#preserve                        = no
 
-x509_extensions                 = usr_cert_dn
-copy_extensions                 = copy
-unique_subject                  = no
+#x509_extensions                 = usr_cert_dn
+#copy_extensions                 = copy
+#unique_subject                  = no
 
-policy                          = policy_match
-name_opt                        = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
-cert_opt                        = intermediate_ca_default
+#policy                          = policy_match
+#name_opt                        = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
+#cert_opt                        = intermediate_ca_default
 
 
 #####################################################################
@@ -374,6 +373,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
     # These V3 profiles should not be modified to contain less than what they are currently configured with.
       # I've specifically configured these with security in mind.
+      # For an ICA to be capable of signing additional CAs/ICAs, pathleen # must mirror number of CAs/ICAs it can sign
 
     # All servers capable of TLS should contain all keyUsages, except for dataEncipherment
       # VPN and file servers should have all 5 keyUsages set.
