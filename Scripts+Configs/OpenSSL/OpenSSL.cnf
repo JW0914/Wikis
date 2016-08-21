@@ -37,7 +37,7 @@ CCA                             = "Sophos VPN CA Chain.pem"
 default_ca                      = CA_default
 
 [ intermediate_ca ]
-default_intermediate_ca         = intermediate_CA_default
+default_ica                     = ICA_default
 
 
 #####################################################################
@@ -72,15 +72,15 @@ cert_opt                        = ca_default
 
 #####################################################################
 
-[ intermediate_CA_default ]
-#certs                           = $DIR\ICA\CRT
+[ ICA_default ]
+#certs                           = $ICA\CRT
 
 #database                        = $ICA\index
 #RANDFILE                        = $ICA\rand
 #serial                          = $ICA\serial
 
 #crldir                          = $ICA\CRL
-#crlnumber                       = crlnumber
+#crlnumber                       = $CRLDIR\crlnumber
 #crl                             = $CRLDIR\crl.pem
 #default_crl_days                = 3650 
 
