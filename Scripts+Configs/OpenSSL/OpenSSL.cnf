@@ -131,7 +131,7 @@ emailAddress                    = optional
         # x64 machines can almost always process sha512 faster than sha256
 
     # Encrypt key is not currently commmented out; however, as one does not want a server's key to have
-    # an encrypted password, when creating the CSR for the server, add -nodes to the CSR (1st) command
+    # an encrypted password, when creating the CSR for the server, add -nodes to the Request command
 
 
 [ req ]
@@ -145,7 +145,6 @@ attributes                      = req_attributes
 req_extensions                  = v3_req
 x509_extensions                 = v3_ca
 copy_extensions                 = copy
-
 encrypt_key                     = yes
 
 [ req_attributes ]
@@ -178,7 +177,7 @@ organizationalUnitName_default  = LAN
 
 
 #####################################################################
-        ##----- Establish Additional Certificate Profiles -----##
+        ##----- Establish SubjectAltName (SAN) Profiles -----##
 #####################################################################
 
     # All server certs should have their loopback IP specified in their SAN profile
@@ -186,6 +185,7 @@ organizationalUnitName_default  = LAN
 
     # Certain OS CA certs must have the loopback IP specified in SAN profile (i.e. Sophos UTM's CA)
 
+    # Provided one utilizes the SAN profile, Common Names can be whatever one wishes (i.e. not the DNS or IP)
 
 #--------------------------------------------------------------------
         ##----- Certificate Authorities -----##
