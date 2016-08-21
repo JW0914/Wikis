@@ -130,8 +130,8 @@ emailAddress                    = optional
       # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
         # x64 machines can almost always process sha512 faster than sha256
 
-    # Encrypt key is not currently commmented out; however, it's recommended to do so for server keys,
-    # as one does not want a server's key to have an encrypted password
+    # Encrypt key is not currently commmented out; however, as one does not want a server's key to have
+    # an encrypted password, when creating the CSR for the server, add -nodes to the CSR (1st) command
 
 
 [ req ]
@@ -146,7 +146,6 @@ req_extensions                  = v3_req
 x509_extensions                 = v3_ca
 copy_extensions                 = copy
 
-# Comment out for server certs #
 encrypt_key                     = yes
 
 [ req_attributes ]
@@ -608,11 +607,15 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ## ----- Client Certificate ----- ##
 #--------------------------------------------------------------------
 
+    # For Server certs, add -nodes to end of the Request command
+      # If a server cert is created with an encrypted key, one will need to manually type in the encryption password
+      # whenever starting or restarting the server (inconvenient and impractical for VPN and Web Servers)
+
 #--- Request ---#
   # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
 
-  #--- Request with multiple common names ---#
-    # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
+    #--- Request with multiple common names ---#
+      # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
 
 #--- Sign ---#
   # openssl x509 -req -sha512 -days 3650 -in '.\WRT1900ac.csr' -CA ".\Sophos UTM CA.crt.pem" -CAkey ".\Sophos UTM CA.key.pem" -CAserial .\serial -out '.\CRT\WRT1900ac.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
