@@ -181,7 +181,7 @@ organizationalUnitName_default  = LAN
 #####################################################################
 
     # All server certs should have their loopback IP specified in their SAN profile
-      # This prevents certificate errors if connecting to the server via an SSH tunnel
+      # This prevents certificate errors if connecting to the device, router, or server via an SSH tunnel
 
     # Certain OS CA certs must have the loopback IP specified in SAN profile (i.e. Sophos UTM's CA)
 
