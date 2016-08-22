@@ -318,21 +318,21 @@ authorityKeyIdentifier      = keyid:always, issuer:always
 subjectAltName              = @alt_ca
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
-[ v3_router2_ica ]
+[ v3_ica_router2 ]
 basicConstraints            = critical, CA:TRUE, pathlen:0
 subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
 subjectAltName              = @alt_router2_ica
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
-[ v3_router3_ica ]
+[ v3_ica_router3 ]
 basicConstraints            = critical, CA:TRUE, pathlen:0
 subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
 subjectAltName              = @alt_router3_ica
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
-[ v3_router4_ica ]
+[ v3_ica_router4 ]
 basicConstraints            = critical, CA:TRUE, pathlen:0
 subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
@@ -513,21 +513,17 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- Prerequisistes ---#
 
   # 1. Create "serial" file: echo 00 > serial
-
        # This file maintains the serial for the most recent cert, in order to know what serial to next assign.
        # Serial is in hex, not dec[imal] format, & one can choose whichever number one wishes to start at.
 
   # 2. Create "crlnumber" file: echo 01 > crlnumber
-
        # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
        # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
 
   # 3. Create "index" file, leave blank
-
        # This file maintains an index of all certificates issued and is covered under the Index Section below
 
   # 4. Create "rand" file, leave blank (no extension, just "rand")
-
        # File is utilized by for random characters & is querried by openssl during certificate/key creation.
 
   # ENCRYPT_KEY [Establish Certificate Options] is not currently commented out; however, it's recommended to
@@ -535,7 +531,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     # Encrypting a server key will result in the server requiring the passkey every time it's started/restarted;
     # in other words, a massive inconvenience, as well as possibly destrimental. 
 
-  # Provided you utilize the SubjectAltName section [highly recommended], the Common Name is not required to 
+  # Provided you utilize the SubjectAltName (SAN) section [highly recommended], the Common Name is not required to 
   # be the IP/DNS, and can be whatever name you wish it to be
 
 
@@ -548,11 +544,11 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     # change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
 
   # For BSD/*nix OSes:
-    # Certificates should have 444 permissions
-      # chmod 444 ./certificate.crt.pem
+    # Certificates should have 644 permissions
+      # chmod 644 ./certificate.crt.pem
 
-    # Keys should have 400 permissions
-      # chmod 400 ./certificate.key
+    # Keys should have 600 permissions
+      # chmod 600 ./certificate.key
 
 
 #--------------------------------------------------------------------
@@ -560,10 +556,10 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
 #--- Generate CA ---#
-  # openssl req -x509 -new -sha512 -nodes -days 3650 -extensions v3_ca -newkey rsa:4096 -keyout CA.key -out CA.crt.pem -config .\openssl.cnf
+  # openssl req -x509 -new -sha512 -days 3650 -newkey rsa:4096 -keyout CA.key.pem -out CA.crt.pem -config .\openssl.cnf -extensions v3_ca
  
 #--- Generate CA CRL Cert ---#
-  # openssl ca -config .\openssl.cnf -gencrl -keyfile CA.key -cert CA.crt.pem -out CA.crl.pem
+  # openssl ca -gencrl -keyfile CA.key.pem -cert CA.crt.pem -out CA.crl.pem -config .\openssl.cnf
  
 #--- Convert CA CRL Cert to DER CRL ---#
   # openssl crl -inform PEM -in '.\CA.crl.pem' -outform DER -out '.\CA.crl'
@@ -574,25 +570,25 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
 #--- Gernerate Intermediate CA ---#
-  # openssl req -out '.\VPN-ICA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout VPN-ICA.key -config .\openssl.cnf -extensions v3_intermediate_ca
+  # openssl req -out '.\Router 2 ICA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout '.\Router 2 ICA.key.pem' -config .\openssl.cnf -extensions v3_ica_router2
 
 #--- Sign Intermediate CA with CA ---#
-  # openssl x509 -req -sha512 -days 3650 -in '.\VPN-ICA.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out VPN-ICA.crt.pem -extfile .\openssl.cnf -extensions v3_intermediate_ca
+  # openssl x509 -req -sha512 -days 3650 -in '.\Router 2 ICA.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\Router 2 ICA.crt.pem' -extfile .\openssl.cnf -extensions v3_ica_router2
 
 #--- Generate Intermediate CA CRL Cert ---#
-  # openssl ca -config .\openssl.cnf -gencrl -keyfile VPN-ICA.key -cert VPN-ICA.crt.pem -out '.\VPN-ICA.crl.pem'
+  # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\Router 2 ICA.key.pem' -cert '.\Router 2 ICA.crt.pem' -out '.\Router 2 ICA.crl.pem'
 
 #--- Convert Intermediate CA CRL Cert to DER CRL ---#
-  # openssl crl -inform PEM -in '.\VPN-ICA.crl.pem' -outform DER -out '.\VPN-ICA.crl'
+  # openssl crl -inform PEM -in '.\Router 2 ICA.crl.pem' -outform DER -out '.\Router 2 ICA.crl'
 
 
 #--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
 
   # Windows:
-    # type .\"VPN-ICA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
+    # type .\"Router 2 ICA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
 
   # *nix/BSD:
-    # cat ./"VPN-ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
+    # cat ./"Router 2 ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
 
 
 #--- Export VPN Client with an Intermediate CA ---#
@@ -612,7 +608,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # whenever starting or restarting the server (inconvenient and impractical for VPN and Web Servers)
 
 #--- Request ---#
-  # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
+  # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud -nodes
 
     #--- Request with multiple common names ---#
       # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
@@ -649,49 +645,49 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # i.e. the following steps will need to be repeated for each of the six
 
 
-#--- Generate Individual Intermediate Build CA Request ---#
-  # openssl req -out '.\media.csr' -new -days 3650 -sha512 -config .\openssl.cnf -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
+    #--- Generate Individual Intermediate Build CA Request ---#
+        # openssl req -out '.\media.csr' -new -days 3650 -sha512 -config .\openssl.cnf -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
 
-#--- Convert PEM key to PK8 ---#
-  # openssl pkcs8 -in media.key.pem -topk8 -outform DER -out media.pk8 -nocrypt
+    #--- Convert PEM key to PK8 ---#
+        # openssl pkcs8 -in media.key.pem -topk8 -outform DER -out media.pk8 -nocrypt
 
-#--- Sign Individual Intermediate Build CA Request ---#
-  # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
-
-
-#--- Generate Individual Intermediate Build CA CRL Cert ---#
-  # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
-
-#--- Convert Individual Intermediate Build CA CRL Cert to DER CRL ---#
-  # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
+    #--- Sign Individual Intermediate Build CA Request ---#
+        # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
 
 
-#--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
+    #--- Generate Individual Intermediate Build CA CRL Cert ---#
+        # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
 
-  # Windows:
-    # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
-
-  # *nix/BSD:
-    # cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
+    #--- Convert Individual Intermediate Build CA CRL Cert to DER CRL ---#
+      # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
 
 
-#--- Create PKCS12 for import into keystore ---#
-  # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
+    #--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
 
-    # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
-    # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
-      # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
+      # Windows:
+        # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
+
+      # *nix/BSD:
+        # cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
 
 
-#--- Copy the following files into your build directory (location will vary depending on ROM) ---#
-    # For each of the six: *.x509.pem, *.pk8, Android-*-CA-Chain.pem, *.p12
-      # i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
+    #--- Create PKCS12 for import into keystore ---#
+      # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
 
-# --- One example of how to import into keystore prior to build ---#
-  # Source: http://stackoverflow.com/questions/22212869/how-can-i-generate-an-android-keystore-from-a-key-pk8-and-certificate-pem
+        # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
+        # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
+          # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
 
-    # keytool -importkeystore -deststorepass password -destkeystore .keystore -srckeystore media.p12 -srcstoretype PKCS12 -srcstorepass media
-    # keytool -list -v -keystore .keystore
+
+    #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
+        # For each of the six: *.x509.pem, *.pk8, Android-*-CA-Chain.pem, *.p12
+          # i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
+
+    # --- One example of how to import into keystore prior to build ---#
+      # Source: http://stackoverflow.com/questions/22212869/how-can-i-generate-an-android-keystore-from-a-key-pk8-and-certificate-pem
+
+        # keytool -importkeystore -deststorepass password -destkeystore .keystore -srckeystore media.p12 -srcstoretype PKCS12 -srcstorepass media
+        # keytool -list -v -keystore .keystore
 
 
 #####################################################################
