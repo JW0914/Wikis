@@ -308,6 +308,7 @@ organizationalUnitName_default  = LAN
 
     # These V3 CA profiles must not be modified to contain any more, or any less, KUs
       # These have been configured specifically for security & its imperative no other keyUsages are set
+        # For an ICA to be capable of signing additional CAs/ICAs, pathleen # must mirror number of CAs/ICAs it can sign
 
 
 [ v3_ca ]
@@ -373,7 +374,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
     # These V3 profiles should not be modified to contain less than what they are currently configured with.
       # I've specifically configured these with security in mind.
-      # For an ICA to be capable of signing additional CAs/ICAs, pathleen # must mirror number of CAs/ICAs it can sign
 
     # All servers capable of TLS should contain all keyUsages, except for dataEncipherment
       # VPN and file servers should have all 5 keyUsages set.
