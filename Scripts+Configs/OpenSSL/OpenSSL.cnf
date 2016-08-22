@@ -191,22 +191,22 @@ organizationalUnitName_default  = LAN
 #--------------------------------------------------------------------
 
 # Main #
-  [ alt_main_ca ]
+  [ alt_ca_main ]
   DNS.1                 = Router.1
   IP.1                  = 127.0.0.1
 
 # Router 2 #
-  [ alt_router2_ica ]
+  [ alt_ica_router2 ]
   DNS.1                 = Router.2
   IP.1                  = 127.0.0.1
 
 # Router 3 #
-  [ alt_router3_ica ]
+  [ alt_ica_router3 ]
   DNS.1                 = Router.3
   IP.1                  = 127.0.0.1
 
 # Router 4 #
-  [ alt_router4_ica ]
+  [ alt_ica_router4 ]
   DNS.1                 = Router.4
   IP.1                  = 127.0.0.1
 
@@ -315,28 +315,28 @@ organizationalUnitName_default  = LAN
 basicConstraints            = critical, CA:TRUE
 subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
-subjectAltName              = @alt_ca
+subjectAltName              = @alt_ca_main
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
 [ v3_ica_router2 ]
 basicConstraints            = critical, CA:TRUE, pathlen:0
 subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
-subjectAltName              = @alt_router2_ica
+subjectAltName              = @alt_ica_router2
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
 [ v3_ica_router3 ]
 basicConstraints            = critical, CA:TRUE, pathlen:0
 subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
-subjectAltName              = @alt_router3_ica
+subjectAltName              = @alt_ica_router3
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
 [ v3_ica_router4 ]
 basicConstraints            = critical, CA:TRUE, pathlen:0
 subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
-subjectAltName              = @alt_router4_ica
+subjectAltName              = @alt_ica_router4
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
 
 [ crl_ext ]
