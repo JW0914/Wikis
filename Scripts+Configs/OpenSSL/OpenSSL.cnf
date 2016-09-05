@@ -29,7 +29,9 @@ CNF                             = .\openssl.cnf
 
 [ default ]
 SOPHOS                          = "Sophos UTM CA"
-VPN                             = "WRT1900 VPN CA"
+WRTA                            = "WRT1200AC ICA"
+WRTB                            = "WRT1900AC ICA"
+WRTC                            = "WRT1900ACS ICA"
 CCA                             = "Sophos VPN CA Chain.pem"
 
 [ ca ]
@@ -42,28 +44,28 @@ default_intermediate_ca         = Intermediate_CA_default
 #####################################################################
 
 [ CA_default ]
-certs                           = $DIR\CRT
-new_certs_dir                   = $DIR\CRT
+certs                           = $dir\\CRT
+new_certs_dir                   = $dir\\CRT
 
 database                        = index
-RANDFILE                        = $DIR\rand
+RANDFILE                        = $dir\\rand
 serial                          = serial
 
-crldir                          = $DIR\CRL
-crlnumber                       = crlnumber
-crl                             = "$CRLDIR\$SOPHOS.crl.pem"
-default_crl_days                = 3650 
+crldir                          = $dir\\CRL
+crlnumber                       = $crldir\\crlnumber
+crl                             = "$crldir\\$SOPHOS.crl.pem"
+default_crl_days                = 3650
 
-certificate                     = "$DIR\$SOPHOS.crt.pem"
-private_key                     = "$DIR\$SOPHOS.key.pem"
+certificate                     = "$dir\\CA\\$SOPHOS.crt.pem"
+private_key                     = "$dir\\CA\\$SOPHOS.key.pem"
 
 default_days                    = 3650
 default_md                      = sha512
 preserve                        = no
 
-x509_extensions                 = usr_cert_dn
+x509_extensions                 = usr_cert_not_dn
 copy_extensions                 = copy
-unique_subject                  = no
+unique_subject                  = yes
 
 policy                          = policy_match
 name_opt                        = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
@@ -514,21 +516,17 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- Prerequisistes ---#
 
   # 1. Create "serial" file: echo 00 > serial
-
        # This file maintains the serial for the most recent cert, in order to know what serial to next assign.
        # Serial is in hex, not dec[imal] format, & one can choose whichever number one wishes to start at.
 
   # 2. Create "crlnumber" file: echo 01 > crlnumber
-
        # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
        # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
 
   # 3. Create "index" file, leave blank
-
        # This file maintains an index of all certificates issued and is covered under the Index Section below
 
   # 4. Create "rand" file, leave blank (no extension, just "rand")
-
        # File is utilized by for random characters & is querried by openssl during certificate/key creation.
 
   # ENCRYPT_KEY [Establish Certificate Options] is not currently commented out; however, it's recommended to
@@ -763,13 +761,15 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- OCSPSigning ---#
   # OCSP Signing... self explanatory
 
-#--- ipsecIKE
-  # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below; however, some research needs to be
-  # performed to determine if this EKU should also no longer be utilized.  
+#--- ipsecIKE ---#
+  # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below; however, some research needs
+  # to be Performed to determine if this EKU should also no longer be utilized.  
     # I do know clientAuth can be utilized in a IPSec VPN client cert.
 
 #--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
+  
   # !!!SHOULD NOT BE UTILIZED!!! 
+
     # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
     # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
     # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.

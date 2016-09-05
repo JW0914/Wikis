@@ -8,6 +8,7 @@
 DEV=/dev/sdb
 
 parted -s "$DEV" mktable gpt
+
 parted -s "$DEV" mkpart primary ntfs 1.00MiB 41985MiB
 parted -s "$DEV" name 1 "\"Temp Content\""
 mkntfs -q "${DEV}1" -f -L "Temp Content"
