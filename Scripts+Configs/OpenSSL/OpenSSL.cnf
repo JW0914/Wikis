@@ -2,15 +2,15 @@
         ##::[[---  Windows OpenSSL Config  ---]]::##
 
 # For *nix/bsd users:
-    # Use notepad to change all backslashes " \ " to forward slashes " / ". You may also wish to utilize lowercase only, and
-    # if you choose to utilize spaces in cert names, ensure you utilize the proper break format, i.e. "./Sophos\ UTM\ CA.crt"
+    # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only, and if
+    # utilizing spaces in names, ensure utilization of proper break format, i.e. "./Sophos\ UTM\ CA.crt"
 
 # For Sophos users:
     # Prior to generating user certs, ensure you change "x509_extensions = usr_cert_dn" to "usr_cert_not_dn"  This should  
     # result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  
         # Without this, it will be impossible to authenticate to VPNs on Sophos.
 
-    # Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
+    # intermediate CAs and intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
         # Only exception to this is the WebAdmin certificate, of which can be signed by a CA/ICA authority for a domain name.
             # For chain of trust to be maintained, CA & ICA must be installed on devices accessing the WbAdmin/User Portal.
         
@@ -38,30 +38,30 @@ CCA                             = "Sophos VPN CA Chain.pem"
 default_ca                      = CA_default
 
 [ intermediate_ca ]
-default_intermediate_ca         = Intermediate_CA_default
+default_intermediate_ca         = intermediate_CA_default
 
 
 #####################################################################
 
 [ CA_default ]
-certs                           = $dir\\CRT
-new_certs_dir                   = $dir\\CRT
+certs                           = $DIR
+new_certs_dir                   = $DIR
 
-database                        = index
-RANDFILE                        = $dir\\rand
-serial                          = serial
+database                        = $DIR\\index
+RANDFILE                        = $DIR\\rand
+serial                          = $DIR\\serial
 
-crldir                          = $dir\\CRL
+crldir                          = $DIR
 crlnumber                       = $crldir\\crlnumber
-crl                             = "$crldir\\$SOPHOS.crl.pem"
+crl                             = $crldir\\ca.crl.pem
 default_crl_days                = 3650
 
-certificate                     = "$dir\\CA\\$SOPHOS.crt.pem"
-private_key                     = "$dir\\CA\\$SOPHOS.key.pem"
+certificate                     = "$DIR\\ca.crt.pem"
+private_key                     = "$DIR\\ca.key.pem"
 
 default_days                    = 3650
-default_md                      = sha512
 preserve                        = no
+default_md                      = sha512
 
 x509_extensions                 = usr_cert_not_dn
 copy_extensions                 = copy
@@ -75,24 +75,24 @@ cert_opt                        = ca_default
 #####################################################################
 
 [ Intermediate_CA_default ]
-certs                           = $DIR\Intermediate\CRT
-new_certs_dir                   = $DIR\Intermediate\CRT
+certs                           = $DIR\intermediate\crt
+new_certs_dir                   = $DIR\intermediate\crt
 
-database                        = $DIR\Intermediate\index
-RANDFILE                        = $DIR\Intermediate\rand
-serial                          = $DIR\Intermediate\serial
+database                        = $DIR\intermediate\index
+RANDFILE                        = $DIR\intermediate\rand
+serial                          = $DIR\intermediate\serial
 
-crldir                          = $DIR\Intermediate\CRL
+crldir                          = $DIR\intermediate\crl
 crlnumber                       = crlnumber
-crl                             = $CRLDIR\crl.pem
+crl                             = $crlDIR\crl.pem
 default_crl_days                = 3650 
 
-certificate                     = "$DIR\Intermediate\$VPN.crt.pem"
-private_key                     = "$DIR\Intermediate\$VPN.key.pem"
+certificate                     = "$DIR\intermediate\$VPN.crt.pem"
+private_key                     = "$DIR\intermediate\$VPN.key.pem"
 
 default_days                    = 3650
-default_md                      = sha512
 preserve                        = no
+default_md                      = sha512
 
 x509_extensions                 = usr_cert_dn
 copy_extensions                 = copy
@@ -139,7 +139,10 @@ emailAddress                    = optional
 [ req ]
 default_bits                    = 3072
 default_keyfile                 = private.key.pem
+
+preserve                        = no
 default_md                      = sha512
+
 string_mask                     = utf8only
 utf8                            = yes
 distinguished_name              = req_distinguished_name
@@ -253,7 +256,7 @@ organizationalUnitName_default  = LAN
 
 
 #--------------------------------------------------------------------
-        ##----- Intermediate Certificate Authority Clients -----##
+        ##----- intermediate Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
 # Router 2 #
@@ -435,7 +438,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-        ##----- Intermediate Certificate Authority Clients -----##
+        ##----- intermediate Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
 # Router 2 #
@@ -520,8 +523,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
        # Serial is in hex, not dec[imal] format, & one can choose whichever number one wishes to start at.
 
   # 2. Create "crlnumber" file: echo 01 > crlnumber
-       # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
-       # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
+       # This file maintains the current serial for the crl [Certificate Revocation List] certificate
+       # A crl should be generated, but will not be used until one revokes a certificate via one's CA or ICA
 
   # 3. Create "index" file, leave blank
        # This file maintains an index of all certificates issued and is covered under the Index Section below
@@ -561,31 +564,31 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- Generate CA ---#
   # openssl req -x509 -new -sha512 -nodes -days 3650 -extensions v3_ca -newkey rsa:4096 -keyout CA.key -out CA.crt.pem -config .\openssl.cnf
  
-#--- Generate CA CRL Cert ---#
+#--- Generate CA crl Cert ---#
   # openssl ca -config .\openssl.cnf -gencrl -keyfile CA.key -cert CA.crt.pem -out CA.crl.pem
  
-#--- Convert CA CRL Cert to DER CRL ---#
+#--- Convert CA crl Cert to DER crl ---#
   # openssl crl -inform PEM -in '.\CA.crl.pem' -outform DER -out '.\CA.crl'
 
 
 #--------------------------------------------------------------------
-        ## ----- Intermediate Certificate Authority ----- ##
+        ## ----- intermediate Certificate Authority ----- ##
 #--------------------------------------------------------------------
 
-#--- Gernerate Intermediate CA ---#
+#--- Gernerate intermediate CA ---#
   # openssl req -out '.\VPN-ICA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout VPN-ICA.key -config .\openssl.cnf -extensions v3_intermediate_ca
 
-#--- Sign Intermediate CA with CA ---#
+#--- Sign intermediate CA with CA ---#
   # openssl x509 -req -sha512 -days 3650 -in '.\VPN-ICA.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out VPN-ICA.crt.pem -extfile .\openssl.cnf -extensions v3_intermediate_ca
 
-#--- Generate Intermediate CA CRL Cert ---#
+#--- Generate intermediate CA crl Cert ---#
   # openssl ca -config .\openssl.cnf -gencrl -keyfile VPN-ICA.key -cert VPN-ICA.crt.pem -out '.\VPN-ICA.crl.pem'
 
-#--- Convert Intermediate CA CRL Cert to DER CRL ---#
+#--- Convert intermediate CA crl Cert to DER crl ---#
   # openssl crl -inform PEM -in '.\VPN-ICA.crl.pem' -outform DER -out '.\VPN-ICA.crl'
 
 
-#--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
+#--- Create Concatenated CA - intermediate CA Certificate Chain ---#
 
   # Windows:
     # type .\"VPN-ICA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
@@ -594,12 +597,12 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     # cat ./"VPN-ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
 
 
-#--- Export VPN Client with an Intermediate CA ---#
+#--- Export VPN Client with an intermediate CA ---#
   # openssl pkcs12 -export -out '.\VPN Client1.p12' -inkey '.\VPN Client1.key.pem' -in '.\VPN Client1.crt.pem' -certfile '.\Sophos VPN CA Chain.crt.pem'
 
-    # The Intermediate CA is still used to sign the certs it issues, however, the CA - Intermediate CA chain cert must 
-    # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> Intermediate CA -> CA.
-      # This allows for the certificate path of the client cert to show a hierarchy of CA -> Intermediate CA -> Client
+    # The intermediate CA is still used to sign the certs it issues, however, the CA - intermediate CA chain cert must 
+    # be exported with the client cert & key to maintain the certificate chain of trust of Certificate -> intermediate CA -> CA.
+      # This allows for the certificate path of the client cert to show a hierarchy of CA -> intermediate CA -> Client
 
 
 #--------------------------------------------------------------------
@@ -607,13 +610,15 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
 #--- Request ---#
+
+  # If generating server certificates, also add -nodes flag
   # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
 
   #--- Request with multiple common names ---#
     # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
 
 #--- Sign ---#
-  # openssl x509 -req -sha512 -days 3650 -in '.\WRT1900ac.csr' -CA ".\Sophos UTM CA.crt.pem" -CAkey ".\Sophos UTM CA.key.pem" -CAserial .\serial -out '.\CRT\WRT1900ac.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
+  # openssl x509 -req -sha512 -days 3650 -in '.\WRT1900ac.csr' -CA ".\Sophos UTM CA.crt.pem" -CAkey ".\Sophos UTM CA.key.pem" -CAserial .\serial -out '.\crt\WRT1900ac.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
 
 #--- Export ---#
   # openssl pkcs12 -export -out '.\OwnCloud.p12' -inkey '.\OwnCloud.key.pem' -in '.\OwnCloud.crt.pem' -certfile CA.crt.pem
@@ -637,31 +642,31 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 #--------------------------------------------------------------------
-        ## ----- Intermediate CA Android Build Certificates ----- ##
+        ## ----- intermediate CA Android Build Certificates ----- ##
 #--------------------------------------------------------------------
 
     # This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
       # i.e. the following steps will need to be repeated for each of the six
 
 
-#--- Generate Individual Intermediate Build CA Request ---#
+#--- Generate Individual intermediate Build CA Request ---#
   # openssl req -out '.\media.csr' -new -days 3650 -sha512 -config .\openssl.cnf -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
 
 #--- Convert PEM key to PK8 ---#
   # openssl pkcs8 -in media.key.pem -topk8 -outform DER -out media.pk8 -nocrypt
 
-#--- Sign Individual Intermediate Build CA Request ---#
+#--- Sign Individual intermediate Build CA Request ---#
   # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
 
 
-#--- Generate Individual Intermediate Build CA CRL Cert ---#
+#--- Generate Individual intermediate Build CA crl Cert ---#
   # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
 
-#--- Convert Individual Intermediate Build CA CRL Cert to DER CRL ---#
+#--- Convert Individual intermediate Build CA crl Cert to DER crl ---#
   # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
 
 
-#--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
+#--- Create Concatenated Individual intermediate Build CA and CA into PEM Certificate ---#
 
   # Windows:
     # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
@@ -673,9 +678,9 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- Create PKCS12 for import into keystore ---#
   # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
 
-    # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
-    # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
-      # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
+    # The intermediate CA is still used to sign packages/images, however, the CA - intermediate CA chain cert must 
+    # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> intermediate CA -> CA.
+      # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> intermediate CA -> Package/Image
 
 
 #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
