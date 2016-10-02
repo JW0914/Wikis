@@ -614,7 +614,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ## ----- Intermediate Certificate Authority ----- ##
 #--------------------------------------------------------------------
 
-
 #--- Gernerate Intermediate CA ---#
   # openssl req -out '.\VPN-ICA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout VPN-ICA.key -config .\openssl.cnf -extensions v3_intermediate_ca
 
@@ -640,11 +639,10 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # openssl crl -inform PEM -in '.\Router 2 ICA.crl.pem' -outform DER -out '.\Router 2 ICA.crl'
 
 
-
 #--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
 
   # Windows:
-    # type .\"Router 2 ICA.crt.pem" .\"Sophos UTM CA.crt.pem" >> .\"Sophos VPN CA Chain.pem"
+    # type ".\Router 2 ICA.crt.pem" ".\Sophos UTM CA.crt.pem" >> ".\Sophos VPN CA Chain.pem"
 
   # *nix/BSD:
     # cat ./"Router 2 ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
@@ -668,12 +666,10 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--- Request ---#
 
-
   # If generating server certificates, also add -nodes flag
   # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
 
   # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud -nodes
-
 
     #--- Request with multiple common names ---#
       # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
@@ -710,21 +706,14 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # i.e. the following steps will need to be repeated for each of the six
 
 
-
 #--- Generate Individual intermediate Build CA Request ---#
   # openssl req -out '.\media.csr' -new -days 3650 -sha512 -config .\openssl.cnf -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
 
-    #--- Generate Individual Intermediate Build CA Request ---#
-        # openssl req -out '.\media.csr' -new -days 3650 -sha512 -config .\openssl.cnf -extensions v3_intermediate_ca -newkey rsa:4096f4 -ouform PEM -keyout '.\media.key.pem'
-
-
-    #--- Convert PEM key to PK8 ---#
-        # openssl pkcs8 -in media.key.pem -topk8 -outform DER -out media.pk8 -nocrypt
-
+#--- Convert PEM key to PK8 ---#
+  # openssl pkcs8 -in media.key.pem -topk8 -outform DER -out media.pk8 -nocrypt
 
 #--- Sign Individual intermediate Build CA Request ---#
   # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
-
 
 #--- Generate Individual intermediate Build CA CRL Cert ---#
   # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
@@ -736,28 +725,26 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- Create Concatenated Individual intermediate Build CA and CA into PEM Certificate ---#
 
     #--- Sign Individual Intermediate Build CA Request ---#
-        # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
-
+      # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
 
     #--- Generate Individual Intermediate Build CA CRL Cert ---#
-        # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
+      # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
 
     #--- Convert Individual Intermediate Build CA CRL Cert to DER CRL ---#
       # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
 
 
-    #--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
+#--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
+
+    # Windows:
+      # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
+
+    # *nix/BSD:
+      # cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
 
 
-      # Windows:
-        # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
-
-      # *nix/BSD:
-        # cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
-
-
-    #--- Create PKCS12 for import into keystore ---#
-      # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
+#--- Create PKCS12 for import into keystore ---#
+  # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
 
 
     # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
@@ -769,8 +756,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
           # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
 
 
-
     #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
+
         # For each of the six: *.x509.pem, *.pk8, Android-*-CA-Chain.pem, *.p12
           # i.e. media.x509.pem, media.pk8, Android-Media-CA-Chain.pem, media.p12
 
@@ -807,24 +794,24 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##----- Key Usage -----##
 #--------------------------------------------------------------------
 
-#--- digitalSignature ---#
-  # Certificates with this flag set can be used to apply a digital signature. Digital signatures are often used for entity 
-  # authentication and data origin authentication with integrity.
+  #--- digitalSignature ---#
+    # Certificates with this flag set can be used to apply a digital signature. Digital signatures are often used for entity 
+    # authentication and data origin authentication with integrity.
  
-#--- nonRepudiation ---#
-  # Certificates with this flag set can be used to sign data as above but the certificate public key may be used to provide 
-  # non-repudiation services preventing the signing entity from falsely denying some action.
+  #--- nonRepudiation ---#
+    # Certificates with this flag set can be used to sign data as above but the certificate public key may be used to provide 
+    # non-repudiation services preventing the signing entity from falsely denying some action.
 
-#--- keyEncipherment ---#
-  # Certificates with this flag set may be used by the subject to encrypt a symmetric key which is then transferred to the 
-  # target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities. 
+  #--- keyEncipherment ---#
+    # Certificates with this flag set may be used by the subject to encrypt a symmetric key which is then transferred to the 
+    # target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities. 
 
-#--- dataEncipherment ---#
-  # Certificates with this flag set can be used by the subject to encrypt and decrypt actual application data.
+  #--- dataEncipherment ---#
+    # Certificates with this flag set can be used by the subject to encrypt and decrypt actual application data.
 
-#--- keyAgreement ---#
-  # Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish 
-  # a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
+  #--- keyAgreement ---#
+    # Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish 
+    # a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
 
 
 #--------------------------------------------------------------------
@@ -832,51 +819,51 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##----- Extended Key Usage -----##
 #--------------------------------------------------------------------
 
-#--- serverAuth ---#
-  # SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
-  # clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes nscertype options,
-  # as the "ns" in nscertype stands for NetScape [browser], which hasn't existed for some time.
+  #--- serverAuth ---#
+    # SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
+    # clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes nscertype options,
+    # as the "ns" in nscertype stands for NetScape [browser], which hasn't existed for some time.
 
-#--- clientAuth ---#
-  # SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
-    # All VPN clients MUST be signed with this EKU present.
+  #--- clientAuth ---#
+    # SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
+      # All VPN clients MUST be signed with this EKU present.
 
-#--- codeSigning ---#
-  # Code Signing... self explanatory
+  #--- codeSigning ---#
+    # Code Signing... self explanatory
 
-#--- emailProtection ---#
-  # Email Protection via S/MIME, allows you to send and receive encrypted emails
+  #--- emailProtection ---#
+    # Email Protection via S/MIME, allows you to send and receive encrypted emails
 
-#--- timeStamping ---#
-  # Trusted Timestamping... self explanatory
+  #--- timeStamping ---#
+    # Trusted Timestamping... self explanatory
 
-#--- OCSPSigning ---#
-  # OCSP Signing... self explanatory
+  #--- OCSPSigning ---#
+    # OCSP Signing... self explanatory
 
-#--- ipsecIKE ---#
-  # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below; however, some research needs
-  # to be Performed to determine if this EKU should also no longer be utilized.  
-    # clientAuth can be utilized in a IPSec VPN client cert.
+  #--- ipsecIKE ---#
+    # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below; however, some research needs
+    # to be Performed to determine if this EKU should also no longer be utilized.  
+      # clientAuth can be utilized in a IPSec VPN client cert.
 
-#--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
+  #--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
   
-  # !!!SHOULD NOT BE UTILIZED!!! 
+    # !!!SHOULD NOT BE UTILIZED!!! 
 
-    # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
-    # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
-    # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
+      # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
+      # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
+      # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
 
-#--- msCodeInd ---#
-  # Microsoft Individual Code Signing (authenticode)... self explanatory
+  #--- msCodeInd ---#
+    # Microsoft Individual Code Signing (authenticode)... self explanatory
 
-#--- msCodeCom ---#
-  # Microsoft Commerical Code Signing (authenticode)... self explanatory
+  #--- msCodeCom ---#
+    # Microsoft Commerical Code Signing (authenticode)... self explanatory
 
-#--- mcCTLSign ---#
-  # Microsoft Trust List Signing... self explanatory
+  #--- mcCTLSign ---#
+    # Microsoft Trust List Signing... self explanatory
 
-#--- msEFS ---#
-  # Microsoft Encrypted File System... self explanatory
+  #--- msEFS ---#
+    # Microsoft Encrypted File System... self explanatory
 
 
 #--------------------------------------------------------------------
@@ -884,23 +871,23 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##----- Key Exchange Algorithms  -----##
 #--------------------------------------------------------------------
 
-#--- RSA ---#
-  # Key exchange occurs via encryption of a random value [chosen by the client] via the server public key. This requires the
-  # server public key to be an RSA key, and the server certificate must utilize the "keyAgreement" keyUsage extension).
+  #--- RSA ---#
+    # Key exchange occurs via encryption of a random value [chosen by the client] via the server public key. This requires the
+    # server public key to be an RSA key, and the server certificate must utilize the "keyAgreement" keyUsage extension).
 
-#--- DH_RSA ---#
-  # Key exchange occurs via a static Diffie-Hellman key. Server Public Key must be a Diffie-Hellman key, of which must have been
-  # issued by a CA that was using an RSA key signing key.
+  #--- DH_RSA ---#
+    # Key exchange occurs via a static Diffie-Hellman key. Server Public Key must be a Diffie-Hellman key, of which must have been
+    # issued by a CA that was using an RSA key signing key.
 
-#--- DH_DSA ---#
-  # Like DH_RSA, except that the CA used a DSA key in lieu of RSA.
+  #--- DH_DSA ---#
+    # Like DH_RSA, except that the CA used a DSA key in lieu of RSA.
 
-#--- DHE_RSA ---#
-  # Key exchange occurs via an ephemeral Diffie-Hellman; the server dynamically generates & signs a DH public key, sending it to
-  # the client. Server Public Key must be an RSA key, and it's certificate must utilize the digitalSignature keyUsage extension
+  #--- DHE_RSA ---#
+    # Key exchange occurs via an ephemeral Diffie-Hellman; the server dynamically generates & signs a DH public key, sending it to
+    # the client. Server Public Key must be an RSA key, and it's certificate must utilize the digitalSignature keyUsage extension
 
-#--- DHE_DSA ---#
-  # Like DHE_RSA, except that the CA used a DSA key in lieu of RSA.
+  #--- DHE_DSA ---#
+    # Like DHE_RSA, except that the CA used a DSA key in lieu of RSA.
 
 
 #--------------------------------------------------------------------
@@ -908,20 +895,20 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##----- Elliptic-Curve Key Exchange Algorithms -----##
 #--------------------------------------------------------------------
 
-#--- ECDH_ECDSA ---# 
-  # Like DH_DSA, but with elliptic curves: the server public key must be an ECDH key, with a certificate issued by a CA which 
-  # utilized an ECDSA public key.
+  #--- ECDH_ECDSA ---# 
+    # Like DH_DSA, but with elliptic curves: the server public key must be an ECDH key, with a certificate issued by a CA which 
+    # utilized an ECDSA public key.
 
-#--- ECDH_RSA ---# 
-  # Like ECDH_ECDSA, except that the CA used an RSA key
+  #--- ECDH_RSA ---# 
+    # Like ECDH_ECDSA, except that the CA used an RSA key
 
-#--- ECDHE_ECDSA ---# 
-  # The server sends a dynamically generated EC Diffie-Hellman key and signs it with its own ECDSA key. This is equivalent to
-  # DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
+  #--- ECDHE_ECDSA ---# 
+    # The server sends a dynamically generated EC Diffie-Hellman key and signs it with its own ECDSA key. This is equivalent to
+    # DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
 
-#--- ECDHE_RSA ---# 
-  # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve Diffie-Hellman
-  # key.
+  #--- ECDHE_RSA ---# 
+    # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve Diffie-Hellman
+    # key.
 
 
 #--------------------------------------------------------------------
