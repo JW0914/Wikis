@@ -30,11 +30,11 @@ CNF                             = .\openssl.cnf
 
 [ default ]
 SOPHOS                          = "Sophos UTM CA"
-WRTA                            = "Router 1 ICA"
-WRTB                            = "Router 2 ICA"
-WRTC                            = "Router 3 ICA"
+WRTA                            = "Router 2 ICA"
+WRTB                            = "Router 3 ICA"
+WRTC                            = "Router 4 ICA"
 
-VPN                             = "Router 1 VPN ICA"
+VPN                             = "Router 2 VPN ICA"
 CCA                             = "Sophos VPN CA Chain.pem"
 
 [ ca ]
