@@ -57,8 +57,8 @@ RANDFILE                        = $DIR\rand
 serial                          = $DIR\serial
 
 crldir                          = $DIR
-crlnumber                       = $crldir\crlnumber
-crl                             = $crldir\ca.crl.pem
+crlnumber                       = $CRLDIR\crlnumber
+crl                             = $CRLDIR\ca.crl.pem
 default_crl_days                = 3650
 
 certificate                     = "$DIR\ca.crt.pem"
@@ -89,8 +89,8 @@ RANDFILE                        = $DIR\intermediate\rand
 serial                          = $DIR\intermediate\serial
 
 crldir                          = $DIR\intermediate\crl
-crlnumber                       = crlnumber
-crl                             = $crlDIR\crl.pem
+crlnumber                       = $DIR\crlnumber
+crl                             = $CRLDIR\crl.pem
 default_crl_days                = 3650 
 
 certificate                     = "$DIR\intermediate\$VPN.crt.pem"
@@ -187,15 +187,14 @@ encrypt_key                     = yes
 
 [ req_distinguished_name ]
 
-countryNam                      = Country
-countryName_mi                  = 2
-countryName_ma                  = 2
-stateOrProvinceNam              = State
-localityNam                     = Locality
-0.organizationNam               = Organization
+countryName                     = 2
+countryName_max                 = 2
+stateOrProvinceName             = State
+localityName                    = Locality
+0.organizationName              = Organization
 organizationalUnitName          = Organizational Unit
 commonName                      = Common Name
-commonName_ma                   = 64
+commonName_max                  = 64
 emailAddres                     = Email
 emailAddress_max                = 64
 
@@ -555,7 +554,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
        # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
        # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
 
-
   # 3. Create "index" file (leave blank): echo > index
        # This file maintains an index of all certificates issued and is covered under the Index Section below
 
@@ -594,11 +592,10 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- Generate CA ---#
 
     # CA key should have a secure password of at least 16 characters, containing at least the following:
-        # 2 uppercase letters, 2 lowercase letters, 2 numbers, and 2 symbols
+      # 2 uppercase letters, 2 lowercase letters, 2 numbers, and 2 symbols
         
   # openssl req -x509 -new -sha512 -days 3650 -newkey rsa:4096 -keyout CA.key.pem -out CA.crt.pem -config .\openssl.cnf -extensions v3_ca
  
-
 #--- Generate CA CRL Cert ---#
   # openssl ca -config .\openssl.cnf -gencrl -keyfile CA.key -cert CA.crt.pem -out CA.crl.pem
 
@@ -615,6 +612,10 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
 #--- Gernerate Intermediate CA ---#
+
+    # Intermediate CA key should have a secure password of at least 16 characters, containing at least the following:
+      # 2 uppercase letters, 2 lowercase letters, 2 numbers, and 2 symbols
+
   # openssl req -out '.\VPN-ICA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout VPN-ICA.key -config .\openssl.cnf -extensions v3_intermediate_ca
 
 #--- Sign Intermediate CA with CA ---#
@@ -660,19 +661,16 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ## ----- Client Certificate ----- ##
 #--------------------------------------------------------------------
 
-    # For Server certs, add -nodes to end of the Request command
+    # For Server certs, add -nodes flag to end of the Request command
       # If a server cert is created with an encrypted key, one will need to manually type in the encryption password
       # whenever starting or restarting the server (inconvenient and impractical for VPN and Web Servers)
 
 #--- Request ---#
 
-  # If generating server certificates, also add -nodes flag
-  # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud
-
   # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud -nodes
 
-    #--- Request with multiple common names ---#
-      # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
+  #--- Request with multiple common names ---#
+    # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
 
 #--- Sign ---#
   # openssl x509 -req -sha512 -days 3650 -in '.\WRT1900ac.csr' -CA ".\Sophos UTM CA.crt.pem" -CAkey ".\Sophos UTM CA.key.pem" -CAserial .\serial -out '.\crt\WRT1900ac.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
@@ -685,17 +683,17 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ## ----- Verification of Certificates ----- ##
 #--------------------------------------------------------------------
 
-#--- Verify Certificate Signing Request (CSR) ---#
-  # openssl req -text -noout -verify -in CSR.csr
+  # Verify Certificate Signing Request (CSR) #
+    # openssl req -text -noout -verify -in CSR.csr
 
-#--- Verify private key ---#
-  # openssl rsa -check -in private.key
+  # Verify private key #
+    # openssl rsa -check -in private.key
 
-#--- Verify Certificate ---#
-  # openssl x509 -text -noout -in certificate.crt
+  # Verify Certificate #
+    # openssl x509 -text -noout -in certificate.crt
 
-#--- Verify PKCS12 Certificate [.pfx/.p12] ---#
-  # openssl pkcs12 -info -in certificate.p12
+  #Verify PKCS12 Certificate [.pfx/.p12] #
+    # openssl pkcs12 -info -in certificate.p12
 
 
 #--------------------------------------------------------------------
@@ -745,7 +743,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--- Create PKCS12 for import into keystore ---#
   # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
-
 
     # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
     # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
