@@ -211,10 +211,11 @@ organizationalUnitName_default  = LAN
 
     # All server certs with WebUIs should have their loopback IP specified in their SAN profile
       # This prevents certificate errors if connecting to the device, router, or server via an SSH tunnel
-
-    # Certain OS CA certs must have the loopback IP specified in SAN profile (i.e. Sophos UTM's CA)
+        # Certain OS CA certs must have the loopback IP specified in SAN profile (i.e. Sophos UTM's CA)
 
     # Provided one utilizes the SAN profile, Common Names can be whatever one wishes (i.e. not the DNS or IP)
+      # SANs can be: email (an email address), URI (a uniform resource indicator), DNS (a DNS domain name), 
+      # RID (a registered ID: OBJECT IDENTIFIER), IP (an IP address), dirName (a distinguished name), and otherName.
 
 #--------------------------------------------------------------------
         ##----- Certificate Authorities -----##
