@@ -3,11 +3,11 @@
 
 # For *nix/bsd users:
     # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only, and if
-    # utilizing spaces in names, ensure utilization of proper break format, i.e. "./Sophos\ UTM\ CA.crt"
+    # utilizing spaces in names, ensure utilization of proper break format, i.e. './Sophos\ UTM\ CA.crt'
 
 # For Sophos users:
-    # Prior to generating user certs, ensure you change "x509_extensions = usr_cert_dn" to "usr_cert_not_dn"  This should  
-    # result with "RFC822 Name = user email" in the SubjectAlternativeName of the final user.crt/pem details.  
+    # Prior to generating user certs, ensure you change 'x509_extensions = usr_cert_dn' to 'usr_cert_not_dn'  This should  
+    # result with 'RFC822 Name = user email' in the SubjectAlternativeName of the final user.crt/pem details.  
         # Without this, it will be impossible to authenticate to VPNs on Sophos.
 
     # Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
@@ -29,13 +29,13 @@ CNF                             = .\openssl.cnf
 #####################################################################
 
 [ default ]
-SOPHOS                          = "Sophos UTM CA"
-WRTA                            = "Router 2 ICA"
-WRTB                            = "Router 3 ICA"
-WRTC                            = "Router 4 ICA"
+SOPHOS                          = 'Sophos UTM CA'
+WRTA                            = 'Router 2 ICA'
+WRTB                            = 'Router 3 ICA'
+WRTC                            = 'Router 4 ICA'
 
-VPN                             = "Router 2 VPN ICA"
-CCA                             = "Sophos VPN CA Chain.pem"
+VPN                             = 'Router 2 VPN ICA'
+CCA                             = 'Sophos VPN CA Chain.pem'
 
 [ ca ]
 default_ca                      = CA_default
@@ -50,7 +50,7 @@ default_ica                     = ICA_default
 [ CA_default ]
 certs                           = $DIR
 new_certs_dir                   = $DIR
-certs                           = $DIR\CRT
+certs                           = $DIR\crt
 
 database                        = $DIR\index
 RANDFILE                        = $DIR\rand
@@ -61,8 +61,8 @@ crlnumber                       = $CRLDIR\crlnumber
 crl                             = $CRLDIR\ca.crl.pem
 default_crl_days                = 3650
 
-certificate                     = "$DIR\ca.crt.pem"
-private_key                     = "$DIR\ca.key.pem"
+certificate                     = '$DIR\ca.crt.pem'
+private_key                     = '$DIR\ca.key.pem'
 
 default_days                    = 3650
 preserve                        = no
@@ -93,12 +93,14 @@ crlnumber                       = $DIR\crlnumber
 crl                             = $CRLDIR\crl.pem
 default_crl_days                = 3650 
 
-certificate                     = "$DIR\intermediate\$VPN.crt.pem"
-private_key                     = "$DIR\intermediate\$VPN.key.pem"
+certificate                     = '$DIR\intermediate\$VPN.crt.pem'
+private_key                     = '$DIR\intermediate\$VPN.key.pem'
 
 default_days                    = 3650
 preserve                        = no
 default_md                      = sha512
+
+#--------------------------------------------------------------------
 
 [ ICA_default ]
 #certs                           = $ICA\CRT
@@ -112,8 +114,8 @@ default_md                      = sha512
 #crl                             = $CRLDIR\crl.pem
 #default_crl_days                = 3650 
 
-#certificate                     = "$ICA\$VPN.crt.pem"
-#private_key                     = "$ICA\$VPN.key.pem"
+#certificate                     = '$ICA\$VPN.crt.pem'
+#private_key                     = '$ICA\$VPN.key.pem'
 
 #default_days                    = 3650
 #default_md                      = sha512
@@ -339,7 +341,7 @@ organizationalUnitName_default  = LAN
 
     # These V3 CA profiles must not be modified to contain any more, or any less, KUs
       # These have been configured specifically for security & its imperative no other keyUsages are set
-        # For an ICA to be capable of signing additional CAs/ICAs, pathleen number must mirror number of CAs/ICAs it can sign
+        # For an ICA to be capable of signing additional CAs/ICAs, pathlen number must mirror number of CAs/ICAs it can sign
 
 
 [ v3_ca ]
@@ -543,31 +545,28 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--- Prerequisistes ---#
 
-  # 1. Create "serial" file: echo 00 > serial
+  # 1. Create 'serial' file: echo 00 > serial
        # This file maintains the serial for the most recent cert, in order to know what serial to next assign.
        # Serial is in hex, not dec[imal] format, & one can choose whichever number one wishes to start at.
 
-  # 2. Create "crlnumber" file: echo 01 > crlnumber
-
-       # This file maintains the current serial for the crl [Certificate Revocation List] certificate
-       # A crl should be generated, but will not be used until one revokes a certificate via one's CA or ICA
-
+  # 2. Create 'crlnumber' file: echo 01 > crlnumber
        # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
        # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
 
-  # 3. Create "index" file (leave blank): echo > index
+  # 3. Create 'index' file (leave blank): echo > index
        # This file maintains an index of all certificates issued and is covered under the Index Section below
+       # Maintains a record of all certs issued, and is extremely important if one has revoked a certificate.
 
-  # 4. Create "rand" file (leave blank): echo > rand
+  # 4. Create 'rand' file (leave blank): echo > rand
        # File is utilized by for random characters & is querried by openssl during certificate/key creation.
 
   # ENCRYPT_KEY [Establish Certificate Options] is not currently commented out; however, it's recommended to
   # create server keys with the additional command option: -nodes
     # Encrypting a server key will result in the server requiring the passkey every time it's started/restarted;
-    # in other words, a massive inconvenience, as well as possibly destrimental. 
+    # in other words, a massive inconvenience, and potentially destrimental. 
 
-  # Provided you utilize the SubjectAltName (SAN) section [highly recommended], the Common Name is not required to 
-  # be the IP/DNS, and can be whatever name you wish it to be
+  # Provided you utilize the SubjectAltName (SAN) section [highly recommended], the Common Name is not required
+  # to be the IP/DNS, and can be whatever name you wish it to be
 
 
 #####################################################################
@@ -575,8 +574,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #####################################################################
 
   # For VPN Server certs:
-    # When creating a VPN server cert using "extendedKeyUsage = serverAuth", in your VPN client config you must
-    # change "remote-cert-tls server" to "remote-cert-ku f8". For an explanation: https://www.v13.gr/blog/?p=386
+    # When creating a VPN server cert using 'extendedKeyUsage = serverAuth', in your VPN client config you must
+    # change 'remote-cert-tls server' to 'remote-cert-ku f8'. For an explanation: https://www.v13.gr/blog/?p=386
 
   # For BSD/*nix OSes:
     # Certificates should have 644 permissions
@@ -592,18 +591,14 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--- Generate CA ---#
 
-    # CA key should have a secure password of at least 16 characters, containing at least the following:
+    # CA key should have a secure password of at least 20 characters, containing at least the following:
       # 2 uppercase letters, 2 lowercase letters, 2 numbers, and 2 symbols
-        
+
   # openssl req -x509 -new -sha512 -days 3650 -newkey rsa:4096 -keyout CA.key.pem -out CA.crt.pem -config .\openssl.cnf -extensions v3_ca
- 
-#--- Generate CA CRL Cert ---#
-  # openssl ca -config .\openssl.cnf -gencrl -keyfile CA.key -cert CA.crt.pem -out CA.crl.pem
 
 #--- Generate CA CRL Cert ---#
   # openssl ca -gencrl -keyfile CA.key.pem -cert CA.crt.pem -out CA.crl.pem -config .\openssl.cnf
 
- 
 #--- Convert CA CRL Cert to DER CRL ---#
   # openssl crl -inform PEM -in '.\CA.crl.pem' -outform DER -out '.\CA.crl'
 
@@ -614,7 +609,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 #--- Gernerate Intermediate CA ---#
 
-    # Intermediate CA key should have a secure password of at least 16 characters, containing at least the following:
+    # Intermediate CA key should have a secure password of at least 20 characters, containing at least the following:
       # 2 uppercase letters, 2 lowercase letters, 2 numbers, and 2 symbols
 
   # openssl req -out '.\VPN-ICA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout VPN-ICA.key -config .\openssl.cnf -extensions v3_intermediate_ca
@@ -628,26 +623,14 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--- Convert Intermediate CA CRL Cert to DER CRL ---#
   # openssl crl -inform PEM -in '.\VPN-ICA.crl.pem' -outform DER -out '.\VPN-ICA.crl'
 
-#--- Gernerate Intermediate CA ---#
-  # openssl req -out '.\Router 2 ICA.csr' -new -days 3650 -sha512 -newkey rsa:4096 -keyout '.\Router 2 ICA.key.pem' -config .\openssl.cnf -extensions v3_ica_router2
-
-#--- Sign Intermediate CA with CA ---#
-  # openssl x509 -req -sha512 -days 3650 -in '.\Router 2 ICA.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\Router 2 ICA.crt.pem' -extfile .\openssl.cnf -extensions v3_ica_router2
-
-#--- Generate Intermediate CA CRL Cert ---#
-  # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\Router 2 ICA.key.pem' -cert '.\Router 2 ICA.crt.pem' -out '.\Router 2 ICA.crl.pem'
-
-#--- Convert Intermediate CA CRL Cert to DER CRL ---#
-  # openssl crl -inform PEM -in '.\Router 2 ICA.crl.pem' -outform DER -out '.\Router 2 ICA.crl'
-
 
 #--- Create Concatenated CA - Intermediate CA Certificate Chain ---#
 
-  # Windows:
-    # type ".\Router 2 ICA.crt.pem" ".\Sophos UTM CA.crt.pem" >> ".\Sophos VPN CA Chain.pem"
+  # Windows [cmd, not ps, terminal):
+    # type '.\Router 2 ICA.crt.pem' '.\Sophos UTM CA.crt.pem' > '.\Sophos VPN CA Chain.pem'
 
   # *nix/BSD:
-    # cat ./"Router 2 ICA.crt.pem" ./"Sophos UTM CA.crt.pem" > ./"Sophos VPN CA Chain.pem"
+    # cat './Router 2 ICA.crt.pem' './Sophos UTM CA.crt.pem' > './Sophos VPN CA Chain.pem'
 
 
 #--- Export VPN Client with an Intermediate CA ---#
@@ -671,10 +654,10 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud -nodes
 
   #--- Request with multiple common names ---#
-    # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj "/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com" -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
+    # openssl req -out '.\Sophos-UTM-VPN-client.csr' -new -days 3650 -sha512 -newkey rsa:3072 -subj '/C=US/ST=ST/L=Locality/O=Sophos UTM/OU=LAN/CN=UserName/CN=User.Name/CN=User_Name/emailAddress=whatever@whichever.com' -keyout '.\Sophos-UTM-VPN-client.key.pem' -config .\openssl.cnf -extensions v3_vpn_client
 
 #--- Sign ---#
-  # openssl x509 -req -sha512 -days 3650 -in '.\WRT1900ac.csr' -CA ".\Sophos UTM CA.crt.pem" -CAkey ".\Sophos UTM CA.key.pem" -CAserial .\serial -out '.\crt\WRT1900ac.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
+  # openssl x509 -req -sha512 -days 3650 -in '.\WRT1900ac.csr' -CA '.\Sophos UTM CA.crt.pem' -CAkey '.\Sophos UTM CA.key.pem' -CAserial .\serial -out '.\crt\WRT1900ac.crt.pem' -extfile .\openssl.cnf -extensions v3_owncloud
 
 #--- Export ---#
   # openssl pkcs12 -export -out '.\OwnCloud.p12' -inkey '.\OwnCloud.key.pem' -in '.\OwnCloud.crt.pem' -certfile CA.crt.pem
@@ -721,38 +704,21 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
 
 
-#--- Create Concatenated Individual intermediate Build CA and CA into PEM Certificate ---#
-
-    #--- Sign Individual Intermediate Build CA Request ---#
-      # openssl x509 -req -sha512 -days 3650 -in '.\media.csr' -CA CA.crt.pem -CAkey CA.key -CAserial .\serial -out '.\media.x509.pem' -extfile .\openssl.cnf -extensions v3_intermediate_ca
-
-    #--- Generate Individual Intermediate Build CA CRL Cert ---#
-      # openssl ca -config .\openssl.cnf -gencrl -keyfile '.\media.key.pem' -cert '.\media.x509.pem' -out '.\media.crl.pem' -extfile '.\openssl.cnf' -extensions crl_ext
-
-    #--- Convert Individual Intermediate Build CA CRL Cert to DER CRL ---#
-      # openssl crl -inform PEM -in '.\media.crl.pem' -outform DER -out '.\media.crl'
-
-
 #--- Create Concatenated Individual Intermediate Build CA and CA into PEM Certificate ---#
 
     # Windows:
-      # type "media.x509.pem" "Sophos UTM CA.crt.pem" >> "Android-Media-CA-Chain.pem"
+      # type 'media.x509.pem' 'Sophos UTM CA.crt.pem' > 'Android-Media-CA-Chain.pem'
 
     # *nix/BSD:
-      # cat ./"media.x509.pem" ./"Sophos UTM CA.crt.pem" > ./"Android-Media-CA-Chain.pem"
+      # cat './media.x509.pem' './Sophos UTM CA.crt.pem' > './Android-Media-CA-Chain.pem'
 
 
 #--- Create PKCS12 for import into keystore ---#
-  # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile .\"Android-Media-CA-Chain.pem" -password pass:media -name media
+  # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile '.\Android-Media-CA-Chain.pem' -password pass:media -name media
 
-    # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
-    # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
-      # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
-
-        # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert must 
-        # be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA.
-          # This allows for the certificate path of the signed packages/images to show a hierarchy of: CA -> Intermediate CA -> Package/Image
-
+    # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert
+    # must be exported with the client cert & key to maintain the certificate chain of trust of: 
+    # Package/Image -> Intermediate CA -> CA.
 
     #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
 
@@ -772,18 +738,18 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##---- Index File -----##
 #--------------------------------------------------------------------
 
-  # If you wish to maintain the index file automatically, you'll need to use "openssl ca" to sign certs.
+  # If you wish to maintain the index file automatically, you'll need to use 'openssl ca' to sign certs.
   # You can manually maintain the index file, by inputting 1 cert entry per line in the following format:
 
     # V    251201090544Z    0a    unknown    /C=US/ST=State/L=Locality/O=Sophos UTM/OU=LAN/CN=Cert Common Name/emailaddress=whatever@whichever.com
     # 1    2----------->    4->   5----->    6--------------------------------------------------------------------------------------------------->
 
   # 1. V [Valid] R [Revoked] E [Expired]
-  # 2. Expiration Date [Format: YYMMDDHHMMSS followed by "Z"]: 2025.12.01 @ 09:05:44
+  # 2. Expiration Date [Format: YYMMDDHHMMSS followed by 'Z']: 2025.12.01 @ 09:05:44
   # 3. Revocation Date [(Empty if not revoked) Format: YYMMDDHHMMSSZ,reason]
   # 4. Serial number in hex format: 0a is hex for 10
        # Windows has a programmer calculator feature that can convert dec <-> hex
-  # 5. unknown [Certificate filename or literal string "unknown"]
+  # 5. unknown [Certificate filename or literal string 'unknown']
   # 6. Distinguished Name
 
 
@@ -820,7 +786,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   #--- serverAuth ---#
     # SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
     # clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes nscertype options,
-    # as the "ns" in nscertype stands for NetScape [browser], which hasn't existed for some time.
+    # as the 'ns' in nscertype stands for NetScape [browser], which hasn't existed for some time.
 
   #--- clientAuth ---#
     # SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
@@ -871,7 +837,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
   #--- RSA ---#
     # Key exchange occurs via encryption of a random value [chosen by the client] via the server public key. This requires the
-    # server public key to be an RSA key, and the server certificate must utilize the "keyAgreement" keyUsage extension).
+    # server public key to be an RSA key, and the server certificate must utilize the 'keyAgreement' keyUsage extension).
 
   #--- DH_RSA ---#
     # Key exchange occurs via a static Diffie-Hellman key. Server Public Key must be a Diffie-Hellman key, of which must have been
