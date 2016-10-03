@@ -85,7 +85,6 @@ cert_opt                        = ca_default
 
 #####################################################################
 
-
 [ Intermediate_CA_default ]
 certs                           = $DIR\intermediate\crt
 new_certs_dir                   = $DIR\intermediate\crt
@@ -224,6 +223,7 @@ organizationalUnitName_default  = LAN
     # Provided one utilizes the SAN profile, Common Names can be whatever one wishes (i.e. not the DNS or IP)
       # SANs can be: email (an email address), URI (a uniform resource indicator), DNS (a DNS domain name), 
       # RID (a registered ID: OBJECT IDENTIFIER), IP (an IP address), dirName (a distinguished name), and otherName.
+
 
 #--------------------------------------------------------------------
         ##----- Certificate Authorities -----##
@@ -655,6 +655,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # If a server cert is created with an encrypted key, one will need to manually type in the encryption password
       # whenever starting or restarting the server (inconvenient and impractical for VPN and Web Servers)
 
+
 #--- Request ---#
 
   # openssl req -out '.\OwnCloud.csr' -new -days 3650 -sha512 -newkey rsa:3072 -keyout '.\OwnCloud.key.pem' -config .\openssl.cnf -extensions v3_owncloud -nodes
@@ -723,8 +724,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # openssl pkcs12 -export -out .\media.p12 -inkey .\media.key.pem -in .\media.x509.pem  -certfile '.\Android-Media-CA-Chain.pem' -password pass:media -name media
 
     # The Intermediate CA is still used to sign packages/images, however, the CA - Intermediate CA chain cert
-    # must be exported with the client cert & key to maintain the certificate chain of trust of: 
-    # Package/Image -> Intermediate CA -> CA.
+    # must be exported with the client cert & key to maintain the certificate chain of trust of: Package/Image -> Intermediate CA -> CA
 
     #--- Copy the following files into your build directory (location will vary depending on ROM) ---#
 
