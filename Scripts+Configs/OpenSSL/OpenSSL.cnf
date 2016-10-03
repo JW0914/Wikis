@@ -162,7 +162,7 @@ emailAddress                    = optional
 
       # For example, if one wants 2048bit encryption with an SHA256 hash, encryption value must be
       # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
-        # x64 machines can almost always process sha512 faster than sha256
+        # x64 machines can almost always process SHA512 faster than SHA256
 
     # Encrypt key is not currently commmented out; however, as one does not want a server's key to have
     # an encrypted password, when creating the CSR for the server, add -nodes to the Request command
