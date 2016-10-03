@@ -19,6 +19,8 @@
         ##----- Establish working directory -----##
 #####################################################################
 
+# Build Variables #
+
 DIR                             = .
 ICA                             = $DIR\ICA
 CNF                             = .\openssl.cnf
@@ -28,6 +30,8 @@ CNF                             = .\openssl.cnf
         ##----- Establish CA Profile and Policy -----##
 #####################################################################
 
+# Certificate Variables #
+
 [ default ]
 SOPHOS                          = 'Sophos UTM CA'
 WRTA                            = 'Router 2 ICA'
@@ -36,6 +40,8 @@ WRTC                            = 'Router 4 ICA'
 
 VPN                             = 'Router 2 VPN ICA'
 CCA                             = 'Sophos VPN CA Chain.pem'
+
+#--------------------------------------------------------------------
 
 [ ca ]
 default_ca                      = CA_default
