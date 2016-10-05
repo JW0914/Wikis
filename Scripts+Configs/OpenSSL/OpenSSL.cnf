@@ -254,7 +254,7 @@ organizationalUnitName_default  = LAN
         ##----- Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
-# Sophos UTM #
+# Main #
 
   # Servers #
     [ alt_sophos ]
@@ -425,7 +425,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##----- Certificate Authority Clients -----##
 #--------------------------------------------------------------------
 
-# Sophos UTM #
+# Main #
 
   # Servers #
     [ v3_sophos ]
