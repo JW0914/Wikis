@@ -13,7 +13,7 @@
             <Keywords name="Numbers, suffix1">b bit bits byte bytes k kb kbit kbits kbyte kbytes kilobit kilobits kilobyte kilobytes m mb mbit mbits mbyte mbytes megabit mgabits megabyte megabytes g gb gbit gbits gbyte gbytes gigabit gigabits gigabyte gigabytest tb tbit tbits tbyte ms s m h d</Keywords>
             <Keywords name="Numbers, suffix2"></Keywords>
             <Keywords name="Numbers, range"></Keywords>
-            <Keywords name="Operators1">` &apos; &quot; * ; [ ] ^ ~ = : / \  , </Keywords>
+            <Keywords name="Operators1">` &apos; &quot; * ; [ ] ^ ~ = : / \ ,</Keywords>
             <Keywords name="Operators2"></Keywords>
             <Keywords name="Folders in code1, open">{</Keywords>
             <Keywords name="Folders in code1, middle"></Keywords>
@@ -25,10 +25,10 @@
             <Keywords name="Folders in comment, middle"></Keywords>
             <Keywords name="Folders in comment, close"></Keywords>
             <Keywords name="Keywords1">default_bits default_keyfile encrypt_key default_md string_mask utf8 distinguished_name attributes req_extensions x509_extensions copy_extensions challengePassword challengePassword_min challengePassword_max preserve</Keywords>
-            <Keywords name="Keywords2">DNS. email. IP. yes no </Keywords>
-            <Keywords name="Keywords3">default CA_default policy_match policy_supply req req_distinguished_name req_attributes crl_ext usr_cert_dn usr_cert_not_dn ICA_default ca_default intermediate_ca intermediate_CA_default </Keywords>
-            <Keywords name="Keywords4">countryName countryName_default countryName_max stateOrProvinceName stateOrProvinceName_default organizationName organizationalUnitName organizationalUnitName_default commonName commonName_max emailAddress emailAddress_max localityName localityName_default 0.organizationName 0.organizationName_default organizationName_default emailAddres $CRLDIR $DIR  $ICA $CNF $SOPHOS $VPN </Keywords>
-            <Keywords name="Keywords5">certs certificate crldir database default_crl_days default_days preserve new_certs_dir private_key RANDFILE x509_extensions copy_extensions unique_subject policy name_opt cert_opt default_crl_days crl serial crlnumber </Keywords>
+            <Keywords name="Keywords2">DNS. email. IP. yes no</Keywords>
+            <Keywords name="Keywords3">default CA_default policy_match policy_supply req req_distinguished_name req_attributes crl_ext usr_cert_dn usr_cert_not_dn ICA_default ca_default intermediate_ca intermediate_CA_default</Keywords>
+            <Keywords name="Keywords4">countryName countryName_default countryName_max stateOrProvinceName stateOrProvinceName_default organizationName organizationalUnitName organizationalUnitName_default commonName commonName_max emailAddress emailAddress_max localityName localityName_default 0.organizationName 0.organizationName_default organizationName_default emailAddres $CRLDIR $DIR $ICA $CNF $SOPHOS $VPN</Keywords>
+            <Keywords name="Keywords5">certs certificate crldir database default_crl_days default_days preserve new_certs_dir private_key RANDFILE x509_extensions copy_extensions unique_subject policy name_opt cert_opt default_crl_days crl serial crlnumber</Keywords>
             <Keywords name="Keywords6">basicConstraints subjectKeyIdentifier authorityKeyIdentifier keyUsage extendedKeyUsage subjectAltName issuerAltName</Keywords>
             <Keywords name="Keywords7">192.168. 171. 10. 127. match</Keywords>
             <Keywords name="Keywords8">@ alt_ v3_</Keywords>
