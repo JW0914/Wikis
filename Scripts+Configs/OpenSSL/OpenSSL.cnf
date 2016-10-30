@@ -2,17 +2,24 @@
         ##::[[---  Windows OpenSSL Config  ---]]::##
 
 # For *nix/bsd users:
+    
     # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only, and if
     # utilizing spaces in names, ensure utilization of proper break format, i.e. './Sophos\ UTM\ CA.crt'
 
-# For Sophos users:
-    # Prior to generating user certs, ensure you change 'x509_extensions = usr_cert_dn' to 'usr_cert_not_dn'  This should  
-    # result with 'RFC822 Name = user email' in the SubjectAlternativeName of the final user.crt/pem details.  
-        # Without this, it will be impossible to authenticate to VPNs on Sophos.
+    # Ensure EOLs are LF, not CRLF
+      # Windows uses CRLF, UNIX utilizes LF
 
-    # Intermediate CAs and Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
-        # Only exception to this is the WebAdmin certificate, of which can be signed by a CA/ICA authority for a domain name.
-            # For chain of trust to be maintained, CA & ICA must be installed on devices accessing the WbAdmin/User Portal.
+
+# For Sophos users:
+    
+    # If not using SANs, prior to generating user certs, ensure you change 'x509_extensions = usr_cert_dn' to
+    # 'usr_cert_not_dn'  
+      # This will result with 'RFC822 Name = user email' in the SubjectAlternativeName of the final user certificate.
+      # Without this, it will be impossible to authenticate to VPNs on Sophos.
+
+    # Intermediate CAs & Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
+      # The only exception is the WebAdmin certificate, of which can be signed by a Public ICA authority for a FQDN.
+        # For chain of trust to be maintained, CA & ICA must be installed on devices accessing the WbAdmin/User Portal.
         
 
 #####################################################################
@@ -22,7 +29,6 @@
 # Build Variables #
 
 DIR                             = .
-ICA                             = $DIR\ICA
 CNF                             = .\openssl.cnf
 
 
@@ -39,16 +45,12 @@ WRTB                            = 'Router 3 ICA'
 WRTC                            = 'Router 4 ICA'
 
 VPN                             = 'Router 2 VPN ICA'
-CCA                             = 'Sophos VPN CA Chain.pem'
+
 
 #--------------------------------------------------------------------
 
 [ ca ]
 default_ca                      = CA_default
-
-[ intermediate_ca ]
-default_intermediate_ca         = intermediate_CA_default
-default_ica                     = ICA_default
 
 
 #####################################################################
@@ -56,19 +58,19 @@ default_ica                     = ICA_default
 [ CA_default ]
 certs                           = $DIR
 new_certs_dir                   = $DIR
-certs                           = $DIR\crt
+certs                           = $DIR\cert
 
 database                        = $DIR\index
 RANDFILE                        = $DIR\rand
 serial                          = $DIR\serial
 
-crldir                          = $DIR
+crldir                          = $DIR\crl
 crlnumber                       = $CRLDIR\crlnumber
 crl                             = $CRLDIR\ca.crl.pem
 default_crl_days                = 3650
 
-certificate                     = '$DIR\ca.crt.pem'
-private_key                     = '$DIR\ca.key.pem'
+certificate                     = '$DIR\ca\ca.crt.pem'
+private_key                     = '$DIR\ca\ca.key.pem'
 
 default_days                    = 3650
 preserve                        = no
@@ -81,58 +83,6 @@ unique_subject                  = yes
 policy                          = policy_match
 name_opt                        = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
 cert_opt                        = ca_default
-
-
-#####################################################################
-
-[ Intermediate_CA_default ]
-certs                           = $DIR\intermediate\crt
-new_certs_dir                   = $DIR\intermediate\crt
-
-database                        = $DIR\intermediate\index
-RANDFILE                        = $DIR\intermediate\rand
-serial                          = $DIR\intermediate\serial
-
-crldir                          = $DIR\intermediate\crl
-crlnumber                       = $DIR\crlnumber
-crl                             = $CRLDIR\crl.pem
-default_crl_days                = 3650 
-
-certificate                     = '$DIR\intermediate\$VPN.crt.pem'
-private_key                     = '$DIR\intermediate\$VPN.key.pem'
-
-default_days                    = 3650
-preserve                        = no
-default_md                      = sha512
-
-#--------------------------------------------------------------------
-
-[ ICA_default ]
-#certs                           = $ICA\CRT
-
-#database                        = $ICA\index
-#RANDFILE                        = $ICA\rand
-#serial                          = $ICA\serial
-
-#crldir                          = $ICA\CRL
-#crlnumber                       = $CRLDIR\crlnumber
-#crl                             = $CRLDIR\crl.pem
-#default_crl_days                = 3650 
-
-#certificate                     = '$ICA\$VPN.crt.pem'
-#private_key                     = '$ICA\$VPN.key.pem'
-
-#default_days                    = 3650
-#default_md                      = sha512
-#preserve                        = no
-
-#x509_extensions                 = usr_cert_dn
-#copy_extensions                 = copy
-#unique_subject                  = no
-
-#policy                          = policy_match
-#name_opt                        = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space,ignore_type
-#cert_opt                        = intermediate_ca_default
 
 
 #####################################################################
@@ -160,16 +110,18 @@ emailAddress                    = optional
 
     # If you plan on using TLS ECDHE or ECDH, the bits and hash must exceed the value you wish to have.
 
-      # For example, if one wants 2048bit encryption with an SHA256 hash, encryption value must be
+      # For example, if one wants 2048bit encryption with a SHA256 hash, encryption value must be
       # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
-        # x64 machines can almost always process SHA512 faster than SHA256
+        # x64 machines can almost always process SHA512 faster than SHA256.
+
+    # If you're not planning on using TLS ECDHE or ECDH, a key larger than 2048bit isn't necessary.
 
     # Encrypt key is not currently commmented out; however, as one does not want a server's key to have
-    # an encrypted password, when creating the CSR for the server, add -nodes to the Request command
+    # an encrypted password, when creating the key for the server, add -nodes to the Request command.
 
 
 [ req ]
-default_bits                    = 3072
+default_bits                    = 2048
 default_keyfile                 = private.key.pem
 
 preserve                        = no
@@ -347,7 +299,8 @@ organizationalUnitName_default  = LAN
 
     # These V3 CA profiles must not be modified to contain any more, or any less, KUs
       # These have been configured specifically for security & its imperative no other keyUsages are set
-        # For an ICA to be capable of signing additional CAs/ICAs, pathlen number must mirror number of CAs/ICAs it can sign
+        # For an ICA to be capable of signing additional CAs/ICAs, pathlen number must mirror number of CAs/ICAs
+        # it can sign.  By default, all ICAs are set to 0, meaning they can sign certs, but not other CAs/ICAs.
 
 
 [ v3_ca ]
@@ -377,6 +330,7 @@ subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
 subjectAltName              = @alt_ica_router4
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
+
 
 [ crl_ext ]
 issuerAltName               = issuer:copy
@@ -412,13 +366,13 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
     # These V3 profiles should not be modified to contain less than what they are currently configured with.
-      # I've specifically configured these with security in mind.
+      # These have been specifically configured with security in mind.
 
     # All servers capable of TLS should contain all keyUsages, except for dataEncipherment
       # VPN and file servers should have all 5 keyUsages set.
 
     # All servers must contain EKU serverAuth
-      # All VPN clients must contain EKU clientAuth
+      # All server [VPN] clients must contain EKU clientAuth
 
 
 #--------------------------------------------------------------------
@@ -566,13 +520,13 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # 4. Create 'rand' file (leave blank): echo > rand
        # File is utilized by for random characters & is querried by openssl during certificate/key creation.
 
-  # ENCRYPT_KEY [Establish Certificate Options] is not currently commented out; however, it's recommended to
-  # create server keys with the additional command option: -nodes
+  # ENCRYPT_KEY [Establish Certificate Options] is not currently commented out; Server cert keys should not
+  # be created with encryption, so add the additional command option to key creation: -nodes
     # Encrypting a server key will result in the server requiring the passkey every time it's started/restarted;
     # in other words, a massive inconvenience, and potentially destrimental. 
 
   # Provided you utilize the SubjectAltName (SAN) section [highly recommended], the Common Name is not required
-  # to be the IP/DNS, and can be whatever name you wish it to be
+  # to be the IP/DNS/FQDN, and can be whatever name you wish it to be
 
 
 #####################################################################
