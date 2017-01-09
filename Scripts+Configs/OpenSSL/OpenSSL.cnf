@@ -3,12 +3,11 @@
 
 # For *nix/bsd users:
     
-    # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only, and if
-    # utilizing spaces in names, ensure utilization of proper break format, i.e. './Sophos\ UTM\ CA.crt'
+    # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only,
+    # and if utilizing spaces in names, ensure utilization of proper break format, i.e. './Sophos\ UTM\ CA.crt'
 
     # Ensure EOLs are LF, not CRLF
       # Windows uses CRLF, UNIX utilizes LF
-
 
 # For Sophos users:
     
@@ -29,7 +28,8 @@
 # Build Variables #
 
 DIR                             = .
-CNF                             = .\openssl.cnf
+CNF                             = $DIR\openssl.cnf
+cnf                             = /etc/ssl/openssl.cnf
 
 
 #####################################################################
@@ -701,15 +701,40 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # If you wish to maintain the index file automatically, you'll need to use 'openssl ca' to sign certs.
   # You can manually maintain the index file, by inputting 1 cert entry per line in the following format:
 
-    # V    251201090544Z    0a    unknown    /C=US/ST=State/L=Locality/O=Sophos UTM/OU=LAN/CN=Cert Common Name/emailaddress=whatever@whichever.com
-    # 1    2----------->    4->   5----->    6--------------------------------------------------------------------------------------------------->
+    # V    261231235959Z           0a    unknown    /C=US/ST=State/L=Locality/O=Sophos UTM/OU=LAN/CN=Cert Common Name/emailaddress=whatever@whichever.com
+    # 1    2----------->    3->    4->   5----->    6--------------------------------------------------------------------------------------------------->
 
-  # 1. V [Valid] R [Revoked] E [Expired]
-  # 2. Expiration Date [Format: YYMMDDHHMMSS followed by 'Z']: 2025.12.01 @ 09:05:44
-  # 3. Revocation Date [(Empty if not revoked) Format: YYMMDDHHMMSSZ,reason]
+
+  # 1. Status of Certificate:
+       # V [Valid] R [Revoked] E [Expired]
+
+  # 2. Expiration Date:
+       # Format: YYMMDDHHMMSS followed by 'Z': 2026.12.31 @ 23:59:59
+
+  # 3. Revocation Date [Format: YYMMDDHHMMSSZ,reason]
+       # Certain distros error out without a whitespace for 3 in the index file
+       # Empty if not revoked, otherwise valid reasons are:
+         # keyCompromise
+         # CACompromise
+         # affiliationChanged
+         # superseded
+         # cessationOfOperation
+         # certificateHold
+         # privilegeWithdrawn
+         # AACompromise
+
   # 4. Serial number in hex format: 0a is hex for 10
-       # Windows has a programmer calculator feature that can convert dec <-> hex
-  # 5. unknown [Certificate filename or literal string 'unknown']
+       # Windows:
+         # Calculator has programmer feature which can convert dec <-> hex
+       # Linux/BSD:
+         # cli hex -> dec:
+           # printf '%d\n' 0x0a [returns 10]
+         # cli dec -> hex:
+           # printf '%x\n' 10 [returns 0a]
+
+  # 5. Certificate Filename or Literal String
+       # Certificate filename or literal string 'unknown'
+
   # 6. Distinguished Name
 
 
