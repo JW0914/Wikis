@@ -26,9 +26,9 @@ wrtp="make prereq"
   # Files & Directories:
 crypto="package/kernel/linux/modules/crypto.mk"
 
-dev="/home/jw0914/openwrt/dev"
-devices="/home/jw0914/openwrt/devices"
-
+dir="/home/$user/openwrt"
+dev="$dir/dev"
+devices="$dir/devices"
 
   # Packages:
 
@@ -58,6 +58,8 @@ $ag upgrade
 
   # Clone:
 printf "\n\n...Cloning OpenWrt from GitHub...\n\n"
+mkdir -p $dir
+cd $dir
 git clone https://github.com/openwrt/openwrt.git
 
 
