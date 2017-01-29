@@ -1,6 +1,6 @@
 #!/bin/bash
 
-        ##::[[--- OpenWrt Ubuntu 16.10 x64 Build Script ---]]::##
+        ##::[[--- OpenWrt Ubuntu x64 Build Script ---]]::##
 
 
 
