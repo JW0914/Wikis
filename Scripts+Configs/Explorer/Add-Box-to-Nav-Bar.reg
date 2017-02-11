@@ -29,7 +29,7 @@ Windows Registry Editor Version 5.00
 "Attributes"=dword:f080004d
 
 [HKEY_CURRENT_USER\Software\Classes\Wow6432Node\CLSID\{4A8FCD9F-623C-4283-96F0-10F41846A98A}\DefaultIcon]
-@="C:\\Program Files (x86)\\Google\\Drive\\googledrivesync.exe,0"
+@="C:\\Program Files\\Box\\Box Sync\\BoxSync.exe,0"
 
 [HKEY_CURRENT_USER\Software\Classes\Wow6432Node\CLSID\{4A8FCD9F-623C-4283-96F0-10F41846A98A}\Instance\InitPropertyBag]
 "Attributes"=dword:00000011
