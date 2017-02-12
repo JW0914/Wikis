@@ -2,13 +2,23 @@
 ---
 ######Client.ovpn######
 - OpenVPN client config
-  - If utilized on Android, `pkcs12 vpn-client1.p12` can be removed (line 54), as Android will import the SSL/TLS cert into it's keychain
+  - **Android:** `pkcs12 vpn-client1.p12` can be removed (line 54), as Android imports certs into it's keychain
 
 ######OpenVPN-Server.conf######
 - OpenVPN server config for OpenWrt
   - Will need to be modified slightly for other Linux/BSD distros:
     - `option` isn't utilized & should be removed
     - `_` should be changed to `-`
+
+######EC TLS Ciphers######
+  - EC [**E**lliptic **C**urve] ciphers require keys & hashes greater than the desired values
+    - Example:
+      - For 2048bit, a key of/over 3072bit would be required
+      - For SHA256, a hash of/over SHA384 would be required
+
+######DH Keys######
+  - It's recommended to generate multiple DH [**D**iffie-**H**ellman] values at the same time (2048, 3072, 4096)
+    - DH generation takes substantial time, with each subsequent generation occurring faster due to the rand file
 
 ---
 
