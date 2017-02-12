@@ -15,6 +15,7 @@
     - Example:
       - For 2048bit, a key of/over 3072bit would be required
       - For SHA256, a hash of/over SHA384 would be required
+        - *x64 systems can process SHA512 faster than SHA256*
 
 ######DH Keys######
   - It's recommended to generate multiple DH [**D**iffie-**H**ellman] values at the same time (2048, 3072, 4096)
