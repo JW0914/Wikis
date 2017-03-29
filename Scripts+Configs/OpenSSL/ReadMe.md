@@ -1,11 +1,11 @@
-###Information Directory###
+### Information Directory ###
 ---
-######Notepad++ OpenSSL Language Profile######
+###### Notepad++ OpenSSL Language Profile ######
 - Profile I created for config files, making it far more convenient to view config files in Notepad++
   - Import via: **Language -> Define Your Language -> Import**
 
 
-######OpenSSL.cnf######
+###### OpenSSL.cnf ######
 - I created this config for maximum security when creating **CA**s [_Certificate Authorities_], **ICA**s [_Intermediate Certificate Authorities_], and **Certificates**.
   - _Information and applicable commands can be found beginning at Line 500_
 - By default, the CA profile does not have a pathleen set, allowing it to sign an infinite number of CAs and ICAs; however, the ICA profile has a pathleen of 0, preventing it from signing any CA or ICA. 
@@ -18,6 +18,6 @@
   - `nscertype` flags **should not** be utilized within certs or VPN configs as they're obsolete & were never officially recognized OIDs for _anything other than the NetScape browser_ 
 
 
-######PEM Association.reg######
+###### PEM Association.reg ######
   - Importing this into the registry allows Windows to display PEM certificates in GUI form.
 
