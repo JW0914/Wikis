@@ -2,7 +2,7 @@
 ---
 ###### Client.ovpn ######
 - OpenVPN client config
-  - **Android:** `pkcs12 vpn-client1.p12` can be removed (line 54), as Android imports certs into it's keychain
+  - **Android:** `pkcs12 vpn-client1.p12` can be removed (line 57), as Android imports certs into it's keychain
 
 ###### OpenVPN-Server.conf ######
 - OpenVPN server config for OpenWrt
