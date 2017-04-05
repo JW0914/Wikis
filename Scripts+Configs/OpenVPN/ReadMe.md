@@ -43,7 +43,8 @@
 
   * **Guides**
     * [OpenVPN HowTo](https://openvpn.net/index.php/open-source/documentation/howto.html)
-    * [OpenVPN Man Page](https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage)
+    * [OpenVPN Man Page](https://community.openvpn.net/openvpn/wiki/Openvpn24ManPage)
+    * [OpenVPN Wikis](https://community.openvpn.net/openvpn/wiki)
 
   * **Tuning**
     * [Buffer Tuning](http://winaero.com/blog/speed-up-openvpn-and-get-faster-speed-over-its-channel/)
