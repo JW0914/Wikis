@@ -1,41 +1,41 @@
-###Information Directory
+### Information Directory ###
 ---
-######Explorer######
+###### Explorer ######
 - Registry keys to add various cloud storage services to the Windows Explorer nav tree
 
-######File Associations######
+###### File Associations ######
 - Registry key to allow Windows to display PEM certs in GUI form
 
-######Hyper-V######
+###### Hyper-V ######
 - Adds Hyper-V Manager to _Control Panel\Hardware and Sound_
 
-######Notepad++######
+###### Notepad++ ######
 - Changes the default "Edit" option in context menus from Notepad to Notepad++
 
-######OpenSSL######
+###### OpenSSL ######
 - Prebuilt custom OpenSSL config, including information and commands starting line 315
 
-######OpenVPN######
+###### OpenVPN ######
 - Custom client and server OpenVPN configs
 
-######ownCloud######
+###### ownCloud ######
 - Prebuilt custom Nginx server config for ownCloud running within a FreeNAS _[FreeBSD 10.3]_ jail
 
-######PuTTY######
+###### PuTTY ######
 - Files and instructions required for a MultiHop SSH Tunnel or a TFTP firmware flash
 
-######QDir######
+###### QDir ######
 - Custom QDir config file and a useful registry key for WinPE/RE
 
-######System Restore######
+###### System Restore ######
 - Various system restore point creation scripts, with an accompanying Task Scheduler export
 
-######WinRE######
+###### WinRE ######
 - Script to create a custom WinRE image and an accompanying bootable ISO, USB, or, VHD
 
 ---
 
-######_Registry Keys_######
+###### _Registry Keys_ ######
 - Some values will need to be customized to your environment
 - Explorer keys must be pointed to the right directory within the key
   - _Paths in registry keys must use double backslashes_  `\\`
