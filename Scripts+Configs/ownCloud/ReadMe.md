@@ -1,6 +1,6 @@
-###Information Directory###
+### Information Directory ###
 ---
-######Nginx Configuration######
+###### Nginx Configuration ######
 - Nginx configuration for [_FreeNAS_] ownCloud [_Standard_] Jail
   - __Line 7__
     - _Should be set to number of CPU processors/threads_

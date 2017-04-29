@@ -1,6 +1,6 @@
-###Information Directory###
+### Information Directory ###
 ---
-######VBS######
+###### VBS ######
 - Creates a restore point and prompts for a description
   - Script should be placed in a path with no spaces
     - `%ProgramData%\Scripts\SR\RPwithDescription`

@@ -1,6 +1,6 @@
-####Information Directory####
+#### Information Directory ####
 ---
-######OpenSSL######
+###### OpenSSL ######
 - Certificates HowTo
 - Crypto Man Page
 - Keys HowTo
@@ -8,6 +8,6 @@
 - Proxy Certificates HowTo
 - SSL Man Page
 
-######FiestyDuck######
+###### FiestyDuck ######
 - OpenSSL Cookbook
  

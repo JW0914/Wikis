@@ -1,10 +1,10 @@
-###Information Directory###
+### Information Directory ###
 ---
-######Show Hidden Files######
+###### Show Hidden Files ######
 - Forces the showing of hidden and system files within GUI programs
 - Mainly for utilization within WinPE/WinRE
 
-######WinRE Create######
+###### WinRE Create ######
 - Provided one has completed the prequisites, this will auto customize a WinRE image and replace the current image with the custom one and/or create a bootable ISO, USB, or VHD
   
   - __Prerequisites__

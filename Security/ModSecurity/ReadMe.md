@@ -1,5 +1,5 @@
-###Information Directory###
+### Information Directory ###
 ---
-######ModSecurity Handbook######
+###### ModSecurity Handbook ######
 - Provides basic information on ModSecurity
  

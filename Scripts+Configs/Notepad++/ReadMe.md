@@ -1,5 +1,5 @@
-###Information Directory###
+### Information Directory ###
 ---
-######Notepad++######
+###### Notepad++ ######
 - Defaults "Edit" in Context Menu to Notepad++, instead of Notepad
  

@@ -1,6 +1,6 @@
-###Information Directory
+### Information Directory ###
 ---
-######Hyper-V Manager######
+###### Hyper-V Manager ######
 - Adds Hyper-V Manager to _Control Panel\Hardware and Sound_
   - One can customize the following lines:
     - __10:__ & __21:__ `@="Hyper-V Manager"`

@@ -1,12 +1,12 @@
-###Information Directory###
+### Information Directory ###
 ---
-######PuTTY Serial Session######
+###### PuTTY Serial Session ######
 - Verify correct COM port is set
   - __Registry Line 206:__ `"SerialLine"="COM3"`
   - __PuTTY:__ _Sesion - Serial line_
 - Once Line 206 is correctly set, merge into registry
 
-######TFTP32/64 config######
+###### TFTP32/64 config ######
 - tftp32.ini is utilized regardless of whether TFTP32 or TFTP64 is used
 - Lines requiring customization:
   -  __3:__ `IP_Pool=192.168.1.2`

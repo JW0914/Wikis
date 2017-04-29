@@ -1,6 +1,6 @@
-###Information Directory###
+### Information Directory ###
 ---
-######Box######
+###### Box ######
 - Adds Box to the Windows Explorer nav tree
 - Edit Lines:
   - __4:, 18:,__ & __42:__ `@="Box"`
@@ -8,7 +8,7 @@
   - __36:__ & __49:__ `"TargetFolderPath"="B:\\Servers\\Box"`
     - _Target folder_
 
-######Google Drive######
+###### Google Drive ######
 - Adds Google Drive to the Windows Explorer nav tree
 - Edit Lines:
   - __4:, 13:,__ & __35:__ `@="GDrive"`
@@ -16,7 +16,7 @@
   - __29:__ & __45:__ `"TargetFolderPath"="B:\\Servers\\Drive`
     - _Target folder_
 
-######Links######
+###### Links ######
 - Adds Links back to the Windows Explorer nav tree
 - Edit Lines:
   - __6:, 15:,__ & __37:__ `@="Whatever Name You Choose"`
@@ -24,7 +24,7 @@
   - __24:__ & __40:__`@="C:\\ProgramData\\Alienware\\Windows 10\\Favorites.ico,0"`
     - _Path to icon displayed_
 
-######ownCloud######
+###### ownCloud ######
 - Adds ownCloud to the Windows Explorer nav tree
 - Edit Lines:
   - __4:, 13:,__ & __35:__ `@="ownCloud"`

@@ -1,9 +1,9 @@
-###Information Directory###
+### Information Directory ###
 ---
 ######TFTP Recovery######
 - Wiki on performing a TFTP recovery firmware flash
 
-######WRT1900ac Serial Port######
+###### WRT1900ac Serial Port ######
 - Covers different ways of connecting via serial
   - _USB - TTL AJ (Audio Jack) cable_
   - _USB - TTL Header cable_
@@ -12,13 +12,13 @@
 - Covers header [serial] port pin out
 - Describes how to install an audio jack into the case for easy access with a USB - TTL AJ cable
 
-######PuTTY Serial Session######
+###### PuTTY Serial Session ######
 - Verify correct COM port is set
   - __Registry Line 206:__ `"SerialLine"="COM3"`
   - __PuTTY:__ _Sesion - Serial line_
 - Once Line 206 is correctly set, merge into registry
 
-######TFTP32/64 config######
+###### TFTP32/64 config ######
 - tftp32.ini is utilized regardless of whether TFTP32 or TFTP64 is used
 - Lines requiring customization:
   -  __3:__ `IP_Pool=192.168.1.20`
