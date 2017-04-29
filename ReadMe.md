@@ -1,24 +1,24 @@
-###Information Directory###
+### Information Directory ###
 ---
-######DirecTV######
+###### DirecTV ######
 - Wiki on how to tranfer DVR content from one HDD to another
 
-######OpenSSL######
+###### OpenSSL ######
 - Wikis directly from OpenSSL's website, all authored by OpenSSL
 
-######OpenVPN######
+###### OpenVPN ######
 - Wikis compiled from OpenWRT and OpenVPN
 
-######Scripts & Configs######
+###### Scripts & Configs ######
 - Various custom scripts, registry files, and configs 
 
-######Security######
+###### Security ######
 - ModSecurity Handbook [Free Edition] by Fiesty Duck
  
-######WRT1X00AC/S Series######
+###### WRT1X00AC/S Series ######
 - Wikis from OpenWRT regarding the Linksys WRT1X00AC/S Series routers
 
-######XboxOne######
+###### XboxOne ######
 - Wiki on how to upgrade or replace the internal HDD in an Xbox One
 
 
