@@ -743,24 +743,84 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##----- Key Usage -----##
 #--------------------------------------------------------------------
 
+    # !! CA / ICA ONLY !! #
+#--------------------------------------------------------------------
+
+  # These extensions MUST ONLY be used for CA certificates
+  
+    #--- cRLSign ---#
+      # Is asserted when subject public key is used for verifying signatures on certificate revocation lists.
+
+    #--- keyCertSign ---#
+      # Is asserted when subject public key is used for verifying signatures on public key certificates.  
+        # If keyCertSign is asserted, the CA bit in the basic constraints extension (Section 4.2.1.9) MUST also be asserted.
+
+
+    # All #
+#--------------------------------------------------------------------
+
   #--- digitalSignature ---#
     # Certificates with this flag set can be used to apply a digital signature. Digital signatures are often used for entity 
     # authentication and data origin authentication with integrity.
- 
+      # Is asserted when subject public key is used for verifying digital signatures, other than signatures on certificates
+      # (bit 5) and CRLs (bit 6).
+
   #--- nonRepudiation ---#
     # Certificates with this flag set can be used to sign data as above but the certificate public key may be used to provide 
     # non-repudiation services preventing the signing entity from falsely denying some action.
+      # Is asserted when subject public key is used to verify digital signatures, other than signatures on certificates (bit 5)
+      # and CRLs (bit 6).
+        # NOTE: Recent editions of X.509 have renamed the nonRepudiation bit to contentCommitment.
 
   #--- keyEncipherment ---#
     # Certificates with this flag set may be used by the subject to encrypt a symmetric key which is then transferred to the 
-    # target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities. 
+    # target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities.
+      # Is asserted when subject public key is used for enciphering private or secret keys when an RSA public key is to be
+      # used for encrypting a symmetric content-decryption key or an asymmetric private key.
 
   #--- dataEncipherment ---#
     # Certificates with this flag set can be used by the subject to encrypt and decrypt actual application data.
+      # Is asserted when subject public key is used for directly enciphering raw user data without the use of an intermediate
+      # symmetric cipher.
+        # NOTE: Use of this bit extremely uncommon; all applications use key transport / key agreement to establish a symmetric key.
 
   #--- keyAgreement ---#
     # Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish 
     # a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
+      # Is asserted when subject public key is used for key agreement (i.e. when a Diffie-Hellman key is used for key management).
+
+  #--- encipherOnly ---#
+    # Undefined in the absence of the keyAgreement bit (keyAgreement is required).
+      # Public key used only for enciphering data while performing key agreement.
+        # When encipherOnly is asserted AND keyAgreement also set, subject public key may be used ONLY for enciphering data while
+        # performing key agreement.
+
+  #--- decipherOnly ---#
+    # Undefined in the absence of the keyAgreement bit (keyAgreement is required).
+      # Public key used only for deciphering data while performing key agreement.
+        # When decipherOnly is asserted AND keyAgreement is also set, subject public key may be used ONLY for deciphering data
+        # while performing key agreement.
+
+
+        #--------------------------------------------------------------------
+                        ## ----- RFC 5280 4.2.1.3 ----- ##
+        #--------------------------------------------------------------------
+
+                    # https://tools.ietf.org/html/rfc5280
+
+            # id-ce-keyUsage OBJECT IDENTIFIER ::=  { id-ce 15 }
+
+                # KeyUsage ::= BIT STRING {
+                  # digitalSignature        (0),
+                  # nonRepudiation          (1), -- recent editions of X.509 have
+                                                 -- renamed this bit to contentCommitment
+                  # keyEncipherment         (2),
+                  # dataEncipherment        (3),
+                  # keyAgreement            (4),
+                  # keyCertSign             (5),
+                  # cRLSign                 (6),
+                  # encipherOnly            (7),
+                  # decipherOnly            (8) }
 
 
 #--------------------------------------------------------------------
@@ -770,8 +830,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
   #--- serverAuth ---#
     # SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
-    # clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes nscertype options,
-    # as the 'ns' in nscertype stands for NetScape [browser], which hasn't existed for some time.
+    # options, clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes
+    # nscertype as the 'ns' in nscertype stands for NetScape [browser], which hasn't existed for some time.
 
   #--- clientAuth ---#
     # SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
@@ -798,9 +858,9 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   
     # !!!SHOULD NOT BE UTILIZED!!! 
 
-      # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these values
-      # were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly deprecated
-      # by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
+      # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these
+      # values were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly
+      # deprecated by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
 
   #--- msCodeInd ---#
     # Microsoft Individual Code Signing (authenticode)... self explanatory
@@ -825,8 +885,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     # server public key to be an RSA key, and the server certificate must utilize the 'keyAgreement' keyUsage extension).
 
   #--- DH_RSA ---#
-    # Key exchange occurs via a static Diffie-Hellman key. Server Public Key must be a Diffie-Hellman key, of which must have been
-    # issued by a CA that was using an RSA key signing key.
+    # Key exchange occurs via a static Diffie-Hellman key. Server Public Key must be a Diffie-Hellman key, of which must have
+    # been issued by a CA that was using an RSA key signing key.
 
   #--- DH_DSA ---#
     # Like DH_RSA, except that the CA used a DSA key in lieu of RSA.
@@ -845,19 +905,19 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
   #--- ECDH_ECDSA ---# 
-    # Like DH_DSA, but with elliptic curves: the server public key must be an ECDH key, with a certificate issued by a CA which 
-    # utilized an ECDSA public key.
+    # Like DH_DSA, but with elliptic curves: the server public key must be an ECDH key, with a certificate issued by a CA 
+    # which utilized an ECDSA public key.
 
   #--- ECDH_RSA ---# 
     # Like ECDH_ECDSA, except that the CA used an RSA key
 
   #--- ECDHE_ECDSA ---# 
-    # The server sends a dynamically generated EC Diffie-Hellman key and signs it with its own ECDSA key. This is equivalent to
-    # DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
+    # The server sends a dynamically generated EC Diffie-Hellman key and signs it with its own ECDSA key. This is equivalent
+    # to DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
 
   #--- ECDHE_RSA ---# 
-    # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve Diffie-Hellman
-    # key.
+    # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve
+    # Diffie-Hellman key.
 
 
 #--------------------------------------------------------------------
