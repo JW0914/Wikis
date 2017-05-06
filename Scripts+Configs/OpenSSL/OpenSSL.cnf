@@ -916,6 +916,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
                       # -- Key usage bits that may be consistent:
                         # -- digitalSignature and/or nonRepudiation
 
+
 #--------------------------------------------------------------------
 #####################################################################
         ##----- Key Exchange Algorithms  -----##
