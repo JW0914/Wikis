@@ -402,7 +402,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_owncloud
 
@@ -410,7 +410,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_vpn_server1
 
@@ -451,7 +451,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_vpn_server2
 
@@ -492,7 +492,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment, keyAgreement
+    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_router4
 
