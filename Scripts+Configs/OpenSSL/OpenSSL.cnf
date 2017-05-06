@@ -828,6 +828,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         ##----- Extended Key Usage -----##
 #--------------------------------------------------------------------
 
+    # In general, this extension will appear only in end entity certificates.
+
   #--- serverAuth ---#
     # SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
     # options, clients can authenticate against.  All VPN servers should be signed with this EKU present.  This supercedes
@@ -874,6 +876,45 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   #--- msEFS ---#
     # Microsoft Encrypted File System... self explanatory
 
+
+        #--------------------------------------------------------------------
+                        ## ----- RFC 5280 4.2.1.12 ----- ##
+        #--------------------------------------------------------------------
+
+                    # https://tools.ietf.org/html/rfc5280
+
+            # anyExtendedKeyUsage OBJECT IDENTIFIER ::= { id-ce-extKeyUsage 0 }
+
+                # id-kp OBJECT IDENTIFIER ::= { id-pkix 3 }
+
+                  # id-kp-serverAuth             OBJECT IDENTIFIER ::= { id-kp 1 }
+                    # -- TLS WWW server authentication
+                      # -- Key usage bits that may be consistent:
+                        # -- digitalSignature, keyEncipherment or keyAgreement
+
+                  # id-kp-clientAuth             OBJECT IDENTIFIER ::= { id-kp 2 }
+                    # -- TLS WWW client authentication
+                      # -- Key usage bits that may be consistent:
+                        # -- digitalSignature and/or keyAgreement
+
+                  # id-kp-codeSigning             OBJECT IDENTIFIER ::= { id-kp 3 }
+                    # -- Signing of downloadable executable code
+                      # -- Key usage bits that may be consistent: digitalSignature
+
+                  # id-kp-emailProtection         OBJECT IDENTIFIER ::= { id-kp 4 }
+                    # -- Email protection
+                      # -- Key usage bits that may be consistent: 
+                        # -- digitalSignature, nonRepudiation, and/or (keyEncipherment or keyAgreement)
+
+                  # id-kp-timeStamping            OBJECT IDENTIFIER ::= { id-kp 8 }
+                    # -- Binding the hash of an object to a time
+                      # -- Key usage bits that may be consistent:
+                        # -- digitalSignature and/or nonRepudiation
+
+                  # id-kp-OCSPSigning            OBJECT IDENTIFIER ::= { id-kp 9 }
+                    # -- Signing OCSP responses
+                      # -- Key usage bits that may be consistent:
+                        # -- digitalSignature and/or nonRepudiation
 
 #--------------------------------------------------------------------
 #####################################################################
