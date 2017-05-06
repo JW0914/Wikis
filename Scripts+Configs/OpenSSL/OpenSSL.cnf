@@ -2,7 +2,7 @@
         ##::[[---  Windows OpenSSL Config  ---]]::##
 
 # For *nix/bsd users:
-    
+
     # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only,
     # and if utilizing spaces in names, ensure utilization of proper break format, i.e. './Sophos\ UTM\ CA.crt'
 
@@ -10,7 +10,7 @@
       # Windows uses CRLF, UNIX utilizes LF
 
 # For Sophos users:
-    
+
     # If not using SANs, prior to generating user certs, ensure you change 'x509_extensions = usr_cert_dn' to
     # 'usr_cert_not_dn'  
       # This will result with 'RFC822 Name = user email' in the SubjectAlternativeName of the final user certificate.
@@ -19,7 +19,7 @@
     # Intermediate CAs & Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
       # The only exception is the WebAdmin certificate, of which can be signed by a Public ICA authority for a FQDN.
         # For chain of trust to be maintained, CA & ICA must be installed on devices accessing the WbAdmin/User Portal.
-        
+
 
 #####################################################################
         ##----- Establish working directory -----##
@@ -250,7 +250,7 @@ organizationalUnitName_default  = LAN
     IP.1                = 192.168.2.2
     IP.2                = 127.0.0.1
     DNS.1               = LAN.OpenWrt
-    
+
     [ alt_asrock ]
     IP.1                = 192.168.2.4
     IP.2                = 192.168.2.5
@@ -258,7 +258,7 @@ organizationalUnitName_default  = LAN
     DNS.1               = C2750D4I-IPMI
     DNS.2               = C2750D4I-eth0
     DNS.3               = C2750D4I-eth1
-    
+
     [ alt_vpn_server2 ]
     IP.1                = 10.0.1.1
     DNS.1               = your.ddns.com
@@ -747,7 +747,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
   # These extensions MUST ONLY be used for CA certificates
-  
+
     #--- cRLSign ---#
       # Is asserted when subject public key is used for verifying signatures on certificate revocation lists.
 
@@ -812,8 +812,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
                 # KeyUsage ::= BIT STRING {
                   # digitalSignature        (0),
-                  # nonRepudiation          (1), -- recent editions of X.509 have
-                                                 -- renamed this bit to contentCommitment
+                  # nonRepudiation          (1),
+                    # NOTE: Recent editions of X.509 have renamed this bit to contentCommitment
                   # keyEncipherment         (2),
                   # dataEncipherment        (3),
                   # keyAgreement            (4),
@@ -857,7 +857,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # clientAuth can be utilized in a IPSec VPN client cert.
 
   #--- ipsecEndSystem, ipsecTunnel, & ipsecUser ---#
-  
+
     # !!!SHOULD NOT BE UTILIZED!!! 
 
       # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these
