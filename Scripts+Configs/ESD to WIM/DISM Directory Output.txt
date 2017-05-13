@@ -53,7 +53,7 @@ wimprovider.dll
 wimserv.exe
               48 File(s)
 
- Directory of C:\ProgramData\Scripts\ESD2WIM\DISM\en-us
+ Directory of C:\ProgramData\Scripts\ESD-2-WIM\DISM\en-us
 
 <DIR>          .
 <DIR>          ..
