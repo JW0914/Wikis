@@ -1,0 +1,76 @@
+ Directory of C:\ProgramData\Scripts\ESD-2-WIM\DISM
+
+<DIR>          .
+<DIR>          ..
+api-ms-win-downlevel-advapi32-l1-1-0
+api-ms-win-downlevel-advapi32-l1-1-1
+api-ms-win-downlevel-advapi32-l2-1-0
+api-ms-win-downlevel-advapi32-l2-1-1
+api-ms-win-downlevel-advapi32-l3-1-0
+api-ms-win-downlevel-advapi32-l4-1-0
+api-ms-win-downlevel-kernel32-l1-1-0
+api-ms-win-downlevel-kernel32-l2-1-0
+api-ms-win-downlevel-ole32-l1-1-0.dl
+api-ms-win-downlevel-ole32-l1-1-1.dl
+api-ms-win-downlevel-shlwapi-l1-1-0.
+api-ms-win-downlevel-shlwapi-l1-1-1.
+api-ms-win-downlevel-user32-l1-1-0.d
+api-ms-win-downlevel-user32-l1-1-1.d
+api-ms-win-downlevel-version-l1-1-0.
+bcdboot.exe
+bcdedit.exe
+bootsect.exe
+compatprovider.dll
+dism.exe
+dism.Format.ps1xml
+dism.psd1
+dism.psm1
+dism.Types.ps1xml
+dismapi.dll
+dismcore.dll
+dismcoreps.dll
+dismprov.dll
+<DIR>          en-us
+etfsboot.com
+folderprovider.dll
+imagex.exe
+imagingprovider.dll
+installreghiverecoverydriverx86.exe
+logprovider.dll
+Microsoft.Dism.Powershell.dll
+oa3tool.exe
+oscdimg.exe
+pkgmgr.exe
+RegHiveRecovery.sys
+ssshim.dll
+vhdprovider.dll
+wdsmcast.exe
+wimgapi.dll
+wimmount.sys
+wimmountadksetupx86.bat
+wimmountadksetupx86.exe
+wimprovider.dll
+wimserv.exe
+              48 File(s)
+
+ Directory of C:\ProgramData\Scripts\ESD2WIM\DISM\en-us
+
+<DIR>          .
+<DIR>          ..
+compatprovider.dll.mui
+dism.exe.mui
+dismapi.dll.mui
+dismcore.dll.mui
+dismprov.dll.mui
+folderprovider.dll.mui
+imagingprovider.dll.mui
+logprovider.dll.mui
+VHDProvider.dll.mui
+wdsmcast.exe.mui
+wimgapi.dll.mui
+wimprovider.dll.mui
+              12 File(s)
+
+     Total Files Listed:
+                         60 File(s)
+                         2 Dir(s)
