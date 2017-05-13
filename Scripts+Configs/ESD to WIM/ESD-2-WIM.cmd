@@ -17,8 +17,7 @@ color 0E
   echo                 ^(without quotes, even if path contains spaces^)
   echo.
   echo ===============================================================================
-  echo.
-  echo.
+  echo.&echo.
 
 set /p WIMFILE=
   if "%WIMFILE%"=="" color 0C&echo Incorrect file name or path&echo.&PAUSE&GOTO :QUIT
@@ -41,13 +40,9 @@ set /p WIMFILE=
     echo                This script requires administrator privileges!
     echo.
     echo                      ^(Select 'Run as administrator'^)
-    echo.
-    echo.
-    echo.
-    echo.
+    echo.&echo.&echo.&echo.
     echo  Press any key to exit...
-    echo.
-    echo.
+    echo.&echo.
     echo ===============================================================================
 
   pause >nul
@@ -68,9 +63,7 @@ dism /get-wiminfo /wimfile:"%WIMFILE%" >nul 2>&1 || (
     echo      ---------------------------------------------------------------------
     echo            I N C O R R E C T    F I L E    N A M E    O R    P A T H
     echo      ---------------------------------------------------------------------
-    echo.
-    echo.
-    echo.
+    echo.&echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -97,7 +90,7 @@ exit
   color 0B
 
     echo ===============================================================================
-    echo.                   Detected ESD image contains %images% indexes:
+    echo                   Detected ESD image contains %images% indexes:
     echo.
 
   for /L %%i in (1, 1, %images%) do (
@@ -109,10 +102,10 @@ exit
     echo.                                  Options:
     echo -------------------------------------------------------------------------------
     echo.
-    echo.                   1 - Export 1st index
-    echo.                   2 - Export all indexes
-    echo.                   3 - Export selected single index
-    echo.                   4 - Export selected range of indexes
+    echo                    1 - Export 1st index
+    echo                    2 - Export all indexes
+    echo                    3 - Export selected single index
+    echo                    4 - Export selected range of indexes
     echo.
     echo                    Q - Quit
     echo.
@@ -142,9 +135,7 @@ exit
       echo                  WIM file already present in current folder!
       echo.
       echo ===============================================================================
-      echo.
-      echo.
-      echo.
+      echo.&echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -173,8 +164,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -190,8 +180,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
     pause >nul
@@ -216,8 +205,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -231,7 +219,7 @@ exit
   set _index=
 
     echo ===============================================================================
-    echo.                   Detected ESD image contains %images% indexes:
+    echo                   Detected ESD image contains %images% indexes:
     echo.
 
   for /L %%i in (1, 1, %images%) do (
@@ -240,9 +228,9 @@ exit
 
     echo.
     echo ===============================================================================
-    echo.                     Enter desired index number to export
+    echo                      Enter desired index number to export
     echo.
-    echo.                          ^(0 - Return to Main Menu^)
+    echo                           ^(0 - Return to Main Menu^)
     echo ===============================================================================
 
   set /p _index= ^>
@@ -260,9 +248,7 @@ exit
       echo                  WIM file already present in current folder!
       echo.
       echo ===============================================================================
-      echo.
-      echo.
-      echo.
+      echo.&echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -289,8 +275,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -315,9 +300,9 @@ exit
 
     echo.
     echo ===============================================================================
-    echo.             Enter desired Range of indexes to export ^(i.e. 2-4^)
+    echo              Enter desired Range of indexes to export ^(i.e. 2-4^)
     echo.
-    echo.                          ^(0 - Return to Main Menu^)
+    echo                           ^(0 - Return to Main Menu^)
     echo ===============================================================================
 
   set /p _range= ^>
@@ -340,9 +325,7 @@ exit
       echo                  WIM file already present in current folder!
       echo.
       echo ===============================================================================
-      echo.
-      echo.
-      echo.
+      echo.&echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -383,8 +366,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -408,10 +390,10 @@ exit
     echo.                                  Options:
     echo -------------------------------------------------------------------------------
     echo.
-    echo.                   1 - Export 1st index
-    echo.                   2 - Export all indexes
-    echo.                   3 - Export selected single index
-    echo.                   4 - Export selected range of indexes
+    echo                    1 - Export 1st index
+    echo                    2 - Export all indexes
+    echo                    3 - Export selected single index
+    echo                    4 - Export selected range of indexes
     echo.
     echo                    Q - Quit
     echo.
@@ -441,9 +423,7 @@ exit
       echo                  ESD file already present in current folder!
       echo.
       echo ===============================================================================
-      echo.
-      echo.
-      echo.
+      echo.&echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -455,11 +435,9 @@ exit
     echo              ...Exporting WIM Index 1 to a new ESD image...
     echo.
     echo ===============================================================================
-    echo.
-    echo.
+    echo.&echo.
     echo       *** Be patient, this will require time and high CPU/Disk usage ***
-    echo.
-    echo.
+    echo.&echo.
 
   dism /export-image /sourceimagefile:"%WIMFILE%" /Sourceindex:1 /destinationimagefile:install.esd /compress:recovery /checkintegrity
 
@@ -470,8 +448,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -490,9 +467,7 @@ exit
       echo                  ESD file already present in current folder!
       echo.
       echo ===============================================================================
-      echo.
-      echo.
-      echo.
+      echo.&echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -504,11 +479,9 @@ exit
   echo              ...Exporting WIM Index 1 to a new ESD image...
   echo.
   echo ===============================================================================
-  echo.
-  echo.
+  echo.&echo.
   echo       *** Be patient, this will require time and high CPU/Disk usage ***
-  echo.
-  echo.
+  echo.&echo.
 
   dism /Export-Image /SourceImageFile:"%WIMFILE%" /Sourceindex:1 /DestinationImageFile:install.esd /compress:recovery /CheckIntegrity
 
@@ -520,8 +493,7 @@ exit
 
       echo.
       echo     Export successful...
-      echo.
-      echo.
+      echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -546,8 +518,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -561,7 +532,7 @@ exit
   set _index=
 
     echo ===============================================================================
-    echo.                   Detected WIM file contains %images% indexes:
+    echo                   Detected WIM file contains %images% indexes:
     echo.
 
   for /L %%i in (1, 1, %images%) do (
@@ -570,9 +541,9 @@ exit
 
     echo.
     echo ===============================================================================
-    echo.                     Enter desired index number to export
+    echo                      Enter desired index number to export
     echo.
-    echo.                          ^(0 - Return to Main Menu^)
+    echo                           ^(0 - Return to Main Menu^)
     echo ===============================================================================
 
   set /p _index= ^>
@@ -591,9 +562,7 @@ exit
       echo                  ESD file already present in current folder!
       echo.
       echo ===============================================================================
-      echo.
-      echo.
-      echo.
+      echo.&echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -605,11 +574,9 @@ exit
     echo          ...Exporting WIM Index %_index% to a new ESD image...
     echo.
     echo ===============================================================================
-    echo.
-    echo.
+    echo.&echo.
     echo       *** Be patient, this will require time and high CPU/Disk usage ***
-    echo.
-    echo.
+    echo.&echo.
 
   dism /Export-Image /SourceImageFile:"%WIMFILE%" /SourceIndex:%_index% /DestinationImageFile:install.esd /compress:recovery /CheckIntegrity
 
@@ -620,8 +587,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
@@ -637,7 +603,7 @@ exit
   set _end=
 
     echo ===============================================================================
-    echo.                   Detected WIM file contains %images% indexes:
+    echo                   Detected WIM file contains %images% indexes:
     echo.
 
   for /L %%i in (1, 1, %images%) do (
@@ -646,9 +612,9 @@ exit
 
     echo.
     echo ===============================================================================
-    echo.             Enter desired Range of indexes to export ^(i.e. 2-4^)
+    echo              Enter desired Range of indexes to export ^(i.e. 2-4^)
     echo.
-    echo.                          ^(0 - Return to Main Menu^)
+    echo                           ^(0 - Return to Main Menu^)
     echo ===============================================================================
 
   set /p _range= ^>
@@ -672,9 +638,7 @@ exit
       echo                  ESD file already present in current folder!
       echo.
       echo ===============================================================================
-      echo.
-      echo.
-      echo.
+      echo.&echo.&echo.
       echo Press any key to exit...
 
     pause >nul
@@ -686,11 +650,9 @@ exit
     echo          ...Exporting WIM Index %_start% to a new ESD image...
     echo.
     echo ===============================================================================
-    echo.
-    echo.
+    echo.&echo.
     echo       *** Be patient, this will require time and high CPU/Disk usage ***
-    echo.
-    echo.
+    echo.&echo.
 
   dism /Export-Image /SourceImageFile:"%WIMFILE%" /SourceIndex:%_start% /DestinationImageFile:install.esd /compress:recovery /CheckIntegrity
 
@@ -716,8 +678,7 @@ exit
 
     echo.
     echo     Export successful...
-    echo.
-    echo.
+    echo.&echo.
     echo Press any key to exit...
 
   pause >nul
