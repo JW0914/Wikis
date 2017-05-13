@@ -314,9 +314,8 @@ cls
   echo.
 
   choice /M " --->  Are you sure you want to exit?"
-    SET ERRORTEMP=%ERRORLEVEL%
-      IF %ERRORTEMP%==1 GOTO :QUIT
-      IF %ERRORTEMP%==2 GOTO :WAIT
+      IF %ERRORLEVEL% == 1 GOTO :QUIT
+      IF %ERRORLEVEL% == 2 GOTO :WAIT
 
 
 :WAIT
@@ -325,9 +324,8 @@ cls
   pause >nul&echo.&color 0C
 
   choice /M " --->  Are you sure you want to exit?"
-    SET ERRORTEMP=%ERRORLEVEL%
-      IF %ERRORTEMP%==1 GOTO :QUIT
-      IF %ERRORTEMP%==2 GOTO :WAIT
+      IF %ERRORLEVEL% == 1 GOTO :QUIT
+      IF %ERRORLEVEL% == 2 GOTO :WAIT
 
 
 :QUIT
