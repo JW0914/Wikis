@@ -28,7 +28,7 @@ cls
      set DEST=%CD%DISM
      set DESTL=%CD%DISM\en-us
 
-  :: Robocopy
+  :: Robocopy:
      set opt=/ETA /V /ZB
      set log=/NP /TEE /TS /LOG+:"%CD%DISM-RoboCopy_%date%_%dtime%.log"
 
@@ -41,7 +41,7 @@ cls
     :: Commands ::
 ::-------------------------------------
 
- :: Verify if Admin
+ :: Verify if Admin:
     %windir%\system32\reg.exe query "HKU\S-1-5-19" >nul 2>&1 || (
       cls
       color 4F
@@ -120,7 +120,7 @@ cls
     echo.
     echo                    Enter complete path to adksetup.exe file
     echo.
-    echo                        ^(with quotes if contain spaces^)
+    echo                       ^(with quotes if contains spaces^)
     echo.
     echo ===============================================================================
     echo.&echo.
@@ -223,7 +223,7 @@ cls
 
     robocopy %ADK%\DISM\ %DEST% %opt% %log%
 
- :: Language
+ :: Language:
     echo.&echo.&echo.&echo.&echo.
     echo ===============================================================================
     echo   ---------------------------------------------------------------------------
@@ -289,7 +289,7 @@ cls
 
         robocopy %ADK%\Wdsmcast\%lang%\ %DESTL% %opt% %log%
 
- :: Successful Completion
+ :: Successful Completion:
     color 2A
 
       echo.&echo.&echo.&echo.&echo.&echo.
@@ -314,8 +314,9 @@ cls
   echo.
 
   choice /M " --->  Are you sure you want to exit?"
-      IF %ERRORLEVEL% == 1 GOTO :QUIT
-      IF %ERRORLEVEL% == 2 GOTO :WAIT
+    SET ERRORTEMP=%ERRORLEVEL%
+      IF %ERRORTEMP%==1 GOTO :QUIT
+      IF %ERRORTEMP%==2 GOTO :WAIT
 
 
 :WAIT
@@ -324,8 +325,9 @@ cls
   pause >nul&echo.&color 0C
 
   choice /M " --->  Are you sure you want to exit?"
-      IF %ERRORLEVEL% == 1 GOTO :QUIT
-      IF %ERRORLEVEL% == 2 GOTO :WAIT
+    SET ERRORTEMP=%ERRORLEVEL%
+      IF %ERRORTEMP%==1 GOTO :QUIT
+      IF %ERRORTEMP%==2 GOTO :WAIT
 
 
 :QUIT
