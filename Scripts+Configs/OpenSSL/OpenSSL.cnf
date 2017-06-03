@@ -369,7 +369,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # These have been specifically configured with security in mind.
 
     # All servers capable of TLS should contain all keyUsages, except for dataEncipherment
-      # VPN and file servers should have all 5 keyUsages set.
+      # VPN and file servers should not have less than digitalSignature, keyEncipherment, keyAgreement
 
     # All servers must contain EKU serverAuth
       # All server [VPN] clients must contain EKU clientAuth
