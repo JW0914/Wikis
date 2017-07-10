@@ -1,7 +1,7 @@
 ### Information Directory ###
 ---
 
-[LEDE-Project](https://lede-project.org/): **L**inux **E**mbedded **D**evelopment **E**nvironment**
+[LEDE-Project](https://lede-project.org/): **L**inux **E**mbedded **D**evelopment **E**nvironment
 
 ###### lede-build.sh ######
 Creates a LEDE-Project build environment in Ubuntu _(preconfigured for 16.04, 16.10, or 17.04)_
