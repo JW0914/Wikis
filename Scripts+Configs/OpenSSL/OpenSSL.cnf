@@ -13,12 +13,12 @@
 
     # If not using SANs, prior to generating user certs, ensure you change 'x509_extensions = usr_cert_dn' to
     # 'usr_cert_not_dn'
-      # This will result with 'RFC822 Name = user email' in the SubjectAlternativeName of the final user certificate.
+      # This will result with 'RFC822 Name = user@email.com' in the SubjectAlternativeName of the final user certificate.
       # Without this, it will be impossible to authenticate to VPNs on Sophos.
 
     # Intermediate CAs & Intermediate CA client certs CANNOT be utilized on Sophos UTM due to how Sophos authenticates.
       # The only exception is the WebAdmin certificate, of which can be signed by a Public ICA authority for a FQDN.
-        # For chain of trust to be maintained, CA & ICA must be installed on devices accessing the WbAdmin/User Portal.
+        # For chain of trust to be maintained, CA & ICA must be installed on devices accessing the WebAdmin/User Portal.
 
 
 #####################################################################
