@@ -1,6 +1,6 @@
 #!/bin/bash
 
-        ##::[[--- OpenWrt Ubuntu x64 Build Script ---]]::##
+        ##::[[--- LEDE Ubuntu x64 Build Script ---]]::##
 
 
 
