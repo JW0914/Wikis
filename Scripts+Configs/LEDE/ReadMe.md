@@ -10,9 +10,8 @@ Creates a LEDE-Project build environment in Ubuntu _(preconfigured for 16.04, 16
   - **Lines 114 - 133:**
     - Appends the updated Marvell-Cesa driver to crypto.mk
   - **Lines 137 - 203:**
-    - Replaces default nano makefile, adding syntax color & nanorc support, among others
-      - Increases nano package from ~41KB to ~94KB
-      - A few additional arguments can be added, however `enable-tiny` cannot be removed
+    - Replaces default Nano makefile, adding syntax color & nanorc support, among others
+      - Increases nano package from ~41KB to ~121KB
 
 ###### Prerequisites ######
   - Edit Lines:
