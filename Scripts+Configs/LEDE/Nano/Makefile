@@ -29,7 +29,7 @@ define Package/nano
   TITLE:=An enhanced clone of the Pico text editor
   URL:=http://www.nano-editor.org/
   MAINTAINER:=Jonathan Bennett <JBennett@incomsystems.biz>
-  DEPENDS:=+libncurses
+  DEPENDS:=+libncurses +zzlib
 endef
 
 define Package/nano/description
@@ -38,16 +38,7 @@ define Package/nano/description
 endef
 
 CONFIGURE_ARGS += \
-	--enable-tiny \
-	--without-slang \
-	--enable-utf8 \
-	--enable-nanorc \
-	--enable-color \
-	--enable-help \
-	--enable-linenumbers \
-	--enable-multibuffer \
-	--enable-browser \
-	--enable-histories \
+	--enable-all \
 
 CONFIGURE_VARS += \
 	ac_cv_header_regex_h=no \
