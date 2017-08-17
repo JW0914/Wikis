@@ -12,13 +12,13 @@
 
 ###### openvpn.conf-default ######
 - OpenVPN server config for Sophos [UTM](https://www.sophos.com/en-us/products/unified-threat-management.aspx)/[XG](https://www.sophos.com/en-us/products/next-gen-firewall.aspx)
-  - Located at: *`/var/sec/chroot-openvpn/etc/openvpn/openvpn.conf-default`*
-    - *`/etc/openvpn/tls-auth.key`* must be manually added to the directory *`/var/sec/chroot-openvpn/etc/openvpn`*
+  - Located at: */var/sec/chroot-openvpn/etc/openvpn/openvpn.conf-default*
+    - */etc/openvpn/tls-auth.key* must be manually added to the directory */var/sec/chroot-openvpn/etc/openvpn*
       - Generate with: `openvpn --genkey --secret /var/sec/chroot-openvpn/etc/openvpn/tls-auth.key`
     - The two blank lines following `[<OPTIONS>]` should remain, followed by the EOF blank line, or three in total.
-      - ConfD will append an additional two options to the end of *`/var/sec/chroot-openvpn/etc/openvpn/openvpn.conf`* when SSL VPN is enabled in WebAdmin.
-        - ConfD utilizes *`openvpn.conf-default`* to dynamically create *`/var/sec/chroot-openvpn/etc/openvpn/openvpn.conf`* upon SSL VPN being enabled in WebAdmin; once disabled, ConfD deletes *`openvpn.conf`*.
-    - The single **#** at the beginning of the file is for `vim`, else it won't apply syntax coloring in config files.
+      - ConfD will append an additional two options to the end of */var/sec/chroot-openvpn/etc/openvpn/openvpn.conf* when SSL VPN is enabled in WebAdmin.
+        - ConfD utilizes *openvpn.conf-default* to dynamically create */var/sec/chroot-openvpn/etc/openvpn/openvpn.conf* upon SSL VPN being enabled in WebAdmin; once disabled, ConfD deletes *openvpn.conf*.
+    - The single `#` at the beginning of the file is for `vim`, else it won't apply syntax coloring in config files.
 
 ###### EC TLS Ciphers ######
   - EC [**E**lliptic **C**urve] ciphers require keys & hashes greater than the desired values
