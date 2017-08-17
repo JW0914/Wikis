@@ -1,0 +1,109 @@
+#
+
+    ##::[[---  Sophos OpenVPN Config  ---]]::##
+
+####################################################
+             ##----- VPN Server -----##
+####################################################
+
+    # Protocol #
+#---------------------------------------------------
+  dev                         tun
+  topology                    subnet
+  mark                        4458
+  tun-ipv6
+  [<LISTEN>]
+
+
+    # Routes #
+#---------------------------------------------------
+  server                      [<SERVER_POOL>]
+  multihome
+  [<SERVER6_POOL>]
+
+
+    # Client Config #
+#---------------------------------------------------
+  client-config-dir           /etc/openvpn/conf.d
+  ifconfig-pool-persist       /var/run/ipp.txt
+
+
+    # Ecryption #
+#---------------------------------------------------
+  # Login:
+    username-as-common-name
+
+  # Diffie-Hellmann:
+    dh                        /etc/openvpn/[<DH_FILE>]
+
+  # Certificates:
+    capath                    /etc/openvpn/ca.d
+    cert                      /etc/openvpn/server.crt
+    key                       /etc/openvpn/server.key
+    tls-auth                  /etc/openvpn/tls-auth.key 0
+
+  # SSL:
+    cipher                    [<CIPHER>]
+    auth                      [<AUTH>]
+
+  # TLS:
+    tls-version-min           1.2
+    tls-cipher                TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384:TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA384:TLS-ECDH-RSA-WITH-AES-256-GCM-SHA384:TLS-ECDH-RSA-WITH-AES-256-CBC-SHA256:!aNULL:!eNULL:!LOW:!3DES:!MD5:!SHA:!EXP:!PSK:!2SRP:!DSS:!RC4:!kRSA
+
+
+    # Logging #
+#---------------------------------------------------
+  status                      /var/run/openvpn-status.log
+  log                         /var/run/openvpn.log
+
+  verb                        4
+
+  down-pre
+  daemon
+
+      # Original:
+        # verb                [<DEBUG_LEVEL>]
+
+
+    # Connection Options #
+#---------------------------------------------------
+  keepalive                   10 120
+  comp-lzo                    [<DISABLE_COMP>]
+
+
+    # Connection Reliability #
+#---------------------------------------------------
+  persist-key
+  persist-tun
+  reneg-sec                   [<RENEG_SEC>]
+
+
+    # Connection Speed #
+#---------------------------------------------------
+  sndbuf                      393216
+  rcvbuf                      393216
+  fragment                    0
+  mssfix                      0
+  tun-mtu                     48000
+
+
+    # Pushed Buffers #
+#---------------------------------------------------
+  push                        sndbuf 393216
+  push                        rcvbuf 393216
+
+
+    # Permissions #
+#---------------------------------------------------
+  management                  /var/run/openvpn_mgmt unix
+  management-client-user      root
+  management-client-group     root
+
+
+    # Sophos UTM Specific #
+#---------------------------------------------------
+  plugin                      /usr/lib/openvpn/plugins/openvpn-plugin-utm.so
+
+  [<OPTIONS>]
+
+
