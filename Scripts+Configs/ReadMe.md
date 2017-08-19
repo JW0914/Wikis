@@ -1,5 +1,8 @@
 ### Information Directory ###
 ---
+###### ESD to WIM ######
+- Scripts to create a standablone DISM folder and convert Windows ESD <-> WIM
+
 ###### Explorer ######
 - Registry keys to add various cloud storage services to the Windows Explorer nav tree
 
@@ -9,17 +12,26 @@
 ###### Hyper-V ######
 - Adds Hyper-V Manager to _Control Panel\Hardware and Sound_
 
+###### IPtables ######
+- Custom IPtables script for SSH & VPN logging, as well as blocking commonly exploited ports
+
+###### LEDE ######
+- Auto creates a LEDE build environment on Ubuntu, as well as a Nano Makefile for LEDE/OpenWrt
+
+###### Nginx ######
+- Prebuilt custom Nginx server config for ownCloud running within a FreeNAS _[FreeBSD 11]_ jail
+
 ###### Notepad++ ######
 - Changes the default "Edit" option in context menus from Notepad to Notepad++
 
+###### OpenSSH ######
+- Prebuilt BSD/Linux & Windows OpenSSH client and server configs
+
 ###### OpenSSL ######
-- Prebuilt custom OpenSSL config, including information and commands starting line 315
+- Prebuilt custom OpenSSL config, including information and commands starting line 500
 
 ###### OpenVPN ######
 - Custom client and server OpenVPN configs
-
-###### ownCloud ######
-- Prebuilt custom Nginx server config for ownCloud running within a FreeNAS _[FreeBSD 10.3]_ jail
 
 ###### PuTTY ######
 - Files and instructions required for a MultiHop SSH Tunnel or a TFTP firmware flash
