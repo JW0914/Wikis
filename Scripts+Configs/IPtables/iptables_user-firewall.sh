@@ -2,9 +2,9 @@
 
              ##::[[----->  IPtables Firewall Script  <-----]]::##
 
-    # OpenWrt users:
+    # LEDE/OpenWrt users:
         # 1. Remove shebang
-        # 2. Uncomment OpenWrt Variables
+        # 2. Uncomment LEDE/OpenWrt Variables
         # 3. Save as "/etc/firewall.user"
 
 
