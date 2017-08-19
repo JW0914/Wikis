@@ -39,6 +39,7 @@ endef
 
 CONFIGURE_ARGS += \
 	--enable-all \
+	--enable-utf8 \
 
 CONFIGURE_VARS += \
 	ac_cv_header_regex_h=no \
