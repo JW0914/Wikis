@@ -10,12 +10,12 @@
 - Wikis compiled from OpenWRT and OpenVPN
 
 ###### Scripts & Configs ######
-- Various custom scripts, registry files, and configs 
+- Various custom scripts, registry files, and configs
 
 ###### Security ######
 - ModSecurity Handbook [Free Edition] by Fiesty Duck
- 
-###### WRT1X00AC/S Series ######
+
+###### WRT AC Series ######
 - Wikis from OpenWRT regarding the Linksys WRT1X00AC/S Series routers
 
 ###### XboxOne ######
