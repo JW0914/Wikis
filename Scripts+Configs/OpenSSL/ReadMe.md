@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-###### Notepad++ Language Profile ######
+###### Language Profiles ######
 - Profiles I created for config files, making it far more convenient to view config files in Notepad++
   - Import via: **Language -> Define Your Language -> Import**
 
