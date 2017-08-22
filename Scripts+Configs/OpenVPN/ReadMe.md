@@ -1,16 +1,16 @@
 ### Information Directory ###
 ---
-###### Client.ovpn ######
+###### [Client.ovpn](Client.ovpn) ######
 - OpenVPN client config
   - **Android:** `pkcs12 vpn-client1.p12` can be removed (line 57), as Android imports certs into it's keychain
 
-###### OpenVPN-Server.conf ######
+###### [OpenVPN-Server.conf](OpenVPN-Server.conf) ######
 - OpenVPN server config for OpenWrt
   - Will need to be modified slightly for other Linux/BSD distros:
     - `option` isn't utilized & should be removed
     - `_` should be changed to `-`
 
-###### openvpn.conf-default ######
+###### [openvpn.conf-default](openvpn.conf-default) ######
 - OpenVPN server config for Sophos [UTM](https://www.sophos.com/en-us/products/unified-threat-management.aspx)/[XG](https://www.sophos.com/en-us/products/next-gen-firewall.aspx)
   - Located at: */var/sec/chroot-openvpn/etc/openvpn/openvpn.conf-default*
     - */etc/openvpn/tls-auth.key* must be manually added to the directory */var/sec/chroot-openvpn/etc/openvpn*
@@ -33,7 +33,7 @@
 
 ---
 
-###### OpenSSL #######
+###### [OpenSSL](https://openssl.org) #######
   * **Guides**
     * [Documents](https://www.openssl.org/docs/|OpenSSL)
     * [HowTo](https://www.openssl.org/docs/HOWTO/|OpenSSL)
@@ -42,7 +42,7 @@
   * **Info**
     * [Deploying a VPN with PKI on GNU/Linux](http://archive.oreilly.com/pub/a/security/2004/10/21/vpns_and_pki.html?page=1)
 
-###### OpenVPN ######
+###### [OpenVPN](https://openvpn.net/index.php/open-source/overview.html) ######
   * **Android**
     * [OpenVPN on Android](https://docs.openvpn.net/docs/openvpn-connect/openvpn-connect-android-faq.html)
     * [Remove "Your Network Could be Monitored" Toast](http://forum.xda-developers.com/google-nexus-5/help/howto-install-custom-cert-network-t2533550)
