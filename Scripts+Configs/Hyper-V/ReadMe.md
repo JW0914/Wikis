@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-###### [Hyper-V Manager](Add_Hyper-V_Manager_to_Control Panel.reg) ######
+###### [Hyper-V Manager](Add_Hyper-V_Manager_to_Control%20Panel.reg) ######
 - Adds Hyper-V Manager to _Control Panel\Hardware and Sound_
   - One can customize the following lines:
     - __10:__ & __21:__ `@="Hyper-V Manager"`
