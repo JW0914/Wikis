@@ -7,7 +7,7 @@
 #### BSD/Linux ####
   ###### _config_ ######
   - Custom user specific OpenSSH client config, which should be placed at _~/.ssh/config_
-  - There are three specific sections to this custom config
+    - **There are three specific sections to this custom config**
     - ###### Custom ######
       - Contains user specific options which should be placed in _config_, but not the system wide _/etc/ssh/ssh_config_
     - ###### Hosts ######
