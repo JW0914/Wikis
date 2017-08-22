@@ -1,11 +1,11 @@
 ### Information Directory ###
 ---
-###### Language Profiles ######
+###### [Language Profile](Notepad++%20OpenSSL%20Language%20Profile.xml) ######
 - Profiles I created for config files, making it far more convenient to view config files in Notepad++
   - Import via: **Language -> Define Your Language -> Import**
 
 
-###### OpenSSL.cnf ######
+###### [OpenSSL Config](OpenSSL.cnf) ######
 - I created this config for maximum security when creating **CA**s [_Certificate Authorities_], **ICA**s [_Intermediate Certificate Authorities_], and **Certificates**.
   - _Information and applicable commands can be found beginning at Line 500_
 
@@ -37,6 +37,6 @@
   - **Client Config:** `remote-cert-eku "TLS Web Server Authentication"` should be utilized in lieu of `remote-cert-tls`
 
 
-###### PEM Association.reg ######
+###### [PEM Association](PEM%20Association.reg) ######
   - Importing this into the registry allows Windows to display PEM certificates in GUI form.
 
