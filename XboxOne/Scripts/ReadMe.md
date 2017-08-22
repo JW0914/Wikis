@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-######gptutil.py######
+###### gptutil.py ######
 - Used by the _xboxonehdd.py_ script in order to correctly create the _mkxboxfs.sh_ script
 
 
