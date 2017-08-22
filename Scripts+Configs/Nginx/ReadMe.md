@@ -1,6 +1,7 @@
 ### Information Directory ###
 ---
-###### Nginx Configuration ######
+
+###### [Nginx Configuration](nginx.conf) ######
 - Nginx configuration for [_FreeNAS_] ownCloud [_Standard_] Jail
   - __Line 7__
     - _Should be set to number of CPU processors/threads_
@@ -20,3 +21,7 @@
     - ECDHE ciphers are faster than, and therefor generally preferred to, DHE, which is why they take precedence in the config.
   - Simply because a 2048bit cert is used __does not__ mean your connection will utilize that level of encryption.
 	  - Client and server will negotiate the encryption, level, and authentication utilized; often being less than one would think.
+
+##### [Notepad++ Language](Notepad++_Nginx_Lang.xml) #####
+- Profile I created for Nginx config files, making it far more convenient for viewing in Notepad++
+  - Import via: __Language -> Define Your Language -> Import__
