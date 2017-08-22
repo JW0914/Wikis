@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-######Multi-Hop######
+###### Multi-Hop ######
 - Necessary files and instructions on how to create a Multi-Hop SSH Tunnel
   - __Remote device__  ___-->___  _WAN SSH_  ___-->___  ___Router___  ___-->___  [multi-hop begins]  ___-->___  _LAN SSH_  ___-->___  __Local Device__
 
@@ -13,8 +13,12 @@
     - __5:__ `"HostName"="root@192.168.1.20"`
     - __6:__ `"LogFileName"="C:\\Path\\To\\PuTTY\\Logs\\SSH.FreeNAS.Remote.log"`
     - __15:__ `"PortNumber"=dword:00000016`
-      - ___hex format___, _hex 16 is dec 22_
-      - _Windows calculator has a programmer function with hex <-> dec conversion_
+      - _Hex format (hex 16 -> dec[imal] 22)_
+        - _BSD/Linux_
+          - _cli hex -> dec: `printf '%d\n' 0x0a` returns 10_
+          - _cli dec -> hex: `printf '%x\n' 10` returns 0a_
+        - _Windows_
+          - _Calculator has a programmer function with hex <-> dec conversion_
     - __32:__ `"ProxyTelnetCommand"="plink -v -load SSH.OpenWRT.Remote -nc %host:%port"`
       - _profile name (SSH.OpenWRT.Remote) must match router profile name and can't contain spaces_
     - __58:__ `"PublicKeyFile"="C:\\Path\\To\\PuTTY\\SSHkeys\\FreeNAS.SSH.ppk"`
@@ -24,7 +28,5 @@
     - __5:__ `"HostName"="your.ddns.com"`
     - __6:__ `"LogFileName"="C:\\Path\\To\\PuTTY\\Logs\\SSH.OpenWRT.Remote.log"`
     - __15:__ `"PortNumber"=dword:00000016`
-      - ___hex format___, _hex 16 is dec 22_
-      - _Windows calculator has a programmer function with hex <-> dec conversion_
     - __58:__ `"PublicKeyFile"="C:\\Path\\To\\PuTTY\\SSHkeys\\OpenWRT.SSH.ppk"`
  
