@@ -31,7 +31,7 @@
 ###### [_ssh_config (Win32-OpenSSH)_](Windows/ssh_config%20(Win32-OpenSSH)) ######
 - System wide Windows OpenSSH client config, which should be placed at _C:\Program Files\OpenSSH\ssh_config_
   - As of August 2017, the Windows binary does not recognize _C:\Program Files\OpenSSH\ssh_config_ (See issue [#847](https://github.com/PowerShell/Win32-OpenSSH/issues/847))
-    - Instead, [config](https://github.com/JW0914/Wikis/blob/master/Scripts%2BConfigs/OpenSSH/config%20(Win32-OpenSSH)) should be utilized and placed at _%USERPROFILE%\\.ssh\config_
+    - Instead, [config](Windows/config%20(Win32-OpenSSH)) should be utilized and placed at _%USERPROFILE%\\.ssh\config_
 
 ###### [_sshd_config (Win32-OpenSSH)_](Windows/sshd_config%20(Win32-OpenSSH)) ######
 - System wide Windows OpenSSH server config, which should be placed at _C:\Program Files\OpenSSH\sshd_config_
