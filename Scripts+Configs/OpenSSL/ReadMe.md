@@ -1,7 +1,7 @@
 ### Information Directory ###
 ---
-###### Notepad++ OpenSSL Language Profile ######
-- Profile I created for config files, making it far more convenient to view config files in Notepad++
+###### Notepad++ Language Profile ######
+- Profiles I created for config files, making it far more convenient to view config files in Notepad++
   - Import via: **Language -> Define Your Language -> Import**
 
 
