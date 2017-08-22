@@ -7,7 +7,7 @@
 ###### [How to MultiHop SSH](How%20To%20Multi-Hop%20SSH.pdf) ######
 - Wiki explaining how to configure PuTTY for a MultiHop
 
-##### PuTTY Profiles #####
+#### PuTTY Profiles ####
 
 ###### [_FreeNAS Remote_](PuTTY_Profile_FreeNAS_Remote_Multi-hop.reg) ######
 - Remote SSH profile for a _local device_, which will be the final point in a MultiHop
