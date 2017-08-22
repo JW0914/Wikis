@@ -7,8 +7,10 @@
 ###### [How to MultiHop SSH](How%20To%20Multi-Hop%20SSH.pdf) ######
 - Wiki explaining how to configure PuTTY for a MultiHop
 
-###### PuTTY Profiles ######
-- [__FreeNAS Remote__](PuTTY_Profile_FreeNAS_Remote_Multi-hop.reg) is the remote SSH profile for a _local device_, which will be the final point in a MultiHop
+##### PuTTY Profiles #####
+
+###### [_FreeNAS Remote_](PuTTY_Profile_FreeNAS_Remote_Multi-hop.reg) ######
+- Remote SSH profile for a _local device_, which will be the final point in a MultiHop
   - Edit lines:
     - __5:__ `"HostName"="root@192.168.1.20"`
     - __6:__ `"LogFileName"="C:\\Path\\To\\PuTTY\\Logs\\SSH.FreeNAS.Remote.log"`
@@ -23,7 +25,8 @@
       - _profile name (SSH.OpenWRT.Remote) must match router profile name and can't contain spaces_
     - __58:__ `"PublicKeyFile"="C:\\Path\\To\\PuTTY\\SSHkeys\\FreeNAS.SSH.ppk"`
 
-- [__OpenWRT Remote__](PuTTY_Profile_OpenWRT_Remote.reg) is the remote SSH profile for a _WAN facing router_
+###### [_OpenWRT Remote_](PuTTY_Profile_OpenWRT_Remote.reg) ######
+- Remote SSH profile for a _WAN facing router_
   - Edit lines:
     - __5:__ `"HostName"="your.ddns.com"`
     - __6:__ `"LogFileName"="C:\\Path\\To\\PuTTY\\Logs\\SSH.OpenWRT.Remote.log"`
