@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-###### VBS ######
+###### [VBS](CreateRP-Success.vbs) ######
 - Creates a restore point, prompts for a description, and shows a success or error message upon completion
   - Script should be placed in a path with no spaces
     - `%ProgramData%\Scripts\SR\RPwithConfirmation`
