@@ -16,7 +16,7 @@
 - ModSecurity Handbook [Free Edition] by Fiesty Duck
 
 ###### [WRT AC Series](WRT-AC-Series) ######
-- Wikis from OpenWRT regarding the Linksys WRT1X00AC/S Series routers
+- Wikis from OpenWRT regarding the Linksys WRT AC Series routers
 
 ###### [XboxOne](XboxOne) ######
 - Wiki on how to upgrade or replace the internal HDD in an Xbox One
