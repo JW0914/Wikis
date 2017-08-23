@@ -7,7 +7,7 @@
 - Wikis directly from OpenSSL's website, all authored by OpenSSL
 
 ###### [OpenVPN](OpenVPN) ######
-- Wikis compiled from OpenWRT and OpenVPN
+- Wikis compiled from OpenWrt and OpenVPN
 
 ###### [Scripts & Configs](Scripts%2BConfigs) ######
 - Various custom scripts, registry files, and configs
