@@ -15,7 +15,7 @@
 ###### [PuTTY Serial Session](Putty-Serial-Session.reg) ######
 - Verify correct COM port is set
   - __Registry Line 206:__ `"SerialLine"="COM3"`
-  - __PuTTY:__ _Sesion - Serial line_
+  - __PuTTY:__ _Sesion - Serial_
 - Once Line 206 is correctly set, merge into registry
 
 ###### [TFTP32/64 config](tftpd32.ini) ######
