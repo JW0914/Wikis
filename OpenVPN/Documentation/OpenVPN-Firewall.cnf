@@ -1,0 +1,118 @@
+#
+
+    ##::[[---  LEDE Firewall Config  ---]]::##
+
+####################################################
+             ##----- Scripts -----##
+####################################################
+
+config include
+    option  path            '/etc/firewall.user'
+
+####################################################
+          ##----- Default Zone -----##
+####################################################
+
+config defaults
+    option  input           'ACCEPT'
+    option  output          'ACCEPT'
+    option  forward         'REJECT'
+    option  syn_flood       1
+    option  drop_invalid    1
+
+####################################################
+               ##----- Rules -----##
+####################################################
+
+# OpenVPN #
+#---------------------------------------------------
+config rule
+    option  target          'ACCEPT'
+    option  family          'ipv4'
+    option  proto           'tcp udp'
+    option  src             *
+    option  dest_port       1940
+    option  name            'Allow Forwarded OpenVPN Request -> WRT1900ACS'
+
+config rule
+    option  target          'ACCEPT'
+    option  family          'ipv4'
+    option  proto           'tcp'
+    option  src             'openvpn'
+    option  dest_port       22
+    option  name            'Allow OpenVPN -> WRT1900ACS (SSH)'
+
+config rule
+    option  target          'ACCEPT'
+    option  family          'ipv4'
+    option  proto           'tcp udp'
+    option  src             'openvpn'
+    option  src_ip          '10.10.3.0/28'
+    option  dest            *
+    option  dest_port       1940
+    option  name            'Allow Forwarded OpenVPN -> WRT1900ACS'
+
+config rule
+    option  target          'ACCEPT'
+    option  family          'ipv4'
+    option  proto           'tcp udp'
+    option  src             'openvpn'
+    option  src_ip          '10.10.3.0/28'
+    option  dest_ip         '192.168.3.0/26'
+    option  name            'Allow OpenVPN -> LAN'
+
+config rule
+    option  target          'ACCEPT'
+    option  family          'ipv4'
+    option  proto           'tcp udp'
+    option  src             'openvpn'
+    option  src_ip          '10.10.3.0/28'
+    option  dest            *
+    option  dest_ip         '192.168.3.0/26'
+    option  name            'Allow Forwarded OpenVPN -> WRT1900ACS'
+
+config rule
+    option  target          'ACCEPT'
+    option  family          'ipv4'
+    option  proto           'icmp'
+    option  src             'openvpn'
+    option  src_ip          '10.10.3.0/28'
+    option  dest            'lan'
+    option  name            'Allow OpenVPN (ICMP) -> LAN'
+
+config rule
+    option  target          'ACCEPT'
+    option  family          'ipv4'
+    option  proto           'icmp'
+    option  src             'openvpn'
+    option  src_ip          '10.10.3.0/28'
+    option  dest            'wan'
+    option  name            'Allow OpenVPN (ICMP)-> WAN'
+
+####################################################
+               ##----- Zones -----##
+####################################################
+
+    # OpenVPN #
+#---------------------------------------------------
+config zone
+    option  name            'openvpn'
+    option  network         'openvpn'
+    option  input           'ACCEPT'
+    option  forward         'ACCEPT'
+    option  output          'ACCEPT'
+
+####################################################
+       ##----- Interzone Forwarding  -----##
+####################################################
+
+    # OpenVPN #
+#---------------------------------------------------
+config forwarding
+    option  dest            'lan'
+    option  src             'openvpn'
+
+config forwarding
+    option  dest            'wan'
+    option  src             'openvpn'
+
