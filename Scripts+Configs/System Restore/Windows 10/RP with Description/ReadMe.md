@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-###### VBS ######
+###### [VBS](RPDescr-Startup.vbs) ######
 - Creates a restore point and prompts for a description
   - Script should be placed in a path with no spaces
     - `%ProgramData%\Scripts\SR\RPwithDescription`
