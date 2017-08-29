@@ -5,7 +5,7 @@
   - Import via: **Language -> Define Your Language -> Import**
 
 
-###### [OpenSSL Config](OpenSSL.cnf) ######
+###### [OpenSSL Config](openssl.cnf) ######
 - I created this config for maximum security when creating **CA**s [_Certificate Authorities_], **ICA**s [_Intermediate Certificate Authorities_], and **Certificates**.
   - _Information and applicable commands can be found beginning at Line 430_
 
