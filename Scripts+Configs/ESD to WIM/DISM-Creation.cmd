@@ -1,5 +1,5 @@
 ::
-                    ::[[---  DISM Folder Creation Script  ---]]::
+          ::[[---  DISM Folder Creation Script  ---]]::
 
 ::================================================================
   :: Title:        DISM-Creation.cmd
