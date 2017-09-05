@@ -15,10 +15,11 @@ Creates a LEDE-Project build environment in Ubuntu _(preconfigured for 16.04, 16
 
 ###### Prerequisites ######
   - Ubuntu 16.04, 16.10, or 17.04
-    - I'll update as new versions become available
-      - If I'm not quick enough, it's easy to do
-        1. Copy everything after "_PR1704=_" on **Line 68** to paste in step 2.
-        2. Open a terminal in Ubuntu, issue: `sudo apt-get update && sudo apt-get install <paste>`
+  
+  - I'll update as new versions become available
+    - If I'm not quick enough, it's easy to do
+      1. Copy everything after "_PR1704=_" on **Line 68** to paste in step 2.
+      2. Open a terminal in Ubuntu, issue: `sudo apt-get update && sudo apt-get install <paste>`
           - Several packages will not install, and these will be updated packages specific to 17.10.
-            - To find the updated versions of packages like, _libboost1.63-dev_: `sudo apt-cache search libboost1.**-dev` 
-          - Common packages needing to be updated: _libboost_, _libgtk_, _openjdk_, _perl_modules_, etc
+          - To find the updated versions of packages like, _libboost1.63-dev_: `sudo apt-cache search libboost1.**-dev` 
+            - Common packages needing to be updated: _libboost_, _libgtk_, _openjdk_, _perl_modules_, etc
