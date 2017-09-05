@@ -2,9 +2,7 @@
 
         ##::[[--- LEDE Ubuntu x64 Build Script ---]]::##
 
-
 #================================================================
-
   # Title:        lede-build.sh
   # Description:  Creates the LEDE Build Environment in Ubuntu
   # Author:       JW0914
@@ -12,7 +10,6 @@
   # Updated:      2017.09.05
   # Version:      1.0
   # Usage:        ./lede-build.sh
-
 #================================================================
 
 
@@ -339,7 +336,7 @@ printf %b "============================================================\n"
   # Compile:
     printf "\n\n\n...Compiling Image...\n"
     printf %b "---------------------\n\n"
-      make V=s  && printf "\n\n  -----  DONE:Image Compiled  -----\n"
+      make V=s  && printf "\n\n  -----  DONE: Image Compiled  -----\n"
 
 
   # Done #
