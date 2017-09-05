@@ -5,16 +5,20 @@
 
 ###### [lede-build.sh](lede-build.sh) ######
 Creates a LEDE-Project build environment in Ubuntu _(preconfigured for 16.04, 16.10, or 17.04)_
-  - **Lines 108 - 110:**
+  - **Lines 220 - 225:**
     - If custom files for a device already exist, uncomment & edit
-  - **Lines 114 - 133:**
+  - **Lines 236 - 254:**
     - Appends the updated Marvell-Cesa driver to crypto.mk
-  - **Lines 137 - 203:**
-    - Replaces default Nano makefile, adding syntax color & nanorc support, among others
-      - Increases nano package from ~41KB to ~121KB
+  - **Lines 258 - 315:**
+    - Replaces default Nano makefile, enabling all Nano build options and UTF8
+      - Increases nano package from ~41KB to ~124KB
 
 ###### Prerequisites ######
-  - Edit Lines:
-    - **11:** `user="<username>"`
-    - **67:** `$ag install $PR1xxx`
-      - Where `xxx` is equal to the variable on lines 48, 51, or 54
+  - Ubuntu 16.04, 16.10, or 17.04
+    - I'll update as new versions become available
+      - If I'm not quick enough, it's easy to do
+        1. Copy everything after "_PR1704=_" on **Line 68** to paste in step 2.
+        2. Open a terminal in Ubuntu, issue: `sudo apt-get update && sudo apt-get install <paste>`
+          - Several packages will not install, and these will be updated packages specific to 17.10.
+            - To find the updated versions of packages like, _libboost1.63-dev_: `sudo apt-cache search libboost1.**-dev` 
+          - Common packages needing to be updated: _libboost_, _libgtk_, _openjdk_, _perl_modules_, etc
