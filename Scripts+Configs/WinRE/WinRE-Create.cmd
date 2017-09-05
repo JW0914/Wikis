@@ -7,7 +7,7 @@
   :: Author:       JW0914
   :: Created:      2016.08.11
   :: Updated:      2016.08.11
-  :: Usage:        WinRE-Create.cmd
+  :: Usage:        .\WinRE-Create.cmd
 ::================================================================
 
 
