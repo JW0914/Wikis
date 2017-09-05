@@ -3,120 +3,242 @@
         ##::[[--- LEDE Ubuntu x64 Build Script ---]]::##
 
 
+#================================================================
+
+  # Title:        lede-build.sh
+  # Description:  Creates the LEDE Build Environment in Ubuntu
+  # Author:       JW0914
+  # Created:      2017.07.09
+  # Updated:      2017.09.05
+  # Version:      1.0
+  # Usage:        ./lede-build.sh
+
+#================================================================
+
 
 # Paramaters #
-#--------------------------------------
+#----------------------------------------------------------------
 
-  # User Name:
-user="<username>"
-
-
-  # Commands:
-#------------
-
-  # Ubuntu:
-ag="sudo apt-get"
-dt=$(date +%Y.%m.%d_%H:%M:%S)
-
-  # LEDE:
-wrt="make MENUCONFIG_COLOR=blackbg menuconfig"
-
-wrtu="./scripts/feeds update -a"
-wrti="./scripts/feeds install -a"
-wrtdif="./scripts/diffconfig.sh"
-
-wrtdef="make defconfig"
-wrtp="make prereq"
+# User Name:
+  user="$(echo $USER)"
 
 
-  # Files & Directories:
-#-----------------------
+# Directories:
+  LEDE="/home/$user/lede/custom/tmp"
 
-crypto="package/kernel/linux/modules/crypto.mk"
-nano="package/feeds/packages/nano/Makefile"
-
-DEV="/home/$user/lede/devices"
-DIF="/home/$user/lede/diff"
-MAk="/home/$user/lede/make"
-LEDE="/home/$user/lede/source"
+    DEV="$LEDE/devices"
+    DIFF="$LEDE/diff"
+    MAK="$LEDE/make"
+    SOURCE="$LEDE/source"
 
 
-  # Packages:
-#------------
+# Files:
+  crypto="package/kernel/linux/modules/crypto.mk"
+  nano="package/feeds/packages/nano/Makefile"
+
+
+# Commands:
+  ag="sudo apt-get"
+
+  dt=$(date +%Y.%m.%d_%H:%M:%S)
+
+  wrt="make MENUCONFIG_COLOR=blackbg menuconfig"
+
+  wrtG="git pull"
+
+  wrtU="$SOURCE/scripts/feeds update -a"
+  wrtI="$SOURCE/scripts/feeds install -a"
+
+  wrtd="$SOURCE/scripts/diffconfig.sh"
+
+  wrtD="make defconfig"
+  wrtp="make prereq"
+
+
+
+# Packages:
 
   # 16.04:
-PR1604="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.58-dev libgtk2.0-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-8-jdk patch perl-modules-5.22 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1604="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.58-dev libgtk2.0-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-8-jdk patch perl-modules-5.22 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
 
   # 16.10:
-PR1610="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.61-dev libgtk2.0-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.22 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1610="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.61-dev libgtk2.0-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.22 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
 
   # 17.04:
-PR1704="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.63-dev libgtk-3-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.24 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1704="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.63-dev libgtk-3-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.24 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+
+  # Errors:
+    ERROR=" "
 
 
 
 # Prepare #
-#--------------------------------------
+#----------------------------------------------------------------
+printf "\n\n\n    # Prepararations #\n"
+printf %b "============================================================\n"
 
-# Update:
-printf "\n\n...Updating Package Lists...\n\n"
-  $ag update
 
-# Install Prereqs:
-printf "\n\n...Installing Prerequisite Packages...\n\n"
-  $ag install $PR1704
+  # Update:
+    printf "\n\n\n...Updating Package Lists...\n"
+    printf %b "----------------------------\n\n"
+      $ag update  && printf "\n\n  -----  DONE: Updating Package Lists  -----\n"
 
-# Upgrade Packages:
-printf "\n\n...Upgrading Required Packages...\n\n"
-  $ag upgrade
 
-# Remove Unused
-printf "\n\n...Removing Unused Packages...\n\n"
-  $ag autoremove
 
-# Check Broken Dependencies
-printf "\n\n...Checking for Broken Dependencies...\n\n"
-  $ag check
+# Menu #
+#----------------------------------------------------------------
+printf "\n\n\n    # OS Prerequisites #\n"
+printf %b "============================================================\n"
+
+
+  # Choose Prereqs:
+    printf "\n\n...Choose Prerequisite OS Packages...\n\n"
+    printf %b "--------------------------------------\n\n"
+
+
+    # Options:
+      options[0]="Ubuntu 16.04"
+      options[1]="Ubuntu 16.10"
+      options[2]="Ubuntu 17.04"
+
+    # Actions:
+      function ACTIONS {
+        if [[ ${choices[0]} ]]; then
+          printf "\n\n...Ubuntu 16.04 selected...\n\n" && $ag install $PR1604 && printf "\n\n  -----  DONE: Installed 16.04 Prerequisites  -----\n"
+        fi
+
+        if [[ ${choices[1]} ]]; then
+          printf "\n\n...Ubuntu 16.10 selected...\n\n" && $ag install $PR1610 && printf "\n\n  -----  DONE: Installed 16.10 Prerequisites  -----\n"
+        fi
+
+        if [[ ${choices[2]} ]]; then
+          printf "\n\n...Ubuntu 17.04 selected...\n\n" && $ag install $PR1704 && printf "\n\n  -----  DONE: Installed 17.04 Prerequisites  -----\n"
+        fi
+      }
+
+    # Function
+      function MENU {
+          printf "\n\nOS Selection\n"
+          printf %b "==================\n"
+          for NUM in ${!options[@]}; do
+              echo "${choices[NUM]:- }" $(( NUM+1 ))") ${options[NUM]}"
+          done
+          echo " "
+      }
+
+    # Execution:
+      MENU && read -e -p "Selected OS: " -n1 SELECTION && [[ -n "$SELECTION" ]]
+        if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+          (( SELECTION-- ))
+
+          if [[ "${choices[SELECTION]}" == "+" ]]; then
+            choices[SELECTION]=""
+          else
+            choices[SELECTION]="+"
+          fi
+
+        else
+          ERROR="Invalid option: $SELECTION"
+        fi
+
+
+    # Install Prereqs:
+      printf "\n\n\n...Installing Prerequisite Packages...\n"
+      printf %b "--------------------------------------\n\n"
+        ACTIONS
+
+
+
+# Package Maintainance #
+#----------------------------------------------------------------
+printf "\n\n\n    # Package Maintainance #\n"
+printf %b "============================================================\n"
+
+
+  # Upgrade Packages:
+    printf "\n\n\n...Upgrading Required Packages...\n"
+    printf %b "--------------------------------\n\n"
+      $ag upgrade && printf "\n\n  -----  DONE: Upgraded Required Packages  -----\n"
+
+
+  # Remove Unused
+    printf "\n\n\n...Removing Unused Packages...\n"
+    printf %b "------------------------------\n\n"
+      $ag autoremove && printf "\n\n  -----  DONE: Removed Unused Packages  -----\n"
+
+
+  # Check Broken Dependencies
+    printf "\n\n\n...Checking for Broken Dependencies...\n"
+    printf %b "--------------------------------------\n\n"
+      $ag check && printf "\n\n  -----  DONE: Checked for Broken Dependencies  -----\n"
+
+
+
+# Build Environment #
+#----------------------------------------------------------------
+printf "\n\n\n    # Build Environment: Create #\n"
+printf %b "============================================================\n"
 
 
   # Clone:
-printf "\n\n...Cloning LEDE from GitHub...\n\n"
-  mkdir lede && cd lede
-  git clone https://github.com/lede-project/source.git
+    printf "\n\n\n...Cloning LEDE from GitHub...\n"
+    printf %b "------------------------------\n\n"
+      mkdir -p $LEDE && cd $LEDE
+        git clone https://github.com/lede-project/source.git
+        printf "\n\n  -----  DONE: Cloned LEDE GitHub  -----\n"
 
 
-  # Own & Enter:
-printf "\n\n...Owning & Entering...\n"
-  sudo chown -R $user:$user source/ && cd $LEDE
+  # Rename & Enter:
+    printf "\n\n\n...Own & Enter...\n"
+      sudo chown -R $user:$user $SOURCE/  && cd $SOURCE  && printf "\n\n  -----  DONE: Ownership Obtained & Entered  -----\n"
 
 
 
 # Configure #
-#--------------------------------------
+#----------------------------------------------------------------
+printf "\n\n\n    # Build Environment: Configure #\n"
+printf %b "============================================================\n"
+
+
+  # Update Repo:
+    printf "\n\n\n...Updating Repo...\n"
+    printf %b "-------------------\n\n"
+      $wrtG  && printf "\n\n  -----  DONE: LEDE Repo Up-to-Date  -----\n"
+
 
   # Update & Install Feeds:
-printf "\n\n...Updating Feeds...\n\n"
-  $wrtu
+    printf "\n\n\n...Updating Feeds...\n"
+    printf %b "--------------------\n\n"
+      $wrtU && printf "\n\n  -----  DONE: Feeds Updated  -----\n"
 
-printf "\n\n...Installing Feeds...\n\n"
-  $wrti
+    printf "\n\n\n...Installing Feeds...\n"
+    printf %b "----------------------\n\n"
+      $wrtI && printf "\n\n  -----  DONE: Feeds Installed  -----\n"
 
 
   # Copy Custom Files Over
-printf "\n\n...Creating Directories & Copying Custom Files...\n"
-  mkdir -p $DEV $DIF $MAK
-#  cp -R $DEV $LEDE
-#  cp -R $DEV/configs/* $LEDE
-#  cp -R $DEV/wrt1900acs/files $LEDE
+    #printf "\n\n\n...Copying Custom Files & Directories...\n"
+    #printf %b "----------------------------------------\n\n"
+    #  cp -R $DEV $LEDE
+    #    cp -R $DEV/configs/* $LEDE
+    #    cp -R $DEV/wrt1900acs/files $LEDE
+    #  printf "\n\n  -----  DONE: Custom Files Copied.....\n"
 
 
 
-# Update Marvell-Cesa Crypto Makefile:
-#--------------------------------------
-printf "\n\n...Adding updated Marvell Cesa to crypto.mk...\n\n"
-  cp $crypto $MAK/crypto-orig.mk
+# Customize Makefiles:
+#----------------------------------------------------------------
+printf "\n\n\n    # Build Environment: Update Makefiles #\n"
+printf %b "============================================================\n"
 
-echo "
+
+
+  # Marvell-Cesa Crypto:
+    printf "\n\n\n...Adding updated Marvell Cesa to crypto.mk...\n"
+    printf %b "----------------------------------------------\n\n"
+      mkdir -p $MAK && cp $crypto $MAK/crypto-orig.mk
+
+        echo '
 
 define KernelPackage/crypto-marvell-cesa
   TITLE:=Marvell crypto engine (new)
@@ -129,17 +251,16 @@ define KernelPackage/crypto-marvell-cesa
   $(call AddDepends/crypto)
 endef
 
-$(eval $(call KernelPackage,crypto-marvell-cesa))
-" >> $crypto
+$(eval $(call KernelPackage,crypto-marvell-cesa))' >> $crypto  && printf "\n\n  -----  DONE: Marvell-CESA Updated  -----\n"
 
 
 
-# Backup & Replace Nano Makefile
-#--------------------------------------
-printf "\n\n...Updating Nano Makefile...\n\n"
-  cp $nano $MAK/nano-orig.Makefile
+  # Nano:
+    printf "\n\n\n...Creating custom Nano Makefile...\n"
+    printf %b "-----------------------------------\n\n"
+      cp $nano $MAK/nano-orig.Makefile
 
-echo "
+        echo '
 #
 # Copyright (C) 2007-2016 OpenWrt.org
 #
@@ -171,16 +292,17 @@ define Package/nano
   TITLE:=An enhanced clone of the Pico text editor
   URL:=http://www.nano-editor.org/
   MAINTAINER:=Jonathan Bennett <JBennett@incomsystems.biz>
-  DEPENDS:=+libncurses +zlib
+  DEPENDS:=+libncurses +zlib +libmagic
 endef
 
 define Package/nano/description
-  Nano (Nano's ANOther editor, or Not ANOther editor) is an enhanced clone
+  Nano (Nano`s ANOther editor, or Not ANOther editor) is an enhanced clone
   of the Pico text editor.
 endef
 
 CONFIGURE_ARGS += \
 	--enable-all \
+	--enable-utf8 \
 
 CONFIGURE_VARS += \
 	ac_cv_header_regex_h=no \
@@ -190,31 +312,38 @@ define Package/nano/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/$(PKG_NAME) $(1)/usr/bin/
 endef
 
-$(eval $(call BuildPackage,nano))
-" > $nano
+$(eval $(call BuildPackage,nano,+libmagic))' > $nano  && printf "\n\n  -----  DONE: Nano Makefile Replaced  -----\n"
 
 
 
 # Build #
-#--------------------------------------
+#----------------------------------------------------------------
+printf "\n\n\n    # Build Environment: MenuConfig #\n"
+printf %b "============================================================\n"
+
 
   # Run MenuConfig:
-printf "\n\n...Running MenuConfig...\n\n"
-  $wrt
+    printf "\n\n\n...Running MenuConfig...\n"
+    printf %b "------------------------\n\n"
+      $wrt  && printf "\n\n  -----  DONE: Config Created  -----\n"
+
 
   # Default, PreReq, & Diff Configs:
-printf "\n\n...Creating DefConfig, PreReq, & DiffConfig...\n\n"
-  $wrtdef && $wrtp
-  $wrtdif > $DIF/diffconfig-$dt
+    printf "\n\n\n...Creating DefConfig, PreReq, & DiffConfig...\n"
+    printf %b "----------------------------------------------\n\n"
+      $wrtD  && printf "\n\n  -----  DONE: DefConfig Created  -----\n"
+      $wrtp && printf "\n\n  -----  DONE: Prerequisites Satisfied  -----\n"
+      mkdir -p $DIFF && $wrtd > $DIFF/diffconfig-$dt  && printf "\n\n  -----  DONE: DiffConfig Created  -----\n"
 
 
   # Compile:
-printf "\n\n...Compiling Image...\n\n"
-  make
+    printf "\n\n\n...Compiling Image...\n"
+    printf %b "---------------------\n\n"
+      make V=s  && printf "\n\n  -----  DONE:Image Compiled  -----\n"
 
 
-
-# Done #
-#--------------------------------------
-printf "\n\n...Script Completed...\n\n"
-  exit 0
+  # Done #
+  #--------------------------------------
+    printf "\n\n\n...Script completed...\n"
+    printf %b "----------------------\n\n"
+      exit 0
