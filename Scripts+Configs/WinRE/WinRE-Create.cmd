@@ -3,7 +3,7 @@
 
 ::================================================================
   :: Title:        WinRE-Create.cmd
-  :: Description:  Creates a standalone DISM folder
+  :: Description:  Creates a WinRE Image
   :: Author:       JW0914
   :: Created:      2016.08.11
   :: Updated:      2016.08.11
