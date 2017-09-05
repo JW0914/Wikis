@@ -1,5 +1,14 @@
-
+::
                     ::[[---  DISM Folder Creation Script  ---]]::
+
+::================================================================
+  :: Title:        DISM-Creation.cmd
+  :: Description:  Creates a standalone DISM folder
+  :: Author:       JW0914
+  :: Created:      2017.05.13
+  :: Updated:      2017.06.01
+  :: Usage:        .\DISM-Creation.cmd
+::================================================================
 
 
 @echo off
