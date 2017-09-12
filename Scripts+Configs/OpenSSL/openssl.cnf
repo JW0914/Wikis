@@ -440,7 +440,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
        # This file maintains the serial for the most recent cert, in order to know what serial to next assign.
        # Serial is in hex, not dec[imal] format, & one can choose whichever number one wishes to start at.
 
-  # 2. Create 'crlnumber' file: echo 01 > crlnumber
+  # 2. Create 'crlnumber' file: mkdir crl && echo 01 > crl\crlnumber
   
        # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
        # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
