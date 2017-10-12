@@ -188,6 +188,9 @@ organizationalUnitName_default  = LAN
   DNS.1                 = Router.2
   IP.1                  = 127.0.0.1
 
+# Code Signing #
+  [ alt_signing_ica ]
+  DNS.1                 = Code-Signing
 
 #--------------------------------------------------------------------
             ##----- Certificate Authority Clients -----##
@@ -199,20 +202,14 @@ organizationalUnitName_default  = LAN
     [ alt_sophos ]
     IP.1                = 192.168.2.1
     IP.2                = 127.0.0.1
-    DNS.1               = SophosUTM
+    DNS.1               = UTM.LEDE
     DNS.2               = your.ddns.com
 
     [ alt_freenas ]
     IP.1                = 192.168.2.13
     IP.2                = 192.168.2.130
     IP.3                = 127.0.0.1
-    DNS.1               = Free.NAS
-    DNS.2               = your-fqdn.com
- 
-    [ alt_nextcloud ]
-    IP.1                = 192.168.2.150
-    IP.2                = 127.0.0.1
-    DNS.1               = NextCloud.FreeNAS
+    DNS.1               = Free.LEDE
     DNS.2               = your-fqdn.com
 
     [ alt_vpn_server1 ]
@@ -238,14 +235,6 @@ organizationalUnitName_default  = LAN
     IP.2                = 127.0.0.1
     DNS.1               = LAN.LEDE
 
-    [ alt_asrock ]
-    IP.1                = 192.168.2.4
-    IP.2                = 192.168.2.5
-    IP.3                = 127.0.0.1
-    DNS.1               = C2750D4I-IPMI
-    DNS.2               = C2750D4I-eth0
-    DNS.3               = C2750D4I-eth1
-
     [ alt_vpn_server2 ]
     IP.1                = 10.0.1.1
     DNS.1               = your.ddns.com
@@ -259,6 +248,13 @@ organizationalUnitName_default  = LAN
     DNS.1               = VPN2-Client2-Device-Hostname1
     DNS.2               = VPN2-Client2-Device-Hostname2
     email.1             = user2@email.com
+
+
+# Code Signing #
+
+  # Cert1 #
+    [ alt_codesign ]
+    email.1             = user@email.com
 
 
 #####################################################################
@@ -285,6 +281,13 @@ subjectKeyIdentifier        = hash
 authorityKeyIdentifier      = keyid:always, issuer:always
 subjectAltName              = @alt_ica_router2
 keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
+
+[ v3_signing_ica ]
+basicConstraints            = critical, CA:TRUE, pathlen:0
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+keyUsage                    = critical, cRLSign, digitalSignature, keyCertSign
+subjectAltName              = @alt_signing_ica
 
 [ crl_ext ]
 issuerAltName               = issuer:copy
@@ -352,14 +355,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_freenas
 
-    [ v3_nextcloud ]
-    basicConstraints            = critical, CA:FALSE
-    subjectKeyIdentifier        = hash
-    authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
-    extendedKeyUsage            = critical, serverAuth
-    subjectAltName              = @alt_nextcloud
-
     [ v3_vpn_server1 ]
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
@@ -393,14 +388,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_lede
 
-    [ v3_asrock ]
-    basicConstraints            = critical, CA:FALSE
-    subjectKeyIdentifier        = hash
-    authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
-    extendedKeyUsage            = critical, serverAuth
-    subjectAltName              = @alt_asrock
-
     [ v3_vpn_server2 ]
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
@@ -425,6 +412,19 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment
     extendedKeyUsage            = critical, clientAuth
     subjectAltName              = @alt_vpn2_user2
+
+
+# Code Signing #
+
+  # Certificates #
+    [ v3_codesign ]
+    basicConstraints            = critical, CA:FALSE
+    subjectKeyIdentifier        = hash
+    authorityKeyIdentifier      = keyid:always, issuer:always
+    keyUsage                    = critical, nonRepudiation, digitalSignature
+    extendedKeyUsage            = critical, codeSigning, msCodeInd, msCodeCom, mcCTLSign, timeStamping
+    subjectAltName              = @alt_codesign
+
 
 
 #####################################################################
