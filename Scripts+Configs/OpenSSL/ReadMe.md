@@ -17,7 +17,7 @@
     - Encryption password should be complex, contain at least 20 characters, and have a minimum of _two_ lowercase letters, _two_ uppercase letters, _two numbers_, & _two_ symbols.
   - When not in use, certificate keys, _especially CA & ICA keys_, should reside within an encrypted container, secured by at least a 4096bit PGP signing cert (_see [GnuPG](https://www.gnupg.org/)_) that is also secured by the same password complexity as above
 
-- All VPN Server & client V3 profiles should always have at least the following `keyUsage` & `extendedKeyUsage` flags
+- All VPN/Web Servers & client V3 profiles should always have at least the following `keyUsage` & `extendedKeyUsage` flags
   - **Server**
     - **`keyUsage`:**
       - `digitalSignature`
