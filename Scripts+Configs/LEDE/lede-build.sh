@@ -9,7 +9,7 @@
   # Created:      2017.07.09
   # Updated:      2018.01.07
   # Version:      1.0
-  # Usage:        ./lede-build.sh
+  # Usage:        chmod +x ./lede-build.sh && sudo ./lede-build.sh
 #================================================================
 
 
