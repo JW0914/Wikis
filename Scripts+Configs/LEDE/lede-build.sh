@@ -7,7 +7,7 @@
   # Description:  Creates the LEDE Build Environment in Ubuntu
   # Author:       JW0914
   # Created:      2017.07.09
-  # Updated:      2017.09.05
+  # Updated:      2018.01.07
   # Version:      1.0
   # Usage:        ./lede-build.sh
 #================================================================
@@ -62,7 +62,10 @@
     PR1610="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.61-dev libgtk2.0-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.22 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
 
   # 17.04:
-    PR1704="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.63-dev libgtk-3-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.24 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1704="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.63-dev libgtk-3-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.24 python3.7-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+
+  # 17.10:
+    PR1710="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.63-dev libgtk-4-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.26 python3.7-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
 
   # Errors:
     ERROR=" "
@@ -97,6 +100,7 @@ printf %b "============================================================\n"
       options[0]="Ubuntu 16.04"
       options[1]="Ubuntu 16.10"
       options[2]="Ubuntu 17.04"
+      options[3]="Ubuntu 17.10"
 
     # Actions:
       function ACTIONS {
@@ -110,6 +114,10 @@ printf %b "============================================================\n"
 
         if [[ ${choices[2]} ]]; then
           printf "\n\n...Ubuntu 17.04 selected...\n\n" && $ag install $PR1704 && printf "\n\n  -----  DONE: Installed 17.04 Prerequisites  -----\n"
+        fi
+	
+        if [[ ${choices[3]} ]]; then
+          printf "\n\n...Ubuntu 17.10 selected...\n\n" && $ag install $PR1710 && printf "\n\n  -----  DONE: Installed 17.10 Prerequisites  -----\n"
         fi
       }
 
