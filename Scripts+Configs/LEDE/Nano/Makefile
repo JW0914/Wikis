@@ -27,7 +27,7 @@ define Package/nano
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=An enhanced clone of the Pico text editor
-  URL:=http://www.nano-editor.org/
+  URL:=https://www.nano-editor.org/
   MAINTAINER:=Jonathan Bennett <JBennett@incomsystems.biz>
   DEPENDS:=+libncurses +zlib +libmagic
 endef
