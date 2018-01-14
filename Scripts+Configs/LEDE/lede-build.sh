@@ -276,14 +276,14 @@ $(eval $(call KernelPackage,crypto-marvell-cesa))' >> $crypto  && printf "\n\n  
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nano
-PKG_VERSION:=2.8.4
+PKG_VERSION:=2.9.2
 PKG_RELEASE:=1
 PKG_LICENSE:=GPL-3.0+
 PKG_LICENSE_FILES:=COPYING
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@GNU/nano
-PKG_HASH:=c7cf264f0f3e4af43ecdbc4ec72c3b1e831c69a1a5f6512d5b0c109e6bac7b11
+PKG_HASH:=4eccb7451b5729ce8abae8f9a5679f32e41ae58df73ea86b850ec45b10a83d55
 
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
@@ -295,7 +295,7 @@ define Package/nano
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=An enhanced clone of the Pico text editor
-  URL:=http://www.nano-editor.org/
+  URL:=https://www.nano-editor.org/
   MAINTAINER:=Jonathan Bennett <JBennett@incomsystems.biz>
   DEPENDS:=+libncurses +zlib +libmagic
 endef
@@ -306,7 +306,22 @@ define Package/nano/description
 endef
 
 CONFIGURE_ARGS += \
-	--enable-all \
+	--enable-browser \
+	--enable-color \
+	--enable-comment \
+	--enable-help \
+	--enable-histories \
+	--enable-justify \
+	--disable-libmagic \
+	--enable-linenumbers \
+	--enable-mouse \
+	--enable-multibuffer \
+	--enable-nanorc \
+	--enable-operatingdir \
+	--enable-speller \
+	--enable-tabcomp \
+	--enable-wordcomp \
+	--enable-wrapping \
 	--enable-utf8 \
 
 CONFIGURE_VARS += \
