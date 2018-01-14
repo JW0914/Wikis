@@ -1,3 +1,4 @@
+
 #
 # Copyright (C) 2007-2016 OpenWrt.org
 #
@@ -38,7 +39,22 @@ define Package/nano/description
 endef
 
 CONFIGURE_ARGS += \
-	--enable-all \
+	--enable-browser \
+	--enable-color \
+	--enable-comment \
+	--enable-help \
+	--enable-histories \
+	--enable-justify \
+	--disable-libmagic \
+	--enable-linenumbers \
+	--enable-mouse \
+	--enable-multibuffer \
+	--enable-nanorc \
+	--enable-operatingdir \
+	--enable-speller \
+	--enable-tabcomp \
+	--enable-wordcomp \
+	--enable-wrapping \
 	--enable-utf8 \
 
 CONFIGURE_VARS += \
