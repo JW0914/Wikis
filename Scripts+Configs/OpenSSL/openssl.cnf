@@ -143,7 +143,7 @@ encrypt_key                     = yes
 
 [ req_distinguished_name ]
 
-countryName                     = xx
+countryName                     = Country
 countryName_max                 = 2
 stateOrProvinceName             = State
 localityName                    = Locality
@@ -154,7 +154,7 @@ commonName_max                  = 64
 emailAddres                     = Email
 emailAddress_max                = 64
 
-countryName_default             = US
+countryName_default             = xx
 stateOrProvinceName_default     = State
 localityName_default            = Locality
 0.organizationName_default      = Sophos UTM
