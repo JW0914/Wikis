@@ -1,5 +1,12 @@
 ### Information Directory ###
 ---
+
+###### [ConEmu](ConEmu) ######
+- Customized settings for [ConEmu](https://conemu.github.io/)
+
+###### [ERUNT](ERUNT) ######
+- Customized setting for [ERUNT](http://www.larshederer.homepage.t-online.de/erunt/) registry backup
+
 ###### [ESD to WIM](ESD%20to%20WIM) ######
 - Scripts to create a standablone DISM folder and convert Windows ESD <-> WIM
 
@@ -17,6 +24,9 @@
 
 ###### [LEDE](LEDE) ######
 - Auto creates a LEDE build environment on Ubuntu, as well as a Nano Makefile for LEDE/OpenWrt
+
+###### [Nano](Nano) ######
+- Custom NanoRC for Nano
 
 ###### [Nginx](Nginx) ######
 - Prebuilt custom Nginx server config for ownCloud running within a FreeNAS _[FreeBSD 11]_ jail
@@ -41,6 +51,9 @@
 
 ###### [System Restore](System%20Restore) ######
 - Various system restore point creation scripts, with an accompanying Task Scheduler export
+
+###### [Vim](Vim) ######
+- Custom VimRC for Vim
 
 ###### [WinRE](WinRE) ######
 - Script to create a custom WinRE image and an accompanying bootable ISO, USB, or, VHD
