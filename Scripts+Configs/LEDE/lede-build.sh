@@ -1,15 +1,15 @@
 #!/bin/bash
 
-        ##::[[--- LEDE Ubuntu x64 Build Script ---]]::##
+        ##::[[--- OpenWrt Ubuntu x64 Build Script ---]]::##
 
 #================================================================
-  # Title:        lede-build.sh
-  # Description:  Creates the LEDE Build Environment in Ubuntu
+  # Title:        owrt-build.sh
+  # Description:  Creates the OpenWrt Build Environment in Ubuntu
   # Author:       JW0914
   # Created:      2017.07.09
-  # Updated:      2018.01.07
-  # Version:      1.0
-  # Usage:        chmod +x ./lede-build.sh && ./lede-build.sh
+  # Updated:      2018.02.08
+  # Version:      2.0
+  # Usage:        chmod +x ./owrt-build.sh && ./owrt-build.sh
 #================================================================
 
 
@@ -21,36 +21,55 @@
 
 
 # Directories:
-  LEDE="/home/$user/lede/custom/tmp"
+  OWrt="/home/$user/openwrt"
 
-    DEV="$LEDE/devices"
-    DIFF="$LEDE/diff"
-    MAK="$LEDE/make"
-    SOURCE="$LEDE/source"
+    DEV="$OWrt/devices"
+    DIFF="$OWrt/diff"
+    MAK="$OWrt/make"
+    SOURCE="$OWrt/source"
 
 
 # Files:
   crypto="package/kernel/linux/modules/crypto.mk"
+  cryptoM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Marvell-CESA/wrt-ac-series-addition_crypto.mk"
+  cryptoT="$SOURCE/crypto-temp"
+
   nano="package/feeds/packages/nano/Makefile"
+  nanoM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Nano/Makefile"
+  nanoT="$SOURCE/nano-temp"
 
 
 # Commands:
-  ag="sudo apt-get"
 
-  dt=$(date +%Y.%m.%d_%H:%M:%S)
+  # apt-get
+    ag="sudo apt-get"
 
-  wrt="make MENUCONFIG_COLOR=blackbg menuconfig"
+  # Date:
+    dt=$(date +%Y.%m.%d_%H:%M:%S)
 
-  wrtG="git pull"
+  # MenuConfig:
+    wrt="make MENUCONFIG_COLOR=blackbg menuconfig"
 
-  wrtU="$SOURCE/scripts/feeds update -a"
-  wrtI="$SOURCE/scripts/feeds install -a"
 
-  wrtd="$SOURCE/scripts/diffconfig.sh"
+  # Update:
+    wrtG="git pull"
+    wrtU="$SOURCE/scripts/feeds update -a"
+    wrtI="$SOURCE/scripts/feeds install -a"
 
-  wrtD="make defconfig"
-  wrtp="make prereq"
+  # Config:
+    wrtd="$SOURCE/scripts/diffconfig.sh"
+    wrtD="make defconfig"
+    wrtp="make prereq"
 
+
+  # Environments:
+    # See: https://lede-project.org/docs/guide-developer/using-build-environments
+
+    gcu="git config --global user.name '$user'"
+    gce="git config --global user.email '$user@openwrt.buildroot'"
+
+    wrtE="$SOURCE/scripts/env"
+    wrtED="$SOURCE/scripts/env diff"
 
 
 # Packages:
@@ -81,7 +100,7 @@ printf %b "============================================================\n"
   # Update:
     printf "\n\n\n...Updating Package Lists...\n"
     printf %b "----------------------------\n\n"
-      $ag update  && printf "\n\n  -----  DONE: Updating Package Lists  -----\n"
+      $ag update && printf "\n\n  -----  DONE: Updating Package Lists  -----\n"
 
 
 
@@ -115,7 +134,7 @@ printf %b "============================================================\n"
         if [[ ${choices[2]} ]]; then
           printf "\n\n...Ubuntu 17.04 selected...\n\n" && $ag install $PR1704 && printf "\n\n  -----  DONE: Installed 17.04 Prerequisites  -----\n"
         fi
-	
+
         if [[ ${choices[3]} ]]; then
           printf "\n\n...Ubuntu 17.10 selected...\n\n" && $ag install $PR1710 && printf "\n\n  -----  DONE: Installed 17.10 Prerequisites  -----\n"
         fi
@@ -195,7 +214,7 @@ printf %b "============================================================\n"
 
   # Rename & Enter:
     printf "\n\n\n...Own & Enter...\n"
-      sudo chown -R $user:$user $SOURCE/  && cd $SOURCE  && printf "\n\n  -----  DONE: Ownership Obtained & Entered  -----\n"
+      sudo chown -R $user:$user $SOURCE/ && cd $SOURCE && printf "\n\n  -----  DONE: Ownership Obtained & Buildroot Entered  -----\n"
 
 
 
@@ -208,7 +227,7 @@ printf %b "============================================================\n"
   # Update Repo:
     printf "\n\n\n...Updating Repo...\n"
     printf %b "-------------------\n\n"
-      $wrtG  && printf "\n\n  -----  DONE: LEDE Repo Up-to-Date  -----\n"
+      $wrtG && printf "\n\n  -----  DONE: LEDE Repo Up-to-Date  -----\n"
 
 
   # Update & Install Feeds:
@@ -237,102 +256,20 @@ printf "\n\n\n    # Build Environment: Update Makefiles #\n"
 printf %b "============================================================\n"
 
 
-
   # Marvell-Cesa Crypto:
-    printf "\n\n\n...Adding updated Marvell Cesa to crypto.mk...\n"
+    printf "\n\n\n...Adding updated Marvell-CESA to crypto.mk...\n"
     printf %b "----------------------------------------------\n\n"
       mkdir -p $MAK && cp $crypto $MAK/crypto-orig.mk
-
-        echo '
-
-define KernelPackage/crypto-marvell-cesa
-  TITLE:=Marvell crypto engine (new)
-  DEPENDS:=+kmod-crypto-des +kmod-crypto-manager @TARGET_kirkwood||@TARGET_orion||TARGET_mvebu
-  KCONFIG:= \
-    CONFIG_CRYPTO_DEV_MARVELL_CESA \
-    CONFIG_CRYPTO_HW=y
-  FILES:=$(LINUX_DIR)/drivers/crypto/marvell/marvell-cesa.ko
-  AUTOLOAD:=$(call AutoLoad,09,marvell-cesa)
-  $(call AddDepends/crypto)
-endef
-
-$(eval $(call KernelPackage,crypto-marvell-cesa))' >> $crypto  && printf "\n\n  -----  DONE: Marvell-CESA Updated  -----\n"
-
+        wget $cryptoM -O $cryptoT && cat $cryptoT >> $crypto && rm -f $cryptoT
+      printf "\n\n  -----  DONE: Marvell-CESA Updated  -----\n"
 
 
   # Nano:
     printf "\n\n\n...Creating custom Nano Makefile...\n"
     printf %b "-----------------------------------\n\n"
-      cp $nano $MAK/nano-orig.Makefile
-
-        echo '
-#
-# Copyright (C) 2007-2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
-include $(TOPDIR)/rules.mk
-
-PKG_NAME:=nano
-PKG_VERSION:=2.9.2
-PKG_RELEASE:=1
-PKG_LICENSE:=GPL-3.0+
-PKG_LICENSE_FILES:=COPYING
-
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=@GNU/nano
-PKG_HASH:=4eccb7451b5729ce8abae8f9a5679f32e41ae58df73ea86b850ec45b10a83d55
-
-PKG_INSTALL:=1
-PKG_BUILD_PARALLEL:=1
-
-include $(INCLUDE_DIR)/package.mk
-
-define Package/nano
-  SUBMENU:=Editors
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=An enhanced clone of the Pico text editor
-  URL:=https://www.nano-editor.org/
-  MAINTAINER:=Jonathan Bennett <JBennett@incomsystems.biz>
-  DEPENDS:=+libncurses +zlib +libmagic
-endef
-
-define Package/nano/description
-  Nano (Nano`s ANOther editor, or Not ANOther editor) is an enhanced clone
-  of the Pico text editor.
-endef
-
-CONFIGURE_ARGS += \
-	--enable-browser \
-	--enable-color \
-	--enable-comment \
-	--enable-help \
-	--enable-histories \
-	--enable-justify \
-	--disable-libmagic \
-	--enable-linenumbers \
-	--enable-mouse \
-	--enable-multibuffer \
-	--enable-nanorc \
-	--enable-operatingdir \
-	--enable-speller \
-	--enable-tabcomp \
-	--enable-wordcomp \
-	--enable-wrapping \
-	--enable-utf8 \
-
-CONFIGURE_VARS += \
-	ac_cv_header_regex_h=no \
-
-define Package/nano/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/$(PKG_NAME) $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,nano,+libmagic))' > $nano  && printf "\n\n  -----  DONE: Nano Makefile Replaced  -----\n"
+      cp $nano $MAK/nano-orig.Makefile && echo > $nano
+        wget $makefile -O $nanoT && cat $nanoT > $nano && rm -f $nanoT
+      printf "\n\n  -----  DONE: Nano Makefile Replaced  -----\n"
 
 
 
@@ -345,25 +282,76 @@ printf %b "============================================================\n"
   # Run MenuConfig:
     printf "\n\n\n...Running MenuConfig...\n"
     printf %b "------------------------\n\n"
-      $wrt  && printf "\n\n  -----  DONE: Config Created  -----\n"
+      $wrt && printf "\n\n  -----  DONE: Config Created  -----\n"
 
 
   # Default, PreReq, & Diff Configs:
     printf "\n\n\n...Creating DefConfig, PreReq, & DiffConfig...\n"
     printf %b "----------------------------------------------\n\n"
-      $wrtD  && printf "\n\n  -----  DONE: DefConfig Created  -----\n"
+      $wrtD && printf "\n\n  -----  DONE: DefConfig Created  -----\n"
       $wrtp && printf "\n\n  -----  DONE: Prerequisites Satisfied  -----\n"
-      mkdir -p $DIFF && $wrtd > $DIFF/diffconfig-$dt  && printf "\n\n  -----  DONE: DiffConfig Created  -----\n"
+      mkdir -p $DIFF && $wrtd > $DIFF/diffconfig-$dt && printf "\n\n  -----  DONE: DiffConfig Created  -----\n"
+
+
+  # Environment:
+    printf "\n\n\n...Creating Environment...\n"
+    printf %b "----------------------------------------------\n\n"
+      $gcu & $gce
+        $wrtE new current && printf "\n\n  -----  DONE: Environment Created for Current Build  -----\n"
 
 
   # Compile:
     printf "\n\n\n...Compiling Image...\n"
     printf %b "---------------------\n\n"
-      make V=s  && printf "\n\n  -----  DONE: Image Compiled  -----\n"
+      make V=s && printf "\n\n  -----  DONE: Image Compiled  -----\n"
+
+
+
+# Environment Usage Notes #
+#----------------------------------------------------------------
+printf %b "\n\n\n============================================================\n"
+printf "              # Using Buildroot Environments #\n"
+printf %b "============================================================\n"
+
+  # Create Environment:
+    ( printf "\n\n   Using Environments\n"
+    printf %b "  --------------------\n" )
+      printf "\n    - See: https://lede-project.org/docs/guide-developer/using-build-environments"
+        printf "\n\n      - Allows building images for multiple configurations, using multiple targets"
+        printf "\n\n    - Usage: ./scripts/env [options] <command> [arguments]"
+            printf "\n      - Commands:"
+              printf "\n        - help"
+              printf "\n        - list"
+              printf "\n        - clear"
+              printf "\n        - new <name>"
+              printf "\n        - switch <naem>"
+              printf "\n        - delete <name>"
+              printf "\n        - rename <newname>"
+              printf "\n        - diff"
+              printf "\n        - save [message]"
+              printf "\n        - revert"
+
+
+printf %b "\n\n\n============================================================\n\n"
+
 
 
   # Done #
   #--------------------------------------
-    printf "\n\n\n...Script completed...\n"
+    printf "\n\n...Script completed...\n"
     printf %b "----------------------\n\n"
-      exit 0
+
+
+    # Function:
+      function pause(){
+        read -p "$*"
+      }
+
+
+    # Confirmation:
+      pause "  Press [Enter] key to exit...
+      "  && echo
+      read -p "  Last chance to read 'Using Buildroot Environments'... If sure, press any key to exit
+      "
+
+    exit 0
