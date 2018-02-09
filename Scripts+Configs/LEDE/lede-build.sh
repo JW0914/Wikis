@@ -1,6 +1,6 @@
 #!/bin/bash
 
-        ##::[[--- OpenWrt Ubuntu x64 Build Script ---]]::##
+       ##::[[--- OpenWrt Ubuntu x64 Build Script ---]]::##
 
 #================================================================
   # Title:        owrt-build.sh
