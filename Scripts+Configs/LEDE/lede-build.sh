@@ -3,13 +3,13 @@
        ##::[[--- OpenWrt Ubuntu x64 Build Script ---]]::##
 
 #================================================================
-  # Title:        owrt-build.sh
+  # Title:        lede-build.sh
   # Description:  Creates the OpenWrt Build Environment in Ubuntu
   # Author:       JW0914
   # Created:      2017.07.09
   # Updated:      2018.02.08
   # Version:      2.0
-  # Usage:        chmod +x ./owrt-build.sh && ./owrt-build.sh
+  # Usage:        chmod +x ./lede-build.sh && ./lede-build.sh
 #================================================================
 
 
