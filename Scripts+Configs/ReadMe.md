@@ -68,4 +68,5 @@
 <br></br>
 - System Restore keys must have the path of the VBS script set correctly
     - I recommend placing vbs scripts in a folder with no spaces, such as `%ProgramData%\Scripts`
- 
+    - A junction point could also be created, creating a symbolic link without whitespaces
+        - _Example:_ `cmd /c mklink /j %ProgramData%\Scripts "%UserProfile%\Documents\My Scripts"`
