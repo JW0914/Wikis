@@ -61,9 +61,11 @@
 ---
 
 ###### _Registry Keys_ ######
-- Some values will need to be customized to your environment
-- Explorer keys must be pointed to the right directory within the key
-  - _Paths in registry keys must use double backslashes_  `\\`
+  - Some values will need to be customized to your environment
+<br></br>
+  - Explorer keys must be pointed to the right directory within the key
+    - _Paths in registry keys must use double backslashes_  `\\`
+<br></br>
 - System Restore keys must have the path of the VBS script set correctly
-  - I recommend placing vbs scripts in a folder with no spaces, such as `%ProgramData%\Scripts`
+    - I recommend placing vbs scripts in a folder with no spaces, such as `%ProgramData%\Scripts`
  
