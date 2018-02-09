@@ -268,7 +268,7 @@ printf %b "============================================================\n"
     printf "\n\n\n...Creating custom Nano Makefile...\n"
     printf %b "-----------------------------------\n\n"
       cp $nano $MAK/nano-orig.Makefile && echo > $nano
-        wget $makefile -O $nanoT && cat $nanoT > $nano && rm -f $nanoT
+        wget $nanoM -O $nanoT && cat $nanoT > $nano && rm -f $nanoT
       printf "\n\n  -----  DONE: Nano Makefile Replaced  -----\n"
 
 
