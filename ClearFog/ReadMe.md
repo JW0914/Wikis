@@ -1,9 +1,13 @@
 ### Information Directory ###
 ---
 
+###### [MMC](MMC) ######
+- Compiled `u-boot.mmc` and `u-boot-uart.mmc` images
+
+
 ###### [compile_mmc.sh](compile_mmc.sh) ######
-Compiles U-Boot images for booting from, and flashing to, eMMC flash
- - Installed packages include those required for compiling U-Boot & OpenWrt/LEDE
+- Compiles U-Boot images for booting from, and flashing to, eMMC flash
+  - Installed packages include those required for compiling U-Boot & OpenWrt/LEDE
  
 
 ###### Prerequisites ######
