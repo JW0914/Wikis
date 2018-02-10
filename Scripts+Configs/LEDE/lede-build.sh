@@ -27,6 +27,9 @@
     DIFF="$OWrt/diff"
     MAK="$OWrt/make"
     SOURCE="$OWrt/source"
+      STAGING=$SOURCE/staging_dir
+
+  TOOLCHAIN="$(find $STAGING -maxdepth 1 -name "toolchain-*")"
 
 
 # Files:
@@ -38,6 +41,8 @@
   nanoM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Nano/Makefile"
   nanoT="$SOURCE/nano-temp"
 
+  bashrcM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Bash/.bashrc"
+  bashrcT="~/bashrc-temp"
 
 # Commands:
 
@@ -207,7 +212,7 @@ printf %b "============================================================\n"
   # Clone:
     printf "\n\n\n...Cloning LEDE from GitHub...\n"
     printf %b "------------------------------\n\n"
-      mkdir -p $LEDE && cd $LEDE
+      mkdir -p $OWrt && cd $OWrt
         git clone https://github.com/lede-project/source.git
         printf "\n\n  -----  DONE: Cloned LEDE GitHub  -----\n"
 
@@ -243,9 +248,9 @@ printf %b "============================================================\n"
   # Copy Custom Files Over
     #printf "\n\n\n...Copying Custom Files & Directories...\n"
     #printf %b "----------------------------------------\n\n"
-    #  cp -R $DEV $LEDE
-    #    cp -R $DEV/configs/* $LEDE
-    #    cp -R $DEV/wrt1900acs/files $LEDE
+    #  cp -R $DEV $OWrt
+    #    cp -R $DEV/configs/* $OWrt
+    #    cp -R $DEV/wrt1900acs/files $OWrt
     #  printf "\n\n  -----  DONE: Custom Files Copied.....\n"
 
 
@@ -296,8 +301,18 @@ printf %b "============================================================\n"
   # Environment:
     printf "\n\n\n...Creating Environment...\n"
     printf %b "----------------------------------------------\n\n"
-      $gcu & $gce
+      $gcu && $gce
         $wrtE new current && printf "\n\n  -----  DONE: Environment Created for Current Build  -----\n"
+
+
+  # Modify ~/.bashrc
+    printf "\n\n\n...Adding Toolchain to ~/.bashrc...\n"
+    printf %b "----------------------------------------------\n\n"
+      cp ~/.bashrc ~/.bashrc.bak
+        export PATH="$PATH:$TOOLCHAIN/bin:$STAGING/host/bin"
+        wget $bashrcM -O $bashrcT && cat $bashrcT >> ~/.bashrc && rm -f $bashrcT
+          sed -i "s|STAGING_DIR=/home/user/openwrt/source/staging_dir/toolchain|STAGING_DIR=$TOOLCHAIN|g" ~/.bashrc
+      source ~/.bashrc && printf "\n\n  -----  DONE: STAGING_DIR & Toolchain added to ~/.bashrc  -----\n"
 
 
   # Compile:
