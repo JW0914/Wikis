@@ -42,7 +42,7 @@
   nanoT="$SOURCE/nano-temp"
 
   bashrcM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Bash/.bashrc"
-  bashrcT="~/bashrc-temp"
+  bashrcT="$SOURCE/bashrc-temp"
 
 # Commands:
 
