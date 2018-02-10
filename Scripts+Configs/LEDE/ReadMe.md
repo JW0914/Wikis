@@ -9,11 +9,11 @@
 
 ###### [lede-build.sh](lede-build.sh) ######
 Creates a LEDE-Project build environment in Ubuntu _(preconfigured for 16.04, 16.10, 17.04, 17.10)_
-  - **Lines 244 - 249:**
+  - **Lines 249 - 254:**
     - If custom files for a device already exist, uncomment & edit
-  - **Lines 260 - 264:**
+  - **Lines 265 - 269:**
     - Appends the updated Marvell-CESA driver to crypto.mk
-  - **Lines 268 - 272:**
+  - **Lines 273 - 277:**
     - Replaces default Nano makefile, enabling all Nano build options (incl. UTF-8), except libmagic
       - Increases nano package from ~41KB to ~124KB
 
