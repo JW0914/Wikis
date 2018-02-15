@@ -79,17 +79,25 @@
 
 # Packages:
 
+  # All:
+    Req="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+
+
+  # 14.04 (ClearFog):
+    PR1404="cl-getopt gcc-arm-none-eabi libboost1.55-dev libgtk2.0-dev openjdk-7-jdk perl-modules python3-dev u-boot-tools"
+
   # 16.04:
-    PR1604="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.58-dev libgtk2.0-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-8-jdk patch perl-modules-5.22 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1604="libboost1.58-dev libgtk2.0-dev openjdk-8-jdk perl-modules-5.22 python3-dev"
 
   # 16.10:
-    PR1610="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.61-dev libgtk2.0-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.22 python3-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1610="libboost1.61-dev libgtk2.0-dev openjdk-9-jdk perl-modules-5.22 python3-dev"
 
   # 17.04:
-    PR1704="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.63-dev libgtk-3-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.24 python3.7-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1704="libboost1.63-dev libgtk-3-dev openjdk-9-jdk perl-modules-5.24 python3.7-dev"
 
   # 17.10:
-    PR1710="asciidoc bash bc bcc bin86 binutils build-essential bzip2 cryptsetup fastjar flex gawk gcc gcc-multilib genisoimage gettext git-core intltool jikespg libboost1.63-dev libgtk-4-dev libncurses5-dev libssl-dev libusb-dev libxml-parser-perl make mercurial openjdk-9-jdk patch perl-modules-5.26 python3.7-dev rsync ruby sdcc sharutils subversion util-linux unzip wget xsltproc zlib1g-dev"
+    PR1710="libboost1.63-dev libgtk-4-dev openjdk-9-jdk perl-modules-5.26 python3.7-dev"
+
 
   # Errors:
     ERROR=" "
@@ -121,27 +129,32 @@ printf %b "============================================================\n"
 
 
     # Options:
-      options[0]="Ubuntu 16.04"
-      options[1]="Ubuntu 16.10"
-      options[2]="Ubuntu 17.04"
-      options[3]="Ubuntu 17.10"
+      options[0]="Ubuntu 14.04"
+      options[1]="Ubuntu 16.04"
+      options[2]="Ubuntu 16.10"
+      options[3]="Ubuntu 17.04"
+      options[4]="Ubuntu 17.10"
 
     # Actions:
       function ACTIONS {
         if [[ ${choices[0]} ]]; then
-          printf "\n\n...Ubuntu 16.04 selected...\n\n" && $ag install $PR1604 && printf "\n\n  -----  DONE: Installed 16.04 Prerequisites  -----\n"
+          printf "\n\n...Ubuntu 14.04 selected...\n\n" && $ag install $Req $PR1404 && printf "\n\n  -----  DONE: Installed 14.04 Prerequisites  -----\n"
         fi
 
         if [[ ${choices[1]} ]]; then
-          printf "\n\n...Ubuntu 16.10 selected...\n\n" && $ag install $PR1610 && printf "\n\n  -----  DONE: Installed 16.10 Prerequisites  -----\n"
+          printf "\n\n...Ubuntu 16.04 selected...\n\n" && $ag install $Req $PR1604 && printf "\n\n  -----  DONE: Installed 16.04 Prerequisites  -----\n"
         fi
 
         if [[ ${choices[2]} ]]; then
-          printf "\n\n...Ubuntu 17.04 selected...\n\n" && $ag install $PR1704 && printf "\n\n  -----  DONE: Installed 17.04 Prerequisites  -----\n"
+          printf "\n\n...Ubuntu 16.10 selected...\n\n" && $ag install $Req $PR1610 && printf "\n\n  -----  DONE: Installed 16.10 Prerequisites  -----\n"
         fi
 
         if [[ ${choices[3]} ]]; then
-          printf "\n\n...Ubuntu 17.10 selected...\n\n" && $ag install $PR1710 && printf "\n\n  -----  DONE: Installed 17.10 Prerequisites  -----\n"
+          printf "\n\n...Ubuntu 17.04 selected...\n\n" && $ag install $Req $PR1704 && printf "\n\n  -----  DONE: Installed 17.04 Prerequisites  -----\n"
+        fi
+
+        if [[ ${choices[4]} ]]; then
+          printf "\n\n...Ubuntu 17.10 selected...\n\n" && $ag install $Req $PR1710 && printf "\n\n  -----  DONE: Installed 17.10 Prerequisites  -----\n"
         fi
       }
 
