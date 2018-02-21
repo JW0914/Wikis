@@ -19,7 +19,7 @@ Creates a LEDE-Project build environment in Ubuntu _(preconfigured for 14.04, 16
 
 ###### Prerequisites ######
   - Ubuntu 14.04, 16.04, 16.10, 17.04, or 17.10
-  
+<br></br>
   - I'll update as new versions become available
     - If I'm not quick enough, it's easy to do
       1. Copy everything after "_PR1710=_" on **Line 99** to paste in step 2.
