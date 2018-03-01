@@ -1,14 +1,12 @@
 ### Information Directory ###
 ---
 
-[LEDE-Project](https://lede-project.org/) | [OpenWrt Project](https://openwrt.org/)
+[OpenWrt Project](https://openwrt.org/)
   - Linux distribution for embedded devices
-    - OpenWrt and LEDE reconciled and merged in 2018
-      - Repo links in script will be updated to [OpenWrt's](https://github.com/openwrt/openwrt) repo once [LEDE's](https://github.com/lede-project/source) code has been fully merged
-
+    - OpenWrt and the LEDE-Project reconciled and merged in February 2018
 
 ###### [lede-build.sh](lede-build.sh) ######
-Creates a LEDE-Project build environment in Ubuntu _(preconfigured for 14.04, 16.04, 16.10, 17.04, 17.10)_
+Creates an OpenWrt build environment in Ubuntu _(preconfigured for 14.04, 16.04, 16.10, 17.04, 17.10)_
   - **Lines 261 - 267:**
     - If custom files for a device already exist, uncomment & edit
   - **Lines 278 - 282:**
