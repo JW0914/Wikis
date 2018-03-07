@@ -1,9 +1,16 @@
 #
 
-  ##::[[---  Windows OpenSSH SSH Config  ---]]::##
+    ##::[[---  Windows OpenSSH Config  ---]]::##
 
 ####################################################
-           ##----- Global Options -----##
+               ##----- Custom -----##
+####################################################
+
+UserKnownHostsFile                = ~\.ssh\known_hosts
+
+
+####################################################
+              ##----- Options -----##
 ####################################################
 
     # Connection #
@@ -13,7 +20,7 @@ AddressFamily                     = inet
 
     # Encryption #
 #---------------------------------------------------
-RekeyLimit                        = 500M 30m
+RekeyLimit                        = 500M 60m
 
 
     # Authentication #
@@ -60,7 +67,7 @@ LogLevel                          = VERBOSE
 #---------------------------------------------------
 FingerprintHash                   = sha256
 
-Ciphers                           = rijndael-cbc@lysator.liu.se,aes256-cbc,aes192-cbc,aes128-cbc
+Ciphers                           = rijndael-cbc@lysator.liu.se,aes256-cbc,aes256-ctr,aes192-cbc,aes192-ctr
 
 HostKeyAlgorithms                 = ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-ed25519,ssh-rsa
 
