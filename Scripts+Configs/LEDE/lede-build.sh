@@ -68,7 +68,7 @@
 
 
   # Environments:
-    # See: https://lede-project.org/docs/guide-developer/using-build-environments
+    # See: https://openwrt.org/docs/guide-developer/using-build-environments
 
     gcu="git config --global user.name '$user'"
     gce="git config --global user.email '$user@openwrt.buildroot'"
@@ -344,7 +344,7 @@ printf %b "============================================================\n"
   # Create Environment:
     ( printf "\n\n   Using Environments\n"
     printf %b "  --------------------\n" )
-      printf "\n    - See: https://lede-project.org/docs/guide-developer/using-build-environments"
+      printf "\n    - See: https://openwrt.org/docs/guide-developer/using-build-environments"
         printf "\n\n      - Allows building images for multiple configurations, using multiple targets"
         printf "\n\n    - Usage: ./scripts/env [options] <command> [arguments]"
             printf "\n      - Commands:"
