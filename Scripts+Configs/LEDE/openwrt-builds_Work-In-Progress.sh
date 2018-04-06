@@ -335,7 +335,7 @@ printf %b "============================================================\n"
               printf "\n\n        - - - -  UBUNTU 14 ONLY  - - - - "
               printf "\n\n            - Requires MAX installed gcc ver of 4.x"
               printf "\n                - If ver >4.x is installed, compilation will fail!"
-L              printf %b "============================================================\n\n\n"
+              printf %b "============================================================\n\n\n"
               for NUM in ${!options[@]}; do
                   echo "${choices[NUM]:- }" $(( NUM+1 ))") ${options[NUM]}"
               done
