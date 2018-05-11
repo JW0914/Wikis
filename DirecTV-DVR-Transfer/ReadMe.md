@@ -11,7 +11,7 @@
     - _The firmware for the box is not stored on the HDD (HDD is solely utilized for DVR functionality)._
     - _Most boxes have release tabs which can be accessed from the bottom of the reciever (at least HR34+)._
       - _Tabs are [accessed](https://www.youtube.com/watch?v=rxgmn_L29Sc) via square-ish access holes ~2" in depth._
-    - _If residing in the U.S., due to the [Magnuson-Moss Warranty Act](https://en.wikipedia.org/wiki/Magnuson%E2%80%93Moss_Warranty_Act), the [FTC](https://www.ftc.gov/news-events/press-releases/2018/04/ftc-staff-warns-companies-it-illegal-condition-warranty-coverage) has [ruled](http://www.bbc.com/news/technology-43724348) "Warranty Void" stickers are illegal._
+    - _Due to the [Magnuson-Moss Warranty Act](https://en.wikipedia.org/wiki/Magnuson%E2%80%93Moss_Warranty_Act), the [FTC](https://www.ftc.gov/news-events/press-releases/2018/04/ftc-staff-warns-companies-it-illegal-condition-warranty-coverage) has [ruled](http://www.bbc.com/news/technology-43724348) "Warranty Void" stickers are illegal (2018.04.11)._
 
 ###### Mounting Error ######
   - **If recieving a mounting error referencing the HDD can only be mounted** `ro` **(Read Only):**
