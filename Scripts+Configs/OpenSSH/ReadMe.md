@@ -37,9 +37,6 @@
     - This, and all files/directories within, should _**not**_ have inherited permissions.
       - _Unless user is only one being passed for inheritance_
     - User should be the owner of _%UserProfile%\\.ssh_ and all files/directories within
-  - **%ProgramFiles%\\OpenSSH\\ssh_host_*_key**
-    - [`PsExe`](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec) should be utilized to register the server keys as _NT AUTHORITY\SYSTEM_ (_[halfway down](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)_)
-      - [`sdelete`](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete) should be used to securely erase them _(5 pass minimum)_ once registered
 ##
 
 - **_%ProgramFiles%\\OpenSSH\\ssh_config_**
