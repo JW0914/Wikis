@@ -6,7 +6,6 @@
 
 
 ### [BSD/Linux](BSD-Linux) ###
-##
   ###### [_config_](BSD-Linux/config) ######
   - Custom user specific OpenSSH client config; should be placed at _~/.ssh/config_
   - There are three specific sections to this custom config
@@ -20,9 +19,10 @@
   - System wide OpenSSH client config; should be placed at _/etc/ssh/ssh_config_
   ###### [_sshd_config_](BSD-Linux/sshd_config) ######  
   - System wide OpenSSH server config; should be placed at _/etc/ssh/sshd_config_
-<br></br>
-### [Windows](Windows) ###
+
 ##
+
+### [Windows](Windows) ###
   ###### [_config (Win32-OpenSSH)_](Windows/config%20(Win32-OpenSSH)) ######
   - Custom user specific Windows OpenSSH client config; should be placed at _%USERPROFILE%\\.ssh\config_
   ###### [_ssh_config (Win32-OpenSSH)_](Windows/ssh_config%20(Win32-OpenSSH)) ######
