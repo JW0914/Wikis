@@ -43,28 +43,28 @@
 
 - **_%ProgramFiles%\\OpenSSH\\ssh_config_**
   - _`NT AUTHORITY\SYSTEM:(F) | BUILTIN\Administrators:(F) | NT SERVICE\sshd:(R)`_
-    - ```icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT AUTHORITY\SYSTEM`":`(F`)```
-    - ```icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"BUILTIN\Administrators`":`(F`)```
-    - ```icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT SERVICE\sshd`":`(R`)```
+    - ```cmd /c icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT AUTHORITY\SYSTEM`":`(F`)```
+    - ```cmd /c icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"BUILTIN\Administrators`":`(F`)```
+    - ```cmd /c icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT SERVICE\sshd`":`(R`)```
 - **_%ProgramFiles%\\OpenSSH\\sshd_config_**
   - _`NT AUTHORITY\SYSTEM:(F) | BUILTIN\Administrators:(F) | NT SERVICE\sshd:(R)`_
-    - ```icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT AUTHORITY\SYSTEM`":`(F`)```
-    - ```icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"BUILTIN\Administrators`":`(F`)```
-    - ```icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT SERVICE\sshd`":`(R`)```
+    - ```cmd /c icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT AUTHORITY\SYSTEM`":`(F`)```
+    - ```cmd /c icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"BUILTIN\Administrators`":`(F`)```
+    - ```cmd /c icacls %ProgramFiles%\OpenSSH\sshd_config /grant `"NT SERVICE\sshd`":`(R`)```
 ##
 
 - **_%UserProfile%\\.ssh_**
   - _`WRT\JW0914:(F)`_
-    - ```icacls %UserProfile%\.ssh /grant `"WRT\JW0914`":`(F`)```
+    - ```cmd /c icacls %UserProfile%\.ssh /grant `"WRT\JW0914`":`(F`)```
 - **_%UserProfile%\\.ssh\\authorized_keys_**
   - _`WRT\JW0914:(F)`_
-    - ```icacls %UserProfile%\.ssh\authorized_keys /grant `"WRT\JW0914`":`(F`)```
+    - ```cmd /c icacls %UserProfile%\.ssh\authorized_keys /grant `"WRT\JW0914`":`(F`)```
 - **_%UserProfile%\\.ssh\\config_**
   - _`WRT\JW0914:(F)`_
-    - ```icacls %UserProfile%\.ssh\config /grant `"WRT\JW0914`":`(F`)```
+    - ```cmd /c icacls %UserProfile%\.ssh\config /grant `"WRT\JW0914`":`(F`)```
 - **_%UserProfile%\\.ssh\\known_hosts_**
   - _`WRT\JW0914:(F)`_
-    - ```icacls %UserProfile%\.ssh\known_hosts /grant `"WRT\JW0914`":`(F`)```
+    - ```cmd /c icacls %UserProfile%\.ssh\known_hosts /grant `"WRT\JW0914`":`(F`)```
 ##
 
 - **_~/.ssh_**
