@@ -67,17 +67,17 @@ LogLevel                          = VERBOSE
 #---------------------------------------------------
 FingerprintHash                   = sha256
 
-Ciphers                           = rijndael-cbc@lysator.liu.se,aes256-cbc,aes256-ctr,aes192-cbc,aes192-ctr
+Ciphers                           = aes128-ctr,aes128-cbc,aes192-ctr,aes192-cbc,aes256-ctr,aes256-cbc,rijndael-cbc@lysator.liu.se
 
-HostKeyAlgorithms                 = ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-ed25519,ssh-rsa
+HostKeyAlgorithms                 = ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-rsa
 
-HostbasedKeyTypes                 = ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-ed25519,ssh-rsa
+HostbasedAcceptedKeyTypes         = ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-rsa
 
-KexAlgorithms                     = curve25519-sha256@libssh.org,curve25519-sha256,diffie-hellman-group-exchange-sha256,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521
+KexAlgorithms                     = ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,curve25519-sha256@libssh.org,curve25519-sha256,diffie-hellman-group-exchange-sha256
 
 MACs                              = hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
 
-PubkeyAcceptedKeyTypes            = ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-ed25519,ssh-rsa
+PubkeyAcceptedKeyTypes            = ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-rsa
 
 
 ####################################################
