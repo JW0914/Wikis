@@ -1,0 +1,247 @@
+#
+              #[[---  Windows Run Commands  ---]]#
+
+#================================================================
+  # Title:        Windows Run Commands
+  # Description:  List of run commands
+  # Author:       BossDweeb
+  # Created:      2017.05.13
+  # Updated:      2017.06.01
+  # Usage:        .\DISM-Creation.cmd
+#================================================================
+
+
+# Run Commands #
+#----------------------------------------------------------------
+
+  # Addministrative:
+
+    Administrative Tools                        = control admintools
+    Authorization Manager                       = azman.msc
+    Component Services                          = dcomcnfg
+    Certificate Manager                         = certmgr.msc
+
+    Direct X Troubleshooter                     = dxdiag
+    Display Languages                           = lpksetup
+
+    ODBC Data Source Administrator              = odbcad32
+    File Signature Verification Tool            = sigverif
+    Group Policy Editor                         = gpedit.msc
+    Add Hardware Wizard                         = hdwwiz.cpl
+    iSCSI Initiator                             = iscsicpl
+    Iexpress Wizard                             = iexpress
+
+    Local Security Settings                     = secpol.msc
+    Microsoft Support Diagnostic Tool           = msdt
+    Microsoft Management Console                = mmc
+    Print management                            = printmanagement.msc
+    Printer User Interface                      = printui
+    Problems Steps Recorder                     = psr
+    People Near Me                              = p2phost
+
+    Registry Editor                             = regedit
+    Resoure Monitor                             = resmon
+    System Configuration Utility                = msconfig
+
+    Resultant Set of Policy                     = rsop.msc
+    SQL Server Client Configuration             = cliconfg
+
+    Task Manager                                = taskmgr
+    Trusted Platform Module                     = tpm.msc
+    TPM Security Hardware                       = TpmInit
+
+    Windows Remote Assistance                   = msra
+    Windows Share Folder Creation Wizard        = shrpubw
+    Windows Standalong Update Manager           = wusa
+    Windows System Security Tool                = syskey
+    Windows Script Host Settings                = wscript
+    Windows Version                             = winver
+    Windows Firewall with Advanced Security     = wf.msc
+    Windows Memory Diagnostic                   = MdSched
+    Windows Malicious Removal Tool              = mrt
+
+
+# Manage #
+#----------------------------------------------------------------
+
+  # Computer Management:
+
+    Computer Management                         = compmgmt.msc or CompMgmtLauncher
+    Task Scheduler                              = control schedtasks
+    Event Viewer                                = eventvwr.msc
+
+    Shared Folders or MMC                       = fsmgmt.msc
+    Local Users and Groups                      = lusrmgr.msc
+
+    Performance Monitor                         = perfmon.msc
+    Device Manager                              = devmgmt.msc
+    Disk Management                             = diskmgmt.msc
+    Services                                    = services.msc
+
+    Windows Management Infrastructure           = wmimgmt.msc
+
+
+
+# Conrtol Panel #
+#----------------------------------------------------------------
+
+  # Utilities:
+    Control Panel                               = control
+    Action Center                               = wscui.cpl
+    Autoplay                                    = control.exe /name Microsoft.autoplay
+
+    Backup and Restore                          = sdclt
+    Create a System Repair disc                 = recdisc
+    BDE Administrator                           = bdeadmin.cpl
+    Color Management                            = colorcpl
+    Date and Time Properties                    = timedate.cpl
+
+    Credential Manager                          = control.exe /name Microsoft.CredentialManager
+      Stored User Names and Passwords           = credwiz
+
+
+    Default Programs                            = control.exe /name Microsoft.DefaultPrograms
+
+    Set Program Access and Computer Defaults    = control appwiz.cpl,,3 or ComputerDefaults
+
+    Devices and Printers                        = control printers
+    Devices and Printers Add a Device           = DevicePairingWizard
+    Display                                     = dpiscaling
+    Screen Resolution                           = desk.cpl
+    Display Color Calibration                   = dccw
+
+    Cleartype Text Tuner                        = cttune
+    Folders Options                             = control folders
+    Fonts                                       = control fonts
+    Getting Started                             = GettingStarted
+    HomeGroup                                   = control.exe /name Microsoft.HomeGroup
+    Indexing Options                            = control.exe /name Microsoft.IndexingOptions
+    Internet Properties                         = inetcpl.cpl
+
+    Keyboard                                    = control keyboard
+    Location and Other Sensors                  = control.exe /name Microsoft.LocationandOtherSensors
+    Location Notifications                      = LocationNotifications
+    Mouse                                       = control mouse or main.cpl
+
+    Network and Sharing Center                  = control.exe /name Microsoft.NetworkandSharingCenter
+    Network Connections                         = control netconnections or ncpa.cpl
+
+    Notification Area Icons                     = control.exe /name Microsoft.NotificationAreaIcons
+    Parental Controls                           = control.exe /name Microsoft.ParentalControls
+
+    Performance Information                     = control.exe /name Microsoft.PerformanceInformationandTools
+
+    Personalization                             = control desktop
+    Windows Color and Appearance                = control color
+
+    Phone and Modem Options                     = telephon.cpl
+    Power Configuration                         = powercfg.cpl
+    Programs and Features                       = appwiz.cpl or control appwiz.cpl
+
+    Optional Features Manager                   = optionalfeatures or control appwiz.cpl,,2
+    Recovery                                    = control.exe /name Microsoft.Recovery
+    Regional and Language                       = intl.cpl
+    RemoteApp                                   = control.exe /name Microsoft.RemoteAppandDesktopConnections
+
+    Sound                                       = mmsys.cpl
+    Volume Mixer                                = sndvol
+    System Properties                           = sysdm.cpl or WinKey + Pause/Break
+
+    SP ComputerName Tab                         = SystemPropertiesComputerName
+    SP Hardware Tab                             = SystemPropertiesHardware
+    SP Advanced Tab                             = SystemPropertiesAdvanced
+    SP Performance                              = SystemPropertiesPerformance
+    SP Data Execution Prevention                = SystemPropertiesDataExecutionPrevention
+    SP Protection Tab                           = SystemPropertiesProtection
+    SP Remote Tab                               = SystemPropertiesRemote
+
+    Windows Activation                          = slui
+    Windows Activation Phone Numbers            = slui 4
+    Taskbar and Start Menu                      = control.exe /name Microsoft.TaskbarandStartMenu
+    Troubleshooting                             = control.exe /name Microsoft.Troubleshooting
+
+    User Accounts                               = control.exe /name Microsoft.UserAccounts
+    User Account Control Settings               = UserAccountControlSettings
+    User Accounts or Domain Version             = netplwiz or control userpasswords2
+
+    Encryption File System                      = rekeywiz
+    Windows Anytime Upgrade                     = WindowsAnytimeUpgradeui
+    Windows Anytime Upgrade Results             = WindowsAnytimeUpgradeResults
+    Windows CardSpace                           = control.exe /name Microsoft.cardspace
+    Windows Firewall                            = firewall.cpl
+    WindowsSideshow                             = control.exe /name Microsoft.WindowsSideshow
+    Windows Update App Manager                  = wuapp
+
+
+# Accessories #
+#----------------------------------------------------------------
+
+  # Tools:
+    Calculator                                  = calc
+    Command Prompt                              = cmd
+    Connect to a Network Projector              = NetProj
+    Presentation Settings                       = PresentationSettings
+    Connect to a Projector                      = displayswitch or WinKey + P
+    Notepad                                     = notepad
+    XPS Viewer                                  = xpsrchvw
+
+    Microsoft Paint                             = mspaint.exe
+    Remote Desktop Connection                   = mstsc
+    Run                                         = WinKey + R
+    Snipping Tool                               = snippingtool
+    Sound Recorder                              = soundrecorder
+    Sticky Note                                 = StikyNot
+    Sync Center                                 = mobsync
+
+    Windows Mobility Center                     = mblctr or WinKey + X
+    Windows Explorer                            = explorer or WinKey + E
+    Wordpad                                     = write
+    Ease of Access Center                       = utilman or WinKey + U
+    Magnifier                                   = magnify
+    Narrator                                    = Narrator
+    On Screen Keyboard                          = osk
+    Private Character Editor                    = eudcedit
+    Character Map                               = charmap
+
+    Ditilizer Calibration Tool                  = tabcal
+    Disk Cleanup Utility                        = cleanmgr
+    Defragment User Interface                   = dfrgui
+    Rating System                               = ticrf
+    Phone Dialer                                = dialer
+    Printer Migration                           = PrintBrmUi
+
+    Internet Explorer                           = iexplore
+      No Add-ons                                = iexplore -extoff
+      No Home                                   = iexplore about:blank
+
+
+    System Information                          = msinfo32
+    System Restore                              = rstrui
+
+    Windows Easy Transfer                       = migwiz
+    Windows Image Acquisition                   = wiaacmgr
+
+    Windows Media Player                        = wmplayer
+      DVD Player                                = dvdplay
+
+    Windows Fax and Scan                        = wfs
+      Cover Page Editor                         = fxscover
+      
+    Windows PowerShell                          = powershell
+      ISE                                       = powershell_ise
+
+
+    Open Documents folder                       = documents
+    Open Pictures folder                        = pictures
+    Open Music folder                           = music
+    Open Videos folder                          = videos
+    Open Downloads folder                       = downloads
+    Open Favorites folder                       = favorites
+    Open Recent folder                          = recent
+
+    Log out of Windows                          = logoff
+    Lock Windows                                = WinKey + L
+
+
+# Courtesy of BossDweeb:
+  # https://answers.microsoft.com/en-us/windows/forum/windows_7-performance/run-command/a2632e97-c8d1-4ab3-8df2-7e70a4448267
