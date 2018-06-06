@@ -1,5 +1,8 @@
 ### Information Directory ###
 ---
+###### [ClearFog](ClearFog) ######
+- U-Boot MMC images, as well as a script to compile the MMC images
+
 ###### [DirecTV](DirecTV-DVR-Transfer) ######
 - Wiki on how to tranfer DVR content from one HDD to another
 

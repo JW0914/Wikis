@@ -1,5 +1,12 @@
 ### Information Directory ###
 ---
+
+###### [ConEmu](ConEmu) ######
+- Customized settings for [ConEmu](https://conemu.github.io/)
+
+###### [ERUNT](ERUNT) ######
+- Customized setting for [ERUNT](http://www.larshederer.homepage.t-online.de/erunt/) registry backup
+
 ###### [ESD to WIM](ESD%20to%20WIM) ######
 - Scripts to create a standablone DISM folder and convert Windows ESD <-> WIM
 
@@ -17,6 +24,9 @@
 
 ###### [LEDE](LEDE) ######
 - Auto creates a LEDE build environment on Ubuntu, as well as a Nano Makefile for LEDE/OpenWrt
+
+###### [Nano](Nano) ######
+- Custom NanoRC for Nano
 
 ###### [Nginx](Nginx) ######
 - Prebuilt custom Nginx server config for ownCloud running within a FreeNAS _[FreeBSD 11]_ jail
@@ -42,15 +52,21 @@
 ###### [System Restore](System%20Restore) ######
 - Various system restore point creation scripts, with an accompanying Task Scheduler export
 
+###### [Vim](Vim) ######
+- Custom VimRC for Vim
+
 ###### [WinRE](WinRE) ######
 - Script to create a custom WinRE image and an accompanying bootable ISO, USB, or, VHD
 
 ---
 
 ###### _Registry Keys_ ######
-- Some values will need to be customized to your environment
-- Explorer keys must be pointed to the right directory within the key
-  - _Paths in registry keys must use double backslashes_  `\\`
+  - Some values will need to be customized to your environment
+<br></br>
+  - Explorer keys must be pointed to the right directory within the key
+    - _Paths in registry keys must use double backslashes_  `\\`
+<br></br>
 - System Restore keys must have the path of the VBS script set correctly
-  - I recommend placing vbs scripts in a folder with no spaces, such as `%ProgramData%\Scripts`
- 
+    - I recommend placing vbs scripts in a folder with no spaces, such as `%ProgramData%\Scripts`
+    - A junction point could also be created, creating a symbolic link without whitespaces
+        - _Example:_ `cmd /c mklink /j %ProgramData%\Scripts "%UserProfile%\Documents\My Scripts"`

@@ -1,12 +1,12 @@
 #
 
-    ##::[[---  LEDE OpenSSH Config  ---]]::##
+    ##::[[---  Windows OpenSSH Config  ---]]::##
 
 ####################################################
                ##----- Custom -----##
 ####################################################
 
-UserKnownHostsFile                = "%d/.ssh/known_hosts"
+UserKnownHostsFile                = ~\.ssh\known_hosts
 
 
 ####################################################
@@ -67,7 +67,7 @@ LogLevel                          = VERBOSE
 #---------------------------------------------------
 FingerprintHash                   = sha256
 
-Ciphers                           = aes128-gcm@openssh.com,aes128-ctr,aes128-cbc,aes192-ctr,aes192-cbc,aes256-gcm@openssh.com,aes256-ctr,aes256-cbc,rijndael-cbc@lysator.liu.se
+Ciphers                           = aes128-ctr,aes128-cbc,aes192-ctr,aes192-cbc,aes256-ctr,aes256-cbc,rijndael-cbc@lysator.liu.se
 
 HostKeyAlgorithms                 = ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-rsa
 
@@ -90,13 +90,13 @@ Host                              FNr
   Hostname                        192.168.2.100
   Port                            22
   User                            root
-  IdentityFile                    %d\.ssh\pem\FreeNAS-root_2r
+  IdentityFile                    %d\\.ssh\\pem\\FreeNAS-root_2r
 
 Host                              FNu
   Hostname                        192.168.2.100
   Port                            22
   User                            user1
-  IdentityFile                    %d\.ssh\pem\FreeNAS-User1_2r
+  IdentityFile                    %d\\.ssh\\pem\\FreeNAS-User1_2r
 
 
     # Sophos #
@@ -105,13 +105,13 @@ Host                              UTM
   Hostname                        192.168.1.1
   Port                            22
   User                            root
-  IdentityFile                    %d\.ssh\pem\Sophos_2r
+  IdentityFile                    %d\\.ssh\\pem\\Sophos_2r
 
 Host                              UTMR
   Hostname                        your.ddns.com
   Port                            22
   User                            root
-  IdentityFile                    %d\.ssh\pem\Sophos_2r
+  IdentityFile                    %d\\.ssh\\pem\\Sophos_2r
 
 
     # WRT1900ACS #
@@ -120,10 +120,11 @@ Host                              ACSr
   Hostname                        192.168.2.1
   Port                            22
   User                            root
-  IdentityFile                    %d\.ssh\pem\WRT1900ACS_2r
+  IdentityFile                    %d\\.ssh\\pem\\WRT1900ACS_2r
 
 Host                              ACSu
   Hostname                        192.168.2.1
   Port                            22
   User                            user1
-  IdentityFile                    %d\.ssh\pem\WRT1900ACS_2r
+  IdentityFile                    %d\\.ssh\\pem\\WRT1900ACS_2r
+  
