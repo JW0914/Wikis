@@ -72,7 +72,7 @@ alias wrtC='chmod -R 775 $target/root-mvebu/root && rm -rf $target/root-mvebu/ro
 #---------------------------------------------------
 
 # OpenWrt:
-STAGING_DIR=/home/user/openwrt/source/staging_dir/toolchain
+STAGING_DIR=$tchain
 
 
     # Exports #
