@@ -13,7 +13,7 @@ Creates an OpenWrt build environment in Ubuntu _(preconfigured for 14.04, 16.04,
     - Replaces default Nano makefile, enabling all Nano build options (incl. UTF-8), except libmagic
       - Increases nano package from ~41KB to ~124KB
 <br></br>
-  - **_I removed the ClearFog section with commit 78d279c, but will be adding it back once I troubleshoot the issues with those blocks of code._**
+  - _I removed the ClearFog section with commit [78d279c](https://github.com/JW0914/Wikis/commit/78d279c5d806dfd5530e9ba7a83eef7d4c6fb660), but will add it back once those blocks of code are fixed._
 
 ###### Prerequisites ######
   - Ubuntu 14.04, 16.04, 16.10, 17+
