@@ -38,10 +38,6 @@
 
 
 # Files:
-  crypto="package/kernel/linux/modules/crypto.mk"
-  cryptoM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Marvell-CESA/wrt-ac-series-addition_crypto.mk"
-  cryptoT="$SOURCE/crypto-temp"
-
   nano="package/feeds/packages/nano/Makefile"
   nanoM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Nano/Makefile"
   nanoT="$SOURCE/nano-temp"
@@ -74,7 +70,7 @@
 
 
   # Environments:
-    # See: https://lede-project.org/docs/guide-developer/using-build-environments
+    # See: https://openwrt.org/docs/guide-developer/env
 
     gcu="git config --global user.name '$user'"
     gce="git config --global user.email '$user@openwrt.buildroot'"
@@ -111,14 +107,14 @@
   # ClearFog
     CFA="git clone https://github.com/SolidRun/u-boot-armada38x.git"
 
-  # LEDE 17.01.4
+  # LEDE 17.01.5
     L17="git clone -b lede-17.01 https://github.com/openwrt/openwrt.git"
 
-  # lEDE 17.x Development Branch
-    LD17="git clone -b master https://github.com/openwrt/openwrt.git"
+  # OpenWrt 18.06
+    O18="git clone -b openwrt-18.06 https://github.com/openwrt/openwrt.git"
 
-  # OpenWrt 18.x Development Branch
-    OD18="git clone -b openwrt-18.06 https://github.com/openwrt/openwrt.git"
+  # OpenWrt Development Branch
+    OD18="git clone -b master https://github.com/openwrt/openwrt.git"
 
 
 # Prepare #
@@ -269,32 +265,32 @@ printf %b "============================================================\n"
     (
       # Options:
         options[0]="17.01"
-        options[1]="17.xx"
+        options[1]="18.06"
         options[2]="18.xx"
 
 
       # Actions:
         function ACTIONS {
           if [[ ${choices[0]} ]]; then
-            printf "\n=====>  LEDE 17.01.4 selected  <=====\n"
+            printf "\n=====>  LEDE 17.01.5 selected  <=====\n"
               sleep 3
 
               printf "\n\n\n...Cloning OpenWrt from Git...\n"
               printf %b "------------------------------\n\n"
                 $L17
 
-            printf "\n  -----  DONE: Cloned LEDE 17.01.4 Source  -----\n"
+            printf "\n  -----  DONE: Cloned LEDE 17.01.5 Source  -----\n"
           fi
 
           if [[ ${choices[1]} ]]; then
-            printf "\n=====>  LEDE 17.x Development Branch selected  <=====\n"
+            printf "\n=====>  OpenWrt 18.06 selected  <=====\n"
               sleep 3
 
               printf "\n\n\n...Cloning OpenWrt from Git...\n"
               printf %b "------------------------------\n\n"
-                $LD17
+                $OD18
 
-            printf "\n  -----  DONE: Cloned LEDE 17.xx Development Source  -----\n"
+            printf "\n  -----  DONE: Cloned OpenWrt 18.06 Source  -----\n"
           fi
 
           if [[ ${choices[2]} ]]; then
@@ -303,7 +299,7 @@ printf %b "============================================================\n"
 
               printf "\n\n\n...Cloning OpenWrt from Git...\n"
               printf %b "------------------------------\n\n"
-                $OD18
+                $O18
 
             printf "\n  -----  DONE: Cloned OpenWrt 18.x Development Source  -----\n"
           fi
@@ -357,7 +353,7 @@ printf %b "============================================================\n"
   # Update Repo:
     printf "\n\n\n...Updating Repo...\n"
     printf %b "-------------------\n\n"
-      $wrtG && printf "\n  -----  DONE: LEDE Repo Up-to-Date  -----\n"
+      $wrtG && printf "\n  -----  DONE: OpenWrt Repo Up-to-Date  -----\n"
 
 
   # Update & Install Feeds:
@@ -418,8 +414,8 @@ printf %b "============================================================\n"
   # Environment:
     printf "\n\n\n...Creating Environment...\n"
     printf %b "--------------------------\n\n"
-      #$gcu && $gce
-      #  $wrtE new current && printf "\n  -----  DONE: Environment Created for Current Build  -----\n"
+      $gcu && $gce
+        $wrtE new current && printf "\n  -----  DONE: Environment Created for Current Build  -----\n"
 
 
   # Modify ~/.bashrc
@@ -448,7 +444,7 @@ printf %b "============================================================\n"
   # Create Environment:
     ( printf "\n\n   Using Environments\n"
     printf %b "  --------------------\n" )
-      printf "\n    - See: https://lede-project.org/docs/guide-developer/using-build-environments"
+      printf "\n    - See: https://openwrt.org/docs/guide-developer/env"
         printf "\n\n      - Allows building images for multiple configurations, using multiple targets"
         printf "\n\n    - Usage: ./scripts/env [options] <command> [arguments]"
             printf "\n      - Commands:"
