@@ -7,9 +7,9 @@
 
 ###### [lede-build.sh](lede-build.sh) ######
 Creates an OpenWrt build environment in Ubuntu _(preconfigured for 14.04, 16.04, 16.10, 17.04, 17.10+)_
-  - **Lines 374 - 380:**
+  - **Lines 370 - 376:**
     - If custom files for a device already exist, uncomment & edit
-  - **Lines 391 - 395:**
+  - **Lines 387 - 391:**
     - Replaces default Nano makefile, enabling all Nano build options (incl. UTF-8), except libmagic
       - Increases nano package from ~41KB to ~124KB
 <br></br>
