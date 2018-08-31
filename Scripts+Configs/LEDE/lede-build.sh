@@ -7,7 +7,7 @@
   # Description:  Creates the OpenWrt Build Environment in Ubuntu
   # Author:       JW0914
   # Created:      2017.07.09
-  # Updated:      2018.06.06
+  # Updated:      2018.08.30
   # Version:      2.1
   # Usage:        chmod +x ./lede-build.sh && ./lede-build.sh
 #================================================================
