@@ -6,7 +6,7 @@
     - OpenWrt and the LEDE-Project reconciled and merged in February 2018
 
 ###### [lede-build.sh](lede-build.sh) ######
-Creates an OpenWrt build environment in Ubuntu _(preconfigured for 14.04, 16.04, 16.10, 17.04, 17.10)_
+Creates an OpenWrt build environment in Ubuntu _(preconfigured for 14.04, 16.04, 16.10, 17.04, 17.10+)_
   - **Lines 374 - 380:**
     - If custom files for a device already exist, uncomment & edit
   - **Lines 391 - 395:**
