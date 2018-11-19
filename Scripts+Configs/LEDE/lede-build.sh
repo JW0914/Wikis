@@ -288,7 +288,7 @@ printf %b "============================================================\n"
 
               printf "\n\n\n...Cloning OpenWrt from Git...\n"
               printf %b "------------------------------\n\n"
-                $OD18
+                $O18
 
             printf "\n  -----  DONE: Cloned OpenWrt 18.06 Source  -----\n"
           fi
@@ -299,7 +299,7 @@ printf %b "============================================================\n"
 
               printf "\n\n\n...Cloning OpenWrt from Git...\n"
               printf %b "------------------------------\n\n"
-                $O18
+                $Od18
 
             printf "\n  -----  DONE: Cloned OpenWrt 18.x Development Source  -----\n"
           fi
