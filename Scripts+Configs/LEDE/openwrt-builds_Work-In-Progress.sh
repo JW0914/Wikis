@@ -21,7 +21,9 @@
 
 
 # Directories:
-  OWrt="/home/$user/openwrt"
+  UH= "$(echo $HOME)"
+
+  OWrt="$UH/openwrt"
 
     DEV="$OWrt/devices"
     DIFF="$OWrt/diff"
@@ -46,6 +48,7 @@
 
   bashrcM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Bash/.bashrc"
   bashrcT="$SOURCE/bashrc-temp"
+
 
 # Commands:
 
@@ -115,10 +118,10 @@
     L17="git clone https://github.com/lede-project/source.git && git checkout lede-17.01"
 
   # lEDE 17.x Development Branch
-    LD17="git clone https://github.com/lede-project/source.git"
+    LD17="git clone https://github.com/lede-project/source.git && git checkout master"
 
   # OpenWrt 18.x Development Branch
-    OD18="git clone https://git.openwrt.org/openwrt/openwrt.git"
+    OD18="git clone https://git.openwrt.org/openwrt/openwrt.git && git checkout openwrt-18.06"
 
 
 # Prepare #
@@ -150,8 +153,7 @@ printf %b "============================================================\n"
         options[0]="Ubuntu 14.04"
         options[1]="Ubuntu 16.04"
         options[2]="Ubuntu 16.10"
-        options[3]="Ubuntu 17.04"
-        options[4]="Ubuntu 17.10"
+        options[3]="Ubuntu 17+"
 
       # Actions:
         function ACTIONS {
@@ -169,10 +171,6 @@ printf %b "============================================================\n"
 
           if [[ ${choices[3]} ]]; then
             printf "\n\n...Ubuntu 17.04 selected...\n\n" && $ag install $Req $PR1704 && printf "\n\n  -----  DONE: Installed 17.04 Prerequisites  -----\n"
-          fi
-
-          if [[ ${choices[4]} ]]; then
-            printf "\n\n...Ubuntu 17.10 selected...\n\n" && $ag install $Req $PR1710 && printf "\n\n  -----  DONE: Installed 17.10 Prerequisites  -----\n"
           fi
         }
 
@@ -453,15 +451,6 @@ printf %b "============================================================\n"
 #----------------------------------------------------------------
 printf "\n\n\n    # Build Environment: Update Makefiles #\n"
 printf %b "============================================================\n"
-
-
-  # Marvell-Cesa Crypto:
-    printf "\n\n\n...Adding updated Marvell-CESA to crypto.mk...\n"
-    printf %b "----------------------------------------------\n\n"
-      mkdir -p $MAK && cp $crypto $MAK/crypto-orig.mk
-        wget $cryptoM -O $cryptoT && cat $cryptoT >> $crypto && rm -f $cryptoT
-      printf "\n\n  -----  DONE: Marvell-CESA Updated  -----\n"
-
 
   # Nano:
     printf "\n\n\n...Creating custom Nano Makefile...\n"
