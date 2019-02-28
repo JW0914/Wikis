@@ -2,9 +2,9 @@
 
              ##::[[---  Linux OpenSSL Config  ---]]::##
 
-#####################################################################
+#====================================================================
                        ##----- Notes -----##
-#####################################################################
+#====================================================================
 
   # All commands required can be found beginning on line 430
 
@@ -12,7 +12,6 @@
   # Windows users:
 
     # Replace all forward slashes with single/double backslashes.
-
 
     # Ensure EOLs are CRLF, not LF
       # Windows uses CRLF, UNIX utilizes LF
@@ -29,18 +28,18 @@
         # For chain of trust to be maintained, CA & ICA must be installed on devices accessing the WebAdmin/User Portal.
 
 
-#####################################################################
+#====================================================================
              ##----- Establish Build Variables -----##
-#####################################################################
+#====================================================================
 
 dir                             = /etc/ssl
 cnf                             = /etc/ssl/openssl.cnf
 CNF                             = $dir/openssl.cnf
 
 
-#####################################################################
+#====================================================================
            ##----- Establish CA Profile and Policy -----##
-#####################################################################
+#====================================================================
 
 [ default ]
 UTM                             = "Sophos UTM CA"
@@ -51,7 +50,7 @@ VPN                             = "Router 2 VPN ICA"
 default_ca                      = CA_default
 
 
-#####################################################################
+#====================================================================
 
 [ CA_default ]
 certs                           = $dir/cert
@@ -82,7 +81,7 @@ name_opt                        = esc_2253,esc_ctrl,esc_msb,sep_comma_plus_space
 cert_opt                        = ca_default
 
 
-#####################################################################
+#====================================================================
 
 [ policy_match ]
 countryName                     = match
@@ -101,7 +100,7 @@ commonName                      = optional
 emailAddress                    = optional
 
 
-#####################################################################
+#====================================================================
             ##----- Establish Certificate Options -----#
 #--------------------------------------------------------------------
 
@@ -139,7 +138,7 @@ challengePassword_min           = 12
 challengePassword_max           = 40
 
 
-#####################################################################
+#====================================================================
 
 [ req_distinguished_name ]
 
@@ -161,9 +160,9 @@ localityName_default            = Locality
 organizationalUnitName_default  = LAN
 
 
-#####################################################################
+#====================================================================
       ##----- Establish SubjectAltName (SAN) Profiles -----##
-#####################################################################
+#====================================================================
 
   # All server certs with WebUIs should have their loopback IP specified in their SAN profile
     # This prevents certificate errors if connecting to the device, router, or server via an SSH tunnel
@@ -202,14 +201,14 @@ organizationalUnitName_default  = LAN
     [ alt_sophos ]
     IP.1                = 192.168.2.1
     IP.2                = 127.0.0.1
-    DNS.1               = UTM.LEDE
+    DNS.1               = UTM.WRT
     DNS.2               = your.ddns.com
 
     [ alt_freenas ]
     IP.1                = 192.168.2.13
     IP.2                = 192.168.2.130
     IP.3                = 127.0.0.1
-    DNS.1               = Free.LEDE
+    DNS.1               = Free.WRT
     DNS.2               = your-fqdn.com
 
     [ alt_vpn_server1 ]
@@ -230,10 +229,10 @@ organizationalUnitName_default  = LAN
 # Router 2 #
 
   # Servers #
-    [ alt_lede ]
+    [ alt_openwrt ]
     IP.1                = 192.168.2.2
     IP.2                = 127.0.0.1
-    DNS.1               = LAN.LEDE
+    DNS.1               = LAN.WRT
 
     [ alt_vpn_server2 ]
     IP.1                = 10.0.1.1
@@ -257,15 +256,15 @@ organizationalUnitName_default  = LAN
     email.1             = user@email.com
 
 
-#####################################################################
+#====================================================================
      ##----- Establish Certificate Authority V3 Profiles -----##
 #--------------------------------------------------------------------
 
   # These V3 CA profiles must not be modified to contain any more, or any less, KUs
-
+  
   # These have been configured specifically for security & its imperative no other keyUsages are set
-    # For an ICA to be capable of signing additional CAs/ICAs, pathlen number must mirror number of CAs/ICAs
-    # it can sign.  By default, all ICAs are set to 0, meaning they can sign certs, but not other CAs/ICAs.
+    # For an ICA to be capable of signing additional CAs/ICAs, pathlen number must mirror number of CAs/ICAs it can sign
+    # By default, all ICAs are set to 0, meaning they can sign certs, but not other CAs/ICAs.
 
 
 [ v3_ca ]
@@ -294,7 +293,7 @@ issuerAltName               = issuer:copy
 authorityKeyIdentifier      = keyid:always, issuer:always
 
 
-#####################################################################
+#====================================================================
     ##----- Establish Generalized V3 Certificate Profiles -----##
 #--------------------------------------------------------------------
 
@@ -318,7 +317,7 @@ keyUsage                    = critical, nonRepudiation, digitalSignature, keyEnc
 extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
-#####################################################################
+#====================================================================
       ##----- Establish Client Certificate V3 Profiles -----##
 #--------------------------------------------------------------------
 
@@ -380,13 +379,13 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 # Router 2 #
 
   # Servers #
-    [ v3_lede ]
+    [ v3_openwrt ]
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
     keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
-    subjectAltName              = @alt_lede
+    subjectAltName              = @alt_openwrt
 
     [ v3_vpn_server2 ]
     basicConstraints            = critical, CA:FALSE
@@ -427,37 +426,38 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
 
 
-#####################################################################
+
+#====================================================================
 #--------------------------------------------------------------------
                   ##----- OpenSSL Commands -----##
 #--------------------------------------------------------------------
-#####################################################################
+#====================================================================
 
   # Prerequisistes:
 
   # 1. Create 'serial' file: echo 00 > serial
-
+  
        # This file maintains the serial for the most recent cert, in order to know what serial to next assign.
        # Serial is in hex, not dec[imal] format, & one can choose whichever number one wishes to start at.
 
   # 2. Create 'crlnumber' file: mkdir crl && echo 01 > crl\crlnumber
-
+  
        # This file maintains the current serial for the CRL [Certificate Revocation List] certificate
        # A CRL should be generated, but will not be used until one revokes a certificate via one's CA or ICA
 
   # 3. Create 'index' file (leave blank): echo > index
-
+  
        # This file maintains an index of all certificates issued and is covered under the Index Section below
        # Maintains a record of all certs issued, and is extremely important if one has revoked a certificate.
 
   # 4. Create 'rand' file (leave blank): echo > rand
-
+  
        # File is utilized by for random characters & is querried by openssl during certificate/key creation.
 
 
   # ENCRYPT_KEY [Establish Certificate Options] is not currently commented out; Server cert keys should not
   # be created with encryption, so add the additional command option to key creation: -nodes
-
+  
     # Encrypting a server key will result in the server requiring the passkey every time it's started/restarted;
     # in other words, a massive inconvenience, and potentially destrimental.
 
@@ -466,9 +466,10 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # to be the IP/DNS/FQDN, and can be whatever name you wish it to be
 
 
-#####################################################################
+#====================================================================
 #--------------------------------------------------------------------
-#####################################################################
+#====================================================================
+
 
   # For VPN Server certs:
     # When creating a VPN server cert using 'extendedKeyUsage = serverAuth', in your VPN client config you must
@@ -488,7 +489,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
   # Generate CA:
 
-      # CA key should have a secure password of at least 20 characters, containing at least:
+      # CA key should have a secure passphrase of at least 20 characters, containing at least:
         # 2 uppercase letters, 2 lowercase letters, 2 numbers, and 2 symbols
 
 
@@ -508,7 +509,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 
   # Gernerate Intermediate CA:
 
-    # Intermediate CA key should have a secure password of at least 20 characters, containing at least:
+    # Intermediate CA key should have a secure passphrase of at least 20 characters, containing at least:
       # 2 uppercase letters, 2 lowercase letters, 2 numbers, and 2 symbols
 
 
@@ -548,8 +549,8 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
                 ## ----- Client Certificate ----- ##
 #--------------------------------------------------------------------
 
-    # For Server certs, add to end of the Request command:  -nodes
-      # If a server cert is created with an encrypted key, one will need to manually type in the encryption password
+    # For Server certs, add to the end of the Request command:  -nodes
+      # If a server cert is created with an encrypted key, one will need to manually type in the encryption passphrase
       # whenever starting or restarting the server (inconvenient and impractical for VPN and Web Servers).
 
 
@@ -590,7 +591,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
     # This will apply to the following six certificates: media, platform, releasekeys, shared, superuser, testkey
-      # the following steps will need to be repeated for each of the six
+      # The following steps will need to be repeated for each of the six
 
 
   # Generate Individual intermediate Build CA Request:
@@ -639,18 +640,15 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         # keytool -list -v -keystore .keystore
 
 
-#####################################################################
-#--------------------------------------------------------------------
-#####################################################################
-
+#====================================================================
                       ##---- Index File -----##
 #--------------------------------------------------------------------
 
   # If you wish to maintain the index file automatically, you'll need to use 'openssl ca' to sign certs.
   # You can manually maintain the index file, by inputting 1 cert entry per line in the following format:
 
-    # V    261231235959Z           0a    unknown    /C=US/ST=State/L=Locality/O=Sophos UTM/OU=LAN/CN=Cert Common Name/emailaddress=whatever@whichever.com
-    # 1    2----------->    3->    4->   5----->    6--------------------------------------------------------------------------------------------------->
+    # V   261231235959Z         0a  unknown   /C=US/ST=State/L=Locality/O=Org/OU=Unit/CN=Common Name/emailaddress=e@mail.com
+    # 1   2----------->   3->   4>  5----->   6---------------------------------------------------------------------------->
 
 
       # 1. Status of Certificate:
@@ -672,13 +670,16 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
              # AACompromise
 
       # 4. Serial number in hex format: 0a is hex for 10
+      
            # Windows:
              # Calculator has programmer feature which can convert dec <-> hex
+             
            # Linux/BSD:
              # cli hex -> dec:
-               # printf '%d\n' 0x0a [returns 10]
+               # Returns 10: printf '%d\n' 0x0a
+               
              # cli dec -> hex:
-               # printf '%x\n' 10 [returns 0a]
+               # Returns 0a: printf '%x\n' 10
 
       # 5. Certificate Filename or Literal String
            # Certificate filename or literal string 'unknown'
@@ -686,8 +687,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # 6. Distinguished Name
 
 
-#--------------------------------------------------------------------
-#####################################################################
+#====================================================================
                       ##----- Key Usage -----##
 #--------------------------------------------------------------------
 
@@ -701,7 +701,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # Is asserted when subject public key is used for verifying signatures on certificate revocation lists.
 
     # keyCertSign:
-
       # Is asserted when subject public key is used for verifying signatures on public key certificates.
         # If keyCertSign is asserted, the CA bit in the basic constraints extension (Section 4.2.1.9) MUST also be asserted.
 
@@ -710,14 +709,12 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #--------------------------------------------------------------------
 
   # digitalSignature:
-
     # Certificates with this flag set can be used to apply a digital signature. Digital signatures are often used for entity
     # authentication and data origin authentication with integrity.
       # Is asserted when subject public key is used for verifying digital signatures, other than signatures on certificates
       # (bit 5) and CRLs (bit 6).
 
   # nonRepudiation:
-
     # Certificates with this flag set can be used to sign data as above but the certificate public key may be used to provide
     # non-repudiation services preventing the signing entity from falsely denying some action.
       # Is asserted when subject public key is used to verify digital signatures, other than signatures on certificates (bit 5)
@@ -725,35 +722,30 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
         # NOTE: Recent editions of X.509 have renamed the nonRepudiation bit to contentCommitment.
 
   # keyEncipherment:
-
     # Certificates with this flag set may be used by the subject to encrypt a symmetric key which is then transferred to the
     # target, decrypted, and subsequently used to encrypt and decrypt data sent between the two entities.
       # Is asserted when subject public key is used for enciphering private or secret keys when an RSA public key is to be
       # used for encrypting a symmetric content-decryption key or an asymmetric private key.
 
   # dataEncipherment:
-
     # Certificates with this flag set can be used by the subject to encrypt and decrypt actual application data.
       # Is asserted when subject public key is used for directly enciphering raw user data without the use of an intermediate
       # symmetric cipher.
         # NOTE: Use of this bit extremely uncommon; all applications use key transport / key agreement to establish a symmetric key.
 
   # keyAgreement:
-
     # Certificates with this flag set enable the subject to use a key agreement protocol, such as Diffie-Hellman, to establish
     # a symmetric key with a target that may then be used to encrypt and decrypt data sent between the two entities
       # Is asserted when subject public key is used for key agreement (i.e. when a Diffie-Hellman key is used for key management).
 
   # encipherOnly:
-
-    # Undefined in the absence of the keyAgreement bit (keyAgreement is required).
+    # Undefined in the absence of the keyAgreement bit (KU keyAgreement is required).
       # Public key used only for enciphering data while performing key agreement.
         # When encipherOnly is asserted AND keyAgreement also set, subject public key may be used ONLY for enciphering data while
         # performing key agreement.
 
   # decipherOnly:
-
-    # Undefined in the absence of the keyAgreement bit (keyAgreement is required).
+    # Undefined in the absence of the keyAgreement bit (KU keyAgreement is required).
       # Public key used only for deciphering data while performing key agreement.
         # When decipherOnly is asserted AND keyAgreement is also set, subject public key may be used ONLY for deciphering data
         # while performing key agreement.
@@ -782,62 +774,65 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
       # decipherOnly            (8) }
 
 
-#--------------------------------------------------------------------
-#####################################################################
+#====================================================================
                   ##----- Extended Key Usage -----##
 #--------------------------------------------------------------------
 
   # serverAuth:
-
-    # SSL/TLS Web/VPN Server authentication EKU which is assigned to a server and distinguishes them as a server for which
-    # options, clients can authenticate against.  All VPN servers should be signed with this EKU present.
-      # This supercedes nscertype as the 'ns' in nscertype stands for NetScape [browser], which hasn't existed for some time.
+    # KU Required: digitalSignature, keyEncipherment or keyAgreement
+      # All VPN servers should be signed with this EKU present
+        # SSL/TLS Web/VPN Server authentication EKU, distinguishing a server which clients can authenticate against
+        # This supersedes nscertype options (ns in nscertype stands for NetScape [browser])
 
   # clientAuth:
-
-    # SSL/TLS Web/VPN Client authentication EKU which is assigned to a server client, and distinguishes them as a client only.
-      # All VPN clients MUST be signed with this EKU present.
+    # KU Required: digitalSignature and/or keyAgreement
+      # All VPN clients must be signed with this EKU present
+        # SSL/TLS Web/VPN Client authentication EKU distinguishing a client as a client only
 
   # codeSigning:
-    # Code Signing... self explanatory
+    # KU Required: digitalSignature, nonRepudiation, and/or  keyEncipherment or keyAgreement
+      # Code Signing... self explanatory
 
   # emailProtection:
-    # Email Protection via S/MIME, allows you to send and receive encrypted emails
+    # KU Required: digitalSignature, keyEncipherment or keyAgreement 
+      # Email Protection via S/MIME, allows you to send and receive encrypted emails
 
   # timeStamping:
-    # Trusted Timestamping... self explanatory
+    # KU Required: digitalSignature, nonRepudiation
+      # Trusted Timestamping... self explanatory
 
   # OCSPSigning:
-    # OCSP Signing... self explanatory
-
-
-  # ipsecIKE:
-
-    # IPSec Internet Key Exchange, of which I believe is in the same boat as the three below; however, some research needs
-    # to be Performed to determine if this EKU should also no longer be utilized.
-      # clientAuth can be utilized in a IPSec VPN client cert.
-
-  # ipsecEndSystem, ipsecTunnel, & ipsecUser:
-
-    # !!! SHOULD NOT BE UTILIZED !!!
-
-      # There were three IPsec-related object identifiers in EKU that were assigned in 1999, and the semantics of these
-      # values were never clearly defined. The use of these three EKU values in IKE/IPsec is obsolete and explicitly
-      # deprecated by this specification. CAs SHOULD NOT issue certificates for use in IKE with them.
-
+    # KU Required: digitalSignature, nonRepudiation
+      # OCSP Signing... self explanatory
 
   # msCodeInd:
-    # Microsoft Individual Code Signing (authenticode)... self explanatory
+    # KU Required: digitalSignature, keyEncipherment or keyAgreement 
+      # Microsoft Individual Code Signing (authenticode)... self explanatory
 
   # msCodeCom:
-    # Microsoft Commerical Code Signing (authenticode)... self explanatory
+    # KU Required: digitalSignature, keyEncipherment or keyAgreement 
+      # Microsoft Commerical Code Signing (authenticode)... self explanatory
 
   # mcCTLSign:
-    # Microsoft Trust List Signing... self explanatory
+    # KU Required: digitalSignature, nonRepudiation
+      # Microsoft Trust List Signing... self explanatory
 
   # msEFS:
-    # Microsoft Encrypted File System... self explanatory
+    # KU Required: digitalSignature, keyEncipherment or keyAgreement
+      # Microsoft Encrypted File System... self explanatory
 
+      
+  # !!! SHOULD NOT BE UTILIZED !!!
+      
+    # ipsecEndSystem, ipsecTunnel, ipsecUser
+      # Assigned in 1999, the semantics of these values were never clearly defined
+      # RFC 4945: The use of these three EKU values is obsolete and explicitly deprecated by this specification [5.1.3.12]
+
+    # ipsecIKE
+      # IPSec Internet Key Exchange
+        # I believe this is in the same boat as the three above
+        # Research needs to be performed to determine if this EKU should also no longer be utilized
+      # clientAuth can be utilized in an IPSec VPN client cert
 
 
 #--------------------------------------------------------------------
@@ -851,92 +846,83 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     # id-kp OBJECT IDENTIFIER ::= { id-pkix 3 }
 
       # id-kp-serverAuth             OBJECT IDENTIFIER ::= { id-kp 1 }
-
         # TLS WWW server authentication:
           # Key usage bits that may be consistent:
             # digitalSignature, keyEncipherment or keyAgreement
 
       # id-kp-clientAuth             OBJECT IDENTIFIER ::= { id-kp 2 }
-
         # TLS WWW client authentication:
           # Key usage bits that may be consistent:
             # digitalSignature and/or keyAgreement
 
       # id-kp-codeSigning             OBJECT IDENTIFIER ::= { id-kp 3 }
-
         # Signing of downloadable executable code
           # Key usage bits that may be consistent:
             # digitalSignature
 
       # id-kp-emailProtection         OBJECT IDENTIFIER ::= { id-kp 4 }
-
         # Email protection:
           # Key usage bits that may be consistent:
             # digitalSignature, nonRepudiation, and/or (keyEncipherment or keyAgreement)
 
       # id-kp-timeStamping            OBJECT IDENTIFIER ::= { id-kp 8 }
-
         # Binding the hash of an object to a time
           # Key usage bits that may be consistent:
             # digitalSignature and/or nonRepudiation
 
       # id-kp-OCSPSigning            OBJECT IDENTIFIER ::= { id-kp 9 }
-
         # Signing OCSP responses:
           # Key usage bits that may be consistent:
             # digitalSignature and/or nonRepudiation
 
 
-#--------------------------------------------------------------------
-#####################################################################
+#====================================================================
               ##----- Key Exchange Algorithms  -----##
 #--------------------------------------------------------------------
 
     # RSA:
+      # Key exchange occurs via encryption of a random value, chosen by the client, via the server public key.
+        # Server public key must be an RSA key
+        # Server certificate must utilize KU keyAgreement
 
-      # Key exchange occurs via encryption of a random value [chosen by the client] via the server public key. This requires the
-      # server public key to be an RSA key, and the server certificate must utilize the 'keyAgreement' keyUsage extension).
-
-    # DH_RSA:
-
-      # Key exchange occurs via a static Diffie-Hellman key. Server Public Key must be a Diffie-Hellman key, of which must have
-      # been issued by a CA that was using an RSA key signing key.
+    # DH_RSA:    
+      # Key exchange occurs via a static Diffie-Hellman key. 
+        # Server Public Key must be a Diffie-Hellman key
+        # Diffie-Hellman key must have been issued by a CA
+        # CA must be using an RSA key signing key
 
     # DH_DSA:
       # Like DH_RSA, except that the CA used a DSA key in lieu of RSA.
 
-    # DHE_RSA:
-
-      # Key exchange occurs via an ephemeral Diffie-Hellman; the server dynamically generates & signs a DH public key, sending it to
-      # the client. Server Public Key must be an RSA key, and it's certificate must utilize the digitalSignature keyUsage extension
+    # DHE_RSA:    
+      # Key exchange occurs via an ephemeral Diffie-Hellman
+        # Server dynamically generates & signs a DH public key, sending it to the client.
+        # Server Public Key must be an RSA key
+        # Server certificate must utilize KU digitalSignature
 
     # DHE_DSA:
       # Like DHE_RSA, except that the CA used a DSA key in lieu of RSA.
 
 
-#--------------------------------------------------------------------
-#####################################################################
+#====================================================================
         ##----- Elliptic-Curve Key Exchange Algorithms -----##
 #--------------------------------------------------------------------
 
-    # ECDH_ECDSA:
-
-      # Like DH_DSA, but with elliptic curves: the server public key must be an ECDH key, with a certificate issued by a CA
-      # which utilized an ECDSA public key.
+    # ECDH_ECDSA:    
+      # Like DH_DSA, but with elliptic curves
+        # Server public key must be an ECDH key
+        # Server certificate must be issued by a CA utilizing an ECDSA public key
 
     # ECDH_RSA:
       # Like ECDH_ECDSA, except that the CA used an RSA key
 
     # ECDHE_ECDSA:
-
-      # The server sends a dynamically generated EC Diffie-Hellman key and signs it with its own ECDSA key. This is equivalent
-      # to DHE_DSS, but with elliptic curves for both the Diffie-Hellman and signature.
+      # Server sends dynamically generated EC Diffie-Hellman key, signing it via it's ECDSA key
+        # Equivalent to DHE_DSS, but with elliptic curves for both the Diffie-Hellman & signature
 
     # ECDHE_RSA:
-
-      # Like ECDHE_ECDSA, except that the server public key is an RSA key, utilized for signing the ephemeral elliptic-curve
-      # Diffie-Hellman key.
-
+      # Like ECDHE_ECDSA, except Server public key is an RSA key
+        # Server public key signs the ephemeral EC Diffie-Hellman key
 
 #--------------------------------------------------------------------
-#####################################################################
+#====================================================================
