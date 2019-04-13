@@ -6,8 +6,8 @@
   # Description:  List of run commands
   # Author:       BossDweeb
   # Created:      2017.05.13
-  # Updated:      2017.06.01
-  # Usage:        .\DISM-Creation.cmd
+  # Updated:      2018.12.10
+  # Usage:        Executable names to be used with Run...
 #================================================================
 
 

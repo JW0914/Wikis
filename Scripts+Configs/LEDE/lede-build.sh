@@ -7,8 +7,8 @@
   # Description:  Creates the OpenWrt Build Environment in Ubuntu
   # Author:       JW0914
   # Created:      2017.07.09
-  # Updated:      2018.02.10
-  # Version:      2.0
+  # Updated:      2018.08.30
+  # Version:      2.1
   # Usage:        chmod +x ./lede-build.sh && ./lede-build.sh
 #================================================================
 
@@ -20,32 +20,31 @@
   user="$(echo $USER)"
 
 
-# Directories:
+# Directories:N
+  UH="$(echo $HOME)"
+
   OWrt="/home/$user/openwrt"
 
     DEV="$OWrt/devices"
     DIFF="$OWrt/diff"
     MAK="$OWrt/make"
-    SOURCE="$OWrt/source"
-      STAGING=$SOURCE/staging_dir
+    SOURCE="$OWrt/openwrt"
+      STAGING="$SOURCE/staging_dir"
 
     CF="$OWrt/clearfog"
       CFU="$CF/u-boot-armada38x"
 
-  TOOLCHAIN="$(find $STAGING -maxdepth 1 -name "toolchain-*")"
+  TOOLCHAIN="$(find /home/$user/openwrt/openwrt/staging_dir -maxdepth 1 -name "toolchain-*")"
 
 
 # Files:
-  crypto="package/kernel/linux/modules/crypto.mk"
-  cryptoM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Marvell-CESA/wrt-ac-series-addition_crypto.mk"
-  cryptoT="$SOURCE/crypto-temp"
-
   nano="package/feeds/packages/nano/Makefile"
   nanoM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Nano/Makefile"
   nanoT="$SOURCE/nano-temp"
 
   bashrcM="https://raw.githubusercontent.com/JW0914/Wikis/master/Scripts%2BConfigs/LEDE/Bash/.bashrc"
   bashrcT="$SOURCE/bashrc-temp"
+
 
 # Commands:
 
@@ -71,7 +70,7 @@
 
 
   # Environments:
-    # See: https://lede-project.org/docs/guide-developer/using-build-environments
+    # See: https://openwrt.org/docs/guide-developer/env
 
     gcu="git config --global user.name '$user'"
     gce="git config --global user.email '$user@openwrt.buildroot'"
@@ -95,11 +94,8 @@
   # 16.10:
     PR1610="libboost1.61-dev libgtk2.0-dev openjdk-9-jdk perl-modules-5.22 python3-dev"
 
-  # 17.04:
-    PR1704="libboost1.63-dev libgtk-3-dev openjdk-9-jdk perl-modules-5.24 python3.7-dev"
-
-  # 17.10:
-    PR1710="libboost1.63-dev libgtk-4-dev openjdk-9-jdk perl-modules-5.26 python3.7-dev"
+  # 17+:
+    PR17="libboost1.63-dev libgtk-4-dev openjdk-9-jdk perl-modules-5.26 python3.7-dev"
 
 
   # Errors:
@@ -111,14 +107,14 @@
   # ClearFog
     CFA="git clone https://github.com/SolidRun/u-boot-armada38x.git"
 
-  # LEDE 17.01.4
-    L17="git clone https://github.com/lede-project/source.git && git checkout lede-17.01"
+  # LEDE 17.01.5
+    L17="git clone -b lede-17.01 https://github.com/openwrt/openwrt.git"
 
-  # lEDE 17.x Development Branch
-    LD17="git clone https://github.com/lede-project/source.git"
+  # OpenWrt 18.06
+    O18="git clone -b openwrt-18.06 https://github.com/openwrt/openwrt.git"
 
-  # OpenWrt 18.x Development Branch
-    OD18="git clone https://git.openwrt.org/openwrt/openwrt.git"
+  # OpenWrt Development Branch
+    OD18="git clone -b master https://github.com/openwrt/openwrt.git"
 
 
 # Prepare #
@@ -128,9 +124,9 @@ printf %b "============================================================\n"
 
 
   # Update:
-    printf "\n\n\n...Updating Package Lists...\n"
+    printf "\n...Updating Package Lists...\n"
     printf %b "----------------------------\n\n"
-      $ag update && printf "\n\n  -----  DONE: Updating Package Lists  -----\n"
+      $ag update && printf "\n  -----  DONE: Updating Package Lists  -----\n"
 
 
 
@@ -141,8 +137,8 @@ printf %b "============================================================\n"
 
 
   # Choose Prereqs:
-    printf "\n\n...Choose Prerequisite OS Packages...\n\n"
-    printf %b "--------------------------------------\n\n"
+    printf "\n...Choose Prerequisite OS Packages...\n"
+    printf %b "-------------------------------------\n"
 
 
     (
@@ -150,40 +146,63 @@ printf %b "============================================================\n"
         options[0]="Ubuntu 14.04"
         options[1]="Ubuntu 16.04"
         options[2]="Ubuntu 16.10"
-        options[3]="Ubuntu 17.04"
-        options[4]="Ubuntu 17.10"
+        options[3]="Ubuntu 17+"
 
       # Actions:
         function ACTIONS {
           if [[ ${choices[0]} ]]; then
-            printf "\n\n...Ubuntu 14.04 selected...\n\n" && $ag install $Req $PR1404 && printf "\n\n  -----  DONE: Installed 14.04 Prerequisites  -----\n"
+            printf "\n=====>  Ubuntu 14.04 selected  <=====\n"
+              sleep 3
+
+              printf "\n\n...Installing Prerequisite Packages...\n"
+              printf %b "--------------------------------------\n\n"
+                $ag install $Req $PR1404
+
+            printf "\n  -----  DONE: Installed 14.04 Prerequisites  -----\n"
           fi
 
           if [[ ${choices[1]} ]]; then
-            printf "\n\n...Ubuntu 16.04 selected...\n\n" && $ag install $Req $PR1604 && printf "\n\n  -----  DONE: Installed 16.04 Prerequisites  -----\n"
+            printf "\n=====>  Ubuntu 16.04 selected  <=====\n"
+              sleep 3
+
+              printf "\n\n...Installing Prerequisite Packages...\n"
+              printf %b "--------------------------------------\n\n"
+                $ag install $Req $PR1604
+
+            printf "\n  -----  DONE: Installed 16.04 Prerequisites  -----\n"
           fi
 
           if [[ ${choices[2]} ]]; then
-            printf "\n\n...Ubuntu 16.10 selected...\n\n" && $ag install $Req $PR1610 && printf "\n\n  -----  DONE: Installed 16.10 Prerequisites  -----\n"
+            printf "\n=====>  Ubuntu 16.10 selected  <=====\n\n\n"
+              sleep 3
+
+              printf "\n\n...Installing Prerequisite Packages...\n"
+              printf %b "--------------------------------------\n\n"
+              $ag install $Req $PR1610
+
+            printf "\n  -----  DONE: Installed 16.10 Prerequisites  -----\n"
           fi
 
           if [[ ${choices[3]} ]]; then
-            printf "\n\n...Ubuntu 17.04 selected...\n\n" && $ag install $Req $PR1704 && printf "\n\n  -----  DONE: Installed 17.04 Prerequisites  -----\n"
-          fi
+            printf "\n=====>  Ubuntu 17+ selected  <=====\n"
+              sleep 3
 
-          if [[ ${choices[4]} ]]; then
-            printf "\n\n...Ubuntu 17.10 selected...\n\n" && $ag install $Req $PR1710 && printf "\n\n  -----  DONE: Installed 17.10 Prerequisites  -----\n"
+              printf "\n\n...Installing Prerequisite Packages...\n"
+              printf %b "--------------------------------------\n\n"
+                $ag install $Req $PR17
+
+            printf "\n  -----  DONE: Installed 17|18 Prerequisites  -----\n"
           fi
         }
 
       # Function
         function MENU {
-            printf "\n\nOS Selection\n"
-            printf %b "==================\n"
+          printf "\n  OS Selection\n"
+          printf %b "=================\n"
             for NUM in ${!options[@]}; do
-                echo "${choices[NUM]:- }" $(( NUM+1 ))") ${options[NUM]}"
+              echo "${choices[NUM]:- }" $(( NUM+1 ))") ${options[NUM]}"
             done
-            echo " "
+          echo " "
         }
 
       # Execution:
@@ -200,13 +219,10 @@ printf %b "============================================================\n"
           else
             ERROR="Invalid option: $SELECTION"
           fi
-    )
-
 
       # Install Prereqs:
-        printf "\n\n\n...Installing Prerequisite Packages...\n"
-        printf %b "--------------------------------------\n\n"
-          ACTIONS
+        ACTIONS
+    )
 
 
 
@@ -217,21 +233,21 @@ printf %b "============================================================\n"
 
 
   # Upgrade Packages:
-    printf "\n\n\n...Upgrading Required Packages...\n"
-    printf %b "--------------------------------\n\n"
-      $ag upgrade && printf "\n\n  -----  DONE: Upgraded Required Packages  -----\n"
+    printf "\n...Upgrading Required Packages...\n"
+    printf %b "---------------------------------\n\n"
+      $ag upgrade && printf "\n  -----  DONE: Upgraded Any Required Packages  -----\n"
 
 
   # Remove Unused
     printf "\n\n\n...Removing Unused Packages...\n"
     printf %b "------------------------------\n\n"
-      $ag autoremove && printf "\n\n  -----  DONE: Removed Unused Packages  -----\n"
+      $ag autoremove && printf "\n  -----  DONE: Removed Any Unused Packages  -----\n"
 
 
   # Check Broken Dependencies
     printf "\n\n\n...Checking for Broken Dependencies...\n"
     printf %b "--------------------------------------\n\n"
-      $ag check && printf "\n\n  -----  DONE: Checked for Broken Dependencies  -----\n"
+      $ag check && printf "\n  -----  DONE: Checked for Broken Dependencies  -----\n"
 
 
 
@@ -241,175 +257,85 @@ printf "\n\n\n    # OpenWrt Build Environment: Create #\n"
 printf %b "============================================================\n"
 
 
-# Clone:
-  printf "\n\n\n...Cloning OpenWrt from GitHub...\n"
-  printf %b "------------------------------\n\n"
-    mkdir -p $OWrt && cd $OWrt
-
-
 # Choose Prereqs:
-  printf "\n\n...Choose OpenWrt Branch...\n\n"
-  printf %b "----------------------------\n\n"
-
+  printf "\n...Choose OpenWrt Branch...\n"
+  printf %b "---------------------------\n"
+    mkdir -p $OWrt $DEV $DIFF $MAK && cd $OWrt
 
     (
       # Options:
-      options[0]="LEDE 17.01.4"
-      options[1]="LEDE 17.x Development Branch"
-      options[2]="OpenWrt 18.x Development Branch"
+        options[0]="17.01"
+        options[1]="18.06"
+        options[2]="18.xx"
 
-    # Actions:
-      function ACTIONS {
-        if [[ ${choices[0]} ]]; then
-          printf "\n\n...LEDE 17.01.4 selected...\n\n" && $L17 && printf "\n\n  -----  DONE: Cloned LEDE 17.01.4 Source  -----\n"
-        fi
 
-        if [[ ${choices[1]} ]]; then
-          printf "\n\n...LEDE 17.x Development Branch selected...\n\n" && $LD17 && printf "\n\n  -----  DONE: Cloned LEDE 17.x Development Source  -----\n"
-        fi
+      # Actions:
+        function ACTIONS {
+          if [[ ${choices[0]} ]]; then
+            printf "\n=====>  LEDE 17.01.5 selected  <=====\n"
+              sleep 3
 
-        if [[ ${choices[2]} ]]; then
-          printf "\n\n...OpenWrt 18.x Development Branch selected...\n\n" && $OD18 && printf "\n\n  -----  DONE: Cloned OpenWrt 18.x Development Source  -----\n"
-        fi
-      }
+              printf "\n\n\n...Cloning OpenWrt from Git...\n"
+              printf %b "------------------------------\n\n"
+                $L17
 
-    # Function
-      function MENU {
-          printf "\n\nOpenWrt Branch Selection\n"
-          printf %b "==============================\n"
-          for NUM in ${!options[@]}; do
-              echo "${choices[NUM]:- }" $(( NUM+1 ))") ${options[NUM]}"
-          done
-          echo " "
-      }
-
-    # Execution:
-      MENU && read -e -p "Selected Branch: " -n1 SELECTION && [[ -n "$SELECTION" ]]
-        if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
-          (( SELECTION-- ))
-
-          if [[ "${choices[SELECTION]}" == "+" ]]; then
-            choices[SELECTION]=""
-          else
-            choices[SELECTION]="+"
+            printf "\n  -----  DONE: Cloned LEDE 17.01.5 Source  -----\n"
           fi
 
-        else
-          ERROR="Invalid option: $SELECTION"
-        fi
-    )
+          if [[ ${choices[1]} ]]; then
+            printf "\n=====>  OpenWrt 18.06 selected  <=====\n"
+              sleep 3
+
+              printf "\n\n\n...Cloning OpenWrt from Git...\n"
+              printf %b "------------------------------\n\n"
+                $O18
+
+            printf "\n  -----  DONE: Cloned OpenWrt 18.06 Source  -----\n"
+          fi
+
+          if [[ ${choices[2]} ]]; then
+            printf "\n=====>  OpenWrt 18.xx Development Branch selected  <=====\n"
+              sleep 3
+
+              printf "\n\n\n...Cloning OpenWrt from Git...\n"
+              printf %b "------------------------------\n\n"
+                $Od18
+
+            printf "\n  -----  DONE: Cloned OpenWrt 18.x Development Source  -----\n"
+          fi
+        }
 
 
-  # ClearFog U-Boot Build Environment #
-  #----------------------------------------------------------------
-  printf "\n\n\n    # ClearFog U-Boot Build Environment: Create #\n"
-  printf %b "============================================================\n"
+      # Function
+        function MENU {
+          printf "\n  Branch Selection\n"
+          printf %b "====================\n"
+          for NUM in ${!options[@]}; do
+            echo "${choices[NUM]:- }" $(( NUM+1 ))") ${options[NUM]}"
+          done
+          echo " "
+        }
 
-    # Choose Prereqs:
-      printf "\n\n...Clone U-Boot Armada38X Repo?...\n\n"
-      printf %b "----------------------------\n\n"
 
+      # Execution:
+        MENU && read -e -p "Selected Branch: " -n1 SELECTION && [[ -n "$SELECTION" ]]
+          if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+            (( SELECTION-- ))
 
-        (
-          # Options:
-          options[0]="No  (Skip to OpenWrt build)"
-          options[1]="Yes"
-
-        # Actions:
-          function ACTIONS {
-            if [[ ${choices[0]} ]]; then
-              printf "\n\n...Declined U-boot Armada38X Cloning ...\n\n" && $L17 && printf "\n\n  -----  DONE: Cloned LEDE 17.01.4 Source  -----\n"
-            fi
-
-            if [[ ${choices[1]} ]]; then
-              printf "\n\n...ClearFog U-boot Armada38X Repo selected...\n\n" && $CFA && printf "\n\n  -----  DONE: Cloned ClearFog U-Boot Armada38X Source  -----\n"
-            fi
-          }
-
-        # Function
-          function MENU {
-              printf "\n\nClearFog U-Boot Armada38X Repo Selection\n"
-              printf %b "========================================\n\n\n"
-              printf %b "============================================================\n"
-              printf "\n\n    ! ! !    W  A  R  N  I  N  G    ! ! !"
-              printf "\n\n        - - - -  UBUNTU 14 ONLY  - - - - "
-              printf "\n\n            - Requires MAX installed gcc ver of 4.x"
-              printf "\n                - If ver >4.x is installed, compilation will fail!"
-L              printf %b "============================================================\n\n\n"
-              for NUM in ${!options[@]}; do
-                  echo "${choices[NUM]:- }" $(( NUM+1 ))") ${options[NUM]}"
-              done
-              echo " "
-          }
-
-        # Execution:
-          MENU && read -e -p "Clone ClearFog U-Boot Armada38X Repo?: " -n1 SELECTION && [[ -n "$SELECTION" ]]
-            if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
-              (( SELECTION-- ))
-
-              if [[ "${choices[SELECTION]}" == "+" ]]; then
-                choices[SELECTION]=""
-              else
-                choices[SELECTION]="+"
-              fi
-
+            if [[ "${choices[SELECTION]}" == "+" ]]; then
+              choices[SELECTION]=""
             else
-              ERROR="Invalid option: $SELECTION"
+              choices[SELECTION]="+"
             fi
-        )
+
+          else
+            ERROR="Invalid option: $SELECTION"
+          fi
 
 
-          # Own & Enter:
-            printf "\n\n\n...Own & Enter...\n"
-            printf %b "-----------------\n\n"
-              sudo chown -R $user:$user $CFU  && cd $CFU
-              printf "\n\n  -----  DONE: Ownership Obtained & Directory Entered  -----\n"
-
-
-
-        # Configure #
-        #----------------------------------------------------------------
-        printf "\n\n\n    # ClearFog U-Boot Build Environment: Configure #\n"
-        printf %b "============================================================\n"
-
-
-          printf %b "============================================================\n"
-          printf "\n\n    ! ! !    W  A  R  N  I  N  G    ! ! !"
-          printf "\n\n        - - - -  UBUNTU 14 ONLY  - - - - "
-          printf "\n\n            - Requires MAX installed gcc ver of 4.x"
-          printf "\n                - If ver >4.x is installed, compilation will fail!"
-          printf %b "============================================================\n\n\n"
-
-
-          # Update Repo:
-            printf "\n\n\n...Exporting Toolchain...\n"
-            printf %b "-------------------------\n\n"
-              export CROSS_COMPILE=arm-none-eabi- && printf "\n\n  -----  DONE: Toolchain Prefix Exported  -----\n"
-
-
-          # Make Config
-            printf "\n\n\n...Making Config...\n"
-            printf %b "-------------------\n\n"
-              make armada_38x_clearfog_config && printf "\n\n  -----  DONE: ClearFog Armada38X Config Generated  -----\n"
-
-
-            printf "\n\n\n...Making Boot Files...\n"
-            printf %b "-----------------------\n\n"
-              make u-boot.mmc && printf "\n\n  -----  DONE: eMMC & UART Boot Files Created  -----\n"
-
-
-
-        # Verify Created Files #
-        #----------------------------------------------------------------
-
-        printf "\n\n\n    # Verify Created Files #\n"
-        printf %b "============================================================\n"
-
-
-          # Update Repo:
-            printf "\n\n\n...MMC Boot Files...\n"
-            printf %b "--------------------\n\n"
-              ls -AFls $CFU/*.mmc
+      # Install Prereqs:
+        ACTIONS
+    )
 
 
 # OpenWrt Configure #
@@ -419,24 +345,26 @@ printf %b "============================================================\n"
 
 
   # Rename & Enter:
-    printf "\n\n\n...Own & Enter...\n"
-      sudo chown -R $user:$user $SOURCE/ && cd $SOURCE && printf "\n\n  -----  DONE: Ownership Obtained & Buildroot Entered  -----\n"
+    printf "\n...Own & Enter...\n"
+    printf %b "-----------------\n"
+      sudo chown -R $user:$user $SOURCE/ && cd $SOURCE && printf "\n  -----  DONE: Ownership Obtained & Buildroot Entered  -----\n"
 
 
   # Update Repo:
     printf "\n\n\n...Updating Repo...\n"
     printf %b "-------------------\n\n"
-      $wrtG && printf "\n\n  -----  DONE: LEDE Repo Up-to-Date  -----\n"
+      $wrtG && printf "\n  -----  DONE: OpenWrt Repo Up-to-Date  -----\n"
 
 
   # Update & Install Feeds:
     printf "\n\n\n...Updating Feeds...\n"
     printf %b "--------------------\n\n"
-      $wrtU && printf "\n\n  -----  DONE: Feeds Updated  -----\n"
+      $wrtU && printf "\n  -----  DONE: Feeds Updated  -----\n"
+
 
     printf "\n\n\n...Installing Feeds...\n"
     printf %b "----------------------\n\n"
-      $wrtI && printf "\n\n  -----  DONE: Feeds Installed  -----\n"
+      $wrtI && printf "\n  -----  DONE: Feeds Installed  -----\n"
 
 
   # Copy Custom Files Over
@@ -445,74 +373,65 @@ printf %b "============================================================\n"
     #  cp -R $DEV $OWrt
     #    cp -R $DEV/configs/* $OWrt
     #    cp -R $DEV/wrt1900acs/files $OWrt
-    #  printf "\n\n  -----  DONE: Custom Files Copied.....\n"
+    #  printf "\n  -----  DONE: Custom Files Copied.....\n"
 
 
 
 # Customize Makefiles:
 #----------------------------------------------------------------
-printf "\n\n\n    # Build Environment: Update Makefiles #\n"
+printf "\n\n\n    # OpenWrt Build Environment: Update Makefiles #\n"
 printf %b "============================================================\n"
 
 
-  # Marvell-Cesa Crypto:
-    printf "\n\n\n...Adding updated Marvell-CESA to crypto.mk...\n"
-    printf %b "----------------------------------------------\n\n"
-      mkdir -p $MAK && cp $crypto $MAK/crypto-orig.mk
-        wget $cryptoM -O $cryptoT && cat $cryptoT >> $crypto && rm -f $cryptoT
-      printf "\n\n  -----  DONE: Marvell-CESA Updated  -----\n"
-
-
   # Nano:
-    printf "\n\n\n...Creating custom Nano Makefile...\n"
+    printf "\n...Creating custom Nano Makefile...\n"
     printf %b "-----------------------------------\n\n"
       cp $nano $MAK/nano-orig.Makefile && echo > $nano
         wget $nanoM -O $nanoT && cat $nanoT > $nano && rm -f $nanoT
-      printf "\n\n  -----  DONE: Nano Makefile Replaced  -----\n"
-
+      printf "\n  -----  DONE: Nano Makefile Replaced  -----\n"
 
 
 # Build #
 #----------------------------------------------------------------
-printf "\n\n\n    # Build Environment: MenuConfig #\n"
+printf "\n\n\n    # OpenWrt Build Environment: MenuConfig #\n"
 printf %b "============================================================\n"
 
 
   # Run MenuConfig:
-    printf "\n\n\n...Running MenuConfig...\n"
+    printf "\n...Running MenuConfig...\n"
     printf %b "------------------------\n\n"
-      $wrt && printf "\n\n  -----  DONE: Config Created  -----\n"
+      $wrt && printf %b "  -----  DONE: Config Created  -----\n"
 
 
   # Default, PreReq, & Diff Configs:
     printf "\n\n\n...Creating DefConfig, PreReq, & DiffConfig...\n"
     printf %b "----------------------------------------------\n\n"
-      $wrtD && printf "\n\n  -----  DONE: DefConfig Created  -----\n"
+      $wrtD && printf "\n  -----  DONE: DefConfig Created  -----\n\n\n"
       $wrtp && printf "\n\n  -----  DONE: Prerequisites Satisfied  -----\n"
-      mkdir -p $DIFF && $wrtd > $DIFF/diffconfig-$dt && printf "\n\n  -----  DONE: DiffConfig Created  -----\n"
+      $wrtd > $DIFF/diffconfig-$dt && printf "\n\n  -----  DONE: DiffConfig Created  -----\n"
 
 
   # Environment:
     printf "\n\n\n...Creating Environment...\n"
-    printf %b "----------------------------------------------\n\n"
+    printf %b "--------------------------\n\n"
       $gcu && $gce
-        $wrtE new current && printf "\n\n  -----  DONE: Environment Created for Current Build  -----\n"
+        $wrtE new current && printf "\n  -----  DONE: Environment Created for Current Build  -----\n"
 
 
   # Modify ~/.bashrc
     printf "\n\n\n...Adding Toolchain to ~/.bashrc...\n"
-    printf %b "----------------------------------------------\n\n"
+    printf %b "-----------------------------------\n\n"
       cp ~/.bashrc ~/.bashrc.bak
         export PATH="$PATH:$TOOLCHAIN/bin:$STAGING/host/bin"
         wget $bashrcM -O $bashrcT && cat $bashrcT >> ~/.bashrc && rm -f $bashrcT
-          sed -i "s|STAGING_DIR=/home/user/openwrt/source/staging_dir/toolchain|STAGING_DIR=$TOOLCHAIN|g" ~/.bashrc
-      source ~/.bashrc && printf "\n\n  -----  DONE: STAGING_DIR & Toolchain added to ~/.bashrc  -----\n"
+          sed -i "s|STAGING_DIR=$tchain|STAGING_DIR=$TOOLCHAIN|g" ~/.bashrc
+      source ~/.bashrc && printf "\n  -----  DONE: STAGING_DIR & Toolchain added to ~/.bashrc  -----\n"
 
 
   # Compile:
     printf "\n\n\n...Compiling Image...\n"
     printf %b "---------------------\n\n"
-      make V=s && printf "\n\n  -----  DONE: Image Compiled  -----\n"
+      make V=s && printf "\n  -----  DONE: Image Compiled  -----\n"
 
 
 
@@ -525,7 +444,7 @@ printf %b "============================================================\n"
   # Create Environment:
     ( printf "\n\n   Using Environments\n"
     printf %b "  --------------------\n" )
-      printf "\n    - See: https://lede-project.org/docs/guide-developer/using-build-environments"
+      printf "\n    - See: https://openwrt.org/docs/guide-developer/env"
         printf "\n\n      - Allows building images for multiple configurations, using multiple targets"
         printf "\n\n    - Usage: ./scripts/env [options] <command> [arguments]"
             printf "\n      - Commands:"
@@ -545,22 +464,22 @@ printf %b "\n\n\n============================================================\n\
 
 
 
-  # Done #
-  #--------------------------------------
-    printf "\n\n...Script completed...\n"
-    printf %b "----------------------\n\n"
+# Done #
+#--------------------------------------
+  printf "\n\n...Script completed...\n"
+  printf %b "----------------------\n\n"
 
 
-    # Function:
-      function pause(){
-        read -p "$*"
-      }
+  # Function:
+    function pause(){
+      read -p "$*"
+    }
 
 
-    # Confirmation:
-      pause "  Press [Enter] key to exit...
-      "  && echo
-      read -p "  Last chance to read 'Using Buildroot Environments'... If sure, press any key to exit
-      "
+  # Confirmation:
+    pause "  Press [Enter] key to exit...
+    "  && echo
+    read -p "  Last chance to read 'Using Buildroot Environments'... If sure, press any key to exit
+    "
 
-    exit 0
+  exit 0

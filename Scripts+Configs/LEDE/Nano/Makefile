@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2007-2016 OpenWrt.org
 #
@@ -9,14 +8,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nano
-PKG_VERSION:=2.9.7
+PKG_VERSION:=3.1
 PKG_RELEASE:=1
 PKG_LICENSE:=GPL-3.0+
 PKG_LICENSE_FILES:=COPYING
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@GNU/nano
-PKG_HASH:=b64ab017305b1777e97b5b9b07b31db8aeebfc3e8719f61e8da1cf3866d344bd
+PKG_HASH:=14c02ca40a5bc61c580ce2f9cb7f9fc72d5ccc9da17ad044f78f6fb3fdb7719e
 
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
@@ -28,13 +27,14 @@ define Package/nano
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=An enhanced clone of the Pico text editor
-  URL:=https://www.nano-editor.org/
-  MAINTAINER:=Jonathan Bennett <JBennett@incomsystems.biz>
-  DEPENDS:=+libncurses +zlib +libmagic
+  URL:=http://www.nano-editor.org/
+  MAINTAINER:=Jonathan Bennett <JBennett@incomsystems.biz>, \
+		Hannu Nyman <hannu.nyman@iki.fi>
+  DEPENDS:=+libncurses
 endef
 
 define Package/nano/description
-  Nano (Nano`s ANOther editor, or Not ANOther editor) is an enhanced clone
+  Nano (Nano's ANOther editor, or Not ANOther editor) is an enhanced clone
   of the Pico text editor.
 endef
 

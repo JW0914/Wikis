@@ -1,6 +1,6 @@
 #
 
-            ##::[[---  Windows OpenSSL Config  ---]]::##
+             ##::[[---  Linux OpenSSL Config  ---]]::##
 
 #====================================================================
                        ##----- Notes -----##
@@ -9,12 +9,11 @@
   # All commands required can be found beginning on line 430
 
 
-  # BSD/Linux/Mac users:
+  # Windows users:
 
-    # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only,
-    # and if utilizing spaces in names, ensure utilization of proper break format, i.e. './Sophos\ UTM\ CA.crt'
+    # Replace all forward slashes with single/double backslashes.
 
-    # Ensure EOLs are LF, not CRLF
+    # Ensure EOLs are CRLF, not LF
       # Windows uses CRLF, UNIX utilizes LF
 
 
@@ -33,9 +32,9 @@
              ##----- Establish Build Variables -----##
 #====================================================================
 
-dir                             = .
+dir                             = /etc/ssl
 cnf                             = /etc/ssl/openssl.cnf
-CNF                             = $dir\\openssl.cnf
+CNF                             = $dir/openssl.cnf
 
 
 #====================================================================
@@ -54,20 +53,20 @@ default_ca                      = CA_default
 #====================================================================
 
 [ CA_default ]
-certs                           = $dir\\cert
+certs                           = $dir/cert
 new_certs_dir                   = $dir
 
-database                        = $dir\\index
-RANDFILE                        = $dir\\rand
-serial                          = $dir\\serial
+database                        = $dir/index
+RANDFILE                        = $dir/rand
+serial                          = $dir/serial
 
-crldir                          = $dir\\crl
-crlnumber                       = $crldir\\crlnumber
-crl                             = $crldir\\ca.crl.pem
+crldir                          = $dir/crl
+crlnumber                       = $crldir/crlnumber
+crl                             = $crldir/ca.crl.pem
 default_crl_days                = 3650
 
-certificate                     = "$dir\\ca\\$UTM.crt.pem"
-private_key                     = "$dir\\ca\\$UTM.key.pem"
+certificate                     = "$dir/ca/$UTM.crt.pem"
+private_key                     = "$dir/ca/$UTM.key.pem"
 
 default_days                    = 3650
 preserve                        = no
@@ -105,11 +104,16 @@ emailAddress                    = optional
             ##----- Establish Certificate Options -----#
 #--------------------------------------------------------------------
 
-    # x64 machines process SHA512 more efficiently than SHA256
+    # If you plan on using TLS ECDHE or ECDH, the bits and hash must exceed the value you wish to have.
 
-    # Encrypt key is not currently commmented out
-      # A server's key should not have an encrypted passphrase
-        # When creating the key for the server, add -nodes to the Request command
+      # For example, if one wants 2048bit encryption with a SHA256 hash, encryption value must be
+      # greater than 2048 (3072 or 4096) with a hash greater than SHA256 (SHA384 or SHA512).
+        # x64 machines can almost always process SHA512 faster than SHA256.
+
+    # If you're not planning on using TLS ECDHE or ECDH, a key larger than 2048bit isn't necessary.
+
+    # Encrypt key is not currently commented out; however, as one does not want a server's key to have
+    # an encrypted password, when creating the key for the server, add -nodes to the Request command.
 
 
 [ req ]
@@ -129,9 +133,9 @@ copy_extensions                 = copy
 encrypt_key                     = yes
 
 [ req_attributes ]
- challengePassword              =
- challengePassword_min          = 12
- challengePassword_max          = 40
+challengePassword               =
+challengePassword_min           = 12
+challengePassword_max           = 40
 
 
 #====================================================================
@@ -259,9 +263,7 @@ organizationalUnitName_default  = LAN
   # These V3 CA profiles must not be modified to contain any more, or any less, KUs
   
   # These have been configured specifically for security & its imperative no other keyUsages are set
-  
     # For an ICA to be capable of signing additional CAs/ICAs, pathlen number must mirror number of CAs/ICAs it can sign
-
     # By default, all ICAs are set to 0, meaning they can sign certs, but not other CAs/ICAs.
 
 
@@ -322,7 +324,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
   # These V3 profiles should not be modified to contain less than what they are currently configured with.
     # These have been specifically configured with security in mind.
 
-  # All servers capable of SSL/TLS should contain all keyUsages, except for dataEncipherment
+  # All servers capable of TLS should contain all keyUsages, except for dataEncipherment
     # VPN and file servers should not have less than digitalSignature, keyEncipherment, keyAgreement
 
   # All servers must contain EKU serverAuth
@@ -421,8 +423,6 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     keyUsage                    = critical, nonRepudiation, digitalSignature
     extendedKeyUsage            = critical, codeSigning, msCodeInd, msCodeCom, mcCTLSign, timeStamping
     subjectAltName              = @alt_codesign
-
-
 
 
 
@@ -690,6 +690,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
 #====================================================================
                       ##----- Key Usage -----##
 #--------------------------------------------------------------------
+
 
     # !!!  CA / ICA ONLY  !!! #
 #--------------------------------------------------------------------
