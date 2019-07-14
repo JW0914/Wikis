@@ -13,7 +13,7 @@
   - A stock alternator's current output will be ~125A - ~150A, most of which is utilized to run the vehicle
     - For every 1000W of power, 69.44A of spare current at 14.4v, or 72.46A at 13.8v, is required <br>
       `P / E = I`  **or**  `E * I = P`
-* [Recommended Power, Ground, Speaker Wire Size & Length](Recommended%20Power%2C%20Ground%2C%20Speaker%20Wire%20Size%20%26%20Length)
+* [Recommended Power, Ground, Speaker Wire Size & Length](Recommended%20Power%2C%20Ground%2C%20Speaker%20Wire%20Size%20%26%20Length.pdf)
   - Reference to determine correct correlation of wire size to potential current required
 ---
 ## [FK8 CTR](FK8%20CTR) ##
