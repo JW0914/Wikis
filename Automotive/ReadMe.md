@@ -24,7 +24,7 @@ Technical info, diagnostics, and schematics for the FK8 Civic Type R
     * v3.51: Install Manual & Programming Option Tables
   * [Relays](FK8%20CTR/Compustar/Relays)
     * Diagrams for 2nd Accessory, 2nd Ignition, Starter Kill, etc.
-  * [Schematics](FK8%20CTR/Compustar/Scheamtics)
+  * [Schematics](FK8%20CTR/Compustar/Schematics)
     * OEM Honda schematics of the circuits required to install
 * **[Diagnostics](FK8%20CTR/Diagnostics)**
   * Various diagnostic systems' info, incl. self-diagnosis, MIL & DLC schematics
@@ -34,7 +34,7 @@ Technical info, diagnostics, and schematics for the FK8 Civic Type R
     * [Connectors](FK8%20CTR/Electrical/Connectors.xlsx)
     * [Door Locks & Security](FK8%20CTR/Electrical/Door%20Locks%20%26%20Security.xlsx)
     * [Grounds](FK8%20CTR/Electrical/Grounds.xlsx)
-    * [Keyless Access System](FK8%20CTR/Electrical/Keyless%20Access%20System)
+    * [Keyless Access System](FK8%20CTR/Electrical/Keyless%20Access%20System.xlsx)
     * [Lights](FK8%20CTR/Electrical/Lights.xlsx)
     * [Lights: Exterior](FK8%20CTR/Electrical/Lights%20Exterior.xlsx)
     * [Lights: Interior](FK8%20CTR/Electrical/Lights%20Interior.xlsx)
