@@ -1,10 +1,10 @@
 ### Information Directory ###
 ---
-* [Automotive Bulb Socket ID](Automotive%20Bulb%20Socket%20ID)
+* [Automotive Bulb Socket ID](Automotive%20Bulb%20Socket%20ID.pdf)
   - Visual identification of automotive bulbs and socket connectors
-* [Magnusson-Moss Warranty Act](Magnusson-Moss%20Warranty%20Act)
+* [Magnusson-Moss Warranty Act](Magnusson-Moss%20Warranty%20Act.pdf)
   - Briefs owners on their legal rights regarding warranties, dispelling myths & factually inaccurate information
-* [Ohm's Law Pie Chart](Ohm's%20Law%20Pie%20Chart)
+* [Ohm's Law Pie Chart](Ohm's%20Law%20Pie%20Chart.pdf)
   - Provides equations for calculating:<br>
     (**I**) Amperage _[current]_<br>
     (**E**) Voltage _[pressure]_<br>
@@ -27,7 +27,7 @@
     * v3.51: Install Manual & Programming Option Tables
   * [Relays](FK8%20CTR/Compustar/Relays)
     * Diagrams for 2nd Accessory, 2nd Ignition, Starter Kill, etc.
-  * [Schematics](FK8%20CTR/Compustar/Scheamtics)
+  * [Schematics](FK8%20CTR/Compustar/Schematics)
     * OEM Honda schematics of the circuits required to install
 * **[Diagnostics](FK8%20CTR/Diagnostics)**
   * Various diagnostic systems' info, incl. self-diagnosis, MIL & DLC schematics
@@ -39,7 +39,7 @@
     * [Connectors](FK8%20CTR/Electrical/Connectors.xlsx)
     * [Door Locks & Security](FK8%20CTR/Electrical/Door%20Locks%20%26%20Security.xlsx)
     * [Grounds](FK8%20CTR/Electrical/Grounds.xlsx)
-    * [Keyless Access System](FK8%20CTR/Electrical/Keyless%20Access%20System)
+    * [Keyless Access System](FK8%20CTR/Electrical/Keyless%20Access%20System.xlsx)
     * [Lights](FK8%20CTR/Electrical/Lights.xlsx)
     * [Lights: Exterior](FK8%20CTR/Electrical/Lights%20Exterior.xlsx)
     * [Lights: Interior](FK8%20CTR/Electrical/Lights%20Interior.xlsx)
