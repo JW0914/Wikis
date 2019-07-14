@@ -1,10 +1,10 @@
 ### Information Directory ###
 ---
-* [Automotive Bulb Socket ID](Automotive%20Bulb%20Socket%20ID)
+* [Automotive Bulb Socket ID](Automotive%20Bulb%20Socket%20ID.pdf)
   - Visual identification of automotive bulbs and socket connectors
-* [Magnusson-Moss Warranty Act](Magnusson-Moss%20Warranty%20Act)
+* [Magnusson-Moss Warranty Act](Magnusson-Moss%20Warranty%20Act.pdf)
   - Briefs owners on their legal rights regarding warranties, dispelling myths & factually inaccurate information
-* [Ohm's Law Pie Chart](Ohm's%20Law%20Pie%20Chart)
+* [Ohm's Law Pie Chart](Ohm's%20Law%20Pie%20Chart.pdf)
   - Provides equations for calculating:<br>
     (**I**) Amperage _[current]_<br>
     (**E**) Voltage _[pressure]_<br>
@@ -12,7 +12,7 @@
     (**P**) Wattage _[power]_<br>
   - A stock alternator's current output will be ~125A - ~150A, most of which is utilized to run the vehicle
     - For every 1000W of power, 69.44A of spare current at 14.4v and 72.46A at 13.8v is required
-* [Recommended Power, Ground, Speaker Wire Size & Length](Recommended%20Power%2C%20Ground%2C%20Speaker%20Wire%20Size%20%26%20Length)
+* [Recommended Power, Ground, Speaker Wire Size & Length](Recommended%20Power%2C%20Ground%2C%20Speaker%20Wire%20Size%20%26%20Length.pdf)
   - Reference to determine correct correlation of wire size to potential current required
 ---
 ## [FK8 CTR](FK8%20CTR) ##
