@@ -1,7 +1,10 @@
 ### Information Directory ###
 ---
 |  [Owner's Guide](Owner's%20Guide.pdf)  |  [Owner's Manual](Owner's%20Manual.pdf)  |  [Reset Procedures](Reset%20Procedures.pdf)  |
-|-|-|-|
+|:---:|:---:|:---:|
+
+|  [Magnusson-Moss Warranty Act  (15 USC §2302)](Magnusson-Moss%20Warranty%20Act.pdf)  |
+| :---: |
 ###### Technical info, diagnostics, and schematics for the FK8 Civic Type R ######
 * **[CompuStar](Compustar)**
   * [Alarm & Remote Start Install Guide](Compustar/Alarm%20%26%20Remote%20Start%20Install.pdf)
