@@ -1,0 +1,1326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg font-family="Arial" height="794.0" viewBox="0 0 1123.0 794.0" width="1123.0" preserveAspectRatio="xMinYMin meet" zoomAndPan="disable" id="" onload="loadEWD();" xmlns="http://www.w3.org/2000/svg" xmlns:mlx="http://schemas.honda.com/lc-extensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <script type="text/javascript"><![CDATA[
+            //
+                /************************************************************************
+                 *
+                 *    Description:  EWD Interface
+                 *
+                 *    Author:       Xtreme Technical Solutions (Daniel Arreola)
+                 *                  daniel_arreola@xtremesolutions.com
+                 *
+                 *    History:      24-July-2012 Initial development
+                ************************************************************************/
+
+                "use strict";
+                function loadEWD(){
+                    try{
+                        top.ewd.mainSVG = new top.SVG.Diagram(document.rootElement);
+                        top.ewd.mainSVG.setViewBox();
+                        top.ewd.mainSVG.initDiagram();
+                        top.onResize();
+                        top.ewd.mainSVG.layout(top.ewd.mainSVG.CTM());
+                        if(top.ewd.initial_node === null)
+                            top.ewd.setTabs(0, true);
+                        else{
+                            top.ewd.mainSVG.activateNode(top.ewd.initial_node, true);
+                            top.ewd.mainSVG.center();
+                        }
+                        top.g_layout.options.view_map.Diagram.complete();
+                    }
+                    catch(ex){
+                        if(window.console)
+                            console.log("loadEWD: " + ex.message + "[" + ex.number + "]");
+                    }
+                }
+            //
+            ]]></script>
+  <defs />
+  <rect id="canvas" x="-5000" y="-5000" width="10000px" height="10000px" fill="none" pointer-events="visible" />
+  <mlx:info>
+    <mlx:diagram_name>EVAP System</mlx:diagram_name>
+    <mlx:component_name>evap</mlx:component_name>
+    <mlx:sheet_name>Sheet7</mlx:sheet_name>
+    <mlx:diagram_type>System Circuit</mlx:diagram_type>
+    <mlx:create_timestamp>2017-05-18 17-34-03</mlx:create_timestamp>
+    <mlx:update_timestamp>2017-05-18 17-34-03</mlx:update_timestamp>
+  </mlx:info>
+  <g id="layer1">
+    <g id="NetGroup1" mlx:type="NetGroup">
+      <g id="6262" mlx:circuit_name="IGPS(LAF)" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:harness_mark="BI" mlx:harness_name="Floor Wire Harness" mlx:name="6262" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="V">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="938_245" transform="matrix(4.53714 0 -0 4.53714 551.665 589.514)">[BI]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="937_246" transform="matrix(4.53714 0 -0 4.53714 551.606 596.256)">PUR</text>
+        <g id="625F" mlx:name="625F" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="625F_564" points="550.204 621.967,550.204 482.071" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="6269" mlx:circuit_name="V_V_5VG1" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:harness_mark="BI" mlx:harness_name="Floor Wire Harness" mlx:name="6269" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="BE">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A71_248" transform="matrix(4.53714 0 -0 4.53714 854.141 237.886)">[BI]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A70_249" transform="matrix(4.53714 0 -0 4.53714 854.422 244.628)">TAN</text>
+        <g id="6266" mlx:name="6266" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="BE">
+          <polyline fill="none" id="6266_567" points="852.681 281.681,852.681 196.61" stroke="rgb(255,204,153)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="6273" mlx:circuit_name="V_V_GND08" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:harness_mark="BI" mlx:harness_name="Floor Wire Harness" mlx:name="6273" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="L">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A75_251" transform="matrix(4.53714 0 -0 4.53714 1005.38 237.886)">[BI]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A74_252" transform="matrix(4.53714 0 -0 4.53714 1005.34 244.628)">BLU</text>
+        <g id="626E" mlx:name="626E" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="L">
+          <polyline fill="none" id="626E_570" points="909.395 402.671,909.395 334.614" stroke="rgb(0,0,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="626F" mlx:name="626F" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="L">
+          <polyline fill="none" id="626F_572" points="909.395 402.671,1003.92 402.671" stroke="rgb(0,0,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6270" mlx:name="6270" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="L">
+          <polyline fill="none" id="6270_575" points="1003.92 402.671,1003.92 196.61" stroke="rgb(0,0,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="627D" mlx:circuit_name="VSV" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:harness_mark="BI" mlx:harness_name="Floor Wire Harness" mlx:name="627D" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="LG">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="956_256" transform="matrix(4.53714 0 -0 4.53714 797.427 589.514)">[BI]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="955_257" transform="matrix(4.53714 0 -0 4.53714 797.393 596.334)">LT_GRN</text>
+        <g id="6278" mlx:name="6278" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="LG">
+          <polyline fill="none" id="6278_579" points="550.204 742.957,550.204 693.805" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="6278_579c_reference" mlx:link_draw_id="6278_579c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="6279" mlx:name="6279" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="LG">
+          <polyline fill="none" id="6279_581" points="550.204 742.957,795.966 742.957" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="6279_581c_reference" mlx:link_draw_id="6279_581c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="627A" mlx:name="627A" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="LG">
+          <polyline fill="none" id="627A_584" points="795.966 742.957,795.966 482.071" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="627A_584c_reference" mlx:link_draw_id="627A_584c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="6278_579c_entity" mlx:link_draw_id="6278_579c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="6278_579c" mlx:wire_color_cloned="True" points="550.204 742.957,550.204 693.805" stroke="rgb(144,238,144)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+        <g id="6279_581c_entity" mlx:link_draw_id="6279_581c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="6279_581c" mlx:wire_color_cloned="True" points="550.204 742.957,795.966 742.957" stroke="rgb(144,238,144)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+        <g id="627A_584c_entity" mlx:link_draw_id="627A_584c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="627A_584c" mlx:wire_color_cloned="True" points="795.966 742.957,795.966 482.071" stroke="rgb(144,238,144)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="6283" mlx:circuit_name="PTANK" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:harness_mark="BI" mlx:harness_name="Floor Wire Harness" mlx:name="6283" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="W">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="9A7_261" transform="matrix(4.53714 0 -0 4.53714 910.855 237.886)">[BI]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="9A6_262" transform="matrix(4.53714 0 -0 4.53714 911.208 244.628)">WHT</text>
+        <g id="6280" mlx:name="6280" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="W">
+          <polyline fill="none" id="6280_588" points="909.395 281.681,909.395 196.61" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="6280_588c_reference" mlx:link_draw_id="6280_588c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="6280_588c_entity" mlx:link_draw_id="6280_588c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="6280_588c" mlx:wire_color_cloned="True" points="909.395 281.681,909.395 196.61" stroke="rgb(255,255,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="6289" mlx:circuit_name="+B_ETCS" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="6289" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="BR">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A55_264" transform="matrix(4.53714 0 -0 4.53714 313.465 204.991)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A54_265" transform="matrix(4.53714 0 -0 4.53714 313.431 211.733)">BRN</text>
+        <g id="6286" mlx:name="6286" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="BR">
+          <polyline fill="none" id="6286_591" points="289.319 213.624,353.595 213.624" stroke="rgb(165,42,42)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="629F" mlx:circuit_name="IGPS(LAF)" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="629F" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="V">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="93C_267" transform="matrix(4.53714 0 -0 4.53714 360.727 356.229)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="93B_268" transform="matrix(4.53714 0 -0 4.53714 360.668 362.971)">PUR</text>
+        <g id="6294" mlx:name="6294" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="6294_594" points="39.7758 459.386,115.395 459.386" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6295" mlx:name="6295" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="6295_598" points="39.7758 587.938,39.7758 459.386" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6296" mlx:name="6296" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="6296_600" points="550.204 478.29,550.204 364.862" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6297" mlx:name="6297" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="6297_602" points="115.395 459.386,342.252 459.386" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6298" mlx:name="6298" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="6298_606" points="115.395 587.938,115.395 459.386" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6299" mlx:name="6299" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="6299_608" points="289.319 364.862,342.252 364.862" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="629A" mlx:name="629A" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="629A_611" points="342.252 459.386,342.252 364.862" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="629B" mlx:name="629B" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="629B_614" points="342.252 478.29,342.252 459.386" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="629C" mlx:name="629C" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="629C_616" points="342.252 364.862,550.204 364.862" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6294_597_entity" mlx:link_draw_id="6294_597_reference" mlx:type="DrawEntity">
+          <circle cx="115.395" cy="459.386" fill="rgb(128,0,128)" id="6294_597" r="2.0" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        </g>
+        <g id="6297_605_entity" mlx:link_draw_id="6297_605_reference" mlx:type="DrawEntity">
+          <circle cx="342.252" cy="459.386" fill="rgb(128,0,128)" id="6297_605" r="2.0" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        </g>
+        <g id="6299_610_entity" mlx:link_draw_id="6299_610_reference" mlx:type="DrawEntity">
+          <circle cx="342.252" cy="364.862" fill="rgb(128,0,128)" id="6299_610" r="2.0" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        </g>
+      </g>
+      <g id="62A7" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="62A7" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="SB">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="56A1_278" transform="matrix(4.53714 0 -0 4.53714 472.265 148.277)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="56A0_279" transform="matrix(4.53714 0 -0 4.53714 472.231 155.019)">LT_BLU</text>
+        <g id="62A3" mlx:name="62A3" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="62A3_621" points="432.995 156.91,512.395 156.91" stroke="rgb(135,206,235)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="62A4" mlx:name="62A4" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="62A4_623" points="512.395 194.719,512.395 156.91" stroke="rgb(135,206,235)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="62AD" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="62AD" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="B">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A07_282" transform="matrix(4.53714 0 -0 4.53714 313.465 148.277)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A06_283" transform="matrix(4.53714 0 -0 4.53714 313.431 155.019)">BLK</text>
+        <g id="62AA" mlx:name="62AA" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="B">
+          <polyline fill="none" id="62AA_627" points="289.319 156.91,353.595 156.91" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="62B5" mlx:circuit_name="FI_SUB_RLY_CL-" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="62B5" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="V">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A30_285" transform="matrix(4.53714 0 -0 4.53714 570.569 135.8)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A2F_286" transform="matrix(4.53714 0 -0 4.53714 570.511 142.542)">PUR</text>
+        <g id="62B1" mlx:name="62B1" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="62B1_630" points="432.995 251.433,569.109 251.433" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="62B2" mlx:name="62B2" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="V">
+          <polyline fill="none" id="62B2_632" points="569.109 251.433,569.109 107.757" stroke="rgb(128,0,128)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="62BB" mlx:circuit_name="V_V_5VG1" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="62BB" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="W">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A73_289" transform="matrix(4.53714 0 -0 4.53714 854.141 135.8)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A72_290" transform="matrix(4.53714 0 -0 4.53714 854.494 142.542)">WHT</text>
+        <g id="62B8" mlx:name="62B8" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="W">
+          <polyline fill="none" id="62B8_636" points="852.681 192.829,852.681 107.757" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="62B8_636c_reference" mlx:link_draw_id="62B8_636c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="62B8_636c_entity" mlx:link_draw_id="62B8_636c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="62B8_636c" mlx:wire_color_cloned="True" points="852.681 192.829,852.681 107.757" stroke="rgb(255,255,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="62C1" mlx:circuit_name="V_V_GND08" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="62C1" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="L">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A77_292" transform="matrix(4.53714 0 -0 4.53714 1005.38 135.8)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3A76_293" transform="matrix(4.53714 0 -0 4.53714 1005.34 142.542)">BLU</text>
+        <g id="62BE" mlx:name="62BE" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="L">
+          <polyline fill="none" id="62BE_639" points="1003.92 192.829,1003.92 107.757" stroke="rgb(0,0,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="62C7" mlx:circuit_name="VSV" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="62C7" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="LG">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="95A_295" transform="matrix(4.53714 0 -0 4.53714 797.427 135.8)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="959_296" transform="matrix(4.53714 0 -0 4.53714 797.393 142.619)">LT_GRN</text>
+        <g id="62C4" mlx:name="62C4" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="LG">
+          <polyline fill="none" id="62C4_642" points="795.966 478.29,795.966 107.757" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="62C4_642c_reference" mlx:link_draw_id="62C4_642c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="62C4_642c_entity" mlx:link_draw_id="62C4_642c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="62C4_642c" mlx:wire_color_cloned="True" points="795.966 478.29,795.966 107.757" stroke="rgb(144,238,144)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="62CD" mlx:circuit_name="PTANK" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:harness_mark="EA" mlx:harness_name="Engine Compartment Wire Harness" mlx:name="62CD" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="W">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="5695_298" transform="matrix(4.53714 0 -0 4.53714 910.855 135.8)">[EA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="5694_299" transform="matrix(4.53714 0 -0 4.53714 911.208 142.542)">WHT</text>
+        <g id="62CA" mlx:name="62CA" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="W">
+          <polyline fill="none" id="62CA_645" points="909.395 192.829,909.395 107.757" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="62CA_645c_reference" mlx:link_draw_id="62CA_645c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="62CA_645c_entity" mlx:link_draw_id="62CA_645c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="62CA_645c" mlx:wire_color_cloned="True" points="909.395 192.829,909.395 107.757" stroke="rgb(255,255,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="62D3" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:circuit_name="+B_ETCS" mlx:name="62D3" mlx:type="BoxNet" mlx:unknown_wire_color="" mlx:wire_color="">
+        <g id="62D0" mlx:name="62D0" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62D0_646" points="249.619 213.624,285.538 213.624" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+      </g>
+      <g id="62DD" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:circuit_name="+B_BATTERY" mlx:name="62DD" mlx:type="BoxNet" mlx:unknown_wire_color="" mlx:wire_color="">
+        <g id="62D8" mlx:name="62D8" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62D8_647" points="153.204 62.3857,209.919 62.3857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+        <g id="62D9" mlx:name="62D9" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62D9_649" points="209.919 213.624,209.919 62.3857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+        <g id="62DA" mlx:name="62DA" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62DA_652" points="209.919 213.624,226.933 213.624" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+      </g>
+      <g id="62E3" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:circuit_name="IGPS(LAF)" mlx:name="62E3" mlx:type="BoxNet" mlx:unknown_wire_color="" mlx:wire_color="">
+        <g id="62E0" mlx:name="62E0" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62E0_654" points="249.619 364.862,285.538 364.862" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+      </g>
+      <g id="62ED" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:name="62ED" mlx:type="BoxNet" mlx:unknown_wire_color="" mlx:wire_color="">
+        <g id="62E8" mlx:name="62E8" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62E8_655" points="191.014 156.91,285.538 156.91" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+        <g id="62E9" mlx:name="62E9" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62E9_657" points="191.014 364.862,191.014 156.91" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+        <g id="62EA" mlx:name="62EA" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="">
+          <polyline fill="none" id="62EA_660" points="191.014 364.862,226.933 364.862" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" />
+        </g>
+      </g>
+      <g id="62F5" mlx:circuit_name="IGPS(ABV)" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:harness_mark="EC" mlx:harness_name="Engine Wire Harness" mlx:name="62F5" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="Y">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FCC_309" transform="matrix(4.53714 0 -0 4.53714 343.712 589.514)">[EC]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FCB_310" transform="matrix(4.53714 0 -0 4.53714 344.124 596.256)">YEL</text>
+        <g id="62F1" mlx:name="62F1" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="Y">
+          <polyline fill="none" id="62F1_664" points="304.442 553.91,342.252 553.91" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="62F1_664c_reference" mlx:link_draw_id="62F1_664c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="62F2" mlx:name="62F2" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="Y">
+          <polyline fill="none" id="62F2_666" points="342.252 621.967,342.252 553.91" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="62F2_666c_reference" mlx:link_draw_id="62F2_666c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="62F1_664c_entity" mlx:link_draw_id="62F1_664c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="62F1_664c" mlx:wire_color_cloned="True" points="304.442 553.91,342.252 553.91" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+        <g id="62F2_666c_entity" mlx:link_draw_id="62F2_666c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="62F2_666c" mlx:wire_color_cloned="True" points="342.252 621.967,342.252 553.91" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="62FD" mlx:circuit_name="IGPS(ABV)" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:harness_mark="EC" mlx:harness_name="Engine Wire Harness" mlx:name="62FD" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="Y">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FCA_313" transform="matrix(4.53714 0 -0 4.53714 343.712 506.333)">[EC]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FC9_314" transform="matrix(4.53714 0 -0 4.53714 344.124 513.075)">YEL</text>
+        <g id="62F9" mlx:name="62F9" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="Y">
+          <polyline fill="none" id="62F9_670" points="304.442 535.005,342.252 535.005" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="62F9_670c_reference" mlx:link_draw_id="62F9_670c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="62FA" mlx:name="62FA" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="Y">
+          <polyline fill="none" id="62FA_672" points="342.252 535.005,342.252 482.071" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="62FA_672c_reference" mlx:link_draw_id="62FA_672c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="62F9_670c_entity" mlx:link_draw_id="62F9_670c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="62F9_670c" mlx:wire_color_cloned="True" points="304.442 535.005,342.252 535.005" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+        <g id="62FA_672c_entity" mlx:link_draw_id="62FA_672c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="62FA_672c" mlx:wire_color_cloned="True" points="342.252 535.005,342.252 482.071" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="6305" mlx:circuit_name="IGPS(LAF)" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:harness_mark="EC" mlx:harness_name="Engine Wire Harness" mlx:name="6305" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="SB">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FDC_317" transform="matrix(4.53714 0 -0 4.53714 513.855 287.038)">[EC]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FDB_318" transform="matrix(4.53714 0 -0 4.53714 513.821 293.78)">LT_BLU</text>
+        <g id="6301" mlx:name="6301" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="6301_676" points="474.585 308.148,512.395 308.148" stroke="rgb(135,206,235)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6302" mlx:name="6302" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="6302_678" points="512.395 308.148,512.395 198.5" stroke="rgb(135,206,235)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="630D" mlx:circuit_name="IGPS(PCS)" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:harness_mark="EC" mlx:harness_name="Engine Wire Harness" mlx:name="630D" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="SB">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FE0_321" transform="matrix(4.53714 0 -0 4.53714 627.284 343.752)">[EC]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FDF_322" transform="matrix(4.53714 0 -0 4.53714 627.25 350.494)">LT_BLU</text>
+        <g id="6309" mlx:name="6309" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="6309_682" points="474.585 327.052,625.823 327.052" stroke="rgb(135,206,235)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="630A" mlx:name="630A" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="630A_684" points="625.823 395.11,625.823 327.052" stroke="rgb(135,206,235)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="6317" mlx:circuit_name="PCS" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:harness_mark="EC" mlx:harness_name="Engine Wire Harness" mlx:name="6317" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="Y">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="4631_325" transform="matrix(4.53714 0 -0 4.53714 740.712 135.8)">[EC]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="4630_326" transform="matrix(4.53714 0 -0 4.53714 741.124 142.542)">YEL</text>
+        <g id="6312" mlx:name="6312" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="Y">
+          <polyline fill="none" id="6312_688" points="625.823 535.005,625.823 466.948" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="6312_688c_reference" mlx:link_draw_id="6312_688c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="6313" mlx:name="6313" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="Y">
+          <polyline fill="none" id="6313_690" points="625.823 535.005,739.252 535.005" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="6313_690c_reference" mlx:link_draw_id="6313_690c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="6314" mlx:name="6314" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="Y">
+          <polyline fill="none" id="6314_693" points="739.252 535.005,739.252 107.757" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="6314_693c_reference" mlx:link_draw_id="6314_693c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="6312_688c_entity" mlx:link_draw_id="6312_688c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="6312_688c" mlx:wire_color_cloned="True" points="625.823 535.005,625.823 466.948" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+        <g id="6313_690c_entity" mlx:link_draw_id="6313_690c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="6313_690c" mlx:wire_color_cloned="True" points="625.823 535.005,739.252 535.005" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+        <g id="6314_693c_entity" mlx:link_draw_id="6314_693c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="6314_693c" mlx:wire_color_cloned="True" points="739.252 535.005,739.252 107.757" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.575" />
+        </g>
+      </g>
+      <g id="6321" mlx:circuit_name="ABV" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:harness_mark="EC" mlx:harness_name="Engine Wire Harness" mlx:name="6321" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="L/Y">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="4449_330" transform="matrix(4.53714 0 -0 4.53714 1062.09 135.8)">[EC]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="4448_331" transform="matrix(4.53714 0 -0 4.53714 1062.06 142.619)">BLU/YEL</text>
+        <g id="631C" mlx:name="631C" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="L/Y">
+          <polyline fill="none" id="631C_697" points="1060.63 761.862,1060.63 107.757" stroke="rgb(0,0,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="631C_697c_reference" mlx:link_draw_id="631C_697c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="631D" mlx:name="631D" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="L/Y">
+          <polyline fill="none" id="631D_699" points="342.252 761.862,1060.63 761.862" stroke="rgb(0,0,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="631D_699c_reference" mlx:link_draw_id="631D_699c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="631E" mlx:name="631E" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="L/Y">
+          <polyline fill="none" id="631E_702" points="342.252 761.862,342.252 693.805" stroke="rgb(0,0,255)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+          <g id="631E_702c_reference" mlx:link_draw_id="631E_702c_entity" mlx:type="DrawReference" />
+        </g>
+        <g id="631C_697c_entity" mlx:link_draw_id="631C_697c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="631C_697c" mlx:wire_color_cloned="True" points="1060.63 761.862,1060.63 107.757" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7425" />
+        </g>
+        <g id="631D_699c_entity" mlx:link_draw_id="631D_699c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="631D_699c" mlx:wire_color_cloned="True" points="342.252 761.862,1060.63 761.862" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7425" />
+        </g>
+        <g id="631E_702c_entity" mlx:link_draw_id="631E_702c_reference" mlx:type="DrawEntity">
+          <polyline fill="none" id="631E_702c" mlx:wire_color_cloned="True" points="342.252 761.862,342.252 693.805" stroke="rgb(255,255,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7425" />
+        </g>
+      </g>
+      <g id="632B" mlx:circuit_name="+B_BATTERY" mlx:harness_drawing_no="32410-TGH -A000-" mlx:harness_mark="EO" mlx:harness_name="Starter Cable" mlx:name="632B" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="B">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FEE_335" transform="matrix(4.53714 0 -0 4.53714 96.0599 53.7532)">[EO]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2FED_336" transform="matrix(4.53714 0 -0 4.53714 96.0259 60.4952)">BLK</text>
+        <g id="6326" mlx:name="6326" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="B">
+          <polyline fill="none" id="6326_706" points="43.5568 62.3857,77.5853 62.3857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6327" mlx:name="6327" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="B">
+          <polyline fill="none" id="6327_709" points="77.5853 62.3857,149.423 62.3857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6328" mlx:name="6328" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="B">
+          <polyline fill="none" id="6328_711" points="77.5853 134.224,77.5853 62.3857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="6326_708_entity" mlx:link_draw_id="6326_708_reference" mlx:type="DrawEntity">
+          <circle cx="77.5853" cy="62.3857" fill="rgb(0,0,0)" id="6326_708" r="2.0" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        </g>
+      </g>
+    </g>
+    <g id="InstanceGroup1" mlx:type="InstanceGroup">
+      <g id="8B9" mlx:name="8B9" mlx:type="Unit" mlx:unit_link_info="U|FTP Sensor" mlx:unit_name="FTP Sensor" mlx:unit_parts_no="" mlx:unit_search_info="FTP Sensor">
+        <g id="T|5" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|4" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|3" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|2" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|1" mlx:name="Tooltip1" mlx:tooltip_text="FTP Sensor" mlx:type="Tooltip" />
+        <g fill="rgb(0,0,0)" id="8BB_DRAWING_GROUP3c" mlx:type="drawing_group" stroke="none" stroke-width="0.8">
+          <circle cx="852.681" cy="302.476" fill="LightGrey" id="8B9_730c" mlx:wire_color_cloned="True" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g fill="none" id="8BB_DRAWING_GROUP2c" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <polygon fill="LightGrey" id="8B9_716c" mlx:wire_color_cloned="True" points="910.907 309.979,901.833 315.71,910.907 321.44,910.907 309.979" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="909.395" cy="302.476" fill="LightGrey" id="8B9_737c" mlx:wire_color_cloned="True" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <rect fill="LightGrey" height="37.809" id="8B9_713c" mlx:wire_color_cloned="True" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="86.962" x="837.557" y="289.243" />
+        </g>
+        <g fill="rgb(0,0,0)" id="8BB_DRAWING_GROUP1" mlx:type="drawing_group" stroke="none" stroke-width="0.2">
+          <path d="M908.058,303.813 907.504,302.476 908.058,301.139 z" id="8B9_731" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M908.058,303.813 908.058,301.139 909.395,304.367 z" id="8B9_732" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M909.395,304.367 908.058,301.139 909.395,300.586 z" id="8B9_733" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M909.395,304.367 909.395,300.586 910.732,303.813 z" id="8B9_734" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M910.732,303.813 909.395,300.586 910.732,301.139 z" id="8B9_735" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M910.732,303.813 910.732,301.139 911.285,302.476 z" id="8B9_736" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g fill="none" id="8BB_DRAWING_GROUP2" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <rect height="37.809" id="8B9_713" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="86.962" x="837.557" y="289.243" />
+          <polyline id="8B9_714" points="852.681 289.243,852.681 315.71" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_715" points="852.681 315.71,901.833 315.71" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polygon id="8B9_716" points="910.907 309.979,901.833 315.71,910.907 321.44,910.907 309.979" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_717" points="909.395 289.243,909.395 310.983" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_718" points="909.395 320.436,909.395 327.052" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_719" points="910.907 312.685,914.688 312.685" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_720" points="910.907 318.734,914.688 318.734" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_721" points="852.681 302.476,875.366 302.476" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_722" points="875.366 302.476,876.312 298.695" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_723" points="876.312 298.695,878.202 306.257" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_724" points="878.202 306.257,880.092 298.695" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_725" points="880.092 298.695,881.983 306.257" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_726" points="881.983 306.257,883.873 298.695" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_727" points="883.873 298.695,885.764 306.257" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_728" points="885.764 306.257,886.709 302.476" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="8B9_729" points="886.709 302.476,909.395 302.476" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="909.395" cy="302.476" id="8B9_737" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g fill="rgb(0,0,0)" id="8BB_DRAWING_GROUP3" mlx:type="drawing_group" stroke="none" stroke-width="0.8">
+          <circle cx="852.681" cy="302.476" id="8B9_730" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8BA_13" transform="matrix(7.33505 0 -0 7.33505 927.459 296.578)">FTP </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8BA_14" transform="matrix(7.33505 0 -0 7.33505 927.839 305.261)">Sensor</text>
+        <g id="8CF" mlx:box_drawing_no="" mlx:cavity_no="2" mlx:circuit_name="PTANK" mlx:circuit_no="RjM0" mlx:circuit_terminal_no="RjM0QQ==" mlx:coupler_no="" mlx:coupler_parts_no="91703-PHM -0030-H1" mlx:harness_connect_name="VkVOVF9QL1NFTlNPUg==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:link_pin_id="8CF_REF" mlx:name="8CF" mlx:org_coupler_parts_no="91703-PHM -0030-H1" mlx:pin_name="UFRBTks=" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="909.395" cy="281.681" fill="black" id="8CF_740" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8D0_345" transform="matrix(7.33505 0 -0 7.33505 910.985 280.736)">2</text>
+        </g>
+        <g id="3891" mlx:box_drawing_no="" mlx:cavity_no="3" mlx:circuit_name="V_V_5VG1" mlx:circuit_no="RDEz" mlx:circuit_terminal_no="RDEzQQ==" mlx:coupler_no="" mlx:coupler_parts_no="91703-PHM -0030-H1" mlx:harness_connect_name="VkVOVF9QL1NFTlNPUg==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:link_pin_id="3891_REF" mlx:name="3891" mlx:org_coupler_parts_no="91703-PHM -0030-H1" mlx:pin_name="Vl9WXzVWRzE=" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="852.681" cy="281.681" fill="black" id="3891_742" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3892_499" transform="matrix(7.33505 0 -0 7.33505 854.141 280.606)">3</text>
+        </g>
+        <g id="3894" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="V_V_GND08" mlx:circuit_no="RDE0" mlx:circuit_terminal_no="RDE0Qg==" mlx:coupler_no="" mlx:coupler_parts_no="91703-PHM -0030-H1" mlx:harness_connect_name="VkVOVF9QL1NFTlNPUg==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:link_pin_id="3894_REF" mlx:name="3894" mlx:org_coupler_parts_no="91703-PHM -0030-H1" mlx:pin_name="Vl9WX0dORDA4" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="909.395" cy="334.614" fill="black" id="3894_744" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3895_501" transform="matrix(7.33505 0 -0 7.33505 910.17 342.925)">1</text>
+        </g>
+      </g>
+      <g id="A41" mlx:name="A41" mlx:type="Unit" mlx:unit_link_info="U|EVAP Canister Vent Shut Valve" mlx:unit_name="EVAP Canister Vent Shut Valve" mlx:unit_parts_no="" mlx:unit_search_info="EVAP Canister Vent Shut Valve">
+        <g id="T|10" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|9" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|8" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|7" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|6" mlx:name="Tooltip1" mlx:tooltip_text="EVAP Canister Vent Shut Valve" mlx:type="Tooltip" />
+        <g fill="none" id="A42_DRAWING_GROUP1c" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <rect fill="LightGrey" height="56.714" id="A41_746c" mlx:wire_color_cloned="True" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="37.809" x="531.3" y="629.529" />
+        </g>
+        <g fill="none" id="A42_DRAWING_GROUP1" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <rect height="56.714" id="A41_746" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="37.809" x="531.3" y="629.529" />
+          <polyline id="A41_747" points="550.204 629.529,550.204 648.433" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A41_748" points="550.204 667.338,550.204 686.243" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A41_749" points="557.766 646.543,557.766 669.229" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A41_750" points="563.438 646.543,563.438 669.229" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M547.704,655.05  A3.78095,3.78095 0 1,0 550.204,648.433 " id="A41_751" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M547.704,660.721  A3.78095,3.78095 0 1,0 547.704,655.05 " id="A41_752" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M550.204,667.338  A3.78095,3.78095 0 1,0 547.704,660.721 " id="A41_753" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8BC_40" transform="matrix(7.33505 0 -0 7.33505 572.08 636.864)">EVAP </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8BC_41" transform="matrix(7.33505 0 -0 7.33505 572.38 645.546)">Canister </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8BC_42" transform="matrix(7.33505 0 -0 7.33505 572.845 654.191)">Vent Shut </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8BC_43" transform="matrix(7.33505 0 -0 7.33505 572.845 662.711)">Valve</text>
+        <g id="A45" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2QQ==" mlx:coupler_no="" mlx:coupler_parts_no="91706-PLC -0030-H1" mlx:harness_connect_name="VkVOVF9TSFVUX1NPTF9WQUxWRQ==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:link_pin_id="A45_REF" mlx:name="A45" mlx:org_coupler_parts_no="91706-PLC -0030-H1" mlx:pin_name="SUdQUyhMQUYp" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="550.204" cy="621.967" fill="black" id="A45_763" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8D2_355" transform="matrix(7.33505 0 -0 7.33505 550.979 621.021)">1</text>
+        </g>
+        <g id="A46" mlx:box_drawing_no="" mlx:cavity_no="2" mlx:circuit_name="VSV" mlx:circuit_no="RjAx" mlx:circuit_terminal_no="RjAxQQ==" mlx:coupler_no="" mlx:coupler_parts_no="91706-PLC -0030-H1" mlx:harness_connect_name="VkVOVF9TSFVUX1NPTF9WQUxWRQ==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:link_pin_id="A46_REF" mlx:name="A46" mlx:org_coupler_parts_no="91706-PLC -0030-H1" mlx:pin_name="VlNW" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="550.204" cy="693.805" fill="black" id="A46_765" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8D4_357" transform="matrix(7.33505 0 -0 7.33505 551.795 702.115)">2</text>
+        </g>
+      </g>
+      <g id="A7C" mlx:name="A7C" mlx:type="Unit" mlx:unit_link_info="U|Relay Circuit Board" mlx:unit_name="Relay Circuit Board" mlx:unit_parts_no="" mlx:unit_search_info="Relay Circuit Board">
+        <g id="T|15" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|14" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|13" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|12" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|11" mlx:name="Tooltip1" mlx:tooltip_text="Relay Circuit Board" mlx:type="Tooltip" />
+        <g fill="rgb(0,0,0)" id="A71_DRAWING_GROUP3c" mlx:type="drawing_group" stroke="none" stroke-width="0.8">
+          <circle cx="370.609" cy="213.624" fill="LightGrey" id="A7C_781c" mlx:wire_color_cloned="True" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g fill="none" id="A71_DRAWING_GROUP2c" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <circle cx="399.238" cy="213.622" fill="LightGrey" id="A7C_785c" mlx:wire_color_cloned="True" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="387.895" cy="213.637" fill="LightGrey" id="A7C_784c" mlx:wire_color_cloned="True" r="1.89039" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <rect fill="LightGrey" height="134.223" id="A7C_810c" mlx:wire_color_cloned="True" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="64.276" x="361.157" y="145.567" />
+        </g>
+        <g fill="rgb(0,0,0)" id="A71_DRAWING_GROUP1" mlx:type="drawing_group" stroke="none" stroke-width="0.2">
+          <path d="M414.644,158.246 414.09,156.91 414.644,155.573 z" id="A7C_767" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M414.644,158.246 414.644,155.573 415.981,158.8 z" id="A7C_768" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M415.981,158.8 414.644,155.573 415.981,155.019 z" id="A7C_769" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M415.981,158.8 415.981,155.019 417.317,158.246 z" id="A7C_770" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M417.317,158.246 415.981,155.019 417.317,155.573 z" id="A7C_771" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M417.317,158.246 417.317,155.573 417.871,156.91 z" id="A7C_772" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M414.644,214.961 414.09,213.624 414.644,212.287 z" id="A7C_773" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M414.644,214.961 414.644,212.287 415.981,215.514 z" id="A7C_774" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M415.981,215.514 414.644,212.287 415.981,211.733 z" id="A7C_775" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M415.981,215.514 415.981,211.733 417.317,214.961 z" id="A7C_776" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M417.317,214.961 415.981,211.733 417.317,212.287 z" id="A7C_777" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M417.317,214.961 417.317,212.287 417.871,213.624 z" id="A7C_778" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g fill="none" id="A71_DRAWING_GROUP2" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <polyline id="A7C_779" points="361.157 156.91,425.433 156.91" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_780" points="415.981 156.91,415.981 213.624" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_782" points="361.157 213.624,386.005 213.622" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_783" points="401.129 213.622,425.433 213.624" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="387.895" cy="213.637" id="A7C_784" r="1.89039" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="399.238" cy="213.622" id="A7C_785" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_803" points="370.609 251.433,386.95 251.447" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_804" points="400.183 251.447,425.433 251.433" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_805" points="385.06 207.966,402.074 207.966" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M395.457,253.56  A2.83571,2.83571 0 1,0 391.676,253.56 " id="A7C_806" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M391.676,253.56  A2.83571,2.83571 0 1,0 386.95,251.447 " id="A7C_807" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M400.183,251.447  A2.83571,2.83571 0 1,0 395.457,253.56 " id="A7C_808" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_809" points="370.609 213.624,370.609 251.433" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <rect height="134.223" id="A7C_810" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="64.276" x="361.157" y="145.567" />
+        </g>
+        <g fill="rgb(0,0,0)" id="A71_DRAWING_GROUP3" mlx:type="drawing_group" stroke="none" stroke-width="0.8">
+          <circle cx="370.609" cy="213.624" id="A7C_781" r="1.89048" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g fill="none" id="A71_DRAWING_GROUP4" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.4">
+          <polyline id="A7C_786" points="385.06 211.747,387.565 211.747" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_787" points="388.765 211.747,391.166 211.747" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_788" points="392.366 211.747,394.767 211.747" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_789" points="395.968 211.747,398.369 211.747" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_790" points="399.569 211.747,402.074 211.747" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_791" points="393.567 248.611,393.567 246.895" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_792" points="393.567 245.695,393.567 243.294" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_793" points="393.567 242.094,393.567 239.693" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_794" points="393.567 238.492,393.567 236.091" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_795" points="393.567 234.891,393.567 232.49" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_796" points="393.567 231.289,393.567 228.889" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_797" points="393.567 227.688,393.567 225.287" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_798" points="393.567 224.087,393.567 221.686" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_799" points="393.567 220.485,393.567 218.084" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_800" points="393.567 216.884,393.567 214.483" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_801" points="393.567 213.283,393.567 210.882" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="A7C_802" points="393.567 209.681,393.567 207.966" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A7C_811" transform="matrix(5.67143 0 -0 5.67143 369.98 171.101)">PGM-FI</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A7C_812" transform="matrix(5.67143 0 -0 5.67143 370.235 180.65)">SUBRELAY</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A7C_813" transform="matrix(5.67143 0 -0 5.67143 370.196 190.199)">CIRCUIT</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8C3_57" transform="matrix(7.33505 0 -0 7.33505 360.351 289.016)">Relay </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8C3_58" transform="matrix(7.33505 0 -0 7.33505 360.646 297.699)">Circuit </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8C3_59" transform="matrix(7.33505 0 -0 7.33505 360.406 306.219)">Board</text>
+        <g id="A73" mlx:box_drawing_no="" mlx:cavity_no="3" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:circuit_no="RDA4" mlx:circuit_terminal_no="RDA4Rw==" mlx:coupler_no="B" mlx:coupler_parts_no="91753-T2A -0030-H1" mlx:harness_connect_name="Ui9NT0QoMik=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="A73_REF" mlx:name="A73" mlx:org_coupler_parts_no="91753-T2A -0030-H1" mlx:pin_name="RklfU1VCX1JMWV9PVVQy" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="353.595" cy="156.91" fill="black" id="A73_819" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A04_365" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 352.621 166.165)">3</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="926_182" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 352.621 148.402)">B</text>
+        </g>
+        <g id="A75" mlx:box_drawing_no="" mlx:cavity_no="14" mlx:circuit_name="+B_ETCS" mlx:circuit_no="QjEy" mlx:circuit_terminal_no="QjEyQQ==" mlx:coupler_no="C" mlx:coupler_parts_no="91782-T2A -0030-H1" mlx:harness_connect_name="Ui9NT0QoMyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="A75_REF" mlx:name="A75" mlx:org_coupler_parts_no="91782-T2A -0030-H1" mlx:pin_name="K0JfREJXL0ZJX1NVQg==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="353.595" cy="213.624" fill="black" id="A75_821" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A08_367" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 352.621 222.879)">14</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="927_184" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 352.621 204.992)">C</text>
+        </g>
+        <g id="A7A" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:circuit_no="RDA4" mlx:circuit_terminal_no="RDA4Rg==" mlx:coupler_no="C" mlx:coupler_parts_no="91782-T2A -0030-H1" mlx:harness_connect_name="Ui9NT0QoMyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="A7A_REF" mlx:name="A7A" mlx:org_coupler_parts_no="91782-T2A -0030-H1" mlx:pin_name="RklfU1VCX1JMWV9PVVQx" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="432.995" cy="156.91" fill="black" id="A7A_823" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A11_369" transform="matrix(7.33505 0 -0 7.33505 432.824 166.165)">1</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A10_186" transform="matrix(7.33505 0 -0 7.33505 433.43 148.277)">C</text>
+        </g>
+        <g id="A7E" mlx:box_drawing_no="" mlx:cavity_no="2" mlx:circuit_name="FI_SUB_RLY_CL-" mlx:circuit_no="RDA5" mlx:circuit_terminal_no="RDA5RA==" mlx:coupler_no="B" mlx:coupler_parts_no="91753-T2A -0030-H1" mlx:harness_connect_name="Ui9NT0QoMik=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="A7E_REF" mlx:name="A7E" mlx:org_coupler_parts_no="91753-T2A -0030-H1" mlx:pin_name="RklfU1VCX1JMWV9DTC0=" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="432.995" cy="251.433" fill="black" id="A7E_825" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A2D_371" transform="matrix(7.33505 0 -0 7.33505 433.64 260.689)">2</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A27_188" transform="matrix(7.33505 0 -0 7.33505 433.19 242.926)">B</text>
+        </g>
+      </g>
+      <g id="2D9F" mlx:name="2D9F" mlx:type="Unit" mlx:unit_link_info="U|Turbocharger Bypass Control Solenoid Valve" mlx:unit_name="Turbocharger Bypass Control Solenoid Valve" mlx:unit_parts_no="" mlx:unit_search_info="Turbocharger Bypass Control Solenoid Valve">
+        <g id="T|20" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|19" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|18" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|17" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|16" mlx:name="Tooltip1" mlx:tooltip_text="Turbocharger Bypass Control Solenoid Valve" mlx:type="Tooltip" />
+        <g fill="none" id="4933_DRAWING_GROUP1c" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <rect fill="LightGrey" height="56.714" id="2D9F_827c" mlx:wire_color_cloned="True" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="37.81" x="323.347" y="629.529" />
+        </g>
+        <g fill="none" id="4933_DRAWING_GROUP1" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <rect height="56.714" id="2D9F_827" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="37.81" x="323.347" y="629.529" />
+          <polyline id="2D9F_828" points="342.252 629.529,342.252 648.433" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2D9F_829" points="342.252 667.338,342.252 686.243" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2D9F_830" points="349.814 646.543,349.814 669.229" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2D9F_831" points="355.485 646.543,355.485 669.229" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M339.751,655.05  A3.78095,3.78095 0 1,0 342.252,648.433 " id="2D9F_832" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M339.751,660.721  A3.78095,3.78095 0 1,0 339.751,655.05 " id="2D9F_833" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M342.252,667.338  A3.78095,3.78095 0 1,0 339.751,660.721 " id="2D9F_834" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DA4_109" transform="matrix(7.33505 0 -0 7.33505 362.807 636.864)">Turbocharger </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DA4_110" transform="matrix(7.33505 0 -0 7.33505 362.297 645.421)">Bypass </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DA4_111" transform="matrix(7.33505 0 -0 7.33505 362.537 654.104)">Control </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DA4_112" transform="matrix(7.33505 0 -0 7.33505 362.587 662.749)">Solenoid </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DA4_113" transform="matrix(7.33505 0 -0 7.33505 363.002 671.269)">Valve</text>
+        <g id="2DA1" mlx:box_drawing_no="" mlx:cavity_no="2" mlx:circuit_name="IGPS(ABV)" mlx:circuit_no="RDU2" mlx:circuit_terminal_no="RDU2RA==" mlx:coupler_no="" mlx:coupler_parts_no="91702-PNC -0030-H1" mlx:harness_connect_name="QUJWX1NPTA==" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:link_pin_id="2DA1_REF" mlx:name="2DA1" mlx:org_coupler_parts_no="91702-PNC -0030-H1" mlx:pin_name="SUdQUyhBQlYp" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="342.252" cy="621.967" fill="black" id="2DA1_840" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DA2_383" transform="matrix(7.33505 0 -0 7.33505 343.842 621.021)">2</text>
+        </g>
+        <g id="427D" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="ABV" mlx:circuit_no="SzUw" mlx:circuit_terminal_no="SzUwQQ==" mlx:coupler_no="" mlx:coupler_parts_no="91702-PNC -0030-H1" mlx:harness_connect_name="QUJWX1NPTA==" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:link_pin_id="427D_REF" mlx:name="427D" mlx:org_coupler_parts_no="91702-PNC -0030-H1" mlx:pin_name="QUJW" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="342.252" cy="693.805" fill="black" id="427D_842" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="427E_509" transform="matrix(7.33505 0 -0 7.33505 343.027 702.115)">1</text>
+        </g>
+      </g>
+      <g id="2DAB" mlx:name="2DAB" mlx:type="Unit" mlx:unit_link_info="U|EVAP Canister Purge Valve" mlx:unit_name="EVAP Canister Purge Valve" mlx:unit_parts_no="" mlx:unit_search_info="EVAP Canister Purge Valve">
+        <g id="T|25" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|24" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|23" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|22" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|21" mlx:name="Tooltip1" mlx:tooltip_text="EVAP Canister Purge Valve" mlx:type="Tooltip" />
+        <g fill="none" id="4935_DRAWING_GROUP1c" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <rect fill="LightGrey" height="56.715" id="2DAB_844c" mlx:wire_color_cloned="True" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="37.809" x="606.919" y="402.671" />
+        </g>
+        <g fill="none" id="4935_DRAWING_GROUP1" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <rect height="56.715" id="2DAB_844" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" width="37.809" x="606.919" y="402.671" />
+          <polyline id="2DAB_845" points="625.823 402.671,625.823 421.576" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2DAB_846" points="625.823 440.481,625.823 459.386" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2DAB_847" points="633.385 419.686,633.385 442.371" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2DAB_848" points="639.057 419.686,639.057 442.371" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M623.323,428.193  A3.78095,3.78095 0 1,0 625.823,421.576 " id="2DAB_849" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M623.323,433.864  A3.78095,3.78095 0 1,0 623.323,428.193 " id="2DAB_850" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M625.823,440.481  A3.78095,3.78095 0 1,0 623.323,433.864 " id="2DAB_851" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DB0_122" transform="matrix(7.33505 0 -0 7.33505 645.808 410.006)">EVAP </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DB0_123" transform="matrix(7.33505 0 -0 7.33505 646.108 418.689)">Canister </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DB0_124" transform="matrix(7.33505 0 -0 7.33505 645.828 427.209)">Purge </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DB0_125" transform="matrix(7.33505 0 -0 7.33505 646.574 435.767)">Valve</text>
+        <g id="2DAD" mlx:box_drawing_no="" mlx:cavity_no="2" mlx:circuit_name="IGPS(PCS)" mlx:circuit_no="RDU3" mlx:circuit_terminal_no="RDU3Rg==" mlx:coupler_no="" mlx:coupler_parts_no="91702-R40 -0030-H1" mlx:harness_connect_name="UFVSR19DT05UTF9TT0w=" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:link_pin_id="2DAD_REF" mlx:name="2DAD" mlx:org_coupler_parts_no="91702-R40 -0030-H1" mlx:pin_name="SUdQUyhQQ1Mp" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="625.823" cy="395.11" fill="black" id="2DAD_857" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DAE_385" transform="matrix(7.33505 0 -0 7.33505 627.414 394.164)">2</text>
+        </g>
+        <g id="446B" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="PCS" mlx:circuit_no="RTk3" mlx:circuit_terminal_no="RTk3QQ==" mlx:coupler_no="" mlx:coupler_parts_no="91702-R40 -0030-H1" mlx:harness_connect_name="UFVSR19DT05UTF9TT0w=" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:link_pin_id="446B_REF" mlx:name="446B" mlx:org_coupler_parts_no="91702-R40 -0030-H1" mlx:pin_name="UENT" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="625.823" cy="466.948" fill="black" id="446B_859" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="446C_561" transform="matrix(7.33505 0 -0 7.33505 626.598 475.258)">1</text>
+        </g>
+      </g>
+      <g id="4281" mlx:name="4281" mlx:type="Unit" mlx:unit_link_info="U|PCM" mlx:unit_name="PCM" mlx:unit_parts_no="" mlx:unit_search_info="PCM">
+        <g id="T|30" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|29" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|28" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|27" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|26" mlx:name="Tooltip1" mlx:tooltip_text="PCM" mlx:type="Tooltip" />
+        <rect fill="LightGrey" height="60.495" id="4281_861c" mlx:wire_color_cloned="True" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="548.24" x="531.3" y="39.7" />
+        <rect fill="none" height="60.495" id="4281_861" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="548.24" x="531.3" y="39.7" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="4286_136" transform="matrix(7.33505 0 -0 7.33505 1082.53 47.1601)">PCM</text>
+        <g id="2DB9" mlx:box_drawing_no="" mlx:cavity_no="47" mlx:circuit_name="FI_SUB_RLY_CL-" mlx:circuit_no="RDA5" mlx:circuit_terminal_no="RDA5Qw==" mlx:coupler_no="No. 2" mlx:coupler_parts_no="91758-SWY -E010-Y1" mlx:harness_connect_name="RklfRUNVKEFQNF9UQyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="2DB9_REF" mlx:name="2DB9" mlx:org_coupler_parts_no="91758-SWY -E010-Y1" mlx:pin_name="T19TX0xTSFIoU1VCUkxZKQ==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="569.109" cy="107.757" fill="black" id="2DB9_863" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DBA_432" transform="matrix(7.33505 0 -0 7.33505 570.87 116.037)">47</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2F88_194" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 560.573 116.067)">No. 2</text>
+        </g>
+        <g id="2DB3" mlx:box_drawing_no="" mlx:cavity_no="39" mlx:circuit_name="PTANK" mlx:circuit_no="RjM0" mlx:circuit_terminal_no="RjM0Qg==" mlx:coupler_no="No. 2" mlx:coupler_parts_no="91758-SWY -E010-Y1" mlx:harness_connect_name="RklfRUNVKEFQNF9UQyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="2DB3_REF" mlx:name="2DB3" mlx:org_coupler_parts_no="91758-SWY -E010-Y1" mlx:pin_name="SV9BX0ZUUFMoUFRBTksp" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="909.395" cy="107.757" fill="black" id="2DB3_865" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DB4_387" transform="matrix(7.33505 0 -0 7.33505 910.855 116.067)">39</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3761_196" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 787.431 116.067)">No. 2</text>
+        </g>
+        <g id="2DB6" mlx:box_drawing_no="" mlx:cavity_no="37" mlx:circuit_name="VSV" mlx:circuit_no="RjAx" mlx:circuit_terminal_no="RjAxQg==" mlx:coupler_no="No. 2" mlx:coupler_parts_no="91758-SWY -E010-Y1" mlx:harness_connect_name="RklfRUNVKEFQNF9UQyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="2DB6_REF" mlx:name="2DB6" mlx:org_coupler_parts_no="91758-SWY -E010-Y1" mlx:pin_name="T19TX1RWVihWU1NWKQ==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="795.966" cy="107.757" fill="black" id="2DB6_867" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DB7_407" transform="matrix(7.33505 0 -0 7.33505 797.426 116.067)">37</text>
+        </g>
+        <g id="3888" mlx:box_drawing_no="" mlx:cavity_no="41" mlx:circuit_name="V_V_5VG1" mlx:circuit_no="RDEz" mlx:circuit_terminal_no="RDEzQQ==" mlx:coupler_no="No. 2" mlx:coupler_parts_no="91758-SWY -E010-Y1" mlx:harness_connect_name="RklfRUNVKEFQNF9UQyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="3888_REF" mlx:name="3888" mlx:org_coupler_parts_no="91758-SWY -E010-Y1" mlx:pin_name="Vl9WXzVWRzFfMw==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="852.681" cy="107.757" fill="black" id="3888_869" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3889_475" transform="matrix(7.33505 0 -0 7.33505 854.441 116.067)">41</text>
+        </g>
+        <g id="388B" mlx:box_drawing_no="" mlx:cavity_no="42" mlx:circuit_name="V_V_GND08" mlx:circuit_no="RDE0" mlx:circuit_terminal_no="RDE0Rw==" mlx:coupler_no="No. 2" mlx:coupler_parts_no="91758-SWY -E010-Y1" mlx:harness_connect_name="RklfRUNVKEFQNF9UQyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:link_pin_id="388B_REF" mlx:name="388B" mlx:org_coupler_parts_no="91758-SWY -E010-Y1" mlx:pin_name="Vl9WX0dORDA4" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="1003.92" cy="107.757" fill="black" id="388B_871" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="388C_490" transform="matrix(7.33505 0 -0 7.33505 1005.68 116.067)">42</text>
+        </g>
+        <g id="4283" mlx:box_drawing_no="" mlx:cavity_no="21" mlx:circuit_name="ABV" mlx:circuit_no="SzUw" mlx:circuit_terminal_no="SzUwQg==" mlx:coupler_no="No. 1" mlx:coupler_parts_no="91796-RL0 -G010-Y3" mlx:harness_connect_name="RkktRUNV" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:link_pin_id="4283_REF" mlx:name="4283" mlx:org_coupler_parts_no="91796-RL0 -G010-Y3" mlx:pin_name="QUJW" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="1060.63" cy="107.757" fill="black" id="4283_873" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="4284_511" transform="matrix(7.33505 0 -0 7.33505 1062.22 116.067)">21</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="43FB_201" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 1052.1 116.067)">No. 1</text>
+        </g>
+        <g id="4465" mlx:box_drawing_no="" mlx:cavity_no="96" mlx:circuit_name="PCS" mlx:circuit_no="RTk3" mlx:circuit_terminal_no="RTk3Qg==" mlx:coupler_no="No. 1" mlx:coupler_parts_no="91796-RL0 -G010-Y3" mlx:harness_connect_name="RkktRUNV" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:link_pin_id="4465_REF" mlx:name="4465" mlx:org_coupler_parts_no="91796-RL0 -G010-Y3" mlx:pin_name="UENT" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="739.252" cy="107.757" fill="black" id="4465_875" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="4466_536" transform="matrix(7.33505 0 -0 7.33505 740.717 116.067)">96</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="45E2_203" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 730.716 116.067)">No. 1</text>
+        </g>
+      </g>
+      <g id="9DD" mlx:amp="15A" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:fuse_name="K0JfRklfU1VCKDM4MjUwLVRCQSAtWlkwMC0p" mlx:fuse_no="A9" mlx:name="9DD" mlx:type="Fuse" mlx:unit_link_info="F|38250-TBA -ZY00-|+B_FI_SUB|+B_FI_SUB(38250-TBA -ZY00-)">
+        <g id="T|35" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|34" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|33" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|32" mlx:name="Tooltip2" mlx:tooltip_text="15A" mlx:type="Tooltip" />
+        <g id="T|31" mlx:name="Tooltip1" mlx:tooltip_text="A9" mlx:type="Tooltip" />
+        <circle cx="247.35" cy="213.624" fill="LightGrey" id="9DD_878c" mlx:wire_color_cloned="True" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <circle cx="229.202" cy="213.624" fill="LightGrey" id="9DD_877c" mlx:wire_color_cloned="True" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <circle cx="229.202" cy="213.624" fill="none" id="9DD_877" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <circle cx="247.35" cy="213.624" fill="none" id="9DD_878" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <path d="M245.082,213.624  A3.40286,2.26857 0 0,1 238.276,213.624 " fill="none" id="9DD_879" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <path d="M238.276,213.624  A3.40286,2.26857 0 0,0 231.47,213.624 " fill="none" id="9DD_880" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="9C1_173" transform="matrix(7.33505 0 -0 7.33505 228.594 209.718)">15A</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="9C0_174" transform="matrix(7.33505 0 -0 7.33505 232.234 224.77)">A9</text>
+        <g id="9DF" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="1" mlx:circuit_name="+B_BATTERY" mlx:circuit_no="QkEw" mlx:circuit_terminal_no="QkEwSA==" mlx:coupler_parts_no="DM" mlx:harness_connect_name="K0JfRklfU1VC" mlx:name="9DF" mlx:org_coupler_parts_no="DM" mlx:pin_name="K0JfQkFUVEVSWQ==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="226.933" cy="213.624" fill="black" id="9DF_883" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="3476" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="2" mlx:circuit_name="+B_ETCS" mlx:circuit_no="QjEy" mlx:circuit_terminal_no="QjEyQQ==" mlx:coupler_parts_no="DM" mlx:harness_connect_name="K0JfRklfU1VC" mlx:name="3476" mlx:org_coupler_parts_no="DM" mlx:pin_name="K0JfREJX" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="249.619" cy="213.624" fill="black" id="3476_884" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="9DD_2d0" mlx:component_name="under_h" mlx:name="B_Link" mlx:type="BoxLink" />
+      </g>
+      <g id="A32" mlx:amp="5A" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:fuse_name="K0JfTEFGKDM4MjUwLVRCQSAtWlkwMC0p" mlx:fuse_no="A11" mlx:name="A32" mlx:type="Fuse" mlx:unit_link_info="F|38250-TBA -ZY00-|+B_LAF|+B_LAF(38250-TBA -ZY00-)">
+        <g id="T|40" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|39" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|38" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|37" mlx:name="Tooltip2" mlx:tooltip_text="5A" mlx:type="Tooltip" />
+        <g id="T|36" mlx:name="Tooltip1" mlx:tooltip_text="A11" mlx:type="Tooltip" />
+        <circle cx="247.35" cy="364.862" fill="LightGrey" id="A32_886c" mlx:wire_color_cloned="True" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <circle cx="229.202" cy="364.862" fill="LightGrey" id="A32_885c" mlx:wire_color_cloned="True" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <circle cx="229.202" cy="364.862" fill="none" id="A32_885" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <circle cx="247.35" cy="364.862" fill="none" id="A32_886" r="2.26857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <path d="M245.082,364.862  A3.40286,2.26857 0 0,1 238.276,364.862 " fill="none" id="A32_887" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <path d="M238.276,364.862  A3.40286,2.26857 0 0,0 231.47,364.862 " fill="none" id="A32_888" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="A33_179" transform="matrix(7.33505 0 -0 7.33505 231.789 360.956)">5A</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="93F_180" transform="matrix(7.33505 0 -0 7.33505 230.1 376.008)">A11</text>
+        <g id="9BD" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="1" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:circuit_no="RDA4" mlx:circuit_terminal_no="RDA4Qw==" mlx:coupler_parts_no="DM" mlx:harness_connect_name="K0JfTEFG" mlx:name="9BD" mlx:org_coupler_parts_no="DM" mlx:pin_name="RklfU1VCX1JMWV9PVVQ=" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="226.933" cy="364.862" fill="black" id="9BD_891" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="A9D" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="2" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2QQ==" mlx:coupler_parts_no="DM" mlx:harness_connect_name="K0JfTEFG" mlx:name="A9D" mlx:org_coupler_parts_no="DM" mlx:pin_name="SUdQUyhMQUYp" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="249.619" cy="364.862" fill="black" id="A9D_892" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="A32_2d0" mlx:component_name="under_h" mlx:name="B_Link" mlx:type="BoxLink" />
+      </g>
+      <g id="943" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:box_name_disp="Under-Hood Fuse/Relay Box" mlx:name="943" mlx:type="HarnessBoxCoupler">
+        <g id="T|45" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|44" mlx:name="Tooltip4" mlx:tooltip_text="Under-Hood Fuse/Relay Box" mlx:type="Tooltip" />
+        <g id="T|43" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|42" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|41" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="white" height="11.343" id="943_894c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="285.538" y="359.19" />
+        <polyline fill="none" id="943_893" points="285.538 370.533,289.319 370.533,289.319 359.19,285.538 359.19" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="11.343" id="943_894" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="285.538" y="359.19" />
+        <polyline fill="none" id="943_895" points="285.538 367.698,285.538 362.026" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <g id="A9B" mlx:box_drawing_no="" mlx:cavity_no="60" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2Rw==" mlx:coupler_no="" mlx:coupler_parts_no="38250-TBA -A210-M1" mlx:harness_connect_name="Ui9CT1g=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:ident_symbol="BOX_OUT" mlx:name="A9B" mlx:org_coupler_parts_no="38250-TBA -A210-M1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="289.319" cy="364.862" fill="black" id="A9B_896" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="944_373" transform="matrix(7.33505 0 -0 7.33505 289.879 374.117)">60</text>
+        </g>
+        <g id="A9C" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="60" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2Qg==" mlx:coupler_no="" mlx:coupler_parts_no="DM" mlx:harness_connect_name="Ui9CT1g=" mlx:harness_drawing_no="" mlx:ident_symbol="BOX_IN" mlx:name="A9C" mlx:org_coupler_parts_no="DM" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="285.538" cy="364.862" fill="black" id="A9C_898" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="943_2d0" mlx:component_name="under_h" mlx:name="B_Link" mlx:type="BoxLink" />
+      </g>
+      <g id="9CC" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:box_name_disp="Under-Hood Fuse/Relay Box" mlx:name="9CC" mlx:type="HarnessBoxCoupler">
+        <g id="T|50" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|49" mlx:name="Tooltip4" mlx:tooltip_text="Under-Hood Fuse/Relay Box" mlx:type="Tooltip" />
+        <g id="T|48" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|47" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|46" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="white" height="11.343" id="9CC_900c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="285.538" y="151.238" />
+        <polyline fill="none" id="9CC_899" points="285.538 151.238,289.319 151.238,289.319 162.581,285.538 162.581" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="11.343" id="9CC_900" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="285.538" y="151.238" />
+        <polyline fill="none" id="9CC_901" points="285.538 154.074,285.538 159.745" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <g id="9CD" mlx:box_drawing_no="" mlx:cavity_no="61" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:circuit_no="RDA4" mlx:circuit_terminal_no="RDA4VA==" mlx:coupler_no="" mlx:coupler_parts_no="38250-TBA -A210-M1" mlx:harness_connect_name="Ui9CT1g=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:ident_symbol="BOX_OUT" mlx:name="9CD" mlx:org_coupler_parts_no="38250-TBA -A210-M1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="289.319" cy="156.91" fill="black" id="9CD_902" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="9CE_351" transform="matrix(7.33505 0 -0 7.33505 289.879 166.165)">61</text>
+        </g>
+        <g id="9D1" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="61" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:circuit_no="RDA4" mlx:circuit_terminal_no="RDA4RA==" mlx:coupler_no="" mlx:coupler_parts_no="DM" mlx:harness_connect_name="Ui9CT1g=" mlx:harness_drawing_no="" mlx:ident_symbol="BOX_IN" mlx:name="9D1" mlx:org_coupler_parts_no="DM" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="285.538" cy="156.91" fill="black" id="9D1_904" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="9CC_2d0" mlx:component_name="under_h" mlx:name="B_Link" mlx:type="BoxLink" />
+      </g>
+      <g id="2D87" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:box_name_disp="Under-Hood Fuse/Relay Box" mlx:name="2D87" mlx:type="HarnessBoxCoupler">
+        <g id="T|55" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|54" mlx:name="Tooltip4" mlx:tooltip_text="Under-Hood Fuse/Relay Box" mlx:type="Tooltip" />
+        <g id="T|53" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|52" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|51" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="white" height="11.343" id="2D87_906c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="285.538" y="207.952" />
+        <polyline fill="none" id="2D87_905" points="285.538 219.295,289.319 219.295,289.319 207.952,285.538 207.952" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="11.343" id="2D87_906" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="285.538" y="207.952" />
+        <polyline fill="none" id="2D87_907" points="285.538 216.46,285.538 210.788" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <g id="2D88" mlx:box_drawing_no="" mlx:cavity_no="48" mlx:circuit_name="+B_ETCS" mlx:circuit_no="QjEy" mlx:circuit_terminal_no="QjEyQg==" mlx:coupler_no="" mlx:coupler_parts_no="38250-TBA -A210-M1" mlx:harness_connect_name="Ui9CT1g=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:ident_symbol="BOX_OUT" mlx:name="2D88" mlx:org_coupler_parts_no="38250-TBA -A210-M1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="289.319" cy="213.624" fill="black" id="2D88_908" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2D89_377" transform="matrix(7.33505 0 -0 7.33505 290.134 222.879)">48</text>
+        </g>
+        <g id="2D8C" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="48" mlx:circuit_name="+B_ETCS" mlx:circuit_no="QjEy" mlx:circuit_terminal_no="QjEyRA==" mlx:coupler_no="" mlx:coupler_parts_no="DM" mlx:harness_connect_name="Ui9CT1g=" mlx:harness_drawing_no="" mlx:ident_symbol="BOX_IN" mlx:name="2D8C" mlx:org_coupler_parts_no="DM" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="285.538" cy="213.624" fill="black" id="2D8C_910" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="2D87_2d0" mlx:component_name="under_h" mlx:name="B_Link" mlx:type="BoxLink" />
+      </g>
+      <g id="2D97" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:box_name_disp="Under-Hood Fuse/Relay Box" mlx:name="2D97" mlx:type="HarnessBoxCoupler">
+        <g id="T|60" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|59" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|58" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|57" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|56" mlx:name="Tooltip1" mlx:tooltip_text="T2" mlx:type="Tooltip" />
+        <rect fill="white" height="11.3428" id="2D97_912c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="149.423" y="56.7143" />
+        <polyline fill="none" id="2D97_911" points="153.204 56.7143,149.423 56.7143,149.423 68.0571,153.204 68.0571" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="11.3428" id="2D97_912" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="149.423" y="56.7143" />
+        <polyline fill="none" id="2D97_913" points="153.204 59.55,153.204 65.2214" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2F2B_167" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 148.45 55.769)">T2</text>
+        <g id="2D98" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="+B_BATTERY" mlx:circuit_no="QkEw" mlx:circuit_terminal_no="QkEwQg==" mlx:coupler_no="T2" mlx:coupler_parts_no="32323-TBA -0030-H1" mlx:harness_connect_name="UkVMQVlfQk9YX1NJREU=" mlx:harness_drawing_no="32410-TGH -A000-" mlx:ident_symbol="BOX_OUT" mlx:name="2D98" mlx:org_coupler_parts_no="32323-TBA -0030-H1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="149.423" cy="62.3857" fill="black" id="2D98_915" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2D99_380" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 148.45 71.6413)">1</text>
+        </g>
+        <g id="2D9C" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:cavity_no="1" mlx:circuit_name="+B_BATTERY" mlx:circuit_no="QkEw" mlx:circuit_terminal_no="QkEwQQ==" mlx:coupler_no="" mlx:coupler_parts_no="DM" mlx:harness_connect_name="K0JfQkFUVEVSWV9TSURF" mlx:harness_drawing_no="" mlx:ident_symbol="BOX_IN" mlx:name="2D9C" mlx:org_coupler_parts_no="DM" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="153.204" cy="62.3857" fill="black" id="2D9C_917" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="2D97_2d0" mlx:component_name="under_h" mlx:name="B_Link" mlx:type="BoxLink" />
+      </g>
+      <g id="6237" mlx:name="6237" mlx:type="MiddleCoupler">
+        <g id="T|65" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|64" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|63" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|62" mlx:name="Tooltip2" mlx:tooltip_text="In-line Connector" mlx:type="Tooltip" />
+        <g id="T|61" mlx:name="Tooltip1" mlx:tooltip_text="C128" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="6237_919c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="903.723" y="192.829" />
+        <polyline fill="none" id="6237_918" points="915.066 196.61,915.066 192.829,903.723 192.829,903.723 196.61" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="6237_919" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="903.723" y="192.829" />
+        <polyline fill="none" id="6237_920" points="912.231 196.61,906.559 196.61" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="9A1_208" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 901.804 198.387)">C128</text>
+        <g id="98C" mlx:cavity_no="6" mlx:circuit_name="PTANK" mlx:circuit_no="RjM0" mlx:circuit_terminal_no="RjM0Qw==" mlx:coupler_no="C128" mlx:coupler_parts_no="91757-T2A -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMSk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="98C" mlx:org_coupler_parts_no="91757-T2A -0030-H1" mlx:pin_group_no="98C_990" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="909.395" cy="192.829" fill="black" id="98C_922" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="98D_347" transform="matrix(7.33505 0 -0 7.33505 910.9 191.758)">6</text>
+        </g>
+        <g id="990" mlx:cavity_no="6" mlx:circuit_name="PTANK" mlx:circuit_no="RjM0" mlx:circuit_terminal_no="RjM0Qg==" mlx:coupler_no="C128" mlx:coupler_parts_no="91767-TW1 -0030-H1" mlx:gender="OSU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMSk=" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="990" mlx:org_coupler_parts_no="91767-TW1 -0030-H1" mlx:pin_group_no="98C_990" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="909.395" cy="196.61" fill="black" id="990_924" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="623E" mlx:name="623E" mlx:type="MiddleCoupler">
+        <g id="T|70" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|69" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|68" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|67" mlx:name="Tooltip2" mlx:tooltip_text="In-line Connector" mlx:type="Tooltip" />
+        <g id="T|66" mlx:name="Tooltip1" mlx:tooltip_text="C122" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="623E_927c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="544.533" y="478.29" />
+        <polyline fill="none" id="623E_925" points="547.369 482.071,553.04 482.071" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <polyline fill="none" id="623E_926" points="544.533 482.071,544.533 478.29,555.876 478.29,555.876 482.071" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="623E_927" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="544.533" y="478.29" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="91F_212" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 542.614 483.848)">C122</text>
+        <g id="A51" mlx:cavity_no="6" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2Qg==" mlx:coupler_no="C122" mlx:coupler_parts_no="91763-T2A -0030-H1" mlx:gender="OSU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMyk=" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="A51" mlx:org_coupler_parts_no="91763-T2A -0030-H1" mlx:pin_group_no="A51_A53" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="550.204" cy="482.071" fill="black" id="A51_929" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+        <g id="A53" mlx:cavity_no="6" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2Rg==" mlx:coupler_no="C122" mlx:coupler_parts_no="91762-T2A -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="A53" mlx:org_coupler_parts_no="91762-T2A -0030-H1" mlx:pin_group_no="A51_A53" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="550.204" cy="478.29" fill="black" id="A53_930" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="910_360" transform="matrix(7.33505 0 -0 7.33505 551.71 477.22)">6</text>
+        </g>
+      </g>
+      <g id="6244" mlx:name="6244" mlx:type="MiddleCoupler">
+        <g id="T|75" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|74" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|73" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|72" mlx:name="Tooltip2" mlx:tooltip_text="In-line Connector" mlx:type="Tooltip" />
+        <g id="T|71" mlx:name="Tooltip1" mlx:tooltip_text="C122" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="6244_933c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="790.295" y="478.29" />
+        <polyline fill="none" id="6244_932" points="801.638 482.071,801.638 478.29,790.295 478.29,790.295 482.071" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="6244_933" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="790.295" y="478.29" />
+        <polyline fill="none" id="6244_934" points="798.802 482.071,793.131 482.071" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="950_216" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 788.376 483.848)">C122</text>
+        <g id="A5A" mlx:cavity_no="11" mlx:circuit_name="VSV" mlx:circuit_no="RjAx" mlx:circuit_terminal_no="RjAxQw==" mlx:coupler_no="C122" mlx:coupler_parts_no="91762-T2A -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="A5A" mlx:org_coupler_parts_no="91762-T2A -0030-H1" mlx:pin_group_no="A5A_A5C" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="795.966" cy="478.29" fill="black" id="A5A_936" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="94B_362" transform="matrix(7.33505 0 -0 7.33505 796.741 477.345)">11</text>
+        </g>
+        <g id="A5C" mlx:cavity_no="11" mlx:circuit_name="VSV" mlx:circuit_no="RjAx" mlx:circuit_terminal_no="RjAxQg==" mlx:coupler_no="C122" mlx:coupler_parts_no="91763-T2A -0030-H1" mlx:gender="OSU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMyk=" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="A5C" mlx:org_coupler_parts_no="91763-T2A -0030-H1" mlx:pin_group_no="A5A_A5C" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="795.966" cy="482.071" fill="black" id="A5C_938" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="624A" mlx:name="624A" mlx:type="MiddleCoupler">
+        <g id="T|80" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|79" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|78" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|77" mlx:name="Tooltip2" mlx:tooltip_text="In-line Connector" mlx:type="Tooltip" />
+        <g id="T|76" mlx:name="Tooltip1" mlx:tooltip_text="C208" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="624A_940c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.342" x="336.581" y="478.29" />
+        <polyline fill="none" id="624A_939" points="336.581 478.29,336.581 482.071,347.923 482.071,347.923 478.29" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="624A_940" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.342" x="336.581" y="478.29" />
+        <polyline fill="none" id="624A_941" points="339.416 478.29,345.088 478.29" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2EE9_220" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 334.662 483.848)">C208</text>
+        <g id="2DD6" mlx:cavity_no="15" mlx:circuit_name="IGPS(ABV)" mlx:circuit_no="RDU2" mlx:circuit_terminal_no="RDU2RQ==" mlx:coupler_no="C208" mlx:coupler_parts_no="91782-T2A -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="Q0FCSU5fSEFSTl8x" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DD6" mlx:org_coupler_parts_no="91782-T2A -0030-H1" mlx:pin_group_no="2DD6_2DDA" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="342.252" cy="482.071" fill="black" id="2DD6_943" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DD7_460" transform="matrix(7.33505 0 -0 7.33505 343.027 490.382)">15</text>
+        </g>
+        <g id="2DDA" mlx:cavity_no="15" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2RQ==" mlx:coupler_no="C208" mlx:coupler_parts_no="91783-T2A -0030-H1" mlx:gender="OSU" mlx:harness_connect_name="RU5HL0VORy1SKDEp" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="2DDA" mlx:org_coupler_parts_no="91783-T2A -0030-H1" mlx:pin_group_no="2DD6_2DDA" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="342.252" cy="478.29" fill="black" id="2DDA_945" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="6250" mlx:name="6250" mlx:type="MiddleCoupler">
+        <g id="T|85" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|84" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|83" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|82" mlx:name="Tooltip2" mlx:tooltip_text="In-line Connector" mlx:type="Tooltip" />
+        <g id="T|81" mlx:name="Tooltip1" mlx:tooltip_text="C208" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="6250_947c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="506.723" y="194.719" />
+        <polyline fill="none" id="6250_946" points="506.723 194.719,506.723 198.5,518.066 198.5,518.066 194.719" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="6250_947" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="506.723" y="194.719" />
+        <polyline fill="none" id="6250_948" points="509.559 194.719,515.231 194.719" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2EEA_224" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 504.804 200.277)">C208</text>
+        <g id="2DDE" mlx:cavity_no="4" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDU3" mlx:circuit_terminal_no="RDU3RQ==" mlx:coupler_no="C208" mlx:coupler_parts_no="91782-T2A -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="Q0FCSU5fSEFSTl8x" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DDE" mlx:org_coupler_parts_no="91782-T2A -0030-H1" mlx:pin_group_no="2DDE_2DE2" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="512.395" cy="198.5" fill="black" id="2DDE_950" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DDF_463" transform="matrix(7.33505 0 -0 7.33505 514.155 206.78)">4</text>
+        </g>
+        <g id="2DE2" mlx:cavity_no="4" mlx:circuit_name="FI_SUB_RLY_OUT" mlx:circuit_no="RDA4" mlx:circuit_terminal_no="RDA4Qw==" mlx:coupler_no="C208" mlx:coupler_parts_no="91783-T2A -0030-H1" mlx:gender="OSU" mlx:harness_connect_name="RU5HL0VORy1SKDEp" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="2DE2" mlx:org_coupler_parts_no="91783-T2A -0030-H1" mlx:pin_group_no="2DDE_2DE2" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="512.395" cy="194.719" fill="black" id="2DE2_952" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="6256" mlx:name="6256" mlx:type="MiddleCoupler">
+        <g id="T|90" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|89" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|88" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|87" mlx:name="Tooltip2" mlx:tooltip_text="In-line Connector" mlx:type="Tooltip" />
+        <g id="T|86" mlx:name="Tooltip1" mlx:tooltip_text="C128" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="6256_954c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="847.009" y="192.829" />
+        <polyline fill="none" id="6256_953" points="858.352 196.61,858.352 192.829,847.009 192.829,847.009 196.61" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="6256_954" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="847.009" y="192.829" />
+        <polyline fill="none" id="6256_955" points="855.516 196.61,849.845 196.61" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="3972_228" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 845.09 198.387)">C128</text>
+        <g id="3899" mlx:cavity_no="3" mlx:circuit_name="V_V_5VG1" mlx:circuit_no="RDEz" mlx:circuit_terminal_no="RDEzQg==" mlx:coupler_no="C128" mlx:coupler_parts_no="91757-T2A -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMSk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="3899" mlx:org_coupler_parts_no="91757-T2A -0030-H1" mlx:pin_group_no="3899_389D" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="852.681" cy="192.829" fill="black" id="3899_957" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="389A_503" transform="matrix(7.33505 0 -0 7.33505 854.141 191.753)">3</text>
+        </g>
+        <g id="389D" mlx:cavity_no="3" mlx:circuit_name="V_V_5VG1" mlx:circuit_no="RDEz" mlx:circuit_terminal_no="RDEzQg==" mlx:coupler_no="C128" mlx:coupler_parts_no="91767-TW1 -0030-H1" mlx:gender="OSU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMSk=" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="389D" mlx:org_coupler_parts_no="91767-TW1 -0030-H1" mlx:pin_group_no="3899_389D" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="852.681" cy="196.61" fill="black" id="389D_959" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="625C" mlx:name="625C" mlx:type="MiddleCoupler">
+        <g id="T|95" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|94" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|93" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|92" mlx:name="Tooltip2" mlx:tooltip_text="In-line Connector" mlx:type="Tooltip" />
+        <g id="T|91" mlx:name="Tooltip1" mlx:tooltip_text="C128" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="625C_961c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="998.247" y="192.829" />
+        <polyline fill="none" id="625C_960" points="1009.59 196.61,1009.59 192.829,998.247 192.829,998.247 196.61" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="625C_961" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="998.247" y="192.829" />
+        <polyline fill="none" id="625C_962" points="1006.75 196.61,1001.08 196.61" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="397E_232" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 996.328 198.387)">C128</text>
+        <g id="38A1" mlx:cavity_no="4" mlx:circuit_name="V_V_GND08" mlx:circuit_no="RDE0" mlx:circuit_terminal_no="RDE0QQ==" mlx:coupler_no="C128" mlx:coupler_parts_no="91757-T2A -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMSk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="38A1" mlx:org_coupler_parts_no="91757-T2A -0030-H1" mlx:pin_group_no="38A1_38A5" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="1003.92" cy="192.829" fill="black" id="38A1_964" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="38A2_506" transform="matrix(7.33505 0 -0 7.33505 1005.68 191.883)">4</text>
+        </g>
+        <g id="38A5" mlx:cavity_no="4" mlx:circuit_name="V_V_GND08" mlx:circuit_no="RDE0" mlx:circuit_terminal_no="RDE0QQ==" mlx:coupler_no="C128" mlx:coupler_parts_no="91767-TW1 -0030-H1" mlx:gender="OSU" mlx:harness_connect_name="RU5HLVIvRkxPT1IoMSk=" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="38A5" mlx:org_coupler_parts_no="91767-TW1 -0030-H1" mlx:pin_group_no="38A1_38A5" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="1003.92" cy="196.61" fill="black" id="38A5_966" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="6228" mlx:name="6228" mlx:type="ShortCoupler">
+        <g id="T|100" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|99" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|98" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|97" mlx:name="Tooltip2" mlx:tooltip_text="Junction Connector" mlx:type="Tooltip" />
+        <g id="T|96" mlx:name="Tooltip1" mlx:tooltip_text="C006" mlx:type="Tooltip" />
+        <rect fill="white" height="30.248" id="6228_968c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.78" x="300.662" y="529.333" />
+        <polyline fill="none" id="6228_967" points="300.662 559.581,304.442 559.581,304.442 529.333,300.662 529.333" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="30.248" id="6228_968" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.78" x="300.662" y="529.333" />
+        <polyline fill="none" id="6228_969" points="300.662 553.91,296.881 553.91,296.881 535.005,300.662 535.005" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <polyline fill="none" id="6228_970" points="300.662 553.91,296.881 553.91,296.881 535.005,300.662 535.005" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <polyline fill="none" id="6228_971" points="300.662 556.745,300.662 532.169" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2EEB_238" transform="matrix(7.33505 0 -0 7.33505 290.284 527.318)">C006</text>
+        <g id="2DE6" mlx:cavity_no="22" mlx:circuit_name="IGPS(ABV)" mlx:circuit_no="RDU2" mlx:circuit_terminal_no="RDU2Qw==" mlx:coupler_no="C006" mlx:coupler_parts_no="91952-R9G -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="Si9DKDEp" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DE6" mlx:org_coupler_parts_no="91952-R9G -0030-H1" mlx:pin_group_no="2DE6_2DE9" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="304.442" cy="553.91" fill="black" id="2DE6_973" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DE7_466" transform="matrix(7.33505 0 -0 7.33505 305.088 563.165)">22</text>
+        </g>
+        <g id="2DE9" mlx:cavity_no="21" mlx:circuit_name="IGPS(ABV)" mlx:circuit_no="RDU2" mlx:circuit_terminal_no="RDU2Rg==" mlx:coupler_no="C006" mlx:coupler_parts_no="91952-R9G -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="Si9DKDEp" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DE9" mlx:org_coupler_parts_no="91952-R9G -0030-H1" mlx:pin_group_no="2DE6_2DE9" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="304.442" cy="535.005" fill="black" id="2DE9_975" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DEA_468" transform="matrix(7.33505 0 -0 7.33505 305.088 544.26)">21</text>
+        </g>
+      </g>
+      <g id="6231" mlx:name="6231" mlx:type="ShortCoupler">
+        <g id="T|105" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|104" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|103" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|102" mlx:name="Tooltip2" mlx:tooltip_text="Junction Connector" mlx:type="Tooltip" />
+        <g id="T|101" mlx:name="Tooltip1" mlx:tooltip_text="C007" mlx:type="Tooltip" />
+        <rect fill="white" height="30.248" id="6231_978c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="470.804" y="302.476" />
+        <polyline fill="none" id="6231_977" points="470.804 332.724,474.585 332.724,474.585 302.476,470.804 302.476" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="30.248" id="6231_978" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="3.781" x="470.804" y="302.476" />
+        <polyline fill="none" id="6231_979" points="470.804 327.052,467.023 327.052,467.023 308.148,470.804 308.148" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <polyline fill="none" id="6231_980" points="470.804 327.052,467.023 327.052,467.023 308.148,470.804 308.148" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <polyline fill="none" id="6231_981" points="470.804 329.888,470.804 305.312" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2EEC_244" transform="matrix(7.33505 0 -0 7.33505 460.424 300.461)">C007</text>
+        <g id="2DF1" mlx:cavity_no="10" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDU3" mlx:circuit_terminal_no="RDU3RA==" mlx:coupler_no="C007" mlx:coupler_parts_no="91951-RTA -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="Si9DKDIp" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DF1" mlx:org_coupler_parts_no="91951-RTA -0030-H1" mlx:pin_group_no="2DF1_2DF4" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="474.585" cy="308.148" fill="black" id="2DF1_983" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DF2_470" transform="matrix(7.33505 0 -0 7.33505 474.415 317.403)">10</text>
+        </g>
+        <g id="2DF4" mlx:cavity_no="12" mlx:circuit_name="IGPS(PCS)" mlx:circuit_no="RDU3" mlx:circuit_terminal_no="RDU3Qw==" mlx:coupler_no="C007" mlx:coupler_parts_no="91951-RTA -0030-H1" mlx:gender="MESU" mlx:harness_connect_name="Si9DKDIp" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DF4" mlx:org_coupler_parts_no="91951-RTA -0030-H1" mlx:pin_group_no="2DF1_2DF4" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="474.585" cy="327.052" fill="black" id="2DF4_985" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DF5_472" transform="matrix(7.33505 0 -0 7.33505 474.415 336.308)">12</text>
+        </g>
+      </g>
+      <g id="2DBE" mlx:name="2DBE" mlx:type="HarnessUnitBalloon" mlx:unit_name="Fan Control Relay" mlx:unit_name_disp="Fan Control Relay">
+        <circle cx="115.395" cy="591.719" fill="LightGrey" id="2DBE_987c" mlx:wire_color_cloned="True" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <circle cx="115.395" cy="591.719" fill="none" id="2DBE_987" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <polyline fill="none" id="2DBE_988" points="111.614 591.719,119.176 591.719" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC2_139" transform="matrix(7.33505 0 -0 7.33505 114.554 604.726)">Fan </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC2_140" transform="matrix(7.33505 0 -0 7.33505 114.885 613.408)">Control </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC2_141" transform="matrix(7.33505 0 -0 7.33505 114.589 621.928)">Relay</text>
+        <g id="2DBF" mlx:cavity_no="5" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2SA==" mlx:coupler_no="B" mlx:coupler_parts_no="91756-TEA -A010-Y1" mlx:harness_connect_name="Ui9CTE9DSyhDKQ==" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="2DBF" mlx:org_coupler_parts_no="91756-TEA -A010-Y1" mlx:pin_name="SUdQUyhMQUYp" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="115.395" cy="587.938" fill="black" id="2DBF_992" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC0_448" transform="matrix(7.33505 0 -0 7.33505 116.86 586.868)">5</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2F89_449" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 110.64 586.993)">B</text>
+        </g>
+      </g>
+      <g id="2DC4" mlx:name="2DC4" mlx:type="HarnessUnitBalloon" mlx:unit_name="A/C Condenser Fan Relay" mlx:unit_name_disp="A/C Condenser Fan Relay">
+        <circle cx="39.7758" cy="591.719" fill="LightGrey" id="2DC4_995c" mlx:wire_color_cloned="True" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <circle cx="39.7758" cy="591.719" fill="none" id="2DC4_995" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <polyline fill="none" id="2DC4_996" points="35.9949 591.719,43.5568 591.719" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC8_144" transform="matrix(7.33505 0 -0 7.33505 39.7758 604.851)">A/C </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC8_145" transform="matrix(7.33505 0 -0 7.33505 39.2655 613.496)">Condenser </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC8_146" transform="matrix(7.33505 0 -0 7.33505 38.9352 622.016)">Fan </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC8_147" transform="matrix(7.33505 0 -0 7.33505 38.9702 630.573)">Relay</text>
+        <g id="2DC5" mlx:cavity_no="5" mlx:circuit_name="IGPS(LAF)" mlx:circuit_no="RDA2" mlx:circuit_terminal_no="RDA2Sg==" mlx:coupler_no="C" mlx:coupler_parts_no="91753-TLA -A010-Y1" mlx:harness_connect_name="Ui9CTE9DSyhGQU4p" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="2DC5" mlx:org_coupler_parts_no="91753-TLA -A010-Y1" mlx:pin_name="SUdQUyhMQUYp" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="39.7758" cy="587.938" fill="black" id="2DC5_1003" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DC6_451" transform="matrix(7.33505 0 -0 7.33505 41.241 586.868)">5</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2F8C_452" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 35.021 586.868)">C</text>
+        </g>
+      </g>
+      <g id="2DCA" mlx:name="2DCA" mlx:type="HarnessUnitBalloon" mlx:unit_name="12 Volt Battery" mlx:unit_name_disp="12 Volt Battery">
+        <circle cx="39.7758" cy="62.3857" fill="LightGrey" id="2DCA_1006c" mlx:wire_color_cloned="True" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <circle cx="39.7758" cy="62.3857" fill="none" id="2DCA_1006" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <polyline fill="none" id="2DCA_1007" points="39.7758 58.6048,39.7758 66.1667" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <g id="2DCB" mlx:cavity_no="1" mlx:circuit_name="+B_BATTERY" mlx:circuit_no="QkEw" mlx:circuit_terminal_no="QkEwQQ==" mlx:coupler_no="(+)" mlx:coupler_parts_no="32412-TBA -0030-H1" mlx:harness_connect_name="QkFUVEVSWQ==" mlx:harness_drawing_no="32410-TGH -A000-" mlx:name="2DCB" mlx:org_coupler_parts_no="32412-TBA -0030-H1" mlx:pin_name="K0JfQkFUVEVSWQ==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="43.5568" cy="62.3857" fill="black" id="2DCB_1008" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DCC_454" transform="matrix(7.33505 0 -0 7.33505 43.3862 71.6413)">1</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2F8D_455" transform="matrix(7.33505 0 -0 7.33505 43.8816 55.503)">(+)</text>
+        </g>
+      </g>
+      <g id="2DD0" mlx:name="2DD0" mlx:type="HarnessUnitBalloon" mlx:unit_name="Starter" mlx:unit_name_disp="Starter">
+        <circle cx="77.5853" cy="138.005" fill="LightGrey" id="2DD0_1011c" mlx:wire_color_cloned="True" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <circle cx="77.5853" cy="138.005" fill="none" id="2DD0_1011" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <polyline fill="none" id="2DD0_1012" points="73.8044 138.005,81.3663 138.005" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DD4_154" transform="matrix(7.33505 0 -0 7.33505 77.125 151.136)">Starter</text>
+        <g id="2DD1" mlx:cavity_no="1" mlx:circuit_name="+B_BATTERY" mlx:circuit_no="QkEw" mlx:circuit_terminal_no="QkEwQw==" mlx:coupler_no="T1" mlx:coupler_parts_no="32419-TV0 -0030-H1" mlx:harness_connect_name="U1RfTVRS" mlx:harness_drawing_no="32410-TGH -A000-" mlx:name="2DD1" mlx:org_coupler_parts_no="32419-TV0 -0030-H1" mlx:pin_name="K0JfQkFUVEVSWQ==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="77.5853" cy="134.224" fill="black" id="2DD1_1015" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DD2_457" transform="matrix(7.33505 0 -0 7.33505 78.36 133.279)">1</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2F8E_458" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 72.8306 133.279)">T1</text>
+        </g>
+      </g>
+    </g>
+    <g id="CommentGroup1" mlx:type="CommentGroup">
+      <g id="A6F" mlx:box_drawing_no="" mlx:connect_name="Ui9NT0QoMik=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="A6F" mlx:org_coupler_parts_no="91753-T2A -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|110" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|109" mlx:name="Tooltip4" mlx:tooltip_text="Relay Circuit Board Connector B (6P)" mlx:type="Tooltip" />
+        <g id="T|108" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|107" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|106" mlx:name="Tooltip1" mlx:tooltip_text="B" mlx:type="Tooltip" />
+        <rect fill="none" height="15.123" id="A6F_1018" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="7.562" x="353.595" y="149.348" />
+        <g id="A73_REF" mlx:link_pin_id="A73" mlx:name="A73_REF" mlx:type="PinLink" />
+      </g>
+      <g id="A70" mlx:box_drawing_no="" mlx:connect_name="Ui9NT0QoMyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="A70" mlx:org_coupler_parts_no="91782-T2A -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|115" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|114" mlx:name="Tooltip4" mlx:tooltip_text="Relay Circuit Board Connector C (18P)" mlx:type="Tooltip" />
+        <g id="T|113" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|112" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|111" mlx:name="Tooltip1" mlx:tooltip_text="C" mlx:type="Tooltip" />
+        <rect fill="none" height="15.124" id="A70_1020" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="7.562" x="353.595" y="206.062" />
+        <g id="A75_REF" mlx:link_pin_id="A75" mlx:name="A75_REF" mlx:type="PinLink" />
+      </g>
+      <g id="A78" mlx:box_drawing_no="" mlx:connect_name="Ui9NT0QoMyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="A78" mlx:org_coupler_parts_no="91782-T2A -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|120" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|119" mlx:name="Tooltip4" mlx:tooltip_text="Relay Circuit Board Connector C (18P)" mlx:type="Tooltip" />
+        <g id="T|118" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|117" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|116" mlx:name="Tooltip1" mlx:tooltip_text="C" mlx:type="Tooltip" />
+        <rect fill="none" height="15.123" id="A78_1022" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="7.562" x="425.433" y="149.348" />
+        <g id="A7A_REF" mlx:link_pin_id="A7A" mlx:name="A7A_REF" mlx:type="PinLink" />
+      </g>
+      <g id="A7B" mlx:box_drawing_no="" mlx:connect_name="Ui9NT0QoMik=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="A7B" mlx:org_coupler_parts_no="91753-T2A -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|125" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|124" mlx:name="Tooltip4" mlx:tooltip_text="Relay Circuit Board Connector B (6P)" mlx:type="Tooltip" />
+        <g id="T|123" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|122" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|121" mlx:name="Tooltip1" mlx:tooltip_text="B" mlx:type="Tooltip" />
+        <rect fill="none" height="15.124" id="A7B_1024" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="7.562" x="425.433" y="243.871" />
+        <g id="A7E_REF" mlx:link_pin_id="A7E" mlx:name="A7E_REF" mlx:type="PinLink" />
+      </g>
+      <g id="A9F" mlx:box_drawing_no="" mlx:connect_name="VkVOVF9TSFVUX1NPTF9WQUxWRQ==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="A9F" mlx:org_coupler_parts_no="91706-PLC -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|130" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|129" mlx:name="Tooltip4" mlx:tooltip_text="EVAP Canister Vent Shut Valve 2P Connector" mlx:type="Tooltip" />
+        <g id="T|128" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|127" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|126" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="A9F_1026" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="542.642" y="621.967" />
+        <g id="A45_REF" mlx:link_pin_id="A45" mlx:name="A45_REF" mlx:type="PinLink" />
+      </g>
+      <g id="AA0" mlx:box_drawing_no="" mlx:connect_name="VkVOVF9TSFVUX1NPTF9WQUxWRQ==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="AA0" mlx:org_coupler_parts_no="91706-PLC -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|135" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|134" mlx:name="Tooltip4" mlx:tooltip_text="EVAP Canister Vent Shut Valve 2P Connector" mlx:type="Tooltip" />
+        <g id="T|133" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|132" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|131" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="AA0_1027" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="542.642" y="686.243" />
+        <g id="A46_REF" mlx:link_pin_id="A46" mlx:name="A46_REF" mlx:type="PinLink" />
+      </g>
+      <g id="2DA0" mlx:box_drawing_no="" mlx:connect_name="QUJWX1NPTA==" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DA0" mlx:org_coupler_parts_no="91702-PNC -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|140" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|139" mlx:name="Tooltip4" mlx:tooltip_text="Turbocharger Bypass Control Solenoid Valve 2P Connector" mlx:type="Tooltip" />
+        <g id="T|138" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|137" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|136" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="2DA0_1028" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="334.69" y="621.967" />
+        <g id="2DA1_REF" mlx:link_pin_id="2DA1" mlx:name="2DA1_REF" mlx:type="PinLink" />
+      </g>
+      <g id="2DAC" mlx:box_drawing_no="" mlx:connect_name="UFVSR19DT05UTF9TT0w=" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="2DAC" mlx:org_coupler_parts_no="91702-R40 -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|145" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|144" mlx:name="Tooltip4" mlx:tooltip_text="EVAP Canister Purge Valve 2P Connector" mlx:type="Tooltip" />
+        <g id="T|143" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|142" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|141" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.561" id="2DAC_1029" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.123" x="618.262" y="395.11" />
+        <g id="2DAD_REF" mlx:link_pin_id="2DAD" mlx:name="2DAD_REF" mlx:type="PinLink" />
+      </g>
+      <g id="2DB2" mlx:box_drawing_no="" mlx:connect_name="RklfRUNVKEFQNF9UQyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="2DB2" mlx:org_coupler_parts_no="91758-SWY -E010-Y1" mlx:type="DirectCoupler">
+        <g id="T|150" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|149" mlx:name="Tooltip4" mlx:tooltip_text="PCM Connector No. 2 (58P)" mlx:type="Tooltip" />
+        <g id="T|148" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|147" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|146" mlx:name="Tooltip1" mlx:tooltip_text="No. 2" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="2DB2_1030" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="561.547" y="100.195" />
+        <g id="2DB9_REF" mlx:link_pin_id="2DB9" mlx:name="2DB9_REF" mlx:type="PinLink" />
+      </g>
+      <g id="3760" mlx:box_drawing_no="" mlx:connect_name="RklfRUNVKEFQNF9UQyk=" mlx:harness_drawing_no="32200-TGG -ZZ00-" mlx:name="3760" mlx:org_coupler_parts_no="91758-SWY -E010-Y1" mlx:type="DirectCoupler">
+        <g id="T|155" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|154" mlx:name="Tooltip4" mlx:tooltip_text="PCM Connector No. 2 (58P)" mlx:type="Tooltip" />
+        <g id="T|153" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|152" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|151" mlx:name="Tooltip1" mlx:tooltip_text="No. 2" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="3760_1032" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="223.076" x="788.404" y="100.195" />
+        <g id="2DB3_REF" mlx:link_pin_id="2DB3" mlx:name="2DB3_REF" mlx:type="PinLink" />
+        <g id="2DB6_REF" mlx:link_pin_id="2DB6" mlx:name="2DB6_REF" mlx:type="PinLink" />
+        <g id="3888_REF" mlx:link_pin_id="3888" mlx:name="3888_REF" mlx:type="PinLink" />
+        <g id="388B_REF" mlx:link_pin_id="388B" mlx:name="388B_REF" mlx:type="PinLink" />
+      </g>
+      <g id="3890" mlx:box_drawing_no="" mlx:connect_name="VkVOVF9QL1NFTlNPUg==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="3890" mlx:org_coupler_parts_no="91703-PHM -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|160" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|159" mlx:name="Tooltip4" mlx:tooltip_text="FTP Sensor 3P Connector" mlx:type="Tooltip" />
+        <g id="T|158" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|157" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|156" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="3890_1034" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="71.838" x="845.119" y="281.681" />
+        <g id="8CF_REF" mlx:link_pin_id="8CF" mlx:name="8CF_REF" mlx:type="PinLink" />
+        <g id="3891_REF" mlx:link_pin_id="3891" mlx:name="3891_REF" mlx:type="PinLink" />
+      </g>
+      <g id="4116" mlx:box_drawing_no="" mlx:connect_name="VkVOVF9QL1NFTlNPUg==" mlx:harness_drawing_no="32107-TGG -ZZ00-" mlx:name="4116" mlx:org_coupler_parts_no="91703-PHM -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|165" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|164" mlx:name="Tooltip4" mlx:tooltip_text="FTP Sensor 3P Connector" mlx:type="Tooltip" />
+        <g id="T|163" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|162" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|161" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="4116_1035" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="901.833" y="327.052" />
+        <g id="3894_REF" mlx:link_pin_id="3894" mlx:name="3894_REF" mlx:type="PinLink" />
+      </g>
+      <g id="427C" mlx:box_drawing_no="" mlx:connect_name="QUJWX1NPTA==" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="427C" mlx:org_coupler_parts_no="91702-PNC -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|170" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|169" mlx:name="Tooltip4" mlx:tooltip_text="Turbocharger Bypass Control Solenoid Valve 2P Connector" mlx:type="Tooltip" />
+        <g id="T|168" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|167" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|166" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="427C_1036" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="334.69" y="686.243" />
+        <g id="427D_REF" mlx:link_pin_id="427D" mlx:name="427D_REF" mlx:type="PinLink" />
+      </g>
+      <g id="4282" mlx:box_drawing_no="" mlx:connect_name="RkktRUNV" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="4282" mlx:org_coupler_parts_no="91796-RL0 -G010-Y3" mlx:type="DirectCoupler">
+        <g id="T|175" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|174" mlx:name="Tooltip4" mlx:tooltip_text="PCM Connector No. 1 (96P)" mlx:type="Tooltip" />
+        <g id="T|173" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|172" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|171" mlx:name="Tooltip1" mlx:tooltip_text="No. 1" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="4282_1037" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.12" x="1053.07" y="100.195" />
+        <g id="4283_REF" mlx:link_pin_id="4283" mlx:name="4283_REF" mlx:type="PinLink" />
+      </g>
+      <g id="4464" mlx:box_drawing_no="" mlx:connect_name="RkktRUNV" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="4464" mlx:org_coupler_parts_no="91796-RL0 -G010-Y3" mlx:type="DirectCoupler">
+        <g id="T|180" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|179" mlx:name="Tooltip4" mlx:tooltip_text="PCM Connector No. 1 (96P)" mlx:type="Tooltip" />
+        <g id="T|178" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|177" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|176" mlx:name="Tooltip1" mlx:tooltip_text="No. 1" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="4464_1039" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="731.69" y="100.195" />
+        <g id="4465_REF" mlx:link_pin_id="4465" mlx:name="4465_REF" mlx:type="PinLink" />
+      </g>
+      <g id="446A" mlx:box_drawing_no="" mlx:connect_name="UFVSR19DT05UTF9TT0w=" mlx:harness_drawing_no="32110-5BF -ZZ00-" mlx:name="446A" mlx:org_coupler_parts_no="91702-R40 -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|185" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|184" mlx:name="Tooltip4" mlx:tooltip_text="EVAP Canister Purge Valve 2P Connector" mlx:type="Tooltip" />
+        <g id="T|183" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|182" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|181" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="446A_1041" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.123" x="618.262" y="459.386" />
+        <g id="446B_REF" mlx:link_pin_id="446B" mlx:name="446B_REF" mlx:type="PinLink" />
+      </g>
+      <g id="2DC9" mlx:name="2DC9" mlx:type="UnitFrame" mlx:unit_name="12 Volt Battery" mlx:unit_name_disp="12 Volt Battery">
+        <g id="T|190" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|189" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|188" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|187" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|186" mlx:name="Tooltip1" mlx:tooltip_text="12 Volt Battery" mlx:type="Tooltip" />
+        <g fill="none" id="4741_DRAWING_GROUP1" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <circle cx="20.871" cy="62.3857" id="2DC9_1042" r="18.9284" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2DC9_1043" points="5.74723 62.3857,35.9949 62.3857" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2DC9_1044" points="20.871 77.5095,20.871 47.2619" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DCE_8" transform="matrix(7.33505 0 -0 7.33505 0.850512 96.2174)">12 Volt </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DCE_9" transform="matrix(7.33505 0 -0 7.33505 1.21576 104.766)">Battery</text>
+      </g>
+      <g id="A31" mlx:box_drawing_no="38250-TBA -ZY00-" mlx:box_name="Under-Hood Fuse/Relay Box" mlx:box_name_disp="Under-Hood Fuse/Relay Box" mlx:name="A31" mlx:type="BoxFrame">
+        <g id="T|195" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|194" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|193" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|192" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|191" mlx:name="Tooltip1" mlx:tooltip_text="Under-Hood Fuse/Relay Box" mlx:type="Tooltip" />
+        <rect fill="Grey" fill-opacity="0.3" height="340.286" id="A31_1047c" mlx:wire_color_cloned="True" pointer-events="stroke" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="132.334" x="153.204" y="43.481" />
+        <rect fill="none" height="340.286" id="A31_1047" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="132.334" x="153.204" y="43.481" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8B7_2" transform="matrix(7.33505 0 -0 7.33505 152.399 392.992)">Under-Hood </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8B7_3" transform="matrix(7.33505 0 -0 7.33505 152.364 401.675)">Fuse/Relay </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="8B7_4" transform="matrix(7.33505 0 -0 7.33505 152.454 410.195)">Box</text>
+      </g>
+      <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="52F2_1054" transform="matrix(5.67143 0 -0 5.67143 931.752 52.8366)">5V</text>
+      <polyline fill="none" id="52F2_1055" points="909.395 71.8381,928.3 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1056" points="909.395 100.195,909.395 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1057" points="928.3 66.1667,926.409 65.694" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1058" points="926.409 65.694,930.19 64.7488" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1059" points="930.19 64.7488,926.409 63.8036" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1060" points="926.409 63.8036,930.19 62.8583" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1061" points="930.19 62.8583,926.409 61.9131" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1062" points="926.409 61.9131,930.19 60.9679" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1063" points="930.19 60.9679,928.3 60.4952" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1064" points="928.3 60.4952,928.3 56.7143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M909.395,54.8238  A1.25055,1.25055 0 0,0 911.561,54.8238 " fill="none" id="52F2_1065" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M909.395,54.8238  A1.25055,1.25055 0 0,0 907.229,54.8238 " fill="none" id="52F2_1066" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1067" points="924.519 54.8238,926.409 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1068" points="930.19 54.8238,932.081 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <circle cx="909.395" cy="71.8381" fill="rgb(0,0,0)" id="52F2_1069" r="1.89048" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="52F2_1070" points="928.3 71.8381,928.3 66.1667" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <circle cx="928.3" cy="54.8238" fill="none" id="52F2_1071" r="1.89048" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1072" points="795.966 100.195,795.966 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="5226_1073" transform="matrix(5.67143 0 -0 5.67143 808.337 52.9333)">12V</text>
+      <polyline fill="none" id="5226_1074" points="814.871 71.8381,795.966 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1075" points="805.419 79.4,805.419 56.7143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1076" points="805.419 79.4,811.09 81.2905" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1077" points="811.09 79.4,811.09 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1078" points="811.09 85.0714,805.419 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1079" points="805.419 86.9619,805.419 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1080" points="801.638 94.5238,809.2 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1081" points="807.309 94.5238,806.364 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1082" points="805.419 94.5238,804.473 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1083" points="803.528 94.5238,802.583 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M814.871,83.181  A1.25055,1.25055 0 0,0 814.871,85.347 " fill="none" id="5226_1084" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M814.871,83.181  A1.25055,1.25055 0 0,0 814.871,81.0149 " fill="none" id="5226_1085" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1086" points="811.09 83.181,814.871 83.181" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1087" points="809.2 54.8238,807.309 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5226_1088" points="803.528 54.8238,801.638 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <circle cx="805.419" cy="71.8381" fill="rgb(0,0,0)" id="5226_1089" r="1.89048" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="5226_1090" points="808.047 87.082,807.45 85.2886,805.419 86.9619,808.047 87.082" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <rect fill="rgb(0,0,0)" height="3.781" id="5226_1091" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" width="3.781" x="803.528" y="52.9333" />
+      <polyline fill="none" id="5226_1092" points="807.602 60.4952,803.236 60.4952" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="5226_1093" points="807.602 64.2762,803.236 64.2762,805.419 60.4952,807.602 64.2762" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <rect fill="none" height="15.1238" id="5226_1094" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" width="15.124" x="814.871" y="64.2762" />
+      <polyline fill="none" id="51B1_1095" points="550.204 71.8381,544.533 73.7286" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1096" points="544.533 71.8381,544.533 79.4" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1097" points="544.533 77.5095,550.204 79.4" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1098" points="550.204 79.4,550.204 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1099" points="546.423 86.9619,553.985 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1100" points="552.095 86.9619,551.15 88.8524" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1101" points="550.204 86.9619,549.259 88.8524" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1102" points="548.314 86.9619,547.369 88.8524" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M540.752,75.619  A1.25055,1.25055 0 0,0 540.752,77.7851 " fill="none" id="51B1_1103" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M540.752,75.619  A1.25055,1.25055 0 0,0 540.752,73.453 " fill="none" id="51B1_1104" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1105" points="544.533 75.619,540.752 75.619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="51B1_1106" points="547.576 79.5201,548.174 77.7267,550.204 79.4,547.576 79.5201" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1107" points="569.109 71.8381,569.109 100.195" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="51B1_1108" points="550.204 71.8381,569.109 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1109" points="852.681 81.2905,847.009 79.4" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1110" points="847.009 81.2905,847.009 73.7286" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1111" points="852.681 73.7286,847.009 75.619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M843.228,77.5095  A1.25055,1.25055 0 0,0 843.228,79.6755 " fill="none" id="5282_1112" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M843.228,77.5095  A1.25055,1.25055 0 0,0 843.228,75.3435 " fill="none" id="5282_1113" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1114" points="847.009 77.5095,843.228 77.5095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="5282_1115" points="849.638 75.7392,849.04 73.9457,847.009 75.619,849.638 75.7392" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1116" points="852.681 73.7286,852.681 64.2762" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1117" points="852.681 81.2905,852.681 100.195" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1118" points="848.9 62.3857,850.79 62.3857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5282_1119" points="854.571 62.3857,856.462 62.3857" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="5282_1120" transform="matrix(5.67143 0 -0 5.67143 856.133 60.3985)">5V</text>
+      <circle cx="852.681" cy="62.3857" fill="none" id="5282_1121" r="1.89048" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="578B_1122" points="985.014 71.8381,985.014 92.6333" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="578B_1123" points="981.233 92.6333,988.795 92.6333" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="578B_1124" points="986.904 92.6333,985.959 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="578B_1125" points="985.014 92.6333,984.069 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="578B_1126" points="983.123 92.6333,982.178 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="578B_1127" points="1003.92 71.8381,1003.92 100.195" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="578B_1128" points="985.014 71.8381,1003.92 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1129" points="1060.63 100.195,1060.63 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="5800_1130" text-anchor="end" transform="matrix(5.67143 0 -0 5.67143 1047.37 52.9333)">12V</text>
+      <polyline fill="none" id="5800_1131" points="1041.73 71.8381,1060.63 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1132" points="1051.18 79.4,1051.18 56.7143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1133" points="1051.18 79.4,1045.51 81.2905" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1134" points="1045.51 79.4,1045.51 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1135" points="1045.51 85.0714,1051.18 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1136" points="1051.18 86.9619,1051.18 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1137" points="1047.4 94.5238,1054.96 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1138" points="1053.07 94.5238,1052.13 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1139" points="1051.18 94.5238,1050.24 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1140" points="1049.29 94.5238,1048.34 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M1041.73,83.181  A1.25055,1.25055 0 0,0 1041.73,85.347 " fill="none" id="5800_1141" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M1041.73,83.181  A1.25055,1.25055 0 0,0 1041.73,81.0149 " fill="none" id="5800_1142" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1143" points="1045.51 83.181,1041.73 83.181" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1144" points="1047.4 54.8238,1049.29 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="5800_1145" points="1053.07 54.8238,1054.96 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <circle cx="1051.18" cy="71.8381" fill="rgb(0,0,0)" id="5800_1146" r="1.89048" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="5800_1147" points="1048.55 87.082,1049.15 85.2886,1051.18 86.9619,1048.55 87.082" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <rect fill="rgb(0,0,0)" height="3.781" id="5800_1148" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" width="3.78" x="1049.29" y="52.9333" />
+      <polyline fill="none" id="5800_1149" points="1049 60.4952,1053.36 60.4952" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="5800_1150" points="1049 64.2762,1053.36 64.2762,1051.18 60.4952,1049 64.2762" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <rect fill="none" height="15.1238" id="5800_1151" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" width="15.13" x="1026.6" y="64.2762" />
+      <polyline fill="none" id="58B1_1152" points="739.252 100.195,739.252 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="58B1_1153" text-anchor="end" transform="matrix(5.67143 0 -0 5.67143 725.99 52.9333)">12V</text>
+      <polyline fill="none" id="58B1_1154" points="720.347 71.8381,739.252 71.8381" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1155" points="729.8 79.4,729.8 56.7143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1156" points="729.8 79.4,724.128 81.2905" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1157" points="724.128 79.4,724.128 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1158" points="724.128 85.0714,729.8 86.9619" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1159" points="729.8 86.9619,729.8 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1160" points="726.019 94.5238,733.581 94.5238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1161" points="731.69 94.5238,730.745 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1162" points="729.8 94.5238,728.854 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1163" points="727.909 94.5238,726.964 96.4143" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M720.347,83.181  A1.25055,1.25055 0 0,0 720.347,85.347 " fill="none" id="58B1_1164" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <path d="M720.347,83.181  A1.25055,1.25055 0 0,0 720.347,81.0149 " fill="none" id="58B1_1165" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1166" points="724.128 83.181,720.347 83.181" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1167" points="726.019 54.8238,727.909 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polyline fill="none" id="58B1_1168" points="731.69 54.8238,733.581 54.8238" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <circle cx="729.8" cy="71.8381" fill="rgb(0,0,0)" id="58B1_1169" r="1.89048" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="58B1_1170" points="727.171 87.082,727.769 85.2886,729.8 86.9619,727.171 87.082" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <rect fill="rgb(0,0,0)" height="3.781" id="58B1_1171" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" width="3.781" x="727.909" y="52.9333" />
+      <polyline fill="none" id="58B1_1172" points="727.617 60.4952,731.983 60.4952" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <polygon fill="rgb(0,0,0)" id="58B1_1173" points="727.617 64.2762,731.983 64.2762,729.8 60.4952,727.617 64.2762" stroke="none" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+      <rect fill="none" height="15.1238" id="58B1_1174" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" width="15.124" x="705.223" y="64.2762" />
+    </g>
+  </g>
+  <g id="gTp" opacity="1" pointer-events="all" style="visibility: visible;">
+    <rect id="Tp" x="150" y="150" width="0px" height="0px" rx="4" ry="4" fill="#AED0EA" stroke="#000000" />
+    <text id="Tptext" x="150" y="150" font-size="10pt">
+      <tspan id="Tpspan0" x="150" y="150" fill="#000000" />
+    </text>
+  </g>
+</svg>

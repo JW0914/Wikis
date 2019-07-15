@@ -51,12 +51,14 @@
     * Diagrams for 2nd Accessory, 2nd Ignition, Starter Kill, etc.
   * **[Schematics](FK8%20CTR/Electrical/Schematics)**
     * [Audio](FK8%20CTR/Electrical/Schematics/Audio)
+    * [Body](FK8%20CTR/Electrical/Schematics/Body)
     * [Data](FK8%20CTR/Electrical/Schematics/Data)
     * [ECU](FK8%20CTR/Electrical/Schematics/ECU)
     * [Grounds](FK8%20CTR/Electrical/Schematics/Grounds)
     * [Keyless](FK8%20CTR/Electrical/Schematics/Keyless)
     * [Lighting](FK8%20CTR/Electrical/Schematics/Lighting)
     * [Power](FK8%20CTR/Electrical/Schematics/Power)
+    * [SVG](FK8%20CTR/Electrical/Schematics/SVG)
 * **[Hondata](FK8%20CTR/Hondata)**
   * [Hondata Mobile on 10th Gen Civics](FK8%20CTR/Hondata/Hondata%20Mobile%20on%2010th%20Gen%20Civics.pdf)
 * **[Install Manuals (OEM)](FK8%20CTR/Install%20Manuals%20(OEM))**
