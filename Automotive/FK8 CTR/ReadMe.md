@@ -35,8 +35,8 @@
     * [Grounds](Electrical/Grounds.xlsx)
     * [Keyless Access System](Electrical/Keyless%20Access%20System.xlsx)
     * [Lights](Electrical/Lights.xlsx)
-    * [Lights: Exterior](Electrical/Lights%20Exterior.xlsx)
-    * [Lights: Interior](Electrical/Lights%20Interior.xlsx)
+    * [Lights: Exterior](Electrical/Lights%20(Exterior).xlsx)
+    * [Lights: Interior](Electrical/Lights%20(Interior).xlsx)
   * **[Diodes](Electrical/Diodes)**
     * Blocking Diodes, Isolating Door Triggers & Sensors
   * **[FuseBox](Electrical/FuseBox)**

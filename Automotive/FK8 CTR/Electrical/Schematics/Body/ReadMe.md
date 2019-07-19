@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-* Adaptive Damper **[**[PDF](Adaptive%20Damper.pdf) **|** [SVG](Adaptive%20Damper%20SVG.svg)**]**
+* Adaptive Damper **[**[PDF](Adaptive%20Damper.pdf) **|** [SVG](Adaptive%20Damper.svg)**]**
 * Cable Reel **[**[PDF](Cable%20Reel%20%28Clock%20Spring%29.pdf) **|** [SVG](Cable%20Reel%20%28Clock%20Spring%29.svg)**]**
 * Climate Control **[**[PDF](Climate%20Control.pdf) **|** [SVG](Climate%20Control.svg)**]**
 * Cruise Control **[**[PDF](Cruise%20Control.pdf) **|** [SVG](Cruise%20Control.svg)**]**

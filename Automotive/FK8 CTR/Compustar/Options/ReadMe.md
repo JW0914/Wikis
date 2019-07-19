@@ -11,13 +11,13 @@
 * [Secure AUX Setup](Secure%20AUX%20Setup.pdf)
   * Allows preventing accidental activation of the AUX outputs by requiring an additional step when using any 4-button or 2-way LCD remote
 * Starting:
-  * [24hrs w/ Cold Start](Starting%20%2824hrs%20w%20Cold%20Start%20%29.pdf)
+  * [24hrs w/ Cold Start](Starting%20(24hrs%20w%20Cold%20Start).pdf)
     * Monitors the temperature for 24 hours (cyclical) after timer mode is set and auto starts vehicle if at or below preset cold start temperature
   * [Temperature](Starting%20%28Temperature%29.pdf)
     * Allows auto starting vehicle on a 3hr or 1.5hr cycle if thermistor is above/below programmed temperature thresholds
-  * [Timed Start](Starting%20%28Timed Start%29.pdf)
+  * [Timed Start](Starting%20(Timed%20Start).pdf)
     * _(2-way LCD remote required)_ Allows setting a predetermined time to remote start on the 2-way LCD remote
-  * [Timer](Starting %20%28Timer%29.pdf)
+  * [Timer](Starting%20(Timer).pdf)
     * Allows auto starting vehicle on a 3hr or 1.5hr cycle, running for 4 minutes
   * [Voltage](Starting%20%28Voltage%29.pdf)
     * Allows auto starting vehicle if vehicle's battery drops to 11.7v or 11.3v

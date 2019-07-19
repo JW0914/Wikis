@@ -25,9 +25,7 @@
 * **[Diagnostics](FK8%20CTR/Diagnostics)**
   * Various diagnostic systems' info, incl. self-diagnosis, MIL & DLC schematics
 * **[Electrical](FK8%20CTR/Electrical)**
-  * |  **Custom Pin-Out Spreadsheets**  |
-    | - |
-    |  _View in Landscape Mode only_  |
+  * Custom Pin-Out Spreadsheets (_View in Landscape Mode only_)
   * [Diodes](FK8%20CTR/Electrical/Diodes)
   * [FuseBox](FK8%20CTR/Electrical/FuseBox)
   * [Relays](FK8%20CTR/Electrical/Relays)
