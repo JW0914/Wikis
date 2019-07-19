@@ -9,11 +9,19 @@
 * **[CompuStar](Compustar)**
   * [Alarm & Remote Start Install Guide](Compustar/Alarm%20%26%20Remote%20Start%20Install.pdf)
     * Customized FK8 install instructions for CompuStar's Alarm & Remote Start
-  * [Manuals](Compustar/Manuals)
+  * [Cheat Sheet](Compustar/Cheat%20Sheet.pdf)
+    * Quick reference for common procedures
+  * [DAS Programming](Compustar/DAS%20Programming.pdf)
+    * How to program the DAS I / II
+  * **[Manuals](Compustar/Manuals)**
     * v3.51: Install Manual & Programming Option Tables
-  * [Relays](Compustar/Relays)
+  * **[Options](Compustar/Options)**
+    * How to enter / activate different options via remote or Option Programming
+  * **[Relays](Compustar/Relays)**
     * Diagrams for 2nd Accessory, 2nd Ignition, Starter Kill, etc.
-  * [Schematics](Compustar/Scheamtics)
+  * [Reservation Mode](Compustar/Reservation%20Mode.pdf)
+    * How to enter Reservation Mode _(allows MT vehicles to remote start)_
+  * **[Schematics](Compustar/Schematics)**
     * OEM Honda schematics of the circuits required to install
 * **[Diagnostics](Diagnostics)**
   * Various diagnostic systems' info, incl. self-diagnosis, MIL & DLC schematics
@@ -29,11 +37,11 @@
     * [Lights](Electrical/Lights.xlsx)
     * [Lights: Exterior](Electrical/Lights%20Exterior.xlsx)
     * [Lights: Interior](Electrical/Lights%20Interior.xlsx)
-  * [Diodes](Electrical/Diodes)
+  * **[Diodes](Electrical/Diodes)**
     * Blocking Diodes, Isolating Door Triggers & Sensors
-  * [FuseBox](Electrical/FuseBox)
+  * **[FuseBox](Electrical/FuseBox)**
     * Fuse Lists, Relay Circuit Board info, UH & UD Fuse Boxes
-  * [Relays](Electrical/Relays)
+  * **[Relays](Electrical/Relays)**
     * Diagrams for 2nd Accessory, 2nd Ignition, Starter Kill, etc.
   * **[Schematics](Electrical/Schematics)**
     * [Audio](Electrical/Schematics/Audio)
@@ -47,7 +55,8 @@
     * [SVG](Electrical/Schematics/SVG)
 * **[Hondata](Hondata)**
   * [Hondata Mobile on 10th Gen Civics](Hondata/Hondata%20Mobile%20on%2010th%20Gen%20Civics.pdf)
-* **[Install Manuals (OEM)](Install%20Manuals%20(OEM))**
+    * How to root and install Hondata Mobile on headunit
+* **[Install Manuals (OEM)](Install%20Manuals%20%28OEM%29)**
   * Various OEM Accessory Install Manuals
 * **[Specs](Specs)**
 

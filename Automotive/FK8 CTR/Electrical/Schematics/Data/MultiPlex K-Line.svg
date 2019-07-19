@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg font-family="Arial" height="794.0" viewBox="0 0 1123.0 794.0" width="1123.0" preserveAspectRatio="xMinYMin meet" zoomAndPan="disable" id="" onload="loadEWD();" xmlns="http://www.w3.org/2000/svg" xmlns:mlx="http://schemas.honda.com/lc-extensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <script type="text/javascript"><![CDATA[
+            //
+                /************************************************************************
+                 *
+                 *    Description:  EWD Interface
+                 *
+                 *    Author:       Xtreme Technical Solutions (Daniel Arreola)
+                 *                  daniel_arreola@xtremesolutions.com
+                 *
+                 *    History:      24-July-2012 Initial development
+                ************************************************************************/
+
+                "use strict";
+                function loadEWD(){
+                    try{
+                        top.ewd.mainSVG = new top.SVG.Diagram(document.rootElement);
+                        top.ewd.mainSVG.setViewBox();
+                        top.ewd.mainSVG.initDiagram();
+                        top.onResize();
+                        top.ewd.mainSVG.layout(top.ewd.mainSVG.CTM());
+                        if(top.ewd.initial_node === null)
+                            top.ewd.setTabs(0, true);
+                        else{
+                            top.ewd.mainSVG.activateNode(top.ewd.initial_node, true);
+                            top.ewd.mainSVG.center();
+                        }
+                        top.g_layout.options.view_map.Diagram.complete();
+                    }
+                    catch(ex){
+                        if(window.console)
+                            console.log("loadEWD: " + ex.message + "[" + ex.number + "]");
+                    }
+                }
+            //
+            ]]></script>
+  <defs />
+  <rect id="canvas" x="-5000" y="-5000" width="10000px" height="10000px" fill="none" pointer-events="visible" />
+  <mlx:info>
+    <mlx:diagram_name>K-Line Communication Line</mlx:diagram_name>
+    <mlx:component_name>k_line</mlx:component_name>
+    <mlx:sheet_name>Sheet2</mlx:sheet_name>
+    <mlx:diagram_type>System Circuit</mlx:diagram_type>
+    <mlx:create_timestamp>2017-05-18 17-36-24</mlx:create_timestamp>
+    <mlx:update_timestamp>2017-05-18 17-36-24</mlx:update_timestamp>
+  </mlx:info>
+  <g id="layer1">
+    <g id="NetGroup1" mlx:type="NetGroup">
+      <g id="3A6D" mlx:circuit_name="K-LINE" mlx:harness_drawing_no="32117-TGG -ZZ00-" mlx:harness_mark="BD" mlx:harness_name="Dashboard Wire Harness" mlx:name="3A6D" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="SB">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="33EE_22" transform="matrix(4.53714 0 -0 4.53714 292.622 193.648)">[BD]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="33ED_23" transform="matrix(4.53714 0 -0 4.53714 292.588 200.39)">LT_BLU</text>
+        <g id="3A66" mlx:name="3A66" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="3A66_38" points="410.262 202.281,410.262 119.1" stroke="rgb(135,206,235)" stroke-dasharray="1 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="3A67" mlx:name="3A67" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="3A67_40" points="47.2905 202.281,47.2905 119.1" stroke="rgb(135,206,235)" stroke-dasharray="1 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="3A68" mlx:name="3A68" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="3A68_42" points="47.2905 202.281,228.776 202.281" stroke="rgb(135,206,235)" stroke-dasharray="1 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="3A69" mlx:name="3A69" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="3A69_46" points="228.776 202.281,410.262 202.281" stroke="rgb(135,206,235)" stroke-dasharray="1 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="3A6A" mlx:name="3A6A" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="SB">
+          <polyline fill="none" id="3A6A_49" points="228.776 202.281,228.776 119.1" stroke="rgb(135,206,235)" stroke-dasharray="1 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+        <g id="3A68_45_entity" mlx:link_draw_id="3A68_45_reference" mlx:type="DrawEntity">
+          <circle cx="228.776" cy="202.281" fill="rgb(135,206,235)" id="3A68_45" r="2.0" stroke="rgb(135,206,235)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        </g>
+      </g>
+    </g>
+    <g id="InstanceGroup1" mlx:type="InstanceGroup">
+      <g id="1B34" mlx:name="1B34" mlx:type="Unit" mlx:unit_link_info="U|Body Control Module" mlx:unit_name="Body Control Module" mlx:unit_parts_no="" mlx:unit_search_info="Body Control Module">
+        <g id="T|5" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|4" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|3" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|2" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|1" mlx:name="Tooltip1" mlx:tooltip_text="Body Control Module" mlx:type="Tooltip" />
+        <rect fill="LightGrey" height="90.7428" id="1B34_51c" mlx:wire_color_cloned="True" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="90.7428" x="1.91905" y="20.7952" />
+        <rect fill="none" height="90.7428" id="1B34_51" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="90.7428" x="1.91905" y="20.7952" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B35_2" transform="matrix(7.33505 0 -0 7.33505 3.05901 30.0208)">Body </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B35_3" transform="matrix(7.33505 0 -0 7.33505 3.29917 38.7034)">Control </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B35_4" transform="matrix(7.33505 0 -0 7.33505 3.049 47.2234)">Module</text>
+        <g id="1B3F" mlx:box_drawing_no="" mlx:cavity_no="36" mlx:circuit_name="K-LINE" mlx:circuit_no="RjI5" mlx:circuit_terminal_no="RjI5Qw==" mlx:coupler_no="D" mlx:coupler_parts_no="90253-SFE -0030-H1" mlx:harness_connect_name="QkNNKDQp" mlx:harness_drawing_no="32117-TGG -ZZ00-" mlx:link_pin_id="1B3F_REF" mlx:name="1B3F" mlx:org_coupler_parts_no="90253-SFE -0030-H1" mlx:pin_name="S19MSU5F" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="47.2905" cy="119.1" fill="black" id="1B3F_56" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B5E_31" transform="matrix(7.33505 0 -0 7.33505 48.7507 127.41)">36</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B77_12" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 38.7548 127.38)">D</text>
+        </g>
+      </g>
+      <g id="1C09" mlx:name="1C09" mlx:type="Unit" mlx:unit_link_info="U|Audio-Navigation Unit" mlx:unit_name="Audio-Navigation Unit" mlx:unit_parts_no="" mlx:unit_search_info="Audio-Navigation Unit">
+        <g id="T|10" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|9" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|8" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|7" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|6" mlx:name="Tooltip1" mlx:tooltip_text="Audio-Navigation Unit" mlx:type="Tooltip" />
+        <rect fill="LightGrey" height="90.7428" id="1C09_58c" mlx:wire_color_cloned="True" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="90.743" x="183.405" y="20.7952" />
+        <rect fill="none" height="90.7428" id="1C09_58" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="90.743" x="183.405" y="20.7952" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C0E_7" transform="matrix(7.33505 0 -0 7.33505 185.295 30.0208)">Audio-</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C0E_8" transform="matrix(7.33505 0 -0 7.33505 184.515 38.5783)">Navigation </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C0E_9" transform="matrix(7.33505 0 -0 7.33505 184.49 47.1359)">Unit</text>
+        <g id="1C0B" mlx:box_drawing_no="" mlx:cavity_no="12" mlx:circuit_name="K-LINE" mlx:circuit_no="RjI5" mlx:circuit_terminal_no="RjI5Qlo=" mlx:coupler_no="A" mlx:coupler_parts_no="91774-T6L -0030-H1" mlx:harness_connect_name="QVVESU9fTkFWSShNQUlOKSgxKQ==" mlx:harness_drawing_no="32117-TGG -ZZ00-" mlx:link_pin_id="1C0B_REF" mlx:name="1C0B" mlx:org_coupler_parts_no="91774-T6L -0030-H1" mlx:pin_name="S19MSU5F" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="228.776" cy="119.1" fill="black" id="1C0B_63" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C0C_35" transform="matrix(7.33505 0 -0 7.33505 229.551 127.41)">12</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C1C_14" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 220.24 127.38)">A</text>
+        </g>
+      </g>
+      <g id="1B3A" mlx:name="1B3A" mlx:type="YopCoupler" mlx:yop_coupler_name="Data Link Connector (DLC)">
+        <g id="T|15" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|14" mlx:name="Tooltip4" mlx:tooltip_text="Data Link Connector (DLC)" mlx:type="Tooltip" />
+        <g id="T|13" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|12" mlx:name="Tooltip2" mlx:tooltip_text="YOP Connector (Optional Connector)" mlx:type="Tooltip" />
+        <g id="T|11" mlx:name="Tooltip1" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <rect fill="white" height="3.781" id="1B3A_66c" mlx:wire_color_cloned="True" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="404.59" y="115.319" />
+        <polyline fill="none" id="1B3A_65" points="404.59 115.319,404.59 119.1,415.933 119.1,415.933 115.319" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" />
+        <rect fill="none" height="3.781" id="1B3A_66" stroke="rgba(0,0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="11.343" x="404.59" y="115.319" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B3C_17" transform="matrix(7.33505 0 -0 7.33505 422.705 122.654)">Data Link </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B3C_18" transform="matrix(7.33505 0 -0 7.33505 422.985 131.337)">Connector </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B3C_19" transform="matrix(7.33505 0 -0 7.33505 422.875 139.982)">(DLC)</text>
+        <g id="1B64" mlx:box_drawing_no="" mlx:cavity_no="7" mlx:circuit_name="K-LINE" mlx:circuit_no="RjI5" mlx:circuit_terminal_no="RjI5Rg==" mlx:coupler_no="" mlx:coupler_parts_no="91772-TG7 -0030-H1" mlx:harness_connect_name="T0JELTI=" mlx:harness_drawing_no="32117-TGG -ZZ00-" mlx:name="1B64" mlx:org_coupler_parts_no="91772-TG7 -0030-H1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="410.262" cy="119.1" fill="black" id="1B64_72" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B65_33" transform="matrix(7.33505 0 -0 7.33505 411.667 127.38)">7</text>
+        </g>
+      </g>
+    </g>
+    <g id="CommentGroup1" mlx:type="CommentGroup">
+      <g id="1B3E" mlx:box_drawing_no="" mlx:connect_name="QkNNKDQp" mlx:harness_drawing_no="32117-TGG -ZZ00-" mlx:name="1B3E" mlx:org_coupler_parts_no="90253-SFE -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|20" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|19" mlx:name="Tooltip4" mlx:tooltip_text="Body Control Module Connector D (40P)" mlx:type="Tooltip" />
+        <g id="T|18" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|17" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|16" mlx:name="Tooltip1" mlx:tooltip_text="D" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="1B3E_74" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.1238" x="39.7286" y="111.538" />
+        <g id="1B3F_REF" mlx:link_pin_id="1B3F" mlx:name="1B3F_REF" mlx:type="PinLink" />
+      </g>
+      <g id="1C0A" mlx:box_drawing_no="" mlx:connect_name="QVVESU9fTkFWSShNQUlOKSgxKQ==" mlx:harness_drawing_no="32117-TGG -ZZ00-" mlx:name="1C0A" mlx:org_coupler_parts_no="91774-T6L -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|25" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|24" mlx:name="Tooltip4" mlx:tooltip_text="Audio-Navigation Unit Connector A (24P)" mlx:type="Tooltip" />
+        <g id="T|23" mlx:name="Tooltip3" mlx:tooltip_text="Female" mlx:type="Tooltip" />
+        <g id="T|22" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|21" mlx:name="Tooltip1" mlx:tooltip_text="A" mlx:type="Tooltip" />
+        <rect fill="none" height="7.562" id="1C0A_76" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="221.214" y="111.538" />
+        <g id="1C0B_REF" mlx:link_pin_id="1C0B" mlx:name="1C0B_REF" mlx:type="PinLink" />
+      </g>
+    </g>
+  </g>
+  <g id="gTp" opacity="1" pointer-events="all" style="visibility: visible;">
+    <rect id="Tp" x="150" y="150" width="0px" height="0px" rx="4" ry="4" fill="#AED0EA" stroke="#000000" />
+    <text id="Tptext" x="150" y="150" font-size="10pt">
+      <tspan id="Tpspan0" x="150" y="150" fill="#000000" />
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg font-family="Arial" height="794.0" viewBox="0 0 1123.0 794.0" width="1123.0" preserveAspectRatio="xMinYMin meet" zoomAndPan="disable" id="" onload="loadEWD();" xmlns="http://www.w3.org/2000/svg" xmlns:mlx="http://schemas.honda.com/lc-extensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <script type="text/javascript"><![CDATA[
+            //
+                /************************************************************************
+                 *
+                 *    Description:  EWD Interface
+                 *
+                 *    Author:       Xtreme Technical Solutions (Daniel Arreola)
+                 *                  daniel_arreola@xtremesolutions.com
+                 *
+                 *    History:      24-July-2012 Initial development
+                ************************************************************************/
+
+                "use strict";
+                function loadEWD(){
+                    try{
+                        top.ewd.mainSVG = new top.SVG.Diagram(document.rootElement);
+                        top.ewd.mainSVG.setViewBox();
+                        top.ewd.mainSVG.initDiagram();
+                        top.onResize();
+                        top.ewd.mainSVG.layout(top.ewd.mainSVG.CTM());
+                        if(top.ewd.initial_node === null)
+                            top.ewd.setTabs(0, true);
+                        else{
+                            top.ewd.mainSVG.activateNode(top.ewd.initial_node, true);
+                            top.ewd.mainSVG.center();
+                        }
+                        top.g_layout.options.view_map.Diagram.complete();
+                    }
+                    catch(ex){
+                        if(window.console)
+                            console.log("loadEWD: " + ex.message + "[" + ex.number + "]");
+                    }
+                }
+            //
+            ]]></script>
+  <defs />
+  <rect id="canvas" x="-5000" y="-5000" width="10000px" height="10000px" fill="none" pointer-events="visible" />
+  <mlx:info>
+    <mlx:diagram_name>Ground Cable</mlx:diagram_name>
+    <mlx:component_name>ground</mlx:component_name>
+    <mlx:sheet_name>Sheet5</mlx:sheet_name>
+    <mlx:diagram_type>System Circuit</mlx:diagram_type>
+    <mlx:create_timestamp>2017-05-18 17-34-42</mlx:create_timestamp>
+    <mlx:update_timestamp>2017-05-18 17-34-42</mlx:update_timestamp>
+  </mlx:info>
+  <g id="layer1">
+    <g id="NetGroup1" mlx:type="NetGroup">
+      <g id="387C" mlx:circuit_name="MAIN_EARTH_GND" mlx:harness_drawing_no="32600-TEA -M000-" mlx:harness_mark="GA" mlx:harness_name="12 Volt Battery Ground Cable" mlx:name="387C" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="B">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DFA_37" transform="matrix(4.53714 0 -0 4.53714 21.7853 126.348)">[GA]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DF9_38" transform="matrix(4.53714 0 -0 4.53714 21.7513 133.09)">BLK</text>
+        <g id="3879" mlx:name="3879" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="B">
+          <polyline fill="none" id="3879_58" points="20.3251 175.814,20.3251 81.2905" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="3883" mlx:circuit_name="BATT_GND" mlx:harness_drawing_no="32601-TEA -ZZ00-" mlx:harness_mark="GH" mlx:harness_name="Transmission Ground Cable" mlx:name="3883" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="B">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2958_40" transform="matrix(4.53714 0 -0 4.53714 305.357 126.348)">[GH]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2957_41" transform="matrix(4.53714 0 -0 4.53714 305.323 133.09)">BLK</text>
+        <g id="3880" mlx:name="3880" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="B">
+          <polyline fill="none" id="3880_61" points="303.896 175.814,303.896 88.8524" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+      <g id="3889" mlx:circuit_name="SUB_EARTH_GND" mlx:harness_drawing_no="32610-TBA -ZZ00-" mlx:harness_mark="GC" mlx:harness_name="Engine Ground Cable" mlx:name="3889" mlx:type="HarnessNet" mlx:unknown_wire_color="" mlx:wire_color="B">
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C64_43" transform="matrix(4.53714 0 -0 4.53714 173.023 126.348)">[GC]</text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C63_44" transform="matrix(4.53714 0 -0 4.53714 172.989 133.09)">BLK</text>
+        <g id="3886" mlx:name="3886" mlx:type="Segment" mlx:unknown_wire_color="" mlx:wire_color="B">
+          <polyline fill="none" id="3886_64" points="171.563 175.814,171.563 88.8524" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+        </g>
+      </g>
+    </g>
+    <g id="InstanceGroup1" mlx:type="InstanceGroup">
+      <g id="1AC4" mlx:name="1AC4" mlx:type="Unit" mlx:unit_link_info="U|Engine" mlx:unit_name="Engine" mlx:unit_parts_no="" mlx:unit_search_info="Engine">
+        <g id="T|5" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|4" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|3" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|2" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|1" mlx:name="Tooltip1" mlx:tooltip_text="Engine" mlx:type="Tooltip" />
+        <rect fill="LightGrey" height="60.4953" id="1AC4_65c" mlx:wire_color_cloned="True" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="37.81" x="152.658" y="20.7952" />
+        <rect fill="none" height="60.4953" id="1AC4_65" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="37.81" x="152.658" y="20.7952" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1AC5_8" transform="matrix(7.33505 0 -0 7.33505 193.438 28.1303)">Engine</text>
+        <g id="1AF2" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="SUB_EARTH_GND" mlx:circuit_no="Wloy" mlx:circuit_terminal_no="WloyQg==" mlx:coupler_no="T5" mlx:coupler_parts_no="32604-TBA -0030-H1" mlx:harness_connect_name="RU5HX1NJREU=" mlx:harness_drawing_no="32610-TBA -ZZ00-" mlx:link_pin_id="1AF2_REF" mlx:name="1AF2" mlx:org_coupler_parts_no="32604-TBA -0030-H1" mlx:pin_name="U1VCX0VBUlRIX0dORA==" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="171.563" cy="88.8524" fill="black" id="1AF2_67" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1AF3_47" transform="matrix(7.33505 0 -0 7.33505 172.338 97.1627)">1</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1B16_16" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 163.027 97.1327)">T5</text>
+        </g>
+      </g>
+      <g id="28B9" mlx:name="28B9" mlx:type="Unit" mlx:unit_link_info="U|Transmission Housing" mlx:unit_name="Transmission Housing" mlx:unit_parts_no="" mlx:unit_search_info="Transmission Housing">
+        <g id="T|10" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|9" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|8" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|7" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|6" mlx:name="Tooltip1" mlx:tooltip_text="Transmission Housing" mlx:type="Tooltip" />
+        <rect fill="LightGrey" height="60.4953" id="28B9_69c" mlx:wire_color_cloned="True" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="37.809" x="284.992" y="20.7952" />
+        <rect fill="none" height="60.4953" id="28B9_69" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" width="37.809" x="284.992" y="20.7952" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="28BE_10" transform="matrix(7.33505 0 -0 7.33505 324.452 28.1303)">Transmission </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="28BE_11" transform="matrix(7.33505 0 -0 7.33505 323.871 36.6878)">Housing</text>
+        <g id="28BB" mlx:box_drawing_no="" mlx:cavity_no="1" mlx:circuit_name="BATT_GND" mlx:circuit_no="Wlox" mlx:circuit_terminal_no="WloxQw==" mlx:coupler_no="T6" mlx:coupler_parts_no="32606-TBA -0030-H1" mlx:harness_connect_name="TUlTU19TSURF" mlx:harness_drawing_no="32601-TEA -ZZ00-" mlx:link_pin_id="28BB_REF" mlx:name="28BB" mlx:org_coupler_parts_no="32606-TBA -0030-H1" mlx:pin_name="QkFUVF9HTkQ=" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="303.896" cy="88.8524" fill="black" id="28BB_73" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="28BC_50" transform="matrix(7.33505 0 -0 7.33505 304.671 97.1627)">1</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2947_18" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 295.361 97.1627)">T6</text>
+        </g>
+      </g>
+      <g id="1C35" mlx:name="1C35" mlx:type="Ground">
+        <g id="T|15" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|14" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|13" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|12" mlx:name="Tooltip2" mlx:tooltip_text="Ground" mlx:type="Tooltip" />
+        <g id="T|11" mlx:name="Tooltip1" mlx:tooltip_text="G2" mlx:type="Tooltip" />
+        <polyline fill="none" id="1C35_75" points="169.673 181.486,173.454 181.486" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="1C35_76" points="167.782 179.595,175.344 179.595" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="1C35_77" points="165.892 177.705,177.235 177.705" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="1C35_78" points="164.001 175.814,179.125 175.814" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="1C35_79" points="171.563 183.376,171.563 183.376" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="1C50_24" transform="matrix(7.33505 0 -0 7.33505 164.726 192.727)">G2</text>
+        <g id="1C36" mlx:cavity_no="1" mlx:circuit_name="SUB_EARTH_GND" mlx:circuit_no="Wloy" mlx:circuit_terminal_no="WloyQQ==" mlx:coupler_parts_no="32604-TBA -0030-H1" mlx:ground_no="G2" mlx:harness_connect_name="Qk9EWV9TSURF" mlx:harness_drawing_no="32610-TBA -ZZ00-" mlx:name="1C36" mlx:org_coupler_parts_no="32604-TBA -0030-H1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="171.563" cy="175.814" fill="black" id="1C36_81" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="28BF" mlx:name="28BF" mlx:type="Ground">
+        <g id="T|20" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|19" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|18" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|17" mlx:name="Tooltip2" mlx:tooltip_text="Ground" mlx:type="Tooltip" />
+        <g id="T|16" mlx:name="Tooltip1" mlx:tooltip_text="G1" mlx:type="Tooltip" />
+        <polyline fill="none" id="28BF_82" points="18.4346 181.486,22.2155 181.486" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28BF_83" points="16.5441 179.595,24.106 179.595" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28BF_84" points="14.6536 177.705,25.9965 177.705" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28BF_85" points="12.7631 175.814,27.887 175.814" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28BF_86" points="20.3251 183.376,20.3251 183.376" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="290D_30" transform="matrix(7.33505 0 -0 7.33505 14.1583 192.727)">G1</text>
+        <g id="28C0" mlx:cavity_no="1" mlx:circuit_name="MAIN_EARTH_GND" mlx:circuit_no="Wlow" mlx:circuit_terminal_no="WlowQQ==" mlx:coupler_parts_no="32607-TBA -0030-H1" mlx:ground_no="G1" mlx:harness_connect_name="Qk9EWV9TSURF" mlx:harness_drawing_no="32600-TEA -M000-" mlx:name="28C0" mlx:org_coupler_parts_no="32607-TBA -0030-H1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="20.3251" cy="175.814" fill="black" id="28C0_88" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="28C3" mlx:name="28C3" mlx:type="Ground">
+        <g id="T|25" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|24" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|23" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|22" mlx:name="Tooltip2" mlx:tooltip_text="Ground" mlx:type="Tooltip" />
+        <g id="T|21" mlx:name="Tooltip1" mlx:tooltip_text="G3" mlx:type="Tooltip" />
+        <polyline fill="none" id="28C3_89" points="302.006 181.486,305.787 181.486" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28C3_90" points="300.116 179.595,307.677 179.595" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28C3_91" points="298.225 177.705,309.568 177.705" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28C3_92" points="296.335 175.814,311.458 175.814" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <polyline fill="none" id="28C3_93" points="303.896 183.376,303.896 183.376" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.199" />
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2919_36" transform="matrix(7.33505 0 -0 7.33505 297.022 192.727)">G3</text>
+        <g id="28C4" mlx:cavity_no="1" mlx:circuit_name="BATT_GND" mlx:circuit_no="Wlox" mlx:circuit_terminal_no="WloxRQ==" mlx:coupler_parts_no="32605-TBA -0030-H1" mlx:ground_no="G3" mlx:harness_connect_name="Qk9EWV9TSURF" mlx:harness_drawing_no="32601-TEA -ZZ00-" mlx:name="28C4" mlx:org_coupler_parts_no="32605-TBA -0030-H1" mlx:pin_name="" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="303.896" cy="175.814" fill="black" id="28C4_95" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+        </g>
+      </g>
+      <g id="2DAA" mlx:name="2DAA" mlx:type="HarnessUnitBalloon" mlx:unit_name="12 Volt Battery Sensor" mlx:unit_name_disp="12 Volt Battery Sensor">
+        <circle cx="20.3251" cy="77.5095" fill="LightGrey" id="2DAA_96c" mlx:wire_color_cloned="True" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <circle cx="20.3251" cy="77.5095" fill="none" id="2DAA_96" r="3.78095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <polyline fill="none" id="2DAA_97" points="24.106 77.5095,16.5441 77.5095" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" />
+        <g id="2DAB" mlx:cavity_no="1" mlx:circuit_name="MAIN_EARTH_GND" mlx:circuit_no="Wlow" mlx:circuit_terminal_no="WlowQg==" mlx:coupler_no="(-)" mlx:coupler_parts_no="32607-TBA -0030-H1" mlx:harness_connect_name="QkFUVEVSWV9TSURF" mlx:harness_drawing_no="32600-TEA -M000-" mlx:name="2DAB" mlx:org_coupler_parts_no="32607-TBA -0030-H1" mlx:pin_name="TUFJTl9FQVJUSF9HTkQ=" mlx:tekiyo_name="" mlx:type="Pin">
+          <circle cx="20.3251" cy="81.2905" fill="black" id="2DAB_98" r="0.4" stroke="black" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1" />
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DAC_54" transform="matrix(7.33505 0 -0 7.33505 21.0998 89.6008)">1</text>
+          <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DF5_55" text-anchor="end" transform="matrix(7.33505 0 -0 7.33505 15.5703 89.6958)">(-)</text>
+        </g>
+      </g>
+    </g>
+    <g id="CommentGroup1" mlx:type="CommentGroup">
+      <g id="1AF1" mlx:box_drawing_no="" mlx:connect_name="RU5HX1NJREU=" mlx:harness_drawing_no="32610-TBA -ZZ00-" mlx:name="1AF1" mlx:org_coupler_parts_no="32604-TBA -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|30" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|29" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|28" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|27" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|26" mlx:name="Tooltip1" mlx:tooltip_text="T5" mlx:type="Tooltip" />
+        <rect fill="none" height="7.5619" id="1AF1_101" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.124" x="164.001" y="81.2905" />
+        <g id="1AF2_REF" mlx:link_pin_id="1AF2" mlx:name="1AF2_REF" mlx:type="PinLink" />
+      </g>
+      <g id="28BA" mlx:box_drawing_no="" mlx:connect_name="TUlTU19TSURF" mlx:harness_drawing_no="32601-TEA -ZZ00-" mlx:name="28BA" mlx:org_coupler_parts_no="32606-TBA -0030-H1" mlx:type="DirectCoupler">
+        <g id="T|35" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|34" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|33" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|32" mlx:name="Tooltip2" mlx:tooltip_text="Component Connector" mlx:type="Tooltip" />
+        <g id="T|31" mlx:name="Tooltip1" mlx:tooltip_text="T6" mlx:type="Tooltip" />
+        <rect fill="none" height="7.5619" id="28BA_103" pointer-events="all" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.05" width="15.123" x="296.335" y="81.2905" />
+        <g id="28BB_REF" mlx:link_pin_id="28BB" mlx:name="28BB_REF" mlx:type="PinLink" />
+      </g>
+      <g id="2DA9" mlx:name="2DA9" mlx:type="UnitFrame" mlx:unit_name="12 Volt Battery Sensor" mlx:unit_name_disp="12 Volt Battery Sensor">
+        <g id="T|40" mlx:name="Tooltip5" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|39" mlx:name="Tooltip4" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|38" mlx:name="Tooltip3" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|37" mlx:name="Tooltip2" mlx:tooltip_text="" mlx:type="Tooltip" />
+        <g id="T|36" mlx:name="Tooltip1" mlx:tooltip_text="12 Volt Battery Sensor" mlx:type="Tooltip" />
+        <g fill="none" id="3119_DRAWING_GROUP1" mlx:type="drawing_group" stroke="rgb(0,0,0)" stroke-width="0.8">
+          <circle cx="20.3251" cy="58.4157" id="2DA9_105" r="18.9991" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline id="2DA9_106" points="5.20124 58.4157,35.4489 58.4157" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DAE_1" transform="matrix(7.33505 0 -0 7.33505 41.895 47.0651)">12 Volt </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DAE_2" transform="matrix(7.33505 0 -0 7.33505 42.2602 55.6136)">Battery </text>
+        <text fill="rgb(0,0,0)" font-size="1.23329" font-weight="bold" id="2DAE_3" transform="matrix(7.33505 0 -0 7.33505 42.5504 64.2963)">Sensor</text>
+      </g>
+    </g>
+  </g>
+  <g id="gTp" opacity="1" pointer-events="all" style="visibility: visible;">
+    <rect id="Tp" x="150" y="150" width="0px" height="0px" rx="4" ry="4" fill="#AED0EA" stroke="#000000" />
+    <text id="Tptext" x="150" y="150" font-size="10pt">
+      <tspan id="Tpspan0" x="150" y="150" fill="#000000" />
+    </text>
+  </g>
+</svg>
