@@ -1,5 +1,6 @@
 ### Information Directory ###
 ---
+## [FK8 CTR](FK8%20CTR) ##
 |  [Owner's Guide](Owner's%20Guide.pdf)  |  [Owner's Manual](Owner's%20Manual.pdf)  |  [Reset Procedures](Reset%20Procedures.pdf)  |
 |:---:|:---:|:---:|
 
