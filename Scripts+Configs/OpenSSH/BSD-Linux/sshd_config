@@ -2,9 +2,18 @@
 
    ##::[[---  Linux OpenSSH SSHd Config  ---]]::##
 
-####################################################
+#===================================================
            ##----- Global Options -----##
-####################################################
+#===================================================
+
+    # Please verify, as all algorithims not supported by all distros: 
+
+      # Ciphers:                  # HostKey & KeyTypes
+        ## ssh -Q cipher            ## ssh -Q key
+
+      # Kex [Key Exchange]        # MAC [Message Authentication Code]
+        ## ssh -Q kex               ## ssh -Q mac
+
 
     # Connection #
 #---------------------------------------------------
@@ -78,7 +87,7 @@ PidFile                           = /tmp/run/sshd.pid
 
     # Environment #
 #---------------------------------------------------
-#PermitUserRC                     = yes
+##PermitUserRC                    = yes
 
 
     # Ciphers and ReKeying #
