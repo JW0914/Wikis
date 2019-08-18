@@ -1,11 +1,12 @@
 ### Information Directory ###
 ---
 #### [Install Techniques](Install%20Techniques) ####
-  * [Amplifier Level Setting](Amplifier%20Level%20Setting%20Guide.pdf)
-  * [Audio Files](Audio%20Files.pdf)
-  * [Crossovers](Setting%20Crossovers.pdf)
-  * [Input Sensitivity](What%20is%20Input%20Sensitivity.pdf)
-  * [Signal Cables](Checking%20Signal%20Cables.pdf) <br><br>
+  * **General:**
+    * [Amplifier Level Setting](Amplifier%20Level%20Setting%20Guide.pdf)
+    * [Audio Files](Audio%20Files.pdf)
+    * [Crossovers](Setting%20Crossovers.pdf)
+    * [Input Sensitivity](What%20is%20Input%20Sensitivity.pdf)
+    * [Signal Cables](Checking%20Signal%20Cables.pdf) <br><br>
   * **Speakers:**
     * [Active Noise Cancellation](Active%20Noise%20Cancellation%20ANC.pdf)
     * [Component Speakers](Getting%20the%20Most%20out%20of%20Component%20Speakers.pdf)
