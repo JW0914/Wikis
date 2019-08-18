@@ -2,9 +2,9 @@
 
              ##::[[----->  IPtables Firewall Script  <-----]]::##
 
-    # LEDE/OpenWrt users:
+    # OpenWrt users:
         # 1. Remove shebang
-        # 2. Uncomment LEDE/OpenWrt Variables
+        # 2. Uncomment OpenWrt Variables
         # 3. Save as "/etc/firewall.user"
 
 
@@ -155,4 +155,3 @@ iptables    -w  -A  LOG-VPN                                     -j  ACCEPT
 
     # Reject Everything Else:
     # iptables    -w          -A  forwarding_rule -d  192.168.1.254                       -j  REJECT
-

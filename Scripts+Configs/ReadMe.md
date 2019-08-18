@@ -22,8 +22,8 @@
 ###### [IPtables](IPtables) ######
 - Custom IPtables script for SSH & VPN logging, as well as blocking commonly exploited ports
 
-###### [LEDE](LEDE) ######
-- Auto creates a LEDE build environment on Ubuntu, as well as a Nano Makefile for LEDE/OpenWrt
+###### [OpenWrt](LEDE) ######
+- Auto creates an OpenWrt build environment on Ubuntu, as well as a Nano Makefile for OpenWrt
 
 ###### [Nano](Nano) ######
 - Custom NanoRC for Nano

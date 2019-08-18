@@ -2,7 +2,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\SSH.OpenWrt]
 "Present"=dword:00000001
-"HostName"="lede.wrt"
+"HostName"="openwrt.wrt"
 "LogFileName"="putty.log"
 "LogType"=dword:00000000
 "LogFileClash"=dword:ffffffff

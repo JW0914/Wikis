@@ -2,7 +2,7 @@
 ### Information Directory ###
 ---
 
-###### Configs are configured for security & may need to have less secure ciphers/exchanges added for certain SSH servers _(DropBear for instance)_ ###### 
+###### Configs are configured for security & may need to have less secure ciphers/exchanges added for certain SSH servers _(DropBear for instance)_ ######
 
 
 ### [BSD/Linux](BSD-Linux) ###
@@ -67,7 +67,7 @@
 
 - **_~/.ssh_**
   ```
-  [root@LEDE] /home/jw # ls -lsa .ssh
+  [root@OpenWrt] /home/jw # ls -lsa .ssh
       0 drwx------    1 jw       jw             368 Sep 10  2017 .
       4 -rw-------    1 jw       jw            2254 Sep 10  2017 authorized_keys
       8 -rw-------    1 jw       jw            6699 Sep 10  2017 config
