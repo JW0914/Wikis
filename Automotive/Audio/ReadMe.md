@@ -1,10 +1,12 @@
 ### Information Directory ###
 ---
-* **[JL Audio](JL%20Audio)**
-  * [C7 Series Manual](JL%20Audio/C7%20Series%20Manual.pdf)
-  * [FiX-82 Manual](JL%20Audio/FiX-82%20Manual.pdf)
-  * [FiX-86 Manual](JL%20Audio/FiX-86%20Manual.pdf)
-  * [W7 Series Manual](JL%20Audio/W7%20Series%20Manual.pdf)
+#### [JL Audio](JL%20Audio) ####
+  * **[Enclosure Design](JL%20Audio/Enclosure%20Design)**
+  * **[Install Techniques](JL%20Audio/Install%20Techniques)**
+  * **[Manuals](JL%20Audio/Manuals)**
+  * **[School of Sound](JL%20Audio/School%20of%20Sound)**
+  * **[System Design](JL%20Audio/System%20Design)**
+  * **[VXi](JL%20Audio/VXi)**
 * [How to Set Your Gains](How%20to%20Set%20Your%20Gains.pdf)
 * [Passive Crossover Networks](Passive%20Crossover%20Networks.pdf)
 * [Thiele-Small Parameters](Thiele-Small%20Parameters.pdf)
