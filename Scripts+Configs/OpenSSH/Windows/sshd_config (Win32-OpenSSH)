@@ -1,10 +1,24 @@
 #
 
-  ##::[[---  Windows OpenSSH SSHd Config  ---]]::##
+ ##::[[---  Windows OpenSSH SSHd Config  ---]]::##
 
-####################################################
+#===================================================
            ##----- Global Options -----##
-####################################################
+#===================================================
+
+    # Please verify to ensure algorithims are supported on your OS: 
+
+      # Ciphers:                  # HostKey & KeyTypes
+        ## ssh -Q cipher            ## ssh -Q key
+
+      # Kex [Key Exchange]        # MAC [Message Authentication Code]
+        ## ssh -Q kex               ## ssh -Q mac
+
+
+    # Users may need to manually create the PID file:
+      ## cmd /c md "C:\Program Files\OpenSSH\appfiles"
+      ## cmd /c echo > "C:\Program Files\OpenSSH\appfiles\sshd.pid"
+
 
     # Connection #
 #---------------------------------------------------
@@ -12,12 +26,19 @@ Port                              = 22
 
 AddressFamily                     = inet
 
+ListenAddress                     = 192.168.1.1
+
 
     # Encryption #
 #---------------------------------------------------
 Protocol                          = 2
 
 AuthorizedKeysFile                = "%d\\.ssh\\authorized_keys"
+
+HostKey                           = /etc/ssh/ssh_host_rsa_key
+HostKey                           = /etc/ssh/ssh_host_ed25519_key
+
+RekeyLimit                        = 500M 60m
 
 
     # Authentication #
@@ -47,7 +68,6 @@ ClientAliveCountMax               = 3
 ClientAliveInterval               = 600
 
 TCPKeepAlive                      = yes
-
 UseDNS                            = yes
 
 
@@ -55,7 +75,6 @@ UseDNS                            = yes
 #---------------------------------------------------
 AllowAgentForwarding              = yes
 AllowTcpForwarding                = yes
-X11Forwarding                     = yes
 
 GatewayPorts                      = clientspecified
 PermitTunnel                      = yes
@@ -63,18 +82,18 @@ PermitTunnel                      = yes
 Subsystem sftp                    = sftp-server.exe
 hostkeyagent                      = \\.\pipe\openssh-ssh-agent
 
-RekeyLimit                        = 500M 60m
-
 
     # Logging #
 #---------------------------------------------------
-PrintLastLog                      = yes
-
 SyslogFacility                    = AUTH
 LogLevel                          = VERBOSE
 
 PidFile                           = "C:\\Program Files\\OpenSSH\\appfiles\\sshd.pid"
 
+
+    # Environment #
+#---------------------------------------------------
+##PermitUserRC                    = yes
 
 
     # Ciphers and ReKeying #
