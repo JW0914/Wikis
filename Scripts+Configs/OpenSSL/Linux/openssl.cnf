@@ -8,13 +8,7 @@
 
   # All commands required can be found beginning on line 430
 
-
-  # Windows users:
-
-    # Replace all forward slashes with single/double backslashes.
-
-    # Ensure EOLs are CRLF, not LF
-      # Windows uses CRLF, UNIX utilizes LF
+  # Windows users: https://github.com/JW0914/Wikis/blob/master/Scripts+Configs/OpenSSL/openssl.cnf
 
 
   # Sophos users:
