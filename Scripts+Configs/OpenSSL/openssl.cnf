@@ -7,15 +7,8 @@
 #====================================================================
 
   # All commands required can be found beginning on line 430
-
-
-  # BSD/Linux/Mac users:
-
-    # Replace all single/double backslashes with forward slashes. You may also wish to utilize lowercase only,
-    # and if utilizing spaces in names, ensure utilization of proper break format, i.e. "./Sophos\ UTM\ CA.crt"
-
-    # Ensure EOLs are LF, not CRLF
-      # Windows uses CRLF, UNIX utilizes LF
+  
+  # BSD/Linux/Mac users: https://github.com/JW0914/Wikis/blob/master/Scripts%2BConfigs/OpenSSL/Linux/openssl.cnf
 
 
   # Sophos users:
@@ -420,6 +413,13 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     keyUsage                    = critical, nonRepudiation, digitalSignature
     extendedKeyUsage            = critical, codeSigning, msCodeInd, msCodeCom, mcCTLSign, timeStamping
     subjectAltName              = @alt_codesign
+
+
+
+
+
+
+
 
 
 
