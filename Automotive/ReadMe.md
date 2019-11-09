@@ -10,6 +10,7 @@
   * Information on various automotive electrical subjects
 * [Magnusson-Moss Warranty Act](Magnusson-Moss%20Warranty%20Act.pdf)
   - Briefs owners on their legal rights regarding warranties, dispelling myths & factually inaccurate information
+  - _Access links (in red) via downloading and opening within a PDF viewer_ 
 * [Metric Bolt Conversion](Metric%20Bolt%20Conversion.pdf)
   * Converts between gauge/diameter, inch, and millimeter
 ---
