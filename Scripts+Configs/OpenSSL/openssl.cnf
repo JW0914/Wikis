@@ -411,7 +411,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
     keyUsage                    = critical, nonRepudiation, digitalSignature
-    extendedKeyUsage            = critical, codeSigning, msCodeInd, msCodeCom, mcCTLSign, timeStamping
+    extendedKeyUsage            = critical, codeSigning, msCodeInd, msCodeCom, msCTLSign, timeStamping
     subjectAltName              = @alt_codesign
 
 
