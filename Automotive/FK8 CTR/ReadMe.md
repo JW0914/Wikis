@@ -1,8 +1,8 @@
 ### Information Directory ###
 ---
 ## [FK8 CTR](FK8%20CTR) ##
-|  [Owner's Guide](Owner's%20Guide.pdf)  |  [Owner's Manual](Owner's%20Manual.pdf)  |  [Reset Procedures](Reset%20Procedures.pdf)  |
-|:---:|:---:|:---:|
+|  [Owner's Guide](Owner's%20Guide.pdf)  |  [Owner's Manual](Owner's%20Manual.pdf)  |  [Reset Procedures](Reset%20Procedures.pdf)  |  [Warranty Terms](Honda%20Warranty%20Basebook%20(KA%20Final%20AWL-02971-2017).pdf)  |
+|:---:|:---:|:---:|:---:|
 
 |  [Magnusson-Moss Warranty Act  (15 USC §2302)](Magnusson-Moss%20Warranty%20Act.pdf)  |
 | :---: |
