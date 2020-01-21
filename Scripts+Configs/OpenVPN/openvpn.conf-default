@@ -40,7 +40,7 @@
     capath                    /etc/openvpn/ca.d
     cert                      /etc/openvpn/server.crt
     key                       /etc/openvpn/server.key
-    tls-auth                  /etc/openvpn/tls-auth.key 0
+    tls-crypt                 /etc/openvpn/tls-crypt.psk
 
   # SSL:
     cipher                    [<CIPHER>]
@@ -48,14 +48,13 @@
 
   # TLS:
     tls-version-min           1.2
-    tls-cipher                TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384:TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA384:TLS-ECDH-RSA-WITH-AES-256-GCM-SHA384:TLS-ECDH-RSA-WITH-AES-256-CBC-SHA256:!aNULL:!eNULL:!LOW:!3DES:!MD5:!SHA:!EXP:!PSK:!2SRP:!DSS:!RC4:!kRSA
+    tls-cipher                TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256:TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256:TLS-DHE-RSA-WITH-AES-128-CBC-SHA256:TLS-ECDH-RSA-WITH-AES-128-GCM-SHA256:!aNULL:!eNULL:!LOW:!3DES:!MD5:!SHA:!EXP:!PSK:!SRP:!DSS:!RC4:!kRSA
 
 
     # Logging #
 #---------------------------------------------------
   status                      /var/run/openvpn-status.log
   log                         /var/run/openvpn.log
-
   verb                        4
 
   down-pre

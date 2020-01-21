@@ -1,5 +1,8 @@
 ### Information Directory ###
 ---
+###### [Automotive](Automotive) ######
+- Diagnostics and schematics for the FK8 Type R, along with general audio and electrical info
+
 ###### [ClearFog](ClearFog) ######
 - U-Boot MMC images, as well as a script to compile the MMC images
 
