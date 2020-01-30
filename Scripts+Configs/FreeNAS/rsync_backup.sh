@@ -217,6 +217,7 @@ ${BackLog}
     echo "No email address specified, information available in ${logfile}"
   else
     sendmail ${emailR} < ${logfile}
+    rm ${logfile}
   fi
 
 
@@ -243,12 +244,7 @@ ${BackLog}
 ##          sed -i "s/HN/${hn}/g" ~/ssmtp.conf
 ##          sed -i "s/SENDER/${emailS}/g" ~/ssmtp.conf
 ##      fi
+##      ssmtp -v -C ~/ssmtp.conf ${emailR} < ${logfile}
+##      rm ${logfile}
 ##    fi
-
-  # Email:
-##    ssmtp -v -C ~/ssmtp.conf ${emailR} < ${logfile}
 #==============================================================================
-
-
-# Cleanup:
-  rm ${logfile}
