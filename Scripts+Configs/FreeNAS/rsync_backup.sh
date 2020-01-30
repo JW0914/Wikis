@@ -108,7 +108,7 @@
 # Heading:
 (
   echo ""
-  echo "                ##[[-----> External Backup Status for FreeNAS <-----]]##                "
+  echo "                ##[[-----> External Backup Status for ${device} <-----]]##                "
   echo ""
 ) >> ${logfile}
 
@@ -117,14 +117,14 @@
 #------------------------------------------------------------------------------
 
 # Copy:
-  printf "\n\n...Backing up NAS-Storage to Backup-1...\n\n"
+  printf "\n\n...Backing up ${data} to ${bak}...\n\n"
   ${BackSt}
 
 # Log:
 (
   echo ""
   echo ""
-  echo "    # NAS-Storage --> Backup-1 #                                                        "
+  echo "    # ${data} --> ${bak} #                                                        "
   echo "----------------------------------------------------------------------------------------"
   echo ""
   ${tailB1}
@@ -138,14 +138,14 @@
 #------------------------------------------------------------------------------
 
 # Copy:
-  printf "\n\n...Backing up NAS-System to Backup-1...\n\n"
+  printf "\n\n...Backing up ${sys} to ${bak}...\n\n"
   ${BackSy}
 
 # Log:
 (
   echo ""
   echo ""
-  echo "    # NAS-System --> Backup-1 #                                                         "
+  echo "    # ${sys} --> ${bak} #                                                         "
   echo "----------------------------------------------------------------------------------------"
   echo ""
   ${tailB2}
@@ -160,14 +160,14 @@
 #------------------------------------------------------------------------------
 
 # Copy:
-##  printf "\n\n...Restoring NAS-Storage from Backup-1...\n\n"
+##  printf "\n\n...Restoring ${data} from ${bak}...\n\n"
 ##  $RestSt
 
 # Log:
 ##(
 ##  echo ""
 ##  echo ""
-##  echo "    # NAS-Storage <-- Backup-1 #                                                        "
+##  echo "    # ${data} <-- ${bak} #                                                        "
 ##  echo "----------------------------------------------------------------------------------------"
 ##  echo ""
 ##  ${tailR1}
@@ -181,14 +181,14 @@
 #------------------------------------------------------------------------------
 
 # Copy:
-##  printf "\n\n...Restoring NAS-System from Backup-1...\n\n"
+##  printf "\n\n...Restoring ${sys} from ${bak}...\n\n"
 ##  $RestSy
 
 # Log:
 ##(
 ##  echo ""
 ##  echo ""
-##  echo "    # NAS-System <-- Backup-1 #                                                         "
+##  echo "    # ${sys} <-- ${bak} #                                                         "
 ##  echo "----------------------------------------------------------------------------------------"
 ##  echo ""
 ##  ${tailR2}
@@ -205,7 +205,7 @@
 
 # Copy Logs:
 #------------------------------------------------------------------------------
-printf "\n\n...Backing up Logs to Backup-1...\n\n"
+printf "\n\n...Backing up Logs to ${bak}...\n\n"
 ${BackLog}
 
 
