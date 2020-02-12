@@ -3,8 +3,18 @@
                  ##::[[-----> FreeNAS Rsync Backup <-----]]::##
 
 #==============================================================================
-                                 # Variables #
+  # Title:        rsync_backup.sh
+  # Description:  Backs up or Restores ZFS Datastores on FreeNAS
+  # Author:       JW0914
+  # Created:      2016.01.01
+  # Updated:      2020.01.30
+  # Version:      2.0
+  # Usage:        chmod +x ./rsync_backup.sh && ./rsync_backup.sh
 #==============================================================================
+
+
+# Variables #
+#------------------------------------------------------------------------------
 
 # Date & Time:
   dt=$(date '+%Y.%m.%d_%H:%M:%S')
