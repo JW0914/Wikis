@@ -39,11 +39,11 @@
          set Log=/ETA /LOG:"%LogDir%\%date%_%dtime%.log" /NP /TEE /TS /V
 
       :: # Options:
-         set Opt=/Z
+         set Opt=/MON:1 /Z
              :: # /TBD - Use if copying to/from a network location
 
       :: # What to Copy:
-         set What=/COPY:DAT /DCOPY:DAT /E /MON:1 /XD Logs /XN
+         set What=/COPY:DAT /DCOPY:DAT /E /XD Logs /XN
 
       :: # Save Job:
          set Save=/SAVE:C:\ProgramData\Scripts\Robocopy\File-Sync
