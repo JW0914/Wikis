@@ -18,7 +18,7 @@ rem cre par pri offset=1024 size=665 id=27
 
 rem # UEFI:
 rem #-----------------------------------------------------------
-cre par pri offset=1024 size=665 id=e3c9e316-0b5c-4db8-817d-f92df00215ae
+cre par pri offset=1024 size=665 id=de94bba4-06d1-4d40-a16a-bfd50179d6ac
 
 format quick fs=ntfs label=WinRE
 
