@@ -5,7 +5,7 @@
 * [SSH for Newcomers](https://openwrt.org/docs/guide-quick-start/sshadministration) 
 <br></br>
 * [DropBear SSH Server Configuration](https://openwrt.org/docs/guide-user/base-system/dropbear) 
-* [OpenSSH SSH Server Configuation](https://openwrt.org/docs/guide-user/services/ssh/openssh.server)
+* [OpenSSH SSH Server Configuation](https://openwrt.org/docs/guide-user/services/ssh/openssh.server?rev=1544313737)
 
 ###### [SSH.OpenWrt.reg](SSH.OpenWrt.reg) ######
 
