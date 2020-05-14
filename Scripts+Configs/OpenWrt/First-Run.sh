@@ -507,9 +507,6 @@ EOF
 # Check for errors in /etc/config:
   /root/uci-error-check.sh
 
-# Run First Boot script:
-  /root/first-run.sh
-
 # Backup MTD Partitions:
   /root/mtd_backup.sh
 
