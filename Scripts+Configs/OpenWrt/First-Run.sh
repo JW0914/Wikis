@@ -18,7 +18,7 @@
     emailR1="receiver@email.com"
     emailS1="sender@email.com"
 
-    # If using ssmtp or sendmail (else edit lines 745 - 761, 767, 817, 852):
+    # If using ssmtp or sendmail (else edit lines 737 - 755, 761, 811, 846):
       Domain="email.com"
       Mail="smtp.email.com:587"
       Pass="passphrase"
