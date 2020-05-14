@@ -4,7 +4,7 @@
 [OpenWrt Project](https://openwrt.org/) SSH PuTTY profile
 * [SSH for Newcomers](https://openwrt.org/docs/guide-quick-start/sshadministration) 
 <br></br>
-* [DropBear SSH Server Configuration](https://openwrt.org/docs/guide-user/base-system/ssh_configuration) 
+* [DropBear SSH Server Configuration](https://openwrt.org/docs/guide-user/base-system/dropbear) 
 * [OpenSSH SSH Server Configuation](https://openwrt.org/docs/guide-user/services/ssh/openssh.server)
 
 ###### [SSH.OpenWrt.reg](SSH.OpenWrt.reg) ######
