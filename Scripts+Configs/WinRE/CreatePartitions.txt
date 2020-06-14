@@ -1,0 +1,63 @@
+rem            ## diskpart /s CreatePartitions.txt ##
+rem #===========================================================
+
+sel dis <#>
+clean
+
+rem # UEFI:
+rem #-----------------------------------------------------------
+convert gpt
+
+rem #===========================================================
+rem                 ## Create WinRE partition ##
+rem #===========================================================
+
+rem # BIOS:
+rem #-----------------------------------------------------------
+rem cre par pri offset=1024 size=665 id=27
+
+rem # UEFI:
+rem #-----------------------------------------------------------
+cre par pri offset=1024 size=665 id=de94bba4-06d1-4d40-a16a-bfd50179d6ac
+
+format quick fs=ntfs label=WinRE
+
+rem # UEFI:
+rem #-----------------------------------------------------------
+gpt attributes=0x8000000000000001
+
+rem #===========================================================
+rem                 ## Create Boot partition ##
+rem #===========================================================
+
+rem # BIOS:
+rem #-----------------------------------------------------------
+rem cre par pri size=100
+rem format quick fs=ntfs label=Boot
+rem active
+
+rem # UEFI:
+rem #-----------------------------------------------------------
+cre par efi size=100
+format quick fs=fat32 label=EFI
+cre par msr size=16
+
+rem #===========================================================
+rem                 ## Create System partition ##
+rem #===========================================================
+
+rem # BIOS:
+rem #-----------------------------------------------------------
+rem cre par pri
+
+rem # UEFI:
+rem #-----------------------------------------------------------
+cre par pri id=ebd0a0a2-b9e5-4433-87c0-68b6b72699c7
+
+format quick fs=ntfs label=System
+
+
+rem # Verify and Exit:
+rem #-----------------------------------------------------------
+lis vol
+exit

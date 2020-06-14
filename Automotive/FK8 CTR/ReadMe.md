@@ -6,6 +6,13 @@
 
 |  [Magnusson-Moss Warranty Act  (15 USC §2302)](Magnusson-Moss%20Warranty%20Act.pdf)  |
 | :---: |
+  - Briefs owners on their legal rights regarding warranties, dispelling myths & factually inaccurate information
+  - _Access links (in red) via downloading and opening within a PDF viewer_
+    - **15 USC §2302:** [Rules governing contents of warranties](https://www.law.cornell.edu/uscode/text/15/2302)
+    - **FTC:** [It's Illegal to Condition Warranty Coverage on the Use of Specified Parts or Services](https://www.ftc.gov/news-events/press-releases/2018/04/ftc-staff-warns-companies-it-illegal-condition-warranty-coverage)
+    - **FTC:** [Will using 'aftermarket' or recycled parts void my warranty?](https://www.consumer.ftc.gov/articles/0138-auto-warranties-routine-maintenance#will)
+    - **FTC:** [Businessperson's Guide to Federal Warranty Law](https://www.ftc.gov/tips-advice/business-center/guidance/businesspersons-guide-federal-warranty-law)
+
 ###### Technical info, diagnostics, and schematics for the FK8 Civic Type R ######
 * **[CompuStar](Compustar)**
   * [Alarm & Remote Start Install Guide](Compustar/Alarm%20%26%20Remote%20Start%20Install.pdf)
