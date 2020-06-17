@@ -10,9 +10,7 @@
   - __Prerequisites__
     - Recovery partition mounted as drive `X:`
     - Windows ADK installed
-      - Add the following to System Path (below):
-        - **Path:**
-          - _`Control Panel\System and Security\System` 🡒 Advanced System Settings 🡒 Advanced 🡒 Environment Variables 🡒 System Variables - Path_
+      - Add the following to System Path: <br> _`Control Panel\System and Security\System` 🡒 Advanced System Settings 🡒 Advanced 🡒 Environment Variables 🡒 System Variables - Path_
         - `#---ADK INSTALLATION PATH---#\Assessment and Deployment Kit\Deployment Tools\amd64\DISM`
         - `#---ADK INSTALLATION PATH---#\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg`
         - `#---ADK INSTALLATION PATH---#\Assessment and Deployment Kit\Windows Preinstallation Environment`
