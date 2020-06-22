@@ -19,8 +19,9 @@
   * Converts between gauge/diameter, inch, and millimeter
 ---
 ## [FK8 CTR](FK8%20CTR) ##
-|  [Owner's Guide](Owner's%20Guide.pdf)  |  [Owner's Manual](Owner's%20Manual.pdf)  |  [Reset Procedures](Reset%20Procedures.pdf)  |
-|-|-|-|
+|  [Owner's Guide](FK8%20CTR/Owner's%20Guide.pdf)  |  [Owner's Manual](FK8%20CTR/Owner's%20Manual.pdf)  |  [Reset Procedures](FK8%20CTR/Reset%20Procedures.pdf)  |  [Warranty Terms](FK8%20CTR/Honda%20Warranty%20Basebook%20(KA%20Final%20AWL-02971-2017).pdf)  |
+|:---:|:---:|:---:|:---:|
+
 ###### Technical info, diagnostics, and schematics for the FK8 Civic Type R ######
 * **[CompuStar](FK8%20CTR/Compustar)**
   * [Manuals](FK8%20CTR/Compustar/Manuals)
