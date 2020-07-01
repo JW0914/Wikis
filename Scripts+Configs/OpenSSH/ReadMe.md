@@ -31,8 +31,21 @@
 
 ## Permission Structure ##
 - **`%UserProfile%\.ssh`** <br>
-   Directory and files/subdirectories should be owned by, and only have inherited permissions for, the user
+  Directory and files/subdirectories should be owned by, and only have inherited permissions for, the user
+  - _`WRT\JW0914:(F)`_
+    ```bat
+    :: # Remove Inheritance ::
+       Cmd /c Icacls %UserProfile%\.ssh /c /t /Inheritance:d
 
+    :: # Set Ownership to Owner ::
+       Cmd /c Icacls %UserProfile%\.ssh /c /t /Grant %UserName%:F
+
+    :: # Remove All Users, except for Owner ::
+       Cmd /c Icacls %UserProfile%\.ssh /c /t /Remove Administrator BUILTIN\Administrators BUILTIN Everyone System Users
+
+    :: # Verify ::
+       Cmd /c Icacls %UserProfile%\.ssh
+    ```
 ##
 
 - **`%ProgramData%\ssh\ssh_config`**
@@ -50,22 +63,6 @@
     Cmd /c Icacls %ProgramData%\ssh\sshd_config /Grant `"NT SERVICE\sshd`":F
     ```
 ##
-
-- **`%UserProfile%\.ssh`**
-  - _`WRT\JW0914:(F)`_
-    ```bat
-    :: # Remove Inheritance ::
-       Cmd /c Icacls %UserProfile%\.ssh /c /t /Inheritance:d
-
-    :: # Set Ownership to Owner ::
-       Cmd /c Icacls %UserProfile%\.ssh /c /t /Grant %UserName%:F
-
-    :: # Remove All Users, except for Owner ::
-       Cmd /c Icacls %UserProfile%\.ssh /c /t /Remove Administrator BUILTIN\Administrators BUILTIN Everyone System Users
-
-    :: # Verify ::
-       Cmd /c Icacls %UserProfile%\.ssh
-    ```
 ##
 
 - **`~/.ssh`**
