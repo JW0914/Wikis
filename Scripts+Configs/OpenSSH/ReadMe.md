@@ -5,35 +5,34 @@
 ###### Configs are configured for security & may need to have less secure ciphers/exchanges added for certain SSH servers ######
 
 ### [BSD/Linux](BSD-Linux) ###
-  ###### [_`~/.ssh/config`_](BSD-Linux/config) ######
-  - Custom user-specific OpenSSH client config, with three specific sections to this custom config
-    - ###### Custom ######
-      User-specific options which should be placed in `config`, not the system-wide `ssh_config`
-    - ###### Hosts ######
-      Individual host configurations, allowing user to connect via `ssh <host variable>`, such as `ssh FNr`
-    - ###### Options ######
-      Options overriding system-wide defaults in `ssh_config`
-  ###### [_`/etc/ssh/ssh_config`_](BSD-Linux/ssh_config) ######
-  - Custom system-wide OpenSSH client config
-  ###### [_`/etc/ssh/sshd_config`_](BSD-Linux/sshd_config) ######  
-  - Custom system-wide OpenSSH server config
+- ###### [_`~/.ssh/config`_](BSD-Linux/config) ######
+  Custom user-specific OpenSSH client config, with three specific sections to this custom config
+  - ###### Custom ######
+    User-specific options which should be placed in `config`, not the system-wide `ssh_config`
+  - ###### Hosts ######
+    Individual host configurations, allowing user to connect via `ssh <host variable>`, such as `ssh FNr`
+  - ###### Options ######
+    Options overriding system-wide defaults in `ssh_config`
+- ###### [_`/etc/ssh/ssh_config`_](BSD-Linux/ssh_config) ######
+  Custom system-wide OpenSSH client config
+- ###### [_`/etc/ssh/sshd_config`_](BSD-Linux/sshd_config) ######  
+  Custom system-wide OpenSSH server config
 
 ##
 
 ### [Windows](Windows) ###
-  ###### [_`%UserProfile%\.ssh\config`_](Windows/config) ######
-  - Custom user-specific Windows OpenSSH client config
-  ###### [_`%ProgramData%\ssh\ssh_config`_](Windows/ssh_config) ######
-  - Custom system-wide Windows OpenSSH client config
-  ###### [_`%ProgramData%\ssh\sshd_config`_](Windows/sshd_config) ######
-  - Custom system-wide Windows OpenSSH server config
+- ###### [_`%UserProfile%\.ssh\config`_](Windows/config) ######
+  Custom user-specific Windows OpenSSH client config
+- ###### [_`%ProgramData%\ssh\ssh_config`_](Windows/ssh_config) ######
+  Custom system-wide Windows OpenSSH client config
+- ###### [_`%ProgramData%\ssh\sshd_config`_](Windows/sshd_config) ######
+  Custom system-wide Windows OpenSSH server config
 ---
 
 ## Permission Structure ##
-- **NOTE:**
-  - **`%UserProfile%\.ssh`**
-    - This, and all files/subdirectories, should only have inherited permissions for the user
-    - User should be the owner of `%UserProfile%\.ssh` and all files/subdirectories
+- **`%UserProfile%\.ssh`** <br>
+   Directory and files/subdirectories should be owned by, and only have inherited permissions for, the user
+
 ##
 
 - **`%ProgramData%\ssh\ssh_config`**
