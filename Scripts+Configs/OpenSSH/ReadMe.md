@@ -46,8 +46,6 @@
     :: # Verify ::
        Cmd /c Icacls %UserProfile%\.ssh
     ```
-##
-
 - **`%ProgramData%\ssh\ssh_config`**
   - _`NT AUTHORITY\SYSTEM:(F)` | `BUILTIN\Administrators:(F)` | `NT SERVICE\sshd:(R)`_
     ```bat
@@ -62,7 +60,6 @@
     Cmd /c Icacls %ProgramData%\ssh\sshd_config /Grant `"BUILTIN\Administrators`":F
     Cmd /c Icacls %ProgramData%\ssh\sshd_config /Grant `"NT SERVICE\sshd`":F
     ```
-##
 ##
 
 - **`~/.ssh`**
