@@ -21,7 +21,6 @@
 ## [FK8 CTR](FK8%20CTR) ##
 |  [Owner's Guide](FK8%20CTR/Owner's%20Guide.pdf)  |  [Owner's Manual](FK8%20CTR/Owner's%20Manual.pdf)  |  [Reset Procedures](FK8%20CTR/Reset%20Procedures.pdf)  |  [Warranty Terms](FK8%20CTR/Honda%20Warranty%20Basebook%20(KA%20Final%20AWL-02971-2017).pdf)  |
 |:---:|:---:|:---:|:---:|
-
 ###### Technical info, diagnostics, and schematics for the FK8 Civic Type R ######
 * **[CompuStar](FK8%20CTR/Compustar)**
   * [Manuals](FK8%20CTR/Compustar/Manuals)
@@ -50,8 +49,7 @@
 * **[Install Manuals (OEM)](FK8%20CTR/Install%20Manuals%20(OEM))**
   * Various OEM Accessory Install Manuals
 * **[Specs](FK8%20CTR/Specs)**
-
   |  [Allignment](FK8%20CTR/Specs/Wheel%20Alignment%20Specs.pdf)  |  [General](FK8%20CTR/Specs/General%20Specs.pdf)  |  [Torque](FK8%20CTR/Specs/Torque%20Specs.pdf)  |
   | - | - | - |
 ---
-> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._   
+> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._
