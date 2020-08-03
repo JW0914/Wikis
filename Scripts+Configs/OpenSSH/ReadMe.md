@@ -5,28 +5,17 @@
 ###### Configs are configured for security & may need to have less secure ciphers/exchanges added for certain SSH servers ######
 
 ### [BSD/Linux](BSD-Linux) ###
-- ###### [_`~/.ssh/config`_](BSD-Linux/config) ######
-  Custom user-specific OpenSSH client config, with three specific sections to this custom config
-  - ###### Custom ######
-    User-specific options which should be placed in `config`, not the system-wide `ssh_config`
-  - ###### Hosts ######
-    Individual host configurations, allowing user to connect via `ssh <host variable>`, such as `ssh FNr`
-  - ###### Options ######
-    Options overriding system-wide defaults in `ssh_config`
-- ###### [_`/etc/ssh/ssh_config`_](BSD-Linux/ssh_config) ######
-  Custom system-wide OpenSSH client config
-- ###### [_`/etc/ssh/sshd_config`_](BSD-Linux/sshd_config) ######  
-  Custom system-wide OpenSSH server config
-
-##
-
+- [`~/.ssh/config`](BSD-Linux/config) <br> Custom user-specific OpenSSH client config, with three specific sections to this custom config
+  - **Custom:** <br> User-specific options which should be placed in `config`, not the system-wide `ssh_config`
+  - **Hosts:** <br> Individual host configurations, allowing user to connect via `ssh <host variable>`, such as `ssh FNr`
+  - **Options:** <br> Options overriding system-wide defaults in `ssh_config`
+- [`/etc/ssh/ssh_config`](BSD-Linux/ssh_config) <br> Custom system-wide OpenSSH client config
+- [`/etc/ssh/sshd_config`](BSD-Linux/sshd_config) <br> Custom system-wide OpenSSH server config
 ### [Windows](Windows) ###
-- ###### [_`%UserProfile%\.ssh\config`_](Windows/config) ######
-  Custom user-specific Windows OpenSSH client config
-- ###### [_`%ProgramData%\ssh\ssh_config`_](Windows/ssh_config) ######
-  Custom system-wide Windows OpenSSH client config
-- ###### [_`%ProgramData%\ssh\sshd_config`_](Windows/sshd_config) ######
-  Custom system-wide Windows OpenSSH server config
+- [`%UserProfile%\.ssh\config`](Windows/config) <br> Custom user-specific Windows OpenSSH client config
+- [`%ProgramData%\ssh\ssh_config`](Windows/ssh_config) <br> Custom system-wide Windows OpenSSH client config
+- [`%ProgramData%\ssh\sshd_config`](Windows/sshd_config) <br> Custom system-wide Windows OpenSSH server config
+
 ---
 
 ## Permission Structure ##
@@ -60,8 +49,6 @@
     Cmd /c Icacls %ProgramData%\ssh\sshd_config /Grant `"BUILTIN\Administrators`":F
     Cmd /c Icacls %ProgramData%\ssh\sshd_config /Grant `"NT SERVICE\sshd`":F
     ```
-##
-
 - **`~/.ssh`**
   ```bash
   # Set Ownership to Owner (assumes user's group name is also user's name)
