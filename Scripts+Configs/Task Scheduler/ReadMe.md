@@ -38,9 +38,8 @@ To import into Task Scheduler:
  3. Reboot
     - If errors are found, review the `%WinDir%\Logs\DISM\dism.log`, starting from the bottom up <br><br>
  4. [SFC ScanNow](Sfc_ScanNow.xml): [`SFC /ScanNow`][9] <br> _Executes weekly on Sundays at 13:00:00_
-    - Verify and fix any corruption within `%WinDir%`:
-      - SFC always assumes the Component Store is not corrupted, comparing all system files against the known good backups contained within the Component Store and is why the `DISM` `/RestoreHealth` parameter should always be run prior to `SFC`
-      - Not doing so allows a corrupted Component Store to potentially replace a good system file with a corrupted one from within the corrupted Component Store due to a hash mismatch <br><br>
+    - Verify and fix any corruption within `%WinDir%` by verifying against known good copies in the Component Store
+      - SFC always assumes the Component Store is not corrupted and is why the `DISM` `/RestoreHealth` parameter should always be run prior to `SFC`; Not doing so allows a corrupted Component Store to potentially replace a good system file with a corrupted one due to the hash mismatch <br><br>
  5. Reboot
     - If errors were found, review the `%WinDir%\Logs\CBS\CBS.log`, starting from the bottom up
 
