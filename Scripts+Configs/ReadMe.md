@@ -52,6 +52,9 @@
 ###### [System Restore](System%20Restore) ######
 - Various system restore point creation scripts, with an accompanying Task Scheduler export
 
+###### [Task Scheduler](Task%20Scheduler) ######
+- Various Task Scheduler exports
+
 ###### [Vim](Vim) ######
 - Custom VimRC for Vim
 
