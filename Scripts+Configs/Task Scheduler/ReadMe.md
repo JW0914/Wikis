@@ -5,7 +5,7 @@ The [Component Store][1] [`%WinDir%\WinSxS`] maintains a backup copy of all Wind
 To import into Task Scheduler:
  - **GUI:**
    1. **<kbd>WinKey</kbd>+<kbd>R</kbd>** → Open: `TaskSchd.msc`
-   2. _Action_ → _New Folder..._ → Name: `Custom` → OK
+   2. _Action_ → _New Folder..._ → Name: `Custom`
    3. _Action_ → _Import Task..._ → `<task_name>.xml` <br><br>
  - **CLI:**
    - **`Cmd`:**
