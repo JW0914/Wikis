@@ -1,6 +1,6 @@
 ### Information Directory ###
 ---
-The [Component Store][1] [`%WinDir%\WinSxS`] maintains a backup copy of all Windows system files and the following tasks/command sequences must be followed in the order below due to what each does _(each relies upon the preceding one)_:
+The [Component Store][1] [`%WinDir%\WinSxS`] maintains a backup copy of all Windows system files and the following tasks/command sequences must be followed in the order listed below [1 - 5] due to each relying upon what the preceeding one does.
 
 To import into Task Scheduler:
  - **GUI:**
