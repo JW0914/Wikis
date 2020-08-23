@@ -35,7 +35,7 @@ $PD.ProgressBackgroundColor       = $bckgrnd
 Function set-prompt {
   Param (
     [Parameter(Position=0)]
-    [ValidateSet("Default","Test")]
+    [ValidateSet("Default")]
     $Action
   )
 
@@ -85,7 +85,7 @@ set-prompt Default
 
 # Module Browser
 #-----------------------------------------------------------
-  # Version: 1.3.2
+  # https://devblogs.microsoft.com/scripting/a-favorite-powershell-ise-feature-module-browser/
 
 Add-Type -Path 'C:\Program Files (x86)\WindowsPowerShell\Module Browser\ModuleBrowser.dll'
 
@@ -95,7 +95,7 @@ Add-Type -Path 'C:\Program Files (x86)\WindowsPowerShell\Module Browser\ModuleBr
 
 # Script Browser
 #-----------------------------------------------------------
-  # Version: 1.3.2
+  # https://devblogs.microsoft.com/scripting/a-favorite-powershell-ise-feature-script-browser/
 
 Add-Type -Path 'C:\Program Files (x86)\WindowsPowerShell\Script Browser\System.Windows.Interactivity.dll'
 Add-Type -Path 'C:\Program Files (x86)\WindowsPowerShell\Script Browser\ScriptBrowser.dll'
@@ -124,7 +124,7 @@ Add-Type -Path 'C:\Program Files (x86)\WindowsPowerShell\Script Browser\BestPrac
 
 # Win 10 Powershell
   Remove-Variable -Name P -Force -ea silentlycontinue
-  Set-Variable -Name P -Value "$env:WinDir\System32\WindowsPowerShell\v1.0\powershell.exe" -Scope Global
+  Set-Variable -Name P -Value "$env:WinDir\System32\WindowsPowerShell\v1.0\powershell.exe" -Scope "Global"
 
 
 # OpenSSH:
