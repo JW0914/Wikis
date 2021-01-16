@@ -47,7 +47,7 @@ default_ca                      = CA_default
 #====================================================================
 
 [ CA_default ]
-certs                           = $dir/cert
+certs                           = $dir
 new_certs_dir                   = $dir
 
 database                        = $dir/index
