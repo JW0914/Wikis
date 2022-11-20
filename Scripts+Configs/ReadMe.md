@@ -16,6 +16,9 @@
 ###### [File Associations](File%20Associations) ######
 - Registry key to allow Windows to display PEM certs in GUI form
 
+###### [Hosts](Hosts) ######
+- `hosts` file with MVPS and Malware Domain List entries
+
 ###### [Hyper-V](Hyper-V) ######
 - Adds Hyper-V Manager to _Control Panel\Hardware and Sound_
 
@@ -43,11 +46,23 @@
 ###### [OpenVPN](OpenVPN) ######
 - Custom client and server OpenVPN configs
 
+###### [OpenWrt](OpenWrt) ######
+- Auto creates an OpenWrt build environment on Ubuntu, as well as a Nano Makefile for OpenWrt
+
+###### [Outlook](Outlook) ######
+- An Event and Task Scheduler export to auto-start Outlook after being closed by a Task
+
+###### [PowerShell](Powershell) ######
+- Custom PowerShell profiles and scripts
+
 ###### [PuTTY](PuTTY) ######
 - Files and instructions required for a MultiHop SSH Tunnel or a TFTP firmware flash
 
 ###### [QDir](QDir) ######
 - Custom QDir config file and a useful registry key for WinPE/RE
+
+###### [RoboCopy](RoboCopy) ######
+- Custom RoboCopy scripts and Tasks
 
 ###### [System Restore](System%20Restore) ######
 - Various system restore point creation scripts, with an accompanying Task Scheduler export
@@ -55,11 +70,17 @@
 ###### [Task Scheduler](Task%20Scheduler) ######
 - Various Task Scheduler exports
 
+###### [TrueNAS](TrueNAS) ######
+- Various scripts for TrueNAS OS
+
 ###### [Vim](Vim) ######
 - Custom VimRC for Vim
 
-###### [WinRE](WinRE) ######
+###### [WinPE](WinPE) ######
 - Script to create a custom WinRE image and an accompanying bootable ISO, USB, or, VHD
+
+###### [WinRE](WinRE) ######
+- Script to create a custom WinPE image via Windows ADK
 
 ---
 
