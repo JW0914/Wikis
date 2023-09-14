@@ -86,13 +86,13 @@
         <line data="{Powershell::Pwsh}"/>
         <line data="{Powershell::Pwsh.A}"/>
         <line data="{Bash::Git bash}"/>
-        <line data='pwsh.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -cur_console:t:Pwsh'/>
+        <line data='pwsh.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -cur_console:t:Pwsh'/>
         <line data="{Powershell::PS}"/>
         <line data="{Bash::Cygwin}"/>
         <line data="{Powershell::PS.A}"/>
         <line data="{Bash::Git}"/>
         <line data="{Helper::Show ANSI colors}"/>
-        <line data='"C:\Program Files\PowerShell\6.0.1\pwsh.exe" -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -cur_console:n -cur_console:t:Pwsh'/>
+        <line data='"C:\Program Files\PowerShell\6.0.1\pwsh.exe" -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -cur_console:n -cur_console:t:Pwsh'/>
         <line data='"C:\cygwin64\bin\hg"'/>
         <line data='"C:\Program Files (x86)\Git\bin\bash.exe" {"--login -i"}  -new_console:t:"Git Bash"'/>
         <line data='"C:\Program Files (x86)\Git\bin\bash.exe" ${@--login -i}  -new_console:t:"Git Bash"'/>
@@ -107,8 +107,8 @@
         <line data='"C:\Program Files (x86)\Git\bin\bash.exe --login -i" -new_console:t:"Git Bash"'/>
         <line data='"C:\Program Files (x86)\Git\bin\bash.exe" --login -new_console:t:"Git Bash"'/>
         <line data='"C:\cygwin64\Cygwin.bat" -cur_console:t:Cygwin'/>
-        <line data='"pwsh.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -new_console:t:"Pwsh""'/>
-        <line data='pwsh.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -new_console:t:Pwsh'/>
+        <line data='"pwsh.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -new_console:t:"Pwsh""'/>
+        <line data='pwsh.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -new_console:t:Pwsh'/>
       </value>
       <value name="SingleInstance" type="hex" data="01"/>
       <value name="ShowHelpTooltips" type="hex" data="01"/>
@@ -662,7 +662,7 @@
           <value name="GuiArgs" type="string" data='/icon "C:\ProgramData\Git\git-bash.exe,0"'/>
           <value name="Active" type="long" data="0"/>
           <value name="Count" type="long" data="1"/>
-          <value name="Cmd1" type="string" data='pwsh.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" --Command $gitsh -new_console:t:"Pwsh":d:D:\JW\Documents\GitHub'/>
+          <value name="Cmd1" type="string" data='pwsh.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" --Command $gitsh -new_console:t:"Pwsh":d:C:\Users\<username>\Documents\GitHub'/>
         </key>
         <key name="Task4" modified="2022-03-02 05:37:22" build="210912">
           <value name="Name" type="string" data="{Powershell::Pwsh}"/>
@@ -671,7 +671,7 @@
           <value name="GuiArgs" type="string" data=""/>
           <value name="Active" type="long" data="0"/>
           <value name="Count" type="long" data="1"/>
-          <value name="Cmd1" type="string" data='pwsh.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -new_console:t:"Pwsh"'/>
+          <value name="Cmd1" type="string" data='pwsh.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -new_console:t:"Pwsh"'/>
         </key>
         <key name="Task5" modified="2022-03-02 05:37:22" build="210912">
           <value name="Name" type="string" data="{Powershell::Pwsh.A}"/>
@@ -680,7 +680,7 @@
           <value name="GuiArgs" type="string" data=""/>
           <value name="Active" type="long" data="0"/>
           <value name="Count" type="long" data="1"/>
-          <value name="Cmd1" type="string" data='pwsh.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -new_console:a:t:"Pwsh"'/>
+          <value name="Cmd1" type="string" data='pwsh.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -new_console:a:t:"Pwsh"'/>
         </key>
         <key name="Task6" modified="2022-03-02 05:37:22" build="210912">
           <value name="Name" type="string" data="{Powershell::PS}"/>
@@ -689,7 +689,7 @@
           <value name="GuiArgs" type="string" data=""/>
           <value name="Active" type="long" data="0"/>
           <value name="Count" type="long" data="1"/>
-          <value name="Cmd1" type="string" data='powershell.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -new_console:t:"PS"'/>
+          <value name="Cmd1" type="string" data='powershell.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -new_console:t:"PS"'/>
         </key>
         <key name="Task7" modified="2022-03-02 05:37:22" build="210912">
           <value name="Name" type="string" data="{Powershell::PS.A}"/>
@@ -698,7 +698,7 @@
           <value name="GuiArgs" type="string" data=""/>
           <value name="Active" type="long" data="0"/>
           <value name="Count" type="long" data="1"/>
-          <value name="Cmd1" type="string" data='powershell.exe -NoExit -Command "Import-Module D:\JW\Documents\WindowsPowerShell\profile.ps1" -new_console:a:t:"PS"'/>
+          <value name="Cmd1" type="string" data='powershell.exe -NoExit -Command "Import-Module C:\Users\<username>\Documents\WindowsPowerShell\profile.ps1" -new_console:a:t:"PS"'/>
         </key>
         <key name="Task8" modified="2022-03-02 05:37:22" build="210912">
           <value name="Name" type="string" data="{Tools::Choco.A}"/>
