@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\.]
+@=""
+
+[HKEY_CLASSES_ROOT\.\shell]
+
+[HKEY_CLASSES_ROOT\.\shell\open]
+
+[HKEY_CLASSES_ROOT\.\shell\open\command]
+@="\"C:\\Program Files\\VS Code\\Code.exe\" \"%1\""
