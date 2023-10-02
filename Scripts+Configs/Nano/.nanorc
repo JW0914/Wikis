@@ -6,26 +6,28 @@
                   ##----- Defaults -----##
 #===========================================================
 
-    # I utilize scopatz's .nanorc configuration
-      # See: https://github.com/scopatz/nanorc
+  # I utilize scopatz's .nanorc configuration:
+    # https://github.com/scopatz/nanorc
 
-        # To utilize:
+      # To not utilize:
+        # Comment out: Line 98
 
-          # git: see git-install.sh
-            # Normal BSD/Linux distros
+      # To utilize:
+        # BSD/Linux:
+          # curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
-          # wget: see wget-install.sh
-            # Router/SBC distros
-
-        # To not utilize:
-          # Comment out: Line 102
+        # Router/SBC:
+          # wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh
 
 
 #===========================================================
                   ##----- Options -----##
 #===========================================================
 
-    # Enabled #
+  # https://www.nano-editor.org/dist/latest/nanorc.5.html
+
+
+# Enabled #
 #-----------------------------------------------------------
 
 # Wrap at tab/space
@@ -33,10 +35,13 @@ set atblanks
 
 # Create Backup:
 set backup
-set backupdir "/mnt/sda1/backups/nano/root"
+set backupdir "~/.nano"
+
+# Bold text not Reverse:
+set boldtext
 
 # Bracket HL:
-set brackets ""’)>]}""
+set brackets ""'’)>]}'""
 set matchbrackets ""'(<[{)>]}'""
 
 # Cursor Location:
@@ -48,9 +53,6 @@ set historylog
 # Lock file if open
 set locking
 
-# No Text Wrap:
-set nowrap
-
 # Remember Cursor Position
 set positionlog
 
@@ -58,34 +60,28 @@ set positionlog
 set quotestr "^([ \\t]*[#:>\\|}])+"
 
 # KeyPad:
-set rebindkeypad
+set rawsequences
+
+# Soft wrap:
+set softwrap
 
 # Smart[er] Home Key
 set smarthome
 
-# Smooth Scrolling:
-set smooth
-
-# Enable Suspend:
-set suspend
-
 # Tab Size:
 set tabsize 2
 
-# Convert -> to .:
+# Convert → to .:
 set tabstospaces
 
 # Save w/ LF EOL
 set unix
 
-    # Disabled #
+# Disabled #
 #-----------------------------------------------------------
 
-# Unsuspend:
-  ## set fg
-
-# List jobs:
-  ## set jobs
+# Auto indent:
+  ## set autoindent
 
 # Mouse Support
   ## set mouse
@@ -95,7 +91,7 @@ set unix
                   ##----- RC Files -----##
 #===========================================================
 
-    # Include #
+# Include #
 #-----------------------------------------------------------
 
 # User-Specific:
