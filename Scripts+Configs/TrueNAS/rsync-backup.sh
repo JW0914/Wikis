@@ -4,10 +4,10 @@
 
 #==============================================================================
   # Title:        rsync_backup.sh
-  # Description:  Backs up or Restores ZFS Datastores on FreeNAS
+  # Description:  Backs up or Restores ZFS Datastores on TrueNAS
   # Author:       JW0914
   # Created:      2016.01.01
-  # Updated:      2020.01.30
+  # Updated:      2024.03.16
   # Version:      2.0
   # Usage:        chmod +x ./rsync_backup.sh && ./rsync_backup.sh
 #==============================================================================
@@ -26,7 +26,7 @@
   subject="External Backup Status for ${hn}.${dn}"
 
   # Device:
-    device="FreeNAS"
+    device="TrueNAS"
     hn="echo $(hostname -s)"
     dn="echo $(hostname -d)"
 
