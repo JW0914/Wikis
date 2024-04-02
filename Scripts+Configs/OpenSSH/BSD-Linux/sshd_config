@@ -102,4 +102,4 @@ KexAlgorithms                     = kex-strict-s-v00@openssh.com,ecdh-sha2-nistp
 
 MACs                              = hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
 
-PubkeyAcceptedAlgorithms          = ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-rsa
+PubkeyAcceptedAlgorithms          = ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256
