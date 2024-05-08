@@ -18,7 +18,6 @@
   - **Server**
     - **`keyUsage`:**
       - `digitalSignature`
-      - `nonRepudiation`
       - `keyEncipherment`
       - `keyAgreement`
     - **`extendedKeyUsage`**
@@ -26,7 +25,6 @@
   - **Client**
     - **`keyUsage`:**
       - `digitalSignature`
-      - `nonRepudiation`
       - `keyEncipherment`
     - **`extendedKeyUsage`**
       - `clientAuth` <br><br>
