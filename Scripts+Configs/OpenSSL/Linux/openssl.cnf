@@ -192,11 +192,11 @@ organizationalUnitName_default  = LAN
     DNS.1               = UTM.WRT
     DNS.2               = your.ddns.com
 
-    [ alt_freenas ]
+    [ alt_truenas ]
     IP.1                = 192.168.2.13
     IP.2                = 192.168.2.130
     IP.3                = 127.0.0.1
-    DNS.1               = FreeNAS.WRT
+    DNS.1               = TrueNAS.WRT
     DNS.2               = your-fqdn.com
 
     [ alt_vpn_server1 ]
@@ -332,23 +332,23 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+    keyUsage                    = critical, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_sophos
 
-    [ v3_freenas ]
+    [ v3_truenas ]
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+    keyUsage                    = critical, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
-    subjectAltName              = @alt_freenas
+    subjectAltName              = @alt_truenas
 
     [ v3_vpn_server1 ]
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+    keyUsage                    = critical, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_vpn_server1
 
@@ -357,7 +357,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical,CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment
+    keyUsage                    = critical, digitalSignature, keyEncipherment
     extendedKeyUsage            = critical, clientAuth
     subjectAltName              = @alt_vpn1_user1
 
@@ -373,7 +373,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+    keyUsage                    = critical, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_openwrt
 
@@ -381,7 +381,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical, CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment, keyAgreement
+    keyUsage                    = critical, digitalSignature, keyEncipherment, keyAgreement
     extendedKeyUsage            = critical, serverAuth
     subjectAltName              = @alt_vpn_server2
 
@@ -390,7 +390,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical,CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment
+    keyUsage                    = critical, digitalSignature, keyEncipherment
     extendedKeyUsage            = critical, clientAuth
     subjectAltName              = @alt_vpn2_user1
 
@@ -398,7 +398,7 @@ extendedKeyUsage            = critical, clientAuth, emailProtection
     basicConstraints            = critical,CA:FALSE
     subjectKeyIdentifier        = hash
     authorityKeyIdentifier      = keyid:always, issuer:always
-    keyUsage                    = critical, nonRepudiation, digitalSignature, keyEncipherment
+    keyUsage                    = critical, digitalSignature, keyEncipherment
     extendedKeyUsage            = critical, clientAuth
     subjectAltName              = @alt_vpn2_user2
 
