@@ -12,6 +12,10 @@
   * [Lights](Lights.xlsx)
   * [Lights: Exterior](Lights%20(Exterior).xlsx)
   * [Lights: Interior](Lights%20(Interior).xlsx)
+* **[CAD](CAD)**
+  * CAD drawings of component and connector locations
+* **[Connectors](Connectors)**
+  * Connector pin-outs
 * **[Diodes](Diodes)**
   * How to isolate and block door triggers & sensors
 * [Electrical Connectors & Terminal Locations (OEM)](Electrical%20Connectors%20%26%20Terminal%20Locations%20(OEM).pdf)
