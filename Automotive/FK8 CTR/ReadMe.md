@@ -45,10 +45,18 @@
     * [Lights](Electrical/Lights.xlsx)
     * [Lights: Exterior](Electrical/Lights%20(Exterior).xlsx)
     * [Lights: Interior](Electrical/Lights%20(Interior).xlsx)
+  * **[CAD](Electrical/CAD)**
+    * Connector Locations CAD drawings
+  * **[Connectors](Electrical/Connectors)**
+    * Connector Pin Outs
   * **[Diodes](Electrical/Diodes)**
     * Blocking Diodes, Isolating Door Triggers & Sensors
+  * **[DTC](Electrical/DTC)**
+    * DTC Troubleshooting
   * **[FuseBox](Electrical/FuseBox)**
     * Fuse Lists, Relay Circuit Board info, UH & UD Fuse Boxes
+  * **[Grounds](Electrical/Grounds)**
+    * Ground Distribution
   * **[Relays](Electrical/Relays)**
     * Diagrams for 2nd Accessory, 2nd Ignition, Starter Kill, etc.
   * **[Schematics](Electrical/Schematics)**
