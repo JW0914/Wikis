@@ -15,9 +15,19 @@
 * **[CAD](CAD)**
   * CAD drawings of component and connector locations
 * **[Connectors](Connectors)**
-  * Connector pin-outs
+  * [B-CAN](Connectors/B-CAN)
+  * [BCM](Connectors/BCM)
+  * [Cable Reel](Connectors/Cable%20Reel)
+  * [Components](Connectors/Components)
+  * [Driver's Junction](Connectors/Driver's%20Junction)
+  * [Fuse Box (UD)](Connectors/Fuse%20Box%20(UD))
+  * [Fuse Box (UH)](Connectors/Fuse%20Box%20(UH))
+  * [Inline](Connectors/Inline)
+  * [PCM](Connectors/PCM)
 * **[Diodes](Diodes)**
   * How to isolate and block door triggers & sensors
+* **[DTC](DTC)**
+  * DTC Troubleshooting
 * [Electrical Connectors & Terminal Locations (OEM)](Electrical%20Connectors%20%26%20Terminal%20Locations%20(OEM).pdf)
   * How to identify and number Honda connectors and terminals
 * [Electrical Symbols (OEM)](Electrical%20Symbols%20(OEM).pdf)
@@ -41,4 +51,4 @@
   * [Power](Schematics/Power)
   * [SVG](Schematics/SVG)
 ---
-> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._   
+> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._
