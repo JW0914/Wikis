@@ -84,7 +84,7 @@
 * SRS (Connector: [A](SRS%20Unit%20Connector%20A.pdf) | [B](SRS%20Unit%20Connector%20B.pdf))
   * Seat Belt Buckle Switch: [LF](LF%20Seat%20Belt%20Buckle%20Switch.odf) ([Connector](LF%20Seat%20Belt%20Buckle%20Switch%20Connector.pdf)) | [RF](RF%20Seat%20Belt%20Buckle%20Switch.odf) ([Connector](RF%20Seat%20Belt%20Buckle%20Switch%20Connector.pdf))
 * Tailgate: [Latch](Tailgate%20Latch.pdf) ([Connector](Tailgate%20Latch%20Connector.pdf)) | [Outer Handle](Tailgate%20Outer%20Handle%20Lock%20Switch,%20License%20Plate%20Light.pdf) ([Connector](Tailgate%20Outer%20Handle,%20Lock%20Switch,%20License%20Plate%20Light%20Connector.pdf))
-* VSA: [VSA Modulator-Control Unit Connector](VSA%20Modulator-Control%20Unit%20Connector.pdf) | [VSA Off Switch](VSA%20Off%20Switch.pdf) ([Connector](VSA%20Off%20Switch%20Connector.pdf))
+* VSA: [Modulator-Control Unit Connector](VSA%20Modulator-Control%20Unit%20Connector.pdf) | [Off Switch](VSA%20Off%20Switch.pdf) ([Connector](VSA%20Off%20Switch%20Connector.pdf))
 * Windows: [LF](LF%20Power%20Window%20Master%20Switch.pdf) ([Connector](LF%20Power%20Window%20Master%20Switch%20Connector.pdf)) | [RF](RF%20Power%20Window%20Switch.pdf) ([Connector](RF%20Power%20Window%20Switch%20Connector.pdf))
 
 ---
