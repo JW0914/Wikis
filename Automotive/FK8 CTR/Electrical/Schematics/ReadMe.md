@@ -1,5 +1,7 @@
 ### Information Directory ###
 ---
+<sup>_SVGs: Right-click on image → Open in New Tab_</sup>
+
 * **[Audio](Audio)**
   * Audio **[**[PDF](Audio/Audio.pdf)**]**
   * Navigation **[**[PDF](Audio/Navigation.pdf) **|** [SVG](Audio/Navigation.svg)**]**
@@ -43,6 +45,7 @@
   * PGM-FI System **[**[PDF](ECU/PGM-FI%20System.pdf) **|** [SVG](ECU/PGM-FI%20System.svg)**]**
   * VTEC & VTC **[**[PDF](ECU/VTEC%20%26%20VTC.pdf) **|** [SVG](ECU/VTEC%20%26%20VTC.svg)**]**
 * **[Grounds](Grounds)**
+  * Battery **[**[SVG](Grounds/Ground%20Cable.svg)**]**
   * G1 **[**[SVG](Grounds/G1.svg)**]**
   * G2 **[**[SVG](Grounds/G2.svg)**]**
   * G3 **[**[SVG](Grounds/G3.svg)**]**
@@ -63,10 +66,9 @@
   * G602 **[**[SVG](Grounds/G602.svg)**]**
   * G603 **[**[SVG](Grounds/G603.svg)**]**
   * G604 **[**[SVG](Grounds/G604.svg)**]**
-  * Ground Cable **[**[SVG](Grounds/Ground%20Cable.svg)**]**
   * Ground Distribution **[**[PDF](Grounds/Ground%20Distribution.pdf)**]**
   * Ground List **[**[PDF](Grounds/Ground%20List.pdf)**]**
-  * T7 **[**[SVG](Grounds/T7.svg)**]**  
+  * T7 **[**[SVG](Grounds/T7.svg)**]**
 * **[Keyless](Keyless)**
   * Door Locks & Security **[**[PDF](Keyless/Door%20Locks%20%26%20Security.pdf) **|** [SVG](Keyless/Door%20Locks%20%26%20Security.svg)**]**
   * Keyless Access System **[**[PDF](Keyless/Keyless%20Access%20System.pdf) **|** [SVG](Keyless/Keyless%20Access%20System.svg)**]**
@@ -101,6 +103,6 @@
   * Fuse Box (UH Holder A) **[**[SVG](Power/Fuse%20Box%20(UH%20Holder%20A).svg)**]**
   * Fuse Box (UH Holder B) **[**[SVG](Power/Fuse%20Box%20(UH%20Holder%20B).svg)**]**
   * Fuse Box (UH) **[**[SVG](Power/Fuse%20Box%20(UH).svg)**]**
-* **[SVG](SVG)**
+* **[SVG](SVG)** <br> <sup>_To view against an opaque background: Right-click on image → Open in New Tab_</sup>
 ---
-> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._   
+> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._

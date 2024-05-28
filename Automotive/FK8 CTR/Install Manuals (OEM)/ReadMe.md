@@ -20,7 +20,7 @@
     * [Side](Side%20Under%20Spoiler%20%28AII03668-64%29.pdf)
     * [Tailgate](Tailgate%20Spoiler%20%28AII03668-86%29.pdf)<br><br>
 * **Interior**
-  * [Ambient Lighting](Ambient%20Lighting%20%28AII03668-19%29.pdf)]
+  * [Ambient Lighting](Ambient%20Lighting%20%28AII03668-19%29.pdf)
   * [Automatic Day-Night Mirror](Automatic%20Day-Night%20Mirror%20%28AII03668-25%29.pdf)
   * Cargo:
     * [Hooks](Cargo%20Hooks%20%28AII03668-26%29.pdf)
@@ -39,4 +39,4 @@
   * [Pedals](Pedals%20%28AII03668-61%29.pdf)
   * Wireless Charger: [2017](Wireless%20Charger%202017%20%28AII03668-07%29.pdf) | [2018](Wireless%20Charger%202018%20%28AII07130-02%29.pdf)
 ---
-> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._  
+> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._

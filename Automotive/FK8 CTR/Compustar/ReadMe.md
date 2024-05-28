@@ -4,8 +4,10 @@
   * Customized FK8 install instructions for CompuStar's Alarm & Remote Start
 * [Cheat Sheet](Cheat%20Sheet.pdf)
   * Quick reference for common procedures
-* [DAS Programming](DAS%20Programming.pdf)
-  * How to program the DAS I / II
+* [DAS Programming](DAS%20v2018%20Programming.pdf)
+  * v2018: Programming Manual
+* [DAS II Programming](DAS%20II%20v2021%20Programming.pdf)
+  * v2021: Programming Manual
 * **[Manuals](Manuals)**
   * v3.51: Install Manual & Programming Option Tables
 * **[Options](Options)**
@@ -17,4 +19,4 @@
 * **[Schematics](Schematics)**
   * Required schematics for an FK8 install
 ---
-> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._   
+> _I have referenced source material from where it was collated (if known or easy to determine). <br>If coming across info I forgot to add source links to, please let me know so I can correct it with it's proper sources._

@@ -48,6 +48,8 @@
   * How to root and install Hondata Mobile on headunit
 * **[Install Manuals (OEM)](FK8%20CTR/Install%20Manuals%20(OEM))**
   * Various OEM Accessory Install Manuals
+* **[Mechanical](Mechanical)**
+  * Exhaust and Turbo Removal
 * **[Specs](FK8%20CTR/Specs)**
   |  [Allignment](FK8%20CTR/Specs/Wheel%20Alignment%20Specs.pdf)  |  [General](FK8%20CTR/Specs/General%20Specs.pdf)  |  [Torque](FK8%20CTR/Specs/Torque%20Specs.pdf)  |
   | - | - | - |
