@@ -1,4 +1,4 @@
-﻿Windows Registry Editor Version 5.00
+Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Serial]
 "Present"=dword:00000001
@@ -17,9 +17,9 @@
 "PingIntervalSecs"=dword:00000000
 "TCPNoDelay"=dword:00000001
 "TCPKeepalives"=dword:00000000
-"TerminalType"="xterm"
-"TerminalSpeed"="38400,38400"
-"TerminalModes"="CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A"
+"TerminalType"="xterm-256color"
+"TerminalSpeed"="115200,115200"
+"TerminalModes"="CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A"
 "AddressFamily"=dword:00000000
 "ProxyExcludeList"=""
 "ProxyDNS"=dword:00000001
@@ -30,6 +30,7 @@
 "ProxyUsername"=""
 "ProxyPassword"=""
 "ProxyTelnetCommand"="connect %host %port\\n"
+"ProxyLogToTerm"=dword:00000001
 "Environment"=""
 "UserName"=""
 "UserNameFromEnvironment"=dword:00000000
@@ -40,8 +41,9 @@
 "AgentFwd"=dword:00000000
 "GssapiFwd"=dword:00000000
 "ChangeUsername"=dword:00000000
-"Cipher"="aes,blowfish,3des,WARN,arcfour,des"
-"KEX"="dh-gex-sha1,dh-group14-sha1,dh-group1-sha1,rsa,WARN"
+"Cipher"="aesgcm,aes,WARN,blowfish,chacha20,3des,arcfour,des"
+"KEX"="ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1"
+"HostKey"="ed25519,rsa,WARN,ecdsa,dsa"
 "RekeyTime"=dword:0000003c
 "RekeyBytes"="1G"
 "SshNoAuth"=dword:00000000
@@ -68,6 +70,7 @@
 "NoRemoteResize"=dword:00000000
 "NoAltScreen"=dword:00000000
 "NoRemoteWinTitle"=dword:00000000
+"NoRemoteClearScroll"=dword:00000000
 "RemoteQTitleAction"=dword:00000001
 "NoDBackspace"=dword:00000000
 "NoRemoteCharset"=dword:00000000
@@ -75,7 +78,7 @@
 "ApplicationKeypad"=dword:00000000
 "NetHackKeypad"=dword:00000000
 "AltF4"=dword:00000001
-"AltSpace"=dword:00000000
+"AltSpace"=dword:00000001
 "AltOnly"=dword:00000000
 "ComposeKey"=dword:00000000
 "CtrlAltKeys"=dword:00000001
@@ -88,7 +91,7 @@
 "FullScreenOnAltEnter"=dword:00000000
 "HideMousePtr"=dword:00000000
 "SunkenEdge"=dword:00000000
-"WindowBorder"=dword:00000001
+"WindowBorder"=dword:00000005
 "CurType"=dword:00000001
 "BlinkCur"=dword:00000001
 "Beep"=dword:00000001
@@ -98,7 +101,7 @@
 "BellOverloadN"=dword:00000005
 "BellOverloadT"=dword:000007d0
 "BellOverloadS"=dword:00001388
-"ScrollbackLines"=dword:00002710
+"ScrollbackLines"=dword:000061a8
 "DECOriginMode"=dword:00000000
 "AutoWrapMode"=dword:00000001
 "LFImpliesCR"=dword:00000000
@@ -106,10 +109,10 @@
 "DisableArabicShaping"=dword:00000000
 "DisableBidi"=dword:00000000
 "WinNameAlways"=dword:00000001
-"WinTitle"="Secure Shell - Serial"
-"TermWidth"=dword:00000050
+"WinTitle"="Serial Console - COM"
+"TermWidth"=dword:00000077
 "TermHeight"=dword:00000028
-"Font"="Courier New"
+"Font"="Consolas"
 "FontIsBold"=dword:00000000
 "FontCharSet"=dword:00000000
 "FontHeight"=dword:0000000a
@@ -119,29 +122,29 @@
 "TryPalette"=dword:00000000
 "ANSIColour"=dword:00000001
 "Xterm256Colour"=dword:00000001
-"BoldAsColour"=dword:00000000
-"Colour0"="170,210,0"
-"Colour1"="255,125,0"
-"Colour2"="25,25,25"
-"Colour3"="20,20,20"
-"Colour4"="0,0,0"
-"Colour5"="0,255,0"
-"Colour6"="0,0,0"
-"Colour7"="85,85,85"
-"Colour8"="187,0,0"
+"BoldAsColour"=dword:00000002
+"Colour0"="175,175,175"
+"Colour1"="225,225,225"
+"Colour2"="40,40,40"
+"Colour3"="35,35,35"
+"Colour4"="0,163,255"
+"Colour5"="0,163,255"
+"Colour6"="110,110,110"
+"Colour7"="125,125,125"
+"Colour8"="225,0,0"
 "Colour9"="255,85,85"
 "Colour10"="0,187,0"
 "Colour11"="85,255,85"
 "Colour12"="187,187,0"
 "Colour13"="255,255,85"
 "Colour14"="0,163,255"
-"Colour15"="0,100,255"
+"Colour15"="0,200,255"
 "Colour16"="187,0,187"
 "Colour17"="255,85,255"
 "Colour18"="0,187,187"
 "Colour19"="85,255,255"
 "Colour20"="187,187,187"
-"Colour21"="255,255,255"
+"Colour21"="237,237,237"
 "RawCNP"=dword:00000000
 "PasteRTF"=dword:00000000
 "MouseIsXterm"=dword:00000000
@@ -185,7 +188,9 @@
 "BugPKSessID2"=dword:00000000
 "BugRekey2"=dword:00000000
 "BugMaxPkt2"=dword:00000000
+"BugOldGex2"=dword:00000000
 "BugWinadj"=dword:00000000
+"BugChanReq"=dword:00000000
 "StampUtmp"=dword:00000001
 "LoginShell"=dword:00000001
 "ScrollbarOnLeft"=dword:00000000
@@ -208,9 +213,8 @@
 "SerialDataBits"=dword:00000008
 "SerialStopHalfbits"=dword:00000002
 "SerialParity"=dword:00000000
-"SerialFlowControl"=dword:00000000
+"SerialFlowControl"=dword:00000001
 "WindowClass"=""
-"BugChanReq"=dword:00000000
 "ConnectionSharing"=dword:00000000
 "ConnectionSharingUpstream"=dword:00000001
 "ConnectionSharingDownstream"=dword:00000001
