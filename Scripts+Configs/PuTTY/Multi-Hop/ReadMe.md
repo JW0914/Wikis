@@ -9,27 +9,27 @@
 
 #### PuTTY Profiles ####
 
-###### [_FreeNAS Remote_](PuTTY_Profile_FreeNAS_Remote_Multi-hop.reg) ######
+###### [_FreeNAS Remote_](PuTTY_Profile_TrueNAS_Remote_Multi-hop.reg) ######
 - Remote SSH profile for a _local device_, which will be the final point in a MultiHop
   - Edit lines:
     - __5:__ `"HostName"="root@192.168.1.20"`
-    - __6:__ `"LogFileName"="C:\\Path\\To\\PuTTY\\Logs\\SSH.FreeNAS.Remote.log"`
-    - __15:__ `"PortNumber"=dword:00000016`
+    - __6:__ `"LogFileName"="SSH.TrueNAS.Remote.log"`
+    - __13:__ `"PortNumber"=dword:00000016`
       - _Hex format (hex 16 -> dec[imal] 22)_
         - _BSD/Linux_
           - _cli hex -> dec: `printf '%d\n' 0x0a` returns 10_
           - _cli dec -> hex: `printf '%x\n' 10` returns 0a_
         - _Windows_
           - _Calculator has a programmer function with hex <-> dec conversion_
-    - __32:__ `"ProxyTelnetCommand"="plink -v -load SSH.OpenWRT.Remote -nc %host:%port"`
-      - _profile name (SSH.OpenWRT.Remote) must match router profile name and can't contain spaces_
-    - __58:__ `"PublicKeyFile"="C:\\Path\\To\\PuTTY\\SSHkeys\\FreeNAS.SSH.ppk"`
+    - __32:__ `"ProxyTelnetCommand"="plink -v -load SSH.OpenWrt.Remote -nc %host:%port"`
+      - _profile name (SSH.OpenWrt.Remote) must match router profile name and can't contain spaces_
+    - __60:__ `"PublicKeyFile"="C:\\Users\\username\\.ssh\\Key.ppk"`
 
-###### [_OpenWRT Remote_](PuTTY_Profile_OpenWRT_Remote.reg) ######
+###### [_OpenWRT Remote_](PuTTY_Profile_OpenWrt_Remote.reg) ######
 - Remote SSH profile for a _WAN facing router_
   - Edit lines:
     - __5:__ `"HostName"="your.ddns.com"`
-    - __6:__ `"LogFileName"="C:\\Path\\To\\PuTTY\\Logs\\SSH.OpenWRT.Remote.log"`
-    - __15:__ `"PortNumber"=dword:00000016`
-    - __58:__ `"PublicKeyFile"="C:\\Path\\To\\PuTTY\\SSHkeys\\OpenWRT.SSH.ppk"`
+    - __6:__ `"LogFileName"="SSH.OpenWrt.Remote.log"`
+    - __13:__ `"PortNumber"=dword:00000016`
+    - __60:__ `"PublicKeyFile"="C:\\Users\\username\\.ssh\\Key.ppk"`
  
