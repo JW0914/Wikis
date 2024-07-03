@@ -3,7 +3,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\SSH.OpenWrt.Remote]
 "Present"=dword:00000001
 "HostName"="your.ddns.com"
-"LogFileName"="SSH.OpenWRT.Remote.log"
+"LogFileName"="SSH.OpenWrt.Remote.log"
 "LogType"=dword:00000002
 "LogFileClash"=dword:ffffffff
 "LogFlush"=dword:00000000
