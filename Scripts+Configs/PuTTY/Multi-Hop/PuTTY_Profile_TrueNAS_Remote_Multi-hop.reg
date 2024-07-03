@@ -1,9 +1,9 @@
 Windows Registry Editor Version 5.00
 
-[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\SSH.FreeNAS.Remote]
+[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\SSH.TrueNAS.Remote]
 "Present"=dword:00000001
 "HostName"="root@192.168.1.20"
-"LogFileName"="C:\\Path\\To\\PuTTY\\Logs\\SSH.FreeNAS.Remote.log"
+"LogFileName"="SSH.TrueNAS.Remote.log"
 "LogType"=dword:00000002
 "LogFileClash"=dword:00000000
 "LogFlush"=dword:00000000
@@ -17,9 +17,9 @@ Windows Registry Editor Version 5.00
 "PingIntervalSecs"=dword:00000000
 "TCPNoDelay"=dword:00000001
 "TCPKeepalives"=dword:00000000
-"TerminalType"="xterm"
-"TerminalSpeed"="38400,38400"
-"TerminalModes"="CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A"
+"TerminalType"="xterm-256color"
+"TerminalSpeed"="115200,115200"
+"TerminalModes"="CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A"
 "AddressFamily"=dword:00000000
 "ProxyExcludeList"=""
 "ProxyDNS"=dword:00000001
@@ -29,7 +29,8 @@ Windows Registry Editor Version 5.00
 "ProxyPort"=dword:00000000
 "ProxyUsername"=""
 "ProxyPassword"=""
-"ProxyTelnetCommand"="plink -v -load SSH.OpenWRT.Remote -nc %host:%port"
+"ProxyTelnetCommand"="plink -v -load SSH.OpenWrt.Remote -nc %host:%port"
+"ProxyLogToTerm"=dword:00000001
 "Environment"=""
 "UserName"="root"
 "UserNameFromEnvironment"=dword:00000000
@@ -40,8 +41,9 @@ Windows Registry Editor Version 5.00
 "AgentFwd"=dword:00000000
 "GssapiFwd"=dword:00000000
 "ChangeUsername"=dword:00000000
-"Cipher"="aes,3des,blowfish,WARN,arcfour,des"
-"KEX"="dh-gex-sha1,dh-group14-sha1,dh-group1-sha1,rsa,WARN"
+"Cipher"="aesgcm,aes,WARN,blowfish,chacha20,3des,arcfour,des"
+"KEX"="ntru-curve25519,ecdh,dh-gex-sha1,dh-group16-sha512,dh-group17-sha512,dh-group18-sha512,dh-group15-sha512,dh-group14-sha1,rsa,WARN,dh-group1-sha1"
+"HostKey"="ed448,ed25519,rsa,WARN,ecdsa,dsa"
 "RekeyTime"=dword:0000003c
 "RekeyBytes"="1G"
 "SshNoAuth"=dword:00000000
@@ -55,7 +57,7 @@ Windows Registry Editor Version 5.00
 "SshProt"=dword:00000003
 "LogHost"=""
 "SSH2DES"=dword:00000000
-"PublicKeyFile"="C:\\Path\\To\\PuTTY\\SSHkeys\\FreeNAS.SSH.ppk"
+"PublicKeyFile"="C:\\Users\\username\\.ssh\\Key.ppk"
 "RemoteCommand"=""
 "RFCEnviron"=dword:00000000
 "PassiveTelnet"=dword:00000000
@@ -68,6 +70,7 @@ Windows Registry Editor Version 5.00
 "NoRemoteResize"=dword:00000000
 "NoAltScreen"=dword:00000000
 "NoRemoteWinTitle"=dword:00000000
+"NoRemoteClearScroll"=dword:00000000
 "RemoteQTitleAction"=dword:00000001
 "NoDBackspace"=dword:00000000
 "NoRemoteCharset"=dword:00000000
@@ -106,10 +109,10 @@ Windows Registry Editor Version 5.00
 "DisableArabicShaping"=dword:00000000
 "DisableBidi"=dword:00000000
 "WinNameAlways"=dword:00000001
-"WinTitle"="Secure Shell - FreeNAS (Remote)"
+"WinTitle"="SSH - TrueNAS (Remote)"
 "TermWidth"=dword:00000077
 "TermHeight"=dword:00000028
-"Font"="Lucida Console"
+"Font"="Consolas"
 "FontIsBold"=dword:00000000
 "FontCharSet"=dword:00000000
 "FontHeight"=dword:0000000a
@@ -121,27 +124,27 @@ Windows Registry Editor Version 5.00
 "Xterm256Colour"=dword:00000001
 "BoldAsColour"=dword:00000002
 "Colour0"="175,175,175"
-"Colour1"="255,125,0"
-"Colour2"="25,25,25"
-"Colour3"="20,20,20"
+"Colour1"="225,225,225"
+"Colour2"="40,40,40"
+"Colour3"="35,35,35"
 "Colour4"="0,163,255"
 "Colour5"="0,163,255"
-"Colour6"="0,0,0"
-"Colour7"="85,85,85"
-"Colour8"="187,0,0"
+"Colour6"="110,110,110"
+"Colour7"="125,125,125"
+"Colour8"="225,0,0"
 "Colour9"="255,85,85"
 "Colour10"="0,187,0"
 "Colour11"="85,255,85"
 "Colour12"="187,187,0"
 "Colour13"="255,255,85"
 "Colour14"="0,163,255"
-"Colour15"="0,100,255"
+"Colour15"="0,200,255"
 "Colour16"="187,0,187"
 "Colour17"="255,85,255"
 "Colour18"="0,187,187"
 "Colour19"="85,255,255"
 "Colour20"="187,187,187"
-"Colour21"="255,255,255"
+"Colour21"="237,237,237"
 "RawCNP"=dword:00000000
 "PasteRTF"=dword:00000000
 "MouseIsXterm"=dword:00000000
@@ -174,7 +177,7 @@ Windows Registry Editor Version 5.00
 "X11AuthFile"=""
 "LocalPortAcceptAll"=dword:00000000
 "RemotePortAcceptAll"=dword:00000000
-"PortForwardings"=""
+"PortForwardings"="L5000=127.0.0.1:443,L5001=127.0.0.1:80"
 "BugIgnore1"=dword:00000000
 "BugPlainPW1"=dword:00000000
 "BugRSA1"=dword:00000000
@@ -185,6 +188,7 @@ Windows Registry Editor Version 5.00
 "BugPKSessID2"=dword:00000000
 "BugRekey2"=dword:00000000
 "BugMaxPkt2"=dword:00000000
+"BugOldGex2"=dword:00000000
 "BugWinadj"=dword:00000000
 "BugChanReq"=dword:00000000
 "StampUtmp"=dword:00000001
@@ -205,7 +209,7 @@ Windows Registry Editor Version 5.00
 "ShadowBold"=dword:00000000
 "ShadowBoldOffset"=dword:00000001
 "SerialLine"="COM1"
-"SerialSpeed"=dword:00002580
+"SerialSpeed"=dword:0001c200
 "SerialDataBits"=dword:00000008
 "SerialStopHalfbits"=dword:00000002
 "SerialParity"=dword:00000000
@@ -215,3 +219,27 @@ Windows Registry Editor Version 5.00
 "ConnectionSharingUpstream"=dword:00000001
 "ConnectionSharingDownstream"=dword:00000001
 "SSHManualHostKeys"=""
+"LogHeader"=dword:00000001
+"PreferKnownHostKeys"=dword:00000001
+"GssapiRekey"=dword:00000002
+"SshNoTrivialAuth"=dword:00000000
+"AuthGSSAPIKEX"=dword:00000001
+"DetachedCertificate"=""
+"AuthPlugin"=""
+"AuthCAPI"=dword:00000000
+"CAPICertID"=""
+"ShiftedArrowKeys"=dword:00000000
+"TrueColour"=dword:00000001
+"UTF8linedraw"=dword:00000000
+"PasteControls"=dword:00000000
+"MouseAutocopy"=dword:00000001
+"MousePaste"="explicit"
+"CtrlShiftIns"="explicit"
+"CtrlShiftCV"="none"
+"BugRSASHA2CertUserauth"=dword:00000000
+"BugDropStart"=dword:00000001
+"BugFilterKexinit"=dword:00000001
+"SUPDUPLocation"="The Internet"
+"SUPDUPCharset"=dword:00000000
+"SUPDUPMoreProcessing"=dword:00000000
+"SUPDUPScrolling"=dword:00000000
