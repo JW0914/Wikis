@@ -1,28 +1,54 @@
 #
 
-                ##::[[---  NanoRC Config ---]]::##
+              ##::[[-----  Custom NanoRC -----]]::##
+
+#===================================================================
+                     ##----- Defaults -----##
+#===================================================================
+
+  # Man Page:
+    # https://www.nano-editor.org/dist/latest/nano.html#Nanorc-File
+
+
+  # I utilize scopatz's .nanorc configuration - forked:
+    # https://github.com/JW0914/nanorc-1
+
+      # To utilize:
+        # BSD/Linux:
+          # curl https://raw.githubusercontent.com/JW0914/nanorc-1/master/install.sh | sh
+
+        # Router/SBC:
+          # wget https://raw.githubusercontent.com/JW0914/nanorc-1/master/install.sh -O- | sh
+
+
+  # Modern Bindings: (no NanoRC option and overrides -p || --preserve)
+    ## nano --modernbindings <file>
+       # Use key bindings similar to the ones that most modern programs use:
+         # ^O: opens a file | ^S: saves | ^W: writes out a file
+         # ^X: cuts | ^C: copies | ^V: pastes | ^A: sets the mark | ^R: makes replacements
+         # ^Z: undoes | ^Y: redoes | ^T: goes to a line | ^P: shows the position
+         # ^F: searches forward | ^G: searches next | ^D: searches previous
+         # ^E: executes a command | ^H: shows help | ^Q: quits
+
 
 #===================================================================
                       ##----- Options -----##
 #===================================================================
 
-# Set #
-#-------------------------------------------------------------------
-
 # Wrap at Tab/Space:
 set atblanks
 
-# Auto Indent:
-  ##set autoindent
+# Auto indent:
+  ## set autoindent
 
 # Create Backup:
 set backup
-set backupdir "/mnt/sda1/root/.nano"
+set backupdir "~/.nano"
 
 # Bold Text not Reverse:
 set boldtext
 
-# Bracket Highlight:
+# Bracket HL:
 set brackets ""'’)>]}'""
 set matchbrackets ""'(<[{)>]}'""
 
@@ -32,11 +58,11 @@ set constantshow
 # Save History:
 set historylog
 
-# Lock File if Open:
+# Lock file if Open:
 set locking
 
 # Mouse Support:
-  ##set mouse
+  ## set mouse
 
 # Remember Cursor Position:
 set positionlog
@@ -64,9 +90,16 @@ set unix
 
 
 #===================================================================
-                  ##----- RC Files -----##
+                     ##----- RC Files -----##
 #===================================================================
 
-# Include RC Files #
+# Include #
 #-------------------------------------------------------------------
-include "/usr/nano/*.nanorc"
+
+# User-Specific:
+include "~/.nano/*.nanorc"
+
+# System-Wide:
+  include "/etc/nano/*.nanorc"
+  include "/usr/nano/*.nanorc"
+  include "/usr/share/nano/*.nanorc"
