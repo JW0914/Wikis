@@ -1,0 +1,72 @@
+#
+
+                ##::[[---  NanoRC Config ---]]::##
+
+#===================================================================
+                      ##----- Options -----##
+#===================================================================
+
+# Set #
+#-------------------------------------------------------------------
+
+# Wrap at Tab/Space:
+set atblanks
+
+# Auto Indent:
+  ##set autoindent
+
+# Create Backup:
+set backup
+set backupdir "/mnt/sda1/root/.nano"
+
+# Bold Text not Reverse:
+set boldtext
+
+# Bracket Highlight:
+set brackets ""'’)>]}'""
+set matchbrackets ""'(<[{)>]}'""
+
+# Cursor Location:
+set constantshow
+
+# Save History:
+set historylog
+
+# Lock File if Open:
+set locking
+
+# Mouse Support:
+  ##set mouse
+
+# Remember Cursor Position:
+set positionlog
+
+# Quotes:
+set quotestr "^([ \\t]*[#:>\\|}])+"
+
+# KeyPad:
+set rawsequences
+
+# Soft Wrap:
+set softwrap
+
+# Smart[er] Home Key:
+set smarthome
+
+# Tab Size:
+set tabsize 2
+
+# Convert [→] to [.]:
+set tabstospaces
+
+# Save w/ LF EOL:
+set unix
+
+
+#===================================================================
+                  ##----- RC Files -----##
+#===================================================================
+
+# Include RC Files #
+#-------------------------------------------------------------------
+include "/usr/nano/*.nanorc"
