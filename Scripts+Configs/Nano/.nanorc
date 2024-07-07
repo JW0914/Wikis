@@ -1,43 +1,51 @@
 #
 
-           ##::[[-----  Custom NanoRC -----]]::##
+              ##::[[-----  Custom NanoRC -----]]::##
 
-#===========================================================
-                  ##----- Defaults -----##
-#===========================================================
+#===================================================================
+                     ##----- Defaults -----##
+#===================================================================
 
-  # I utilize scopatz's .nanorc configuration:
-    # https://github.com/scopatz/nanorc
+  # Man Page:
+    # https://www.nano-editor.org/dist/latest/nano.html#Nanorc-File
 
-      # To not utilize:
-        # Comment out: Line 98
+
+  # I utilize scopatz's .nanorc configuration, forked:
+    # https://github.com/JW0914/nanorc-1
 
       # To utilize:
         # BSD/Linux:
-          # curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+          # curl https://raw.githubusercontent.com/JW0914/nanorc-1/master/install.sh | sh
 
         # Router/SBC:
-          # wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh
+          # wget https://raw.githubusercontent.com/JW0914/nanorc-1/master/install.sh -O- | sh
 
 
-#===========================================================
-                  ##----- Options -----##
-#===========================================================
+  # Modern Bindings: (no NanoRC option and overrides -p || --preserve)
+    ## nano --modernbindings <file>
+       # Use key bindings similar to the ones that most modern programs use:
+         # ^O: opens a file | ^S: saves | ^W: writes out a file
+         # ^X: cuts | ^C: copies | ^V: pastes | ^A: sets the mark | ^R: makes replacements
+         # ^Z: undoes | ^Y: redoes | ^T: goes to a line | ^P: shows the position
+         # ^F: searches forward | ^G: searches next | ^D: searches previous
+         # ^E: executes a command | ^H: shows help | ^Q: quits
 
-  # https://www.nano-editor.org/dist/latest/nanorc.5.html
 
+#===================================================================
+                      ##----- Options -----##
+#===================================================================
 
-# Enabled #
-#-----------------------------------------------------------
-
-# Wrap at tab/space
+# Wrap at Tab/Space:
 set atblanks
+
+# Auto indent:
+  ## set autoindent
 
 # Create Backup:
 set backup
 set backupdir "~/.nano"
 
-# Bold text not Reverse:
+# Bold Text not Reverse:
 set boldtext
 
 # Bracket HL:
@@ -50,54 +58,48 @@ set constantshow
 # Save History:
 set historylog
 
-# Lock file if open
+# Lock file if Open:
 set locking
 
-# Remember Cursor Position
+# Mouse Support:
+  ## set mouse
+
+# Remember Cursor Position:
 set positionlog
 
-# Quotes
+# Quotes:
 set quotestr "^([ \\t]*[#:>\\|}])+"
 
 # KeyPad:
 set rawsequences
 
-# Soft wrap:
+# Soft Wrap:
 set softwrap
 
-# Smart[er] Home Key
+# Smart[er] Home Key:
 set smarthome
 
 # Tab Size:
 set tabsize 2
 
-# Convert → to .:
+# Convert [→] to [.]:
 set tabstospaces
 
-# Save w/ LF EOL
+# Save w/ LF EOL:
 set unix
 
-# Disabled #
-#-----------------------------------------------------------
 
-# Auto indent:
-  ## set autoindent
-
-# Mouse Support
-  ## set mouse
-
-
-#===========================================================
-                  ##----- RC Files -----##
-#===========================================================
+#===================================================================
+                     ##----- RC Files -----##
+#===================================================================
 
 # Include #
-#-----------------------------------------------------------
+#-------------------------------------------------------------------
 
 # User-Specific:
 include "~/.nano/*.nanorc"
 
 # System-Wide:
-  ## include "/etc/nano/*.nanorc"
-  ## include "/usr/nano/*.nanorc"
-  ## include "/usr/share/nano/*.nanorc"
+  include "/etc/nano/*.nanorc"
+  include "/usr/nano/*.nanorc"
+  include "/usr/share/nano/*.nanorc"
