@@ -10,7 +10,7 @@
     # https://www.nano-editor.org/dist/latest/nano.html#Nanorc-File
 
 
-  # I utilize scopatz's .nanorc configuration - forked:
+  # Forked scopatz's .nanorc configuration is used:
     # https://github.com/JW0914/nanorc-1
 
       # To utilize:
@@ -21,7 +21,7 @@
           # wget https://raw.githubusercontent.com/JW0914/nanorc-1/master/install.sh -O- | sh
 
 
-  # Modern Bindings: (no NanoRC option and overrides -p || --preserve)
+  # Modern Bindings: (no NanoRC option; overrides -p || --preserve)
     ## nano --modernbindings <file>
        # Use key bindings similar to the ones that most modern programs use:
          # ^O: opens a file | ^S: saves | ^W: writes out a file
@@ -90,11 +90,8 @@ set unix
 
 
 #===================================================================
-                     ##----- RC Files -----##
+                  ##----- Include RC Files -----##
 #===================================================================
-
-# Include #
-#-------------------------------------------------------------------
 
 # User-Specific:
 include "~/.nano/*.nanorc"
