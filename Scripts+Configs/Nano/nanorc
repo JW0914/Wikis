@@ -100,6 +100,6 @@ set unix
 include "~/.nano/*.nanorc"
 
 # System-Wide:
-  include "/etc/nano/*.nanorc"
-  include "/usr/nano/*.nanorc"
-  include "/usr/share/nano/*.nanorc"
+include "/etc/nano/*.nanorc"
+include "/usr/nano/*.nanorc"
+include "/usr/share/nano/*.nanorc"
