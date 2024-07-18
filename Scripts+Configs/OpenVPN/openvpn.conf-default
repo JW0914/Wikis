@@ -1,108 +1,157 @@
 #
 
-    ##::[[---  Sophos OpenVPN Config  ---]]::##
+                  ##::[[---  Sophos OpenVPN Config  ---]]::##
 
-####################################################
-             ##----- VPN Server -----##
-####################################################
+#===============================================================================
+                           ##----- VPN Server -----##
+#===============================================================================
 
-    # Protocol #
-#---------------------------------------------------
-  dev                         tun
-  topology                    subnet
-  mark                        4458
-  tun-ipv6
-  [<LISTEN>]
+  # Elliptic-Curve [EC] DH & DHE:
 
+    # OpenVPN ≥2.4 should be utilizing EC ciphers as it's more efficient:
+      # DH_RSA
+        # Key exchange occurs via a static Diffie-Hellman key. Server Public Key
+          # must be a Diffie-Hellman key, of which must have been issued by a CA
+          # that was using an RSA signing key
 
-    # Routes #
-#---------------------------------------------------
-  server                      [<SERVER_POOL>]
-  multihome
-  [<SERVER6_POOL>]
+      # DHE_RSA
+        # Key exchange occurs via an ephemeral Diffie-Hellman; server dynamically
+        # generates and signs a DH public key, sending it to the client. Server Public
+        # Key must be an RSA key and its certificate must utilize keyUsage digitalSignature
 
+      # ECDH_RSA
+        # Like DH_RSA, but with elliptic curves: the server public key must be an
+        # ECDH key, with a certificate issued by a CA which utilized an RSA signing key
 
-    # Client Config #
-#---------------------------------------------------
-  client-config-dir           /etc/openvpn/conf.d
-  ifconfig-pool-persist       /var/run/ipp.txt
+      # ECDHE_RSA
+        # Like ECDH_RSA, except that the server public key is an RSA key, utilized
+        # for signing the ephemeral elliptic-curve Diffie-Hellman key the server sends,
+        # along with the signature having an elliptic curve
 
+    # Diffie-Hellmann PEM (dh2048.pem)
+      # It's recommended to generate multiple dh key values subsequently
 
-    # Ecryption #
-#---------------------------------------------------
-  # Login:
-    username-as-common-name
+#-------------------------------------------------------------------------------
 
-  # Diffie-Hellmann:
-    dh                        /etc/openvpn/[<DH_FILE>]
+  # PFS [Perfect Forward Secrecy] is maintained by two methods:
+    # SSL:
+      # Via the TLS-Auth PSK [tls-auth.psk]
+          ## Generate: openvpn --genkey secret tls-auth.psk
 
-  # Certificates:
-    capath                    /etc/openvpn/ca.d
-    cert                      /etc/openvpn/server.crt
-    key                       /etc/openvpn/server.key
-    tls-crypt                 /etc/openvpn/tls-crypt.psk
+    # TLS:
+      # Via specifying a TLS Cipher, such as TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384
+        ## Generate supported ciphers: openvpn --show-tls
 
-  # SSL:
-    cipher                    [<CIPHER>]
-    auth                      [<AUTH>]
+#-------------------------------------------------------------------------------
 
-  # TLS:
-    tls-version-min           1.2
-    tls-cipher                TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256:TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256:TLS-DHE-RSA-WITH-AES-128-CBC-SHA256:TLS-ECDH-RSA-WITH-AES-128-GCM-SHA256:!aNULL:!eNULL:!LOW:!3DES:!MD5:!SHA:!EXP:!PSK:!SRP:!DSS:!RC4:!kRSA
+  # Subnets/IPs:
+    # CloudFlare Malware Blocking DNS: https://blog.cloudflare.com/introducing-1-1-1-1-for-families
+    # NIST NTP:                        https://tf.nist.gov/tf-cgi/servers.cgi
 
 
-    # Logging #
-#---------------------------------------------------
-  status                      /var/run/openvpn-status.log
-  log                         /var/run/openvpn.log
-  verb                        4
+#-------------------------------------------------------------------------------
+#===============================================================================
 
-  down-pre
-  daemon
-
-      # Original:
-        # verb                [<DEBUG_LEVEL>]
-
-
-    # Connection Options #
-#---------------------------------------------------
-  keepalive                   10 120
-  comp-lzo                    [<DISABLE_COMP>]
+# Protocol #
+#-------------------------------------------------------------------------------
+dev                         tun
+topology                    subnet
+mark                        4458
+tun-ipv6
+[<LISTEN>]
 
 
-    # Connection Reliability #
-#---------------------------------------------------
-  persist-key
-  persist-tun
-  reneg-sec                   [<RENEG_SEC>]
+# Routes #
+#-------------------------------------------------------------------------------
+server                      [<SERVER_POOL>]
+multihome
+[<SERVER6_POOL>]
 
 
-    # Connection Speed #
-#---------------------------------------------------
-  sndbuf                      393216
-  rcvbuf                      393216
-  fragment                    0
-  mssfix                      0
-  tun-mtu                     48000
+# Client Config #
+#-------------------------------------------------------------------------------
+client-config-dir           /etc/openvpn/conf.d
+ifconfig-pool-persist       /var/run/ipp.txt
 
 
-    # Pushed Buffers #
-#---------------------------------------------------
-  push                        sndbuf 393216
-  push                        rcvbuf 393216
+# Ecryption #
+#-------------------------------------------------------------------------------
+# Login:
+  username-as-common-name
+
+# Diffie-Hellmann:
+  dh                        /etc/openvpn/[<DH_FILE>]
+
+# Certificates:
+  capath                    /etc/openvpn/ca.d
+  cert                      /etc/openvpn/server.crt
+  key                       /etc/openvpn/server.key
+  tls-auth                  /etc/openvpn/tls-auth.psk
+
+# SSL:
+  cipher                    [<CIPHER>]
+  auth                      [<AUTH>]
+
+# TLS:
+  tls-version-min           1.2
+  tls-cipher                TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256:TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256:TLS-ECDH-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-128-CBC-SHA256
 
 
-    # Permissions #
-#---------------------------------------------------
-  management                  /var/run/openvpn_mgmt unix
-  management-client-user      root
-  management-client-group     root
+# Logging #
+#-------------------------------------------------------------------------------
+status                      /var/run/openvpn-status.log
+log                         /var/run/openvpn.log
+verb                        4
+
+down-pre
+daemon
+
+  # Original:
+    ## verb                        [<DEBUG_LEVEL>]
 
 
-    # Sophos UTM Specific #
-#---------------------------------------------------
-  plugin                      /usr/lib/openvpn/plugins/openvpn-plugin-utm.so
+# Connection Options #
+#-------------------------------------------------------------------------------
+keepalive                   10 120
+compress                    lz4
 
-  [<OPTIONS>]
+  # Original:
+    ## comp-lzo                    [<DISABLE_COMP>]
+
+
+# Connection Reliability #
+#-------------------------------------------------------------------------------
+persist-key
+persist-tun
+reneg-sec                   [<RENEG_SEC>]
+
+
+# Connection Speed #
+#-------------------------------------------------------------------------------
+sndbuf                      393216
+rcvbuf                      393216
+fragment                    0
+mssfix                      0
+tun-mtu                     48000
+
+
+# Pushed Buffers #
+#-------------------------------------------------------------------------------
+push                        sndbuf 393216
+push                        rcvbuf 393216
+
+
+# Permissions #
+#-------------------------------------------------------------------------------
+management                  /var/run/openvpn_mgmt unix
+management-client-user      root
+management-client-group     root
+
+
+# Sophos UTM Specific #
+#-------------------------------------------------------------------------------
+plugin                      /usr/lib/openvpn/plugins/openvpn-plugin-utm.so
+
+[<OPTIONS>]
 
 
